@@ -1,0 +1,1736 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-23T15:46:19.042Z",
+  "minAppVersion": "0.3.0",
+  "providers": [
+    {
+      "value": "1cinevood",
+      "display_name": "Cinewood",
+      "type": "global",
+      "icon": "",
+      "version": "1.8",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/1cinevood/catalog.js",
+          "sha256": "984654bec22274acea0c2900a1e30fcbae5915d0114f626139dbcf8dbc3dc80d",
+          "bytes": 815
+        },
+        "posts": {
+          "path": "dist/1cinevood/posts.js",
+          "sha256": "1e416c8e50e28747e59a1458d2302692d19ad5b3c5307b769fac73c6e3576ee7",
+          "bytes": 5031
+        },
+        "meta": {
+          "path": "dist/1cinevood/meta.js",
+          "sha256": "da08c08915866e16cd0372da5542c641b63375ab25802b35fc8082ff844255bc",
+          "bytes": 5131
+        },
+        "stream": {
+          "path": "dist/1cinevood/stream.js",
+          "sha256": "578882891c89140eb56aaf006e6c2d87a22fdc495e995bde6b7a668372434cb5",
+          "bytes": 12941
+        },
+        "episodes": {
+          "path": "dist/1cinevood/episodes.js",
+          "sha256": "ef038531c45cdc7d324bf44a89006886c8f0ac6fc3ff58555475a60214fab290",
+          "bytes": 4078
+        }
+      }
+    },
+    {
+      "value": "4khdhub",
+      "display_name": "4khdHub",
+      "type": "global",
+      "icon": "",
+      "version": "2.5",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/4khdhub/catalog.js",
+          "sha256": "a4ee2d3fbdead1bdf0317c77d8441e44994dab2975acfd5bb3fbcc914fc31100",
+          "bytes": 963
+        },
+        "posts": {
+          "path": "dist/4khdhub/posts.js",
+          "sha256": "4b443d5c3a69ae5602f89dfce734cdbaad675418a4254620eaf8f2bc9023b480",
+          "bytes": 2749
+        },
+        "meta": {
+          "path": "dist/4khdhub/meta.js",
+          "sha256": "90d33e861f3d7d7e9f2384d635af2b01f3dbec57cdf1beb9126dad38fc5814d4",
+          "bytes": 2755
+        },
+        "stream": {
+          "path": "dist/4khdhub/stream.js",
+          "sha256": "ad218ab9e1fa41784102459074143f7438bf79093d671588df126d65676f0337",
+          "bytes": 12663
+        }
+      }
+    },
+    {
+      "value": "a111477",
+      "display_name": "A.111477",
+      "type": "english",
+      "icon": "",
+      "version": "1.3",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/a111477/catalog.js",
+          "sha256": "b3973c7cfcdcfda5a9141286789e9278a341224f151b47abe8b9265fce74fe67",
+          "bytes": 978
+        },
+        "posts": {
+          "path": "dist/a111477/posts.js",
+          "sha256": "fbdaabe9a8ddc371e2e00d6a27d1244b613a48b63cc2d1cada21f6be35dd7712",
+          "bytes": 4389
+        },
+        "meta": {
+          "path": "dist/a111477/meta.js",
+          "sha256": "6cfd00ec7bd6f1d18b2dfec83b177edf46620fe10a11f890386626c85990718c",
+          "bytes": 3013
+        },
+        "stream": {
+          "path": "dist/a111477/stream.js",
+          "sha256": "9868421433291921d11ad88240b21e8b2e2373814422db531f85fa236a208d1d",
+          "bytes": 5507
+        },
+        "episodes": {
+          "path": "dist/a111477/episodes.js",
+          "sha256": "3b19d75d20529764040b113de79d6b79446957ecfc1ab92b3bd6ee3b64f132a4",
+          "bytes": 2407
+        }
+      }
+    },
+    {
+      "value": "anidb",
+      "display_name": "AniDB",
+      "type": "anime",
+      "icon": "https://anidb.app/images/fav-512.png",
+      "version": "1.0.1",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/anidb/catalog.js",
+          "sha256": "fae0e7610b16d04b19c9750317f4ada3845df99b958fa6782e30560e71c1b4e5",
+          "bytes": 1064
+        },
+        "posts": {
+          "path": "dist/anidb/posts.js",
+          "sha256": "c312e807b981055f7157a06586e6908ac626982d548b5380bad6448e03b4ae35",
+          "bytes": 7805
+        },
+        "meta": {
+          "path": "dist/anidb/meta.js",
+          "sha256": "05e384767006bd5f1ae0a0de73221bacda37fe3b201bc2aaa652cb39a9d8a096",
+          "bytes": 6327
+        },
+        "stream": {
+          "path": "dist/anidb/stream.js",
+          "sha256": "950725e2c540ff7129d774bbeccc18918e6e808a05f112a8f0b4d6f297b2b857",
+          "bytes": 8731
+        },
+        "episodes": {
+          "path": "dist/anidb/episodes.js",
+          "sha256": "2619e369f08549cfdf3ca45eae8ce61bab2748feecf4e5293dbee3ba418a14bc",
+          "bytes": 4435
+        }
+      }
+    },
+    {
+      "value": "animelok",
+      "display_name": "AnimeLok",
+      "type": "anime",
+      "icon": "https://anime-lok-assets.pages.dev/animelok.png",
+      "version": "1.7.0",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/animelok/catalog.js",
+          "sha256": "51891c55809f51a376dc3c0cfce4dedd5ba927bbd6afc3a688557fb5a2c8f369",
+          "bytes": 413
+        },
+        "posts": {
+          "path": "dist/animelok/posts.js",
+          "sha256": "b03967a314b6f52939c11e4fe00a56f2d3b14cea718c23441e32ac06bebba962",
+          "bytes": 2899
+        },
+        "meta": {
+          "path": "dist/animelok/meta.js",
+          "sha256": "8363eb78b3951ea2ef51c256a7e606d84d33e29ff494f8ba9a01501dfecd1797",
+          "bytes": 11479
+        },
+        "stream": {
+          "path": "dist/animelok/stream.js",
+          "sha256": "4ccd4885dad1dff745c959ad34074550705714e44e6e3d6216ca4a5781f15492",
+          "bytes": 28768
+        },
+        "episodes": {
+          "path": "dist/animelok/episodes.js",
+          "sha256": "2cf8c5c4f818382191cc95523dd3d3d7d6ae971555fa935202c9abbca51bef8e",
+          "bytes": 2331
+        }
+      }
+    },
+    {
+      "value": "animesalt",
+      "display_name": "AnimeSalt",
+      "type": "anime",
+      "icon": "https://animesalt.link/wp-content/uploads/2025/01/cropped-logo-192x192.png",
+      "version": "1.7.0",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/animesalt/catalog.js",
+          "sha256": "826d192a8e4e4adc297989f5e0d22afcdcae6544ad256d5abd4e48763633669e",
+          "bytes": 367
+        },
+        "posts": {
+          "path": "dist/animesalt/posts.js",
+          "sha256": "1719deb99bbc48070cf07238eda5c1531e55b8d7bfd0f5164fff17426e8b4dae",
+          "bytes": 2215
+        },
+        "meta": {
+          "path": "dist/animesalt/meta.js",
+          "sha256": "d845cc90c65230273564d238f4701c4c55825f1f6ce537bf8b38681f6064da36",
+          "bytes": 3306
+        },
+        "stream": {
+          "path": "dist/animesalt/stream.js",
+          "sha256": "7c33c72d9bcb346f678bbb01edccc070e25141ce2fd82624f7833908320b567d",
+          "bytes": 10566
+        },
+        "episodes": {
+          "path": "dist/animesalt/episodes.js",
+          "sha256": "4c0b460b43a349f3fed6fdc1cb104ea456be4203d76adeb10d5a4f174cfff270",
+          "bytes": 2747
+        }
+      }
+    },
+    {
+      "value": "autoEmbed",
+      "display_name": "MultiStream",
+      "type": "global",
+      "icon": "",
+      "version": "1.6",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/autoEmbed/catalog.js",
+          "sha256": "73c0c8b66eedd25550fdb4605c180ebb0c8d3f493d31177507f9c586e4783c41",
+          "bytes": 1082
+        },
+        "posts": {
+          "path": "dist/autoEmbed/posts.js",
+          "sha256": "caf1ca5a56e02ba41fff715d6d6e3d041f2e71b5e7cbc8c945490143bf713891",
+          "bytes": 3415
+        },
+        "meta": {
+          "path": "dist/autoEmbed/meta.js",
+          "sha256": "d7e106a223251fe4e808a89e2e43afe7770583df7579bfb4a26dfee5a06952c2",
+          "bytes": 4224
+        },
+        "stream": {
+          "path": "dist/autoEmbed/stream.js",
+          "sha256": "46a04c1f78060a12f46e05a0f73244467f844c62569ceebdb6bd53719c3f5a42",
+          "bytes": 6566
+        }
+      }
+    },
+    {
+      "value": "cinemaLuxe",
+      "display_name": "CinemaLuxe",
+      "type": "global",
+      "icon": "",
+      "version": "1.9",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/cinemaLuxe/catalog.js",
+          "sha256": "462f98a8dd29373db7b9e7f31f07719341bb401a0a8bbf274de10046a21f0109",
+          "bytes": 1001
+        },
+        "posts": {
+          "path": "dist/cinemaLuxe/posts.js",
+          "sha256": "284cce2f5e6d8eee9eb1a9a880a0f151f5e679b4750d524ea816e511497dea5a",
+          "bytes": 2845
+        },
+        "meta": {
+          "path": "dist/cinemaLuxe/meta.js",
+          "sha256": "005c91a646b3b1efa571fb3d4ec8cf998ea32bfc9c2e8aaca2066f93e1e7dd0f",
+          "bytes": 2936
+        },
+        "stream": {
+          "path": "dist/cinemaLuxe/stream.js",
+          "sha256": "a79a63464da6a533aa9456442c55bddf2b6ad2cd57b39bf5d68830cc2e87fc7b",
+          "bytes": 12465
+        },
+        "episodes": {
+          "path": "dist/cinemaLuxe/episodes.js",
+          "sha256": "b8a9761b0a19a6f3f53493cd95ceade71f47199ac94e9a8ca7edf3c7776ecea5",
+          "bytes": 2630
+        }
+      }
+    },
+    {
+      "value": "desidub",
+      "display_name": "DesiDubAnime",
+      "type": "india",
+      "icon": "https://www.desidubanime.me/wp-content/uploads/2025/01/cropped-LogoM-192x192.png",
+      "version": "1.7.0",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/desidub/catalog.js",
+          "sha256": "4ad1a8d7c6549d05b0c070c71537c33b1c2dd433712eb97d92ed59b884342c40",
+          "bytes": 636
+        },
+        "posts": {
+          "path": "dist/desidub/posts.js",
+          "sha256": "e6a125dd36c295f0255230b9d2e66c06951b90b571b80fcfe8dd7b43cbe1a71b",
+          "bytes": 4803
+        },
+        "meta": {
+          "path": "dist/desidub/meta.js",
+          "sha256": "7b9de937275219c4afeb3d1dea0fd0fd58fb31df2af5e4d87623d7b5680fdd9f",
+          "bytes": 3838
+        },
+        "stream": {
+          "path": "dist/desidub/stream.js",
+          "sha256": "55d5a2cb952d24c38b175eac4c405840e5cd47dab1685adddbe0d175c04402b2",
+          "bytes": 19603
+        },
+        "episodes": {
+          "path": "dist/desidub/episodes.js",
+          "sha256": "1528300b5cb75f60a06347512c6ae3a80fe1da93b8f4c4ef2c86775e549c11e9",
+          "bytes": 4235
+        }
+      }
+    },
+    {
+      "value": "dooflix",
+      "display_name": "Dooflix",
+      "type": "india",
+      "icon": "",
+      "version": "1.4",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/dooflix/catalog.js",
+          "sha256": "89f338fabd95d2d2e64be9eb91242d3cc494eff1cfb01efc5ab63d98eed6200a",
+          "bytes": 898
+        },
+        "posts": {
+          "path": "dist/dooflix/posts.js",
+          "sha256": "ac3b7f01f625d21c6b7baf72944caebd04d8c37dd5da748e9bc70e5e1f867e27",
+          "bytes": 5026
+        },
+        "meta": {
+          "path": "dist/dooflix/meta.js",
+          "sha256": "0de8d416544eb2dd45d8ab2af8af3b6df1650e59fde7316647d7f501a5fbf5d2",
+          "bytes": 3204
+        },
+        "stream": {
+          "path": "dist/dooflix/stream.js",
+          "sha256": "b12df026e4bbf4e87050870412795fccdd8fec8c4ab1f915d157dfbf15ff1a26",
+          "bytes": 2269
+        }
+      }
+    },
+    {
+      "value": "drive",
+      "display_name": "MoviesDrive",
+      "type": "global",
+      "icon": "",
+      "version": "2.4",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/drive/catalog.js",
+          "sha256": "06aae6552f13da981173adba9bea033eb1bcb04d8fc418f86abfc45ec3f0a2d6",
+          "bytes": 1378
+        },
+        "posts": {
+          "path": "dist/drive/posts.js",
+          "sha256": "a91cd577f346c916caf3fda57e2f1ebd8879769c716dd6b120127d65c00b4c5b",
+          "bytes": 4557
+        },
+        "meta": {
+          "path": "dist/drive/meta.js",
+          "sha256": "b725fac3ea292bb0c178b8cda7a1c25118880c3fc1542bad497f7014cabf92ef",
+          "bytes": 4821
+        },
+        "stream": {
+          "path": "dist/drive/stream.js",
+          "sha256": "22c9cd491211a90103163f12be24f596950b323412e69b661600c0f91b8ee111",
+          "bytes": 14132
+        },
+        "episodes": {
+          "path": "dist/drive/episodes.js",
+          "sha256": "e4e807721b5fa8f267fb88813c62607e68e11cbef98ed62f008200183cbe9e7a",
+          "bytes": 3738
+        }
+      }
+    },
+    {
+      "value": "filmyfly",
+      "display_name": "FilmyFly",
+      "type": "global",
+      "icon": "",
+      "version": "1.5",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/filmyfly/catalog.js",
+          "sha256": "06686bcd266acc78c17306fe8c287050e3c6fadba796472101a4381bcd6ad289",
+          "bytes": 951
+        },
+        "posts": {
+          "path": "dist/filmyfly/posts.js",
+          "sha256": "c8b6baee9fb20d811eb2b3efa3c2959d3e3bdd324bb3c258f0ce2a0e15db63c5",
+          "bytes": 4482
+        },
+        "meta": {
+          "path": "dist/filmyfly/meta.js",
+          "sha256": "68abd8a784064831354e7ba06b0f9a722a11360d12aa75d754728c3ceb7fa7db",
+          "bytes": 3610
+        },
+        "stream": {
+          "path": "dist/filmyfly/stream.js",
+          "sha256": "8d253876334b5a4331afa29594eb0318b98fb49c6a881ae45b5079448705a9b7",
+          "bytes": 24814
+        },
+        "episodes": {
+          "path": "dist/filmyfly/episodes.js",
+          "sha256": "5fc298cf3867d1b11f521fab6652d29f0941597edf62070cf6e845be86600752",
+          "bytes": 1843
+        }
+      }
+    },
+    {
+      "value": "flixhq",
+      "display_name": "FlixHQ",
+      "type": "english",
+      "icon": "",
+      "version": "1.0",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/flixhq/catalog.js",
+          "sha256": "98d18a21fb82bf8d81a884e36a74eca8fd56113f7ce55b17363a2ec0041cd176",
+          "bytes": 919
+        },
+        "posts": {
+          "path": "dist/flixhq/posts.js",
+          "sha256": "45981e96d5884a1874d45b4d130392075a48df4ab164f15f8ba24aba911bb3e2",
+          "bytes": 2469
+        },
+        "meta": {
+          "path": "dist/flixhq/meta.js",
+          "sha256": "44728de4fd0c884b18d2c972fd0dda39c53ce27c3343416bb4c7f38cf31f3fa9",
+          "bytes": 2812
+        },
+        "stream": {
+          "path": "dist/flixhq/stream.js",
+          "sha256": "19e41c5f41147f5d61fa2b5a0ee17d492f1dd455cef56a370e8b90e475131519",
+          "bytes": 2473
+        }
+      }
+    },
+    {
+      "value": "guardahd",
+      "display_name": "GuardaHD",
+      "type": "italy",
+      "icon": "",
+      "version": "1.6",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/guardahd/catalog.js",
+          "sha256": "05b4fdf2545eaceb60e6b0f7a6c9815a91116caae41e42e4ed222213b872a32a",
+          "bytes": 937
+        },
+        "posts": {
+          "path": "dist/guardahd/posts.js",
+          "sha256": "acc9ef6867c3a269ba09a0ca1901f7a94f1ad3061f1c631f264aca462c759e82",
+          "bytes": 2911
+        },
+        "meta": {
+          "path": "dist/guardahd/meta.js",
+          "sha256": "144ce4e9a96a2684fef68f2db758d39b5c134048afbb4347ac4aec562af159ad",
+          "bytes": 3544
+        },
+        "stream": {
+          "path": "dist/guardahd/stream.js",
+          "sha256": "23d3529ae3f05ad115396dc264fcb1504babecf7b2a5c7223336beb9df567332",
+          "bytes": 4979
+        }
+      }
+    },
+    {
+      "value": "hdhub4u",
+      "display_name": "HdHub4u",
+      "type": "global",
+      "icon": "",
+      "version": "2.1",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "repairing",
+      "files": {
+        "catalog": {
+          "path": "dist/hdhub4u/catalog.js",
+          "sha256": "51688b8e907b9fbefdcec11d2e376d8bd355158678852e497a1891a4b32a3adf",
+          "bytes": 1420
+        },
+        "posts": {
+          "path": "dist/hdhub4u/posts.js",
+          "sha256": "cb0ce829510d99f80f369fd9ffad790a857eddd5ff751733a6d4db04509d6d74",
+          "bytes": 4447
+        },
+        "meta": {
+          "path": "dist/hdhub4u/meta.js",
+          "sha256": "af4f420a7f74660da914c523d026bdea66de29476d344e652f37e8ce64108299",
+          "bytes": 3571
+        },
+        "stream": {
+          "path": "dist/hdhub4u/stream.js",
+          "sha256": "1409d8fa09d5bc6ad803a32cb0eaecb556fd32c27007bdb26859f0cd2ba77026",
+          "bytes": 14419
+        }
+      }
+    },
+    {
+      "value": "hiAnime",
+      "display_name": "HiAnime",
+      "type": "english",
+      "icon": "",
+      "version": "1.1",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/hiAnime/catalog.js",
+          "sha256": "c04ef593992385d7c2469f3dca200f8875672c7fd932fb07a165b4be0aae27a7",
+          "bytes": 1022
+        },
+        "posts": {
+          "path": "dist/hiAnime/posts.js",
+          "sha256": "3f5eff78ba40bee833a440c3492c0f476b244944a37a58eba6f455cdf4322708",
+          "bytes": 2382
+        },
+        "meta": {
+          "path": "dist/hiAnime/meta.js",
+          "sha256": "f7899bdb48ae4c2e9ac194abe2b267f26fdc55cdc5325264ad438b827cffc5a9",
+          "bytes": 3221
+        },
+        "stream": {
+          "path": "dist/hiAnime/stream.js",
+          "sha256": "446fc3a50b5a9d567ead8d51da903f2334a6deee0ae2fe756e688c6eeff02748",
+          "bytes": 2417
+        }
+      }
+    },
+    {
+      "value": "Joya9tv",
+      "display_name": "Joya9tv",
+      "type": "india",
+      "icon": "",
+      "version": "1.7",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/Joya9tv/catalog.js",
+          "sha256": "1ff68a9f505fdf6eb1fbc85f634977ebe73788a4e222f769ebd86fbf10e92c60",
+          "bytes": 864
+        },
+        "posts": {
+          "path": "dist/Joya9tv/posts.js",
+          "sha256": "624b9d6a6714a978e3d3d0592317afe724a3cef6fe751c8127d60b430a5cfa65",
+          "bytes": 4126
+        },
+        "meta": {
+          "path": "dist/Joya9tv/meta.js",
+          "sha256": "830780acd1c0af2b0a9694a5d9c9a3b10fbe24ad8287482b70a4ccd026842da5",
+          "bytes": 4708
+        },
+        "stream": {
+          "path": "dist/Joya9tv/stream.js",
+          "sha256": "49f471eec63340e86e96097e2e2d71065dd1800de839d5aee820abd3be5ff1b3",
+          "bytes": 15912
+        },
+        "episodes": {
+          "path": "dist/Joya9tv/episodes.js",
+          "sha256": "41cf4f83a3413135822d585122098f42460d778ce8e529795bf90b6fa090f3e0",
+          "bytes": 1773
+        }
+      }
+    },
+    {
+      "value": "katMovieFix",
+      "display_name": "KatMovieFix",
+      "type": "global",
+      "icon": "",
+      "version": "1.7",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/katMovieFix/catalog.js",
+          "sha256": "fab7bcf0cc4a82bcba4db6ed9528ad78c7486d6afc7aa104a85b6216eef190d5",
+          "bytes": 836
+        },
+        "posts": {
+          "path": "dist/katMovieFix/posts.js",
+          "sha256": "c6aadba639fd0d0560adc570288e2dbf372f203483e6333dda49bbb066cd8d2f",
+          "bytes": 3955
+        },
+        "meta": {
+          "path": "dist/katMovieFix/meta.js",
+          "sha256": "741cff758466d4b77269c91a6cfd597f0bd477c265bf627b133db1d66c958246",
+          "bytes": 3697
+        },
+        "stream": {
+          "path": "dist/katMovieFix/stream.js",
+          "sha256": "9ca1cdf6177b8c5ada137a0778bbf617f11de96df5e7095f13e8126b89ebf5d1",
+          "bytes": 7299
+        },
+        "episodes": {
+          "path": "dist/katMovieFix/episodes.js",
+          "sha256": "6aac7a2cf8ec4b048dfb43b91889efd30ca45ce3a26989174fcc76ca157eee93",
+          "bytes": 2170
+        }
+      }
+    },
+    {
+      "value": "katmovies",
+      "display_name": "KatMoviesHd",
+      "type": "global",
+      "icon": "",
+      "version": "1.12",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/katmovies/catalog.js",
+          "sha256": "f9852e7e85d60f09b939db795961c65a5ff0405681b2cecafbb12636c73626c4",
+          "bytes": 1351
+        },
+        "posts": {
+          "path": "dist/katmovies/posts.js",
+          "sha256": "c843e8bd2f401c4ecf7906e5ce64e32cfeef35dfe81995e49264ec7d86391fd0",
+          "bytes": 4328
+        },
+        "meta": {
+          "path": "dist/katmovies/meta.js",
+          "sha256": "464f3f61da0e7a5dc07bbe5ecb8f2fa79f5936547444ce426c435b83ec7d6968",
+          "bytes": 9190
+        },
+        "stream": {
+          "path": "dist/katmovies/stream.js",
+          "sha256": "aba47735ea9ddb3c100a71ca0ed5ae196d97a516489198ae6ea58f5e60e78f2f",
+          "bytes": 23491
+        },
+        "episodes": {
+          "path": "dist/katmovies/episodes.js",
+          "sha256": "6eb3f906673609832182a7c3943ed51534dc8cd0b702a44ed24dbcd11ef70d0b",
+          "bytes": 4832
+        }
+      }
+    },
+    {
+      "value": "kissKh",
+      "display_name": "KissKh",
+      "type": "english",
+      "icon": "",
+      "version": "1.2",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/kissKh/catalog.js",
+          "sha256": "09eefadfa82e1681d4d4ad331b5086b40f66b88ff96ff636c12d998323e4f33d",
+          "bytes": 1145
+        },
+        "posts": {
+          "path": "dist/kissKh/posts.js",
+          "sha256": "e55dca3efe645ca409a8574f744fddda04df9f351652a350316b1a42d7136253",
+          "bytes": 2624
+        },
+        "meta": {
+          "path": "dist/kissKh/meta.js",
+          "sha256": "8718edb25b8ede27fd8a743d8d8c6fd3949a9f1051a4cf516f30def8935160a5",
+          "bytes": 2774
+        },
+        "stream": {
+          "path": "dist/kissKh/stream.js",
+          "sha256": "521bbd97ff4fa9c50acf7ab1658290c7683a2cb49c2a8c60a0b7e542c52605b5",
+          "bytes": 2145
+        }
+      }
+    },
+    {
+      "value": "kmMovies",
+      "display_name": "KmMovies",
+      "type": "global",
+      "icon": "",
+      "version": "2.3",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/kmMovies/catalog.js",
+          "sha256": "a5aea353b0bda0f4cbcc41bc87caebbe5ca7d43a8d31126c01c735f1783c8eb5",
+          "bytes": 866
+        },
+        "posts": {
+          "path": "dist/kmMovies/posts.js",
+          "sha256": "69eb08228070aba945f3eab86915c495b0d89f3048a6727bed78422dc7974265",
+          "bytes": 5388
+        },
+        "meta": {
+          "path": "dist/kmMovies/meta.js",
+          "sha256": "f3de2f83532d3d93cd5d8597a6c1992ef97481159ddeca95da4622950f7873b7",
+          "bytes": 7734
+        },
+        "stream": {
+          "path": "dist/kmMovies/stream.js",
+          "sha256": "382a1e3418cb3b2c8d0855fd56fb908b78153c2466f41c61901524b826f5b2ad",
+          "bytes": 34247
+        },
+        "episodes": {
+          "path": "dist/kmMovies/episodes.js",
+          "sha256": "8210354f5288a73ac5dfd6c3a4b4f03a9f0ade2e9a3f093bf1f79100a78a89ec",
+          "bytes": 2001
+        }
+      }
+    },
+    {
+      "value": "luxMovies",
+      "display_name": "RogMovies",
+      "type": "india",
+      "icon": "",
+      "version": "2.8",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/luxMovies/catalog.js",
+          "sha256": "507459724c32d9d27b040618734186970aef31f84ce819c25db553657ccd44b8",
+          "bytes": 2210
+        },
+        "posts": {
+          "path": "dist/luxMovies/posts.js",
+          "sha256": "d7abc86dc8919f600ef1750912a9e61be7db5652beae5238eb745de9b12904a1",
+          "bytes": 5709
+        },
+        "meta": {
+          "path": "dist/luxMovies/meta.js",
+          "sha256": "66cedbaada703bd6541e584c81c9905ecb6e9c8e68c14fcebf28197a13cf4f35",
+          "bytes": 14513
+        },
+        "stream": {
+          "path": "dist/luxMovies/stream.js",
+          "sha256": "74805bc2653bb7be71a8a5e0dea3bf71bfbb71543c80b66c5bfd7d1dcf2f4467",
+          "bytes": 15052
+        },
+        "episodes": {
+          "path": "dist/luxMovies/episodes.js",
+          "sha256": "459f1396fcea2a20b77dcc799e3a450d1eb4c4b91e10bd8c3269bd659bab08c4",
+          "bytes": 3165
+        }
+      }
+    },
+    {
+      "value": "mangafire",
+      "display_name": "MangaFire",
+      "type": "manga",
+      "icon": "https://mangafire.to/assets/mangafire/logo-sm.png",
+      "version": "1.0.0",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/mangafire/catalog.js",
+          "sha256": "be5b58139c8be0ca9c2558cef67ed79b2cb9fd0e773dec5183c9c1178ab62c48",
+          "bytes": 817
+        },
+        "posts": {
+          "path": "dist/mangafire/posts.js",
+          "sha256": "7669bf43997f74dd24bf3f28c5ad15938c269e925486eac24132be11b22824b7",
+          "bytes": 6792
+        },
+        "meta": {
+          "path": "dist/mangafire/meta.js",
+          "sha256": "57b8b6c6042c908d2eb11c6dcf89613c4999bf68ac19211246762e4d6894fa1d",
+          "bytes": 5459
+        },
+        "stream": {
+          "path": "dist/mangafire/stream.js",
+          "sha256": "98bba6e19b44348d41d19a479b22c36373cd84ef5ad224fe5f91f099595ebd7c",
+          "bytes": 6019
+        },
+        "episodes": {
+          "path": "dist/mangafire/episodes.js",
+          "sha256": "40ee2fd2c3b499cac95508009d6f64f30222a36f8cc9f551a93deeaa56b846ea",
+          "bytes": 6225
+        }
+      }
+    },
+    {
+      "value": "mangaplus",
+      "display_name": "MANGA Plus",
+      "type": "manga",
+      "icon": "https://mangaplus.shueisha.co.jp/icn/app_icon_192.png",
+      "version": "1.0.0",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/mangaplus/catalog.js",
+          "sha256": "3340e48013b240aef3846c906d4a3a06f5c46c4519d1bb977105238dd4c43090",
+          "bytes": 994
+        },
+        "posts": {
+          "path": "dist/mangaplus/posts.js",
+          "sha256": "ff001c71a238e2c7c286c98caee41877283ab9c9798605efa0937a9fc5f953ca",
+          "bytes": 9037
+        },
+        "meta": {
+          "path": "dist/mangaplus/meta.js",
+          "sha256": "034d75037f24d06a479ae50233f8feba98a9bb23da7b26386b259d2b952a19a1",
+          "bytes": 8332
+        },
+        "stream": {
+          "path": "dist/mangaplus/stream.js",
+          "sha256": "33eaf9414bd354ce5a3d74aefc02ddb0d3f6a54c01b1c47b2c3cd00cd26e701d",
+          "bytes": 9379
+        },
+        "episodes": {
+          "path": "dist/mangaplus/episodes.js",
+          "sha256": "e9580715c890d867f35798143f834d6cfe0493c8822144ec251630d4251031fd",
+          "bytes": 7778
+        }
+      }
+    },
+    {
+      "value": "miruro",
+      "display_name": "Miruro",
+      "type": "anime",
+      "icon": "https://www.miruro.to/icon-light-1024x1024.png",
+      "version": "1.8.2",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/miruro/catalog.js",
+          "sha256": "789766092eb99f8dc072078368c0e778f498f5f1dfb0375063a2cbc4fb61103d",
+          "bytes": 635
+        },
+        "posts": {
+          "path": "dist/miruro/posts.js",
+          "sha256": "cd44a5f0ad6e11caf24e78b360d7a9d589ed04efffdc0ea7f78690a95d22a085",
+          "bytes": 5652
+        },
+        "meta": {
+          "path": "dist/miruro/meta.js",
+          "sha256": "31607f630b66b41495fcc51bdf64c0cd6ac2ec0dae4e1405078237f285d42e49",
+          "bytes": 10250
+        },
+        "stream": {
+          "path": "dist/miruro/stream.js",
+          "sha256": "d1d8e32af612b15b51bd17ab780f138f809ae1e6f6d8d24fcf8794d324c8d7a2",
+          "bytes": 26469
+        },
+        "episodes": {
+          "path": "dist/miruro/episodes.js",
+          "sha256": "1c07703aa4fa5fea0061dc7292cdebe8a24ce406f02f15e6df0f56dd3d50a9ef",
+          "bytes": 32688
+        }
+      }
+    },
+    {
+      "value": "mod",
+      "display_name": "MoviesMod",
+      "type": "global",
+      "icon": "",
+      "version": "1.3",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/mod/catalog.js",
+          "sha256": "605b4a19d028e9c64dac5d473f408488bcd0fa65a1fe2d5322380cc1be94835d",
+          "bytes": 1770
+        },
+        "posts": {
+          "path": "dist/mod/posts.js",
+          "sha256": "583fe0e8415d54ffca708d821d7eb0c1fd1b8a5d7fb808cb2b139045dfd32f6d",
+          "bytes": 1414
+        },
+        "meta": {
+          "path": "dist/mod/meta.js",
+          "sha256": "9d1409f88ac5d54ba48cddd196802aed41077cc6542055e6c553faa6283acd76",
+          "bytes": 3348
+        },
+        "stream": {
+          "path": "dist/mod/stream.js",
+          "sha256": "abb0c51b4da0de16505ccbf96d8544660ea7978d2996e3c7b3f7cf0faaaf237d",
+          "bytes": 14358
+        },
+        "episodes": {
+          "path": "dist/mod/episodes.js",
+          "sha256": "433459ead05744ffa02de96eac0e131c8081a07f1078793f8baa946254c163d6",
+          "bytes": 2262
+        }
+      }
+    },
+    {
+      "value": "movieBox",
+      "display_name": "MovieBox",
+      "type": "global",
+      "icon": "",
+      "version": "2.2",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/movieBox/catalog.js",
+          "sha256": "432cd2fb8758d8e8fb03e6300d1dcc7e89b5efa99cbaa62ecf737901bf7433ab",
+          "bytes": 856
+        },
+        "posts": {
+          "path": "dist/movieBox/posts.js",
+          "sha256": "35a9966726b29994b75a9d322eca214c81664a9f49cd431a402887a48cf506ea",
+          "bytes": 5027
+        },
+        "meta": {
+          "path": "dist/movieBox/meta.js",
+          "sha256": "6d2eb48b212eab4efe065d5be664300952cfea4266d4f9458c39d0b02aaf1b37",
+          "bytes": 4402
+        },
+        "stream": {
+          "path": "dist/movieBox/stream.js",
+          "sha256": "2a12d2f1dd1094124ee628c5ab91f65a06725633446b103c0d1a67b82d66b804",
+          "bytes": 5811
+        },
+        "episodes": {
+          "path": "dist/movieBox/episodes.js",
+          "sha256": "ee8facd8b81087170dff3c756b4e88d45d3e4209076b39f284d385ede6658acc",
+          "bytes": 5871
+        }
+      }
+    },
+    {
+      "value": "movies4u",
+      "display_name": "Movies4U",
+      "type": "global",
+      "icon": "",
+      "version": "1.7",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/movies4u/catalog.js",
+          "sha256": "47a5bb209fe4543a849825c1d05755e172953f1f317679bed30af14631eb4f8b",
+          "bytes": 827
+        },
+        "posts": {
+          "path": "dist/movies4u/posts.js",
+          "sha256": "3a4a27f8db17195e3def8802434441f7a1d2be12bdd82ecf5433e4c189b80015",
+          "bytes": 6350
+        },
+        "meta": {
+          "path": "dist/movies4u/meta.js",
+          "sha256": "f74c6317bc48d7ae043c7458df2353097783063790d77f062181b65df603118c",
+          "bytes": 11369
+        },
+        "stream": {
+          "path": "dist/movies4u/stream.js",
+          "sha256": "eb277b3ac1df2a8e6eb933fe22e1da3d136a1c9fa1c9eb909704206e998167e9",
+          "bytes": 22666
+        },
+        "episodes": {
+          "path": "dist/movies4u/episodes.js",
+          "sha256": "e87f4674a7b65969fc75de57b4ef069c5d92fc4cc86add0c7671c53480a4a7aa",
+          "bytes": 4750
+        }
+      }
+    },
+    {
+      "value": "moviezwap",
+      "display_name": "MoviezWap",
+      "type": "india",
+      "icon": "",
+      "version": "1.0",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/moviezwap/catalog.js",
+          "sha256": "074d434359888414a4b07d24ccaaa04b2af7f8c2069cd627cfc7a2b25e4b5afe",
+          "bytes": 1099
+        },
+        "posts": {
+          "path": "dist/moviezwap/posts.js",
+          "sha256": "315453c702cd82b894832372d6bf206934111a0338663b55f25775c69d61530c",
+          "bytes": 4455
+        },
+        "meta": {
+          "path": "dist/moviezwap/meta.js",
+          "sha256": "72806231560d70747e8022f2c70c3e5a16b466ecc354f257be8caf4fc029b9fa",
+          "bytes": 5149
+        },
+        "stream": {
+          "path": "dist/moviezwap/stream.js",
+          "sha256": "1905b186de0b0226603d8f2899589929609e8c3110c2a023de6bb4d5d97685aa",
+          "bytes": 5455
+        },
+        "episodes": {
+          "path": "dist/moviezwap/episodes.js",
+          "sha256": "c484ba2069424d3c5b29c0cea40e464cc741743d5efa8131ccd9a5cfa43d2734",
+          "bytes": 1929
+        }
+      }
+    },
+    {
+      "value": "multi",
+      "display_name": "MultiMovies",
+      "type": "global",
+      "icon": "",
+      "version": "1.3",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/multi/catalog.js",
+          "sha256": "17993fb9e06c1ff4c00078bb28ca9d8c9a777838300125955feac9d440a9498b",
+          "bytes": 1601
+        },
+        "posts": {
+          "path": "dist/multi/posts.js",
+          "sha256": "7fb77f5d3fb12b3a532fa34306c8fd3601d8e9526ef62f275bfae53c31570583",
+          "bytes": 2685
+        },
+        "meta": {
+          "path": "dist/multi/meta.js",
+          "sha256": "3bc0d5f0aa3b302caa7d51159569ad679441a36e4d4579e6d588250e58b067ad",
+          "bytes": 2381
+        },
+        "stream": {
+          "path": "dist/multi/stream.js",
+          "sha256": "7156fdcc151d221344ca41c59994dd71fde90c7c89b050c389323a4eb0c02034",
+          "bytes": 5869
+        }
+      }
+    },
+    {
+      "value": "netflixMirror",
+      "display_name": "NetflixMirror",
+      "type": "global",
+      "icon": "",
+      "version": "1.7",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/netflixMirror/catalog.js",
+          "sha256": "afd90ad285ac863b945f2aa546f5c72de16953829f88591ac79211fc33edb940",
+          "bytes": 923
+        },
+        "posts": {
+          "path": "dist/netflixMirror/posts.js",
+          "sha256": "6fda33b215d7d6d71edf884e2704fdcdb5850d029fce1c4d057ceb37caaec8a6",
+          "bytes": 3312
+        },
+        "meta": {
+          "path": "dist/netflixMirror/meta.js",
+          "sha256": "d980ec72bef427c8e84cc87e003c0eb1b2242c75c9847fa0c5be0bdd09b96aef",
+          "bytes": 2972
+        },
+        "stream": {
+          "path": "dist/netflixMirror/stream.js",
+          "sha256": "b1adca1f1e4102c215be1be1ba47d9f62e8451bd9079a072245b36312bb8aa12",
+          "bytes": 2165
+        },
+        "episodes": {
+          "path": "dist/netflixMirror/episodes.js",
+          "sha256": "7298f9995c22fac464c1fd790cffb5d772eb7bdbd9528e1ea655431f2b0b32fe",
+          "bytes": 2298
+        }
+      }
+    },
+    {
+      "value": "ogomovies",
+      "display_name": "Ogomovies",
+      "type": "india",
+      "icon": "",
+      "version": "1.0",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/ogomovies/catalog.js",
+          "sha256": "4f71c1fb281505130c790e53e3f70d9dd6a2773f4a3b4f335007b8e70bfbe43b",
+          "bytes": 820
+        },
+        "posts": {
+          "path": "dist/ogomovies/posts.js",
+          "sha256": "b695ccc1b0a2ee462fb81ae1bd6ca20738714dc8aa768fdb2d3ef05bc9018105",
+          "bytes": 3651
+        },
+        "meta": {
+          "path": "dist/ogomovies/meta.js",
+          "sha256": "10128c1a64a0c4efa6f391faa2253fae60e2b160514968eba102362e389ce2a2",
+          "bytes": 6627
+        },
+        "stream": {
+          "path": "dist/ogomovies/stream.js",
+          "sha256": "1ef45d22ea27ca65abd3112b1701dcdba5f295e9659cd243e61712cbcaefe9b1",
+          "bytes": 3135
+        }
+      }
+    },
+    {
+      "value": "primeMirror",
+      "display_name": "PrimeMirror",
+      "type": "global",
+      "icon": "",
+      "version": "1.6",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/primeMirror/catalog.js",
+          "sha256": "afd90ad285ac863b945f2aa546f5c72de16953829f88591ac79211fc33edb940",
+          "bytes": 923
+        },
+        "posts": {
+          "path": "dist/primeMirror/posts.js",
+          "sha256": "3a0a2d21b6c5c6793611bb39a80aaf8115d76feabf9b3e3ca2a3de423ec23818",
+          "bytes": 3349
+        },
+        "meta": {
+          "path": "dist/primeMirror/meta.js",
+          "sha256": "f2701eeb3ea9e4128121f461cf9de0ed1c7db5bc6952986deec7488d446c45c3",
+          "bytes": 2971
+        },
+        "stream": {
+          "path": "dist/primeMirror/stream.js",
+          "sha256": "5c701f9a326043bb77bb2286ed9d6fc59ec2af031994b6935da471408a0161e4",
+          "bytes": 2112
+        },
+        "episodes": {
+          "path": "dist/primeMirror/episodes.js",
+          "sha256": "1f48b40744dfc206670f5ebf3355e95ad280b0dc3703c2dadde23bc7712f9443",
+          "bytes": 2301
+        }
+      }
+    },
+    {
+      "value": "primewire",
+      "display_name": "Primewire",
+      "type": "english",
+      "icon": "",
+      "version": "1.0",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/primewire/catalog.js",
+          "sha256": "8b5d92d1536f9ee21d90daa0160195b1c25b5a2dba5356fc9173c7ad33f8e405",
+          "bytes": 1001
+        },
+        "posts": {
+          "path": "dist/primewire/posts.js",
+          "sha256": "215c50135b3377f8767ba5f08e8a547bf5cabad66a4d3d2a02adaca653927991",
+          "bytes": 2829
+        },
+        "meta": {
+          "path": "dist/primewire/meta.js",
+          "sha256": "461c5b39c903e298fae71b1fa6db5adb0b138e9ace554afad45e29b192390d3a",
+          "bytes": 2425
+        },
+        "stream": {
+          "path": "dist/primewire/stream.js",
+          "sha256": "def866b8c8236ea50610f034b43152b55bb81ae1800f0a6430bdf29d7e728f19",
+          "bytes": 7908
+        }
+      }
+    },
+    {
+      "value": "protonMovies",
+      "display_name": "ProtonMovies",
+      "type": "global",
+      "icon": "",
+      "version": "1.4",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/protonMovies/catalog.js",
+          "sha256": "a86a3c9eb53523542f28a355b94d9b7f2fd43e94e1225447c1b30de0ba6cf265",
+          "bytes": 991
+        },
+        "posts": {
+          "path": "dist/protonMovies/posts.js",
+          "sha256": "b55c7903a761d6ad3b1ad2237b22c2f80df3a588af20fb68554a107b9ae3136f",
+          "bytes": 3120
+        },
+        "meta": {
+          "path": "dist/protonMovies/meta.js",
+          "sha256": "f5bd50a3afb4b7dcec2d962dcb3c3f250ec9d2ae58b566ac0c04f26f316d4127",
+          "bytes": 3221
+        },
+        "stream": {
+          "path": "dist/protonMovies/stream.js",
+          "sha256": "6d990b8175de4b96beae47f5ce700fe3bbd7ea62ffb62b6da58d585b39465408",
+          "bytes": 14914
+        }
+      }
+    },
+    {
+      "value": "ridoMovies",
+      "display_name": "RidoMovies",
+      "type": "english",
+      "icon": "",
+      "version": "1.0",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/ridoMovies/catalog.js",
+          "sha256": "05b4fdf2545eaceb60e6b0f7a6c9815a91116caae41e42e4ed222213b872a32a",
+          "bytes": 937
+        },
+        "posts": {
+          "path": "dist/ridoMovies/posts.js",
+          "sha256": "acc9ef6867c3a269ba09a0ca1901f7a94f1ad3061f1c631f264aca462c759e82",
+          "bytes": 2911
+        },
+        "meta": {
+          "path": "dist/ridoMovies/meta.js",
+          "sha256": "e28f557d9c815bfcefc415a456f2860e892e5a495e65c2bfbf4f3c788c8eb8d8",
+          "bytes": 3564
+        },
+        "stream": {
+          "path": "dist/ridoMovies/stream.js",
+          "sha256": "0c2bba7b7ce00022f8822aed35c9a727f21d520ab526105ea271009163f2c8aa",
+          "bytes": 3245
+        }
+      }
+    },
+    {
+      "value": "ringz",
+      "display_name": "Ringz",
+      "type": "global",
+      "icon": "",
+      "version": "1.0",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/ringz/catalog.js",
+          "sha256": "41047831302a074286c9ea1f949e749d6d12002064e46a5419902a3c85e12ddd",
+          "bytes": 897
+        },
+        "posts": {
+          "path": "dist/ringz/posts.js",
+          "sha256": "3363142daaed731aa229a8e6658daa5b4eeb5c3cd04ce7c8c493a032a3e97470",
+          "bytes": 5160
+        },
+        "meta": {
+          "path": "dist/ringz/meta.js",
+          "sha256": "7dfbad90c9ff4a39601a93897e73b1747f90be4633f83a9abaf4e1f7b6440d8d",
+          "bytes": 2979
+        },
+        "stream": {
+          "path": "dist/ringz/stream.js",
+          "sha256": "6bb25678a0f1bddede7a478587214198dc1534243882df758af25e55b1e05f9b",
+          "bytes": 5115
+        }
+      }
+    },
+    {
+      "value": "senshi",
+      "display_name": "Senshi",
+      "type": "anime",
+      "icon": "https://senshi.live/assets/favicon-3ErN9bbp.ico",
+      "version": "1.0.0",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/senshi/catalog.js",
+          "sha256": "cde2103d324d32daabf069992731e25c43920208635e8651cebda6cbed032549",
+          "bytes": 610
+        },
+        "posts": {
+          "path": "dist/senshi/posts.js",
+          "sha256": "997d6ff035d4fdae8a641bfa96048cc22ed695ce1ebec28f761924183e8e60ea",
+          "bytes": 4328
+        },
+        "meta": {
+          "path": "dist/senshi/meta.js",
+          "sha256": "cba16f3ff63ec5d92b09283918a033b506221f392b309618ea9643a241874887",
+          "bytes": 6612
+        },
+        "stream": {
+          "path": "dist/senshi/stream.js",
+          "sha256": "ad389223c6c8908766068c1150ca73b7c6cf2f33bf662aa48a3d9d0be6ececb5",
+          "bytes": 7274
+        },
+        "episodes": {
+          "path": "dist/senshi/episodes.js",
+          "sha256": "828cb548bea2e361add54705b6197843012579b038b40f1b42c8788b2723b063",
+          "bytes": 2636
+        }
+      }
+    },
+    {
+      "value": "showbox",
+      "display_name": "ShowBox",
+      "type": "english",
+      "icon": "",
+      "version": "1.2",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/showbox/catalog.js",
+          "sha256": "e10d41911ca4f93450b4402f9ce7fcdea63bf4648a514ce8ba15655e316e8b26",
+          "bytes": 888
+        },
+        "posts": {
+          "path": "dist/showbox/posts.js",
+          "sha256": "76475a11eea6bfc1400aa1ef153fb10754fba4e88f0db51d2a1fe0e6679dff04",
+          "bytes": 2816
+        },
+        "meta": {
+          "path": "dist/showbox/meta.js",
+          "sha256": "245e28fbbf197c7bb08eeecfdb2655aa305a35ebbf5228fe0bc470afa7d58e88",
+          "bytes": 2832
+        },
+        "stream": {
+          "path": "dist/showbox/stream.js",
+          "sha256": "b2096c5954ae6e88c5f430ce78db39649c4620aad5e68a2924f6e7a69a85472a",
+          "bytes": 3868
+        },
+        "episodes": {
+          "path": "dist/showbox/episodes.js",
+          "sha256": "bae301631753c092f070dd8ed6470ccecc92473be8111843049ac5f4d4ded987",
+          "bytes": 2147
+        }
+      }
+    },
+    {
+      "value": "skyMovieHD",
+      "display_name": "SkyMovieHD",
+      "type": "global",
+      "icon": "",
+      "version": "1.7",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/skyMovieHD/catalog.js",
+          "sha256": "40429d72047bfc35ab91cb5de610ee3215ec4c20d3beeaed3caba84f610cdc6e",
+          "bytes": 830
+        },
+        "posts": {
+          "path": "dist/skyMovieHD/posts.js",
+          "sha256": "c1c52d19480fcfbeabe9cc859ca6b0d11f4310c5658e35501603a42a6d551d6d",
+          "bytes": 3859
+        },
+        "meta": {
+          "path": "dist/skyMovieHD/meta.js",
+          "sha256": "50c1ba15bcdf6ff749f3ee39becd6427243294f1ff17dc31efc419d13c100196",
+          "bytes": 6450
+        },
+        "stream": {
+          "path": "dist/skyMovieHD/stream.js",
+          "sha256": "6f415e036cc23ff618e80564447619de9ecbb68e591013375c70f57b978e5f6e",
+          "bytes": 6639
+        },
+        "episodes": {
+          "path": "dist/skyMovieHD/episodes.js",
+          "sha256": "3ae3fea0c60781eca1a4a65f7bb1155b910d9b2b410a0d0c8a10224a9ffb35c3",
+          "bytes": 1582
+        }
+      }
+    },
+    {
+      "value": "tokyoInsider",
+      "display_name": "TokyoInsider",
+      "type": "english",
+      "icon": "",
+      "version": "1.0",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/tokyoInsider/catalog.js",
+          "sha256": "a49e8fba1082bc7304932d4d8e09ab32ae5b642e62607dadaecf82b9d2723c31",
+          "bytes": 884
+        },
+        "posts": {
+          "path": "dist/tokyoInsider/posts.js",
+          "sha256": "09ab1da5c9c2263e66a9886f84f674b942936e5a35683871f8881639fa41e8c6",
+          "bytes": 2683
+        },
+        "meta": {
+          "path": "dist/tokyoInsider/meta.js",
+          "sha256": "6b47a3f4cf5f04a210ab11f578e714c58310dc1d909dac444eca8d59be50191b",
+          "bytes": 2853
+        },
+        "stream": {
+          "path": "dist/tokyoInsider/stream.js",
+          "sha256": "056038cd35125d9d62c3ff6bc828b0fd2ca6bffcfe28cff44c3516a736df261e",
+          "bytes": 1755
+        }
+      }
+    },
+    {
+      "value": "topmovies",
+      "display_name": "TopMovies",
+      "type": "india",
+      "icon": "",
+      "version": "1.2",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/topmovies/catalog.js",
+          "sha256": "472998736e579636889b7b1b0d37b62dc3a31da1cf0190a50c80edaec7c3ee36",
+          "bytes": 1851
+        },
+        "posts": {
+          "path": "dist/topmovies/posts.js",
+          "sha256": "e10520a36d5fe4fd3b0ac3ef8cb487bce4c7f03415c36cc2ebe5a33e00bc38ef",
+          "bytes": 3148
+        },
+        "meta": {
+          "path": "dist/topmovies/meta.js",
+          "sha256": "7e47cd89d72bca9b5fffb4ce853eb973bc14d8517348d0596c8dcbaa4c83721f",
+          "bytes": 3121
+        },
+        "stream": {
+          "path": "dist/topmovies/stream.js",
+          "sha256": "5b8e174dd2a9031b20104473a8258d077121ed93b376f2b087c035dada9b133a",
+          "bytes": 14124
+        },
+        "episodes": {
+          "path": "dist/topmovies/episodes.js",
+          "sha256": "433459ead05744ffa02de96eac0e131c8081a07f1078793f8baa946254c163d6",
+          "bytes": 2262
+        }
+      }
+    },
+    {
+      "value": "torrentio",
+      "display_name": "Torrentio",
+      "type": "global",
+      "icon": "",
+      "version": "1.3",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/torrentio/catalog.js",
+          "sha256": "73c0c8b66eedd25550fdb4605c180ebb0c8d3f493d31177507f9c586e4783c41",
+          "bytes": 1082
+        },
+        "posts": {
+          "path": "dist/torrentio/posts.js",
+          "sha256": "aa9e8654e9e8da45d8e2f4a4a7d567c2735f3cf8f8839deca5d04dfcb6e8f285",
+          "bytes": 5593
+        },
+        "meta": {
+          "path": "dist/torrentio/meta.js",
+          "sha256": "d7e106a223251fe4e808a89e2e43afe7770583df7579bfb4a26dfee5a06952c2",
+          "bytes": 4224
+        },
+        "stream": {
+          "path": "dist/torrentio/stream.js",
+          "sha256": "6614e380d5cb183e503feb9449ee91968eae9b12b9b3712704808a38287c7566",
+          "bytes": 6296
+        }
+      }
+    },
+    {
+      "value": "uhd",
+      "display_name": "UHDMovies",
+      "type": "global",
+      "icon": "",
+      "version": "1.4",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/uhd/catalog.js",
+          "sha256": "9b7ee4c0ad92966eacdc6cf9aa71c695a2d319fc424022d0fbcd00b02cca5ffc",
+          "bytes": 1127
+        },
+        "posts": {
+          "path": "dist/uhd/posts.js",
+          "sha256": "2d8cb721c9be5bcec2b36ee86f3a143399d998c8887c66cbe6ded50825b38e66",
+          "bytes": 4073
+        },
+        "meta": {
+          "path": "dist/uhd/meta.js",
+          "sha256": "2b41f6c9202bdc33484fc1f5366026a155a5487dfe3f90baa9e81187960feb50",
+          "bytes": 7813
+        },
+        "stream": {
+          "path": "dist/uhd/stream.js",
+          "sha256": "ba69fe9d29011da078512f7d813d3e774dd9d4b380fa8e00b89a7af716b2bc73",
+          "bytes": 16612
+        }
+      }
+    },
+    {
+      "value": "uniquestream",
+      "display_name": "AnimeStream",
+      "type": "english",
+      "icon": "",
+      "version": "1.1",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/uniquestream/catalog.js",
+          "sha256": "96f77f417e28e212a3d6c0801a9d7c254c3861c7308ce66367890ff272309650",
+          "bytes": 897
+        },
+        "posts": {
+          "path": "dist/uniquestream/posts.js",
+          "sha256": "bac5a766b7970b62c628c4b7834a3f471c9c60542d95683f8aae2027d2f927cd",
+          "bytes": 2690
+        },
+        "meta": {
+          "path": "dist/uniquestream/meta.js",
+          "sha256": "0a71e591b4ad31a18d99d67d8aa6f629fe85d08e29ea496c7332ac8db18afcea",
+          "bytes": 2459
+        },
+        "stream": {
+          "path": "dist/uniquestream/stream.js",
+          "sha256": "c8e02a32b64470284511234c212870051240de1fe70ce4f5485c5348cca5b9cb",
+          "bytes": 3225
+        },
+        "episodes": {
+          "path": "dist/uniquestream/episodes.js",
+          "sha256": "d346fba18ee21077ed2af1a145456e2d2788540927733324802c22746cbd2245",
+          "bytes": 2025
+        }
+      }
+    },
+    {
+      "value": "vadapav",
+      "display_name": "VadaPav",
+      "type": "global",
+      "icon": "",
+      "version": "1.0",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/vadapav/catalog.js",
+          "sha256": "15feee56fd86bbf8109828844731d4f7ef8b3faf8de80a693da493678823bc35",
+          "bytes": 991
+        },
+        "posts": {
+          "path": "dist/vadapav/posts.js",
+          "sha256": "47fa62f84e27837786893f989d5d55031b10209fc996c643c42b89220ef8ddc1",
+          "bytes": 2948
+        },
+        "meta": {
+          "path": "dist/vadapav/meta.js",
+          "sha256": "66a637efc956fc7ff911ca359d9be63d451266922c049b17404b272339a0c403",
+          "bytes": 2398
+        },
+        "stream": {
+          "path": "dist/vadapav/stream.js",
+          "sha256": "b246e55d2adfd751397af41b47f3abb88a2b10e758146354d7a473c149f0763d",
+          "bytes": 1430
+        },
+        "episodes": {
+          "path": "dist/vadapav/episodes.js",
+          "sha256": "ee21223e3e903e31ef30101b26136adb699f1a9eb43fcf378343e7cbb0e65308",
+          "bytes": 2066
+        }
+      }
+    },
+    {
+      "value": "vega",
+      "display_name": "MORROW Movies",
+      "type": "global",
+      "icon": "",
+      "version": "2.12",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/vega/catalog.js",
+          "sha256": "93ed53be3375c2dae38986bc5e515daea07397b6eaf185cf5b848fec19587c0f",
+          "bytes": 2186
+        },
+        "posts": {
+          "path": "dist/vega/posts.js",
+          "sha256": "13bd708041d13f4efb9bc9e911f66ae027197325ec5e35bb6e77ff229433ab0f",
+          "bytes": 5729
+        },
+        "meta": {
+          "path": "dist/vega/meta.js",
+          "sha256": "435c6a77278f47cd296aa07bc2ab88e0d84dff4fac3cbd3443fcd93a803f2495",
+          "bytes": 14516
+        },
+        "stream": {
+          "path": "dist/vega/stream.js",
+          "sha256": "3006c4bb753f5031429cafad244fe998b4943cc974dca6ad52a673da21d9aa77",
+          "bytes": 21794
+        },
+        "episodes": {
+          "path": "dist/vega/episodes.js",
+          "sha256": "459f1396fcea2a20b77dcc799e3a450d1eb4c4b91e10bd8c3269bd659bab08c4",
+          "bytes": 3165
+        }
+      }
+    },
+    {
+      "value": "world4u",
+      "display_name": "World4uFree",
+      "type": "global",
+      "icon": "",
+      "version": "1.4",
+      "minAppVersion": "0.3.0",
+      "disabled": false,
+      "availability": "ready",
+      "files": {
+        "catalog": {
+          "path": "dist/world4u/catalog.js",
+          "sha256": "6b1030a54c9dd63c0c90f464ec95c4a63f55154cea6ebc8749abc7f90c3d75c4",
+          "bytes": 1286
+        },
+        "posts": {
+          "path": "dist/world4u/posts.js",
+          "sha256": "a660db8f3e5f7de24d39e18f192b5bed51a96296779ba6323a71e1b39d1b2cbb",
+          "bytes": 2629
+        },
+        "meta": {
+          "path": "dist/world4u/meta.js",
+          "sha256": "af693850d887e9bb36523d0c9d3d940db56c400801a1b4f1ec4117c95291c8fc",
+          "bytes": 2542
+        },
+        "stream": {
+          "path": "dist/world4u/stream.js",
+          "sha256": "49d68ee581f259ecf1888f4bdd9bf99f862959bf9755f5911804f8eac92d9459",
+          "bytes": 10106
+        },
+        "episodes": {
+          "path": "dist/world4u/episodes.js",
+          "sha256": "fea31177363eba212382ada5b14bc02f1f404f0960262d00010103004657a4a7",
+          "bytes": 1831
+        }
+      }
+    },
+    {
+      "value": "zeefliz",
+      "display_name": "Zeefliz",
+      "type": "global",
+      "icon": "",
+      "version": "1.7",
+      "minAppVersion": "0.3.0",
+      "disabled": true,
+      "availability": "upstream-offline",
+      "files": {
+        "catalog": {
+          "path": "dist/zeefliz/catalog.js",
+          "sha256": "5f368f09e2fa59b7ce9a401d1bea52a4c2ca9e6a44287709f5cb8e21d375fffa",
+          "bytes": 823
+        },
+        "posts": {
+          "path": "dist/zeefliz/posts.js",
+          "sha256": "d980a9892ef91d9fef93f9d54e7997d3f2ab662b5882d9109e27f39e0c4c9773",
+          "bytes": 3871
+        },
+        "meta": {
+          "path": "dist/zeefliz/meta.js",
+          "sha256": "4b1d8eee4de3222710795597a6ca594635883799832c942d1df86bfbe615d0a7",
+          "bytes": 5459
+        },
+        "stream": {
+          "path": "dist/zeefliz/stream.js",
+          "sha256": "8053add02d07b3904420d5db37e9bdd9135bb003c987f14055c4ec6e7b0ea7db",
+          "bytes": 12237
+        },
+        "episodes": {
+          "path": "dist/zeefliz/episodes.js",
+          "sha256": "8053590ee96dc9ad137071614c0bff39fc7a23cec33365419ce81846749b129b",
+          "bytes": 3024
+        }
+      }
+    }
+  ],
+  "signature": null
+}

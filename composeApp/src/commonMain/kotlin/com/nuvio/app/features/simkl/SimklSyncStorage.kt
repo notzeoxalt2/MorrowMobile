@@ -1,0 +1,7 @@
+﻿package com.streamvault.app.features.simkl
+
+internal expect object SimklSyncStorage {
+    fun loadPayload(): String?
+    fun savePayload(payload: String)
+    fun removeProfile(profileId: Int)
+}

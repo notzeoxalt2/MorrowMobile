@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.StreamVault" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/streamvault_background</item>
+    </style>
+
+    <style name="Theme.StreamVault.Splash" parent="@style/Theme.StreamVault" />
+    <style name="Theme.StreamVault.Splash.ArcticBlue" parent="@style/Theme.StreamVault.Splash" />
+    <style name="Theme.StreamVault.Splash.Emerald" parent="@style/Theme.StreamVault.Splash" />
+    <style name="Theme.StreamVault.Splash.RoseGold" parent="@style/Theme.StreamVault.Splash" />
+    <style name="Theme.StreamVault.Splash.Copper" parent="@style/Theme.StreamVault.Splash" />
+    <style name="Theme.StreamVault.Splash.Graphite" parent="@style/Theme.StreamVault.Splash" />
+</resources>
