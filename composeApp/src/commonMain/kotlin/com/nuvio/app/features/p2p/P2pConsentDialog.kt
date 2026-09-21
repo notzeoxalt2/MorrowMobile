@@ -1,4 +1,4 @@
-package com.nuvio.app.features.p2p
+﻿package com.streamvault.app.features.p2p
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,11 +23,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.p2p_consent_body
-import nuvio.composeapp.generated.resources.p2p_consent_cancel
-import nuvio.composeapp.generated.resources.p2p_consent_enable
-import nuvio.composeapp.generated.resources.p2p_consent_title
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.p2p_consent_body
+import streamvault.composeapp.generated.resources.p2p_consent_cancel
+import streamvault.composeapp.generated.resources.p2p_consent_enable
+import streamvault.composeapp.generated.resources.p2p_consent_title
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

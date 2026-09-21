@@ -1,4 +1,4 @@
-package com.nuvio.app.features.profiles
+﻿package com.streamvault.app.features.profiles
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

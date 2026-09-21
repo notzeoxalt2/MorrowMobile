@@ -1,9 +1,9 @@
-package com.nuvio.app.core.auth
+﻿package com.streamvault.app.core.auth
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.network.ServerConfiguration
-import com.nuvio.app.core.network.ServerConfigurationRepository
-import com.nuvio.app.core.network.SupabaseProvider
+import com.streamvault.app.core.network.ServerConfiguration
+import com.streamvault.app.core.network.ServerConfigurationRepository
+import com.streamvault.app.core.network.SupabaseProvider
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.user.UserInfo
 import io.github.jan.supabase.auth.user.UserSession

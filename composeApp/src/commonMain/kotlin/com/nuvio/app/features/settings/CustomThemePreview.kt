@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,14 +15,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import com.nuvio.app.core.ui.CustomThemeColors
-import com.nuvio.app.core.ui.NuvioTokens
-import com.nuvio.app.core.ui.accentBrush
-import com.nuvio.app.core.ui.nuvio
-import com.nuvio.app.core.ui.toColorPalette
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.custom_theme_preview
-import nuvio.composeapp.generated.resources.custom_theme_preview_accent
+import com.streamvault.app.core.ui.CustomThemeColors
+import com.streamvault.app.core.ui.NuvioTokens
+import com.streamvault.app.core.ui.accentBrush
+import com.streamvault.app.core.ui.nuvio
+import com.streamvault.app.core.ui.toColorPalette
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.custom_theme_preview
+import streamvault.composeapp.generated.resources.custom_theme_preview_accent
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

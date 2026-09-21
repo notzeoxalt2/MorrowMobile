@@ -1,14 +1,14 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.runtime.Composable
-import com.nuvio.app.features.details.MetaDetailsUiState
-import com.nuvio.app.features.details.MetaVideo
-import com.nuvio.app.features.downloads.DownloadsRepository
-import com.nuvio.app.features.p2p.P2pConsentDialog
-import com.nuvio.app.features.p2p.P2pSettingsRepository
-import com.nuvio.app.features.streams.StreamItem
-import com.nuvio.app.features.streams.StreamsUiState
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.details.MetaDetailsUiState
+import com.streamvault.app.features.details.MetaVideo
+import com.streamvault.app.features.downloads.DownloadsRepository
+import com.streamvault.app.features.p2p.P2pConsentDialog
+import com.streamvault.app.features.p2p.P2pSettingsRepository
+import com.streamvault.app.features.streams.StreamItem
+import com.streamvault.app.features.streams.StreamsUiState
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
 
 @Composable
 internal fun PlayerScreenModalHosts(
@@ -204,7 +204,7 @@ internal fun PlayerScreenModalHosts(
         ?: metaUiState.meta?.id?.takeIf { it.startsWith("tt") }
 
     if (showSubmitIntroModal && season != null && episode != null && !imdbId.isNullOrBlank()) {
-        com.nuvio.app.features.player.skip.SubmitIntroDialog(
+        com.streamvault.app.features.player.skip.SubmitIntroDialog(
             imdbId = imdbId,
             season = season,
             episode = episode,
@@ -224,7 +224,7 @@ internal fun PlayerScreenModalHosts(
 internal fun selectDownloadedEpisodeForPlayback(
     parentMetaId: String,
     episode: MetaVideo,
-    onDownloadedEpisodeSelected: (com.nuvio.app.features.downloads.DownloadItem, MetaVideo) -> Unit,
+    onDownloadedEpisodeSelected: (com.streamvault.app.features.downloads.DownloadItem, MetaVideo) -> Unit,
 ): Boolean {
     val downloadedEpisode = DownloadsRepository.findPlayableDownload(
         parentMetaId = parentMetaId,

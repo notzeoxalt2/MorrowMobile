@@ -1,4 +1,4 @@
-package com.nuvio.app.features.updater
+﻿package com.streamvault.app.features.updater
 
 import android.content.Context
 import android.content.Intent
@@ -12,10 +12,10 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.updates_download_failed_http
-import nuvio.composeapp.generated.resources.updates_downloaded_file_missing
-import nuvio.composeapp.generated.resources.updates_empty_download_body
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.updates_download_failed_http
+import streamvault.composeapp.generated.resources.updates_downloaded_file_missing
+import streamvault.composeapp.generated.resources.updates_empty_download_body
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.jetbrains.compose.resources.getString

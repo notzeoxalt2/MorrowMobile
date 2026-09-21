@@ -1,6 +1,6 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
-import com.nuvio.app.features.home.MetaPreview
+import com.streamvault.app.features.home.MetaPreview
 
 data class PersonDetail(
     val tmdbId: Int,

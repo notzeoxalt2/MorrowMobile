@@ -1,6 +1,6 @@
-package com.nuvio.app.core.network
+﻿package com.streamvault.app.core.network
 
-import com.nuvio.app.core.build.AppFeaturePolicy
+import com.streamvault.app.core.build.AppFeaturePolicy
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

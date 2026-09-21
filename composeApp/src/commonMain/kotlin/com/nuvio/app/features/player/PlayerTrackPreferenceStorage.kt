@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 data class PersistedPlayerTrackPreference(
     val subtitleType: String? = null,

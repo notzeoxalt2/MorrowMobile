@@ -1,4 +1,4 @@
-package com.nuvio.app.navigation
+﻿package com.streamvault.app.navigation
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

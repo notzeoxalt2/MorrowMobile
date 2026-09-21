@@ -1,4 +1,4 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
 internal expect object BingeGroupCacheStorage {
     fun load(hashedKey: String): String?

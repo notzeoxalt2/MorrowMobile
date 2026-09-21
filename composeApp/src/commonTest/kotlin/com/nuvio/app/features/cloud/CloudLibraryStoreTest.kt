@@ -1,8 +1,8 @@
-package com.nuvio.app.features.cloud
+﻿package com.streamvault.app.features.cloud
 
-import com.nuvio.app.features.debrid.DebridProvider
-import com.nuvio.app.features.debrid.DebridProviderCapability
-import com.nuvio.app.features.debrid.DebridServiceCredential
+import com.streamvault.app.features.debrid.DebridProvider
+import com.streamvault.app.features.debrid.DebridProviderCapability
+import com.streamvault.app.features.debrid.DebridServiceCredential
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -10,13 +10,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onSizeChanged
-import com.nuvio.app.features.p2p.P2pStreamingState
-import com.nuvio.app.features.p2p.formatP2pMegabytes
-import com.nuvio.app.features.p2p.formatP2pSpeed
-import com.nuvio.app.features.player.skip.internalSkipAction
-import com.nuvio.app.isIos
+import com.streamvault.app.features.p2p.P2pStreamingState
+import com.streamvault.app.features.p2p.formatP2pMegabytes
+import com.streamvault.app.features.p2p.formatP2pSpeed
+import com.streamvault.app.features.player.skip.internalSkipAction
+import com.streamvault.app.isIos
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 
 @Composable
 internal fun PlayerScreenRuntime.RenderPlayerRuntimeUi() {
@@ -30,7 +30,7 @@ internal fun PlayerScreenRuntime.RenderPlayerRuntimeUi() {
     val p2pStats = p2pStreamingState as? P2pStreamingState.Streaming
     val p2pPeerInfo = p2pStats?.let { stats ->
         org.jetbrains.compose.resources.stringResource(
-            nuvio.composeapp.generated.resources.Res.string.player_torrent_peer_info,
+            streamvault.composeapp.generated.resources.Res.string.player_torrent_peer_info,
             stats.seeds,
             stats.peers,
         )
@@ -39,7 +39,7 @@ internal fun PlayerScreenRuntime.RenderPlayerRuntimeUi() {
     val p2pLoadingBytes = p2pStats?.let { maxOf(it.downloadedBytes, it.deliveredBytes) } ?: 0L
     val connectingPeerInfo = p2pConnecting?.let { state ->
         org.jetbrains.compose.resources.stringResource(
-            nuvio.composeapp.generated.resources.Res.string.player_torrent_peer_info,
+            streamvault.composeapp.generated.resources.Res.string.player_torrent_peer_info,
             state.seeds,
             state.peers,
         )
@@ -51,7 +51,7 @@ internal fun PlayerScreenRuntime.RenderPlayerRuntimeUi() {
                 p2pConnectingPhaseLabel(p2pConnecting.phase)
             } else {
                 org.jetbrains.compose.resources.stringResource(
-                    nuvio.composeapp.generated.resources.Res.string.player_torrent_connecting_status,
+                    streamvault.composeapp.generated.resources.Res.string.player_torrent_connecting_status,
                     p2pConnectingPhaseLabel(p2pConnecting.phase),
                     connectingPeerInfo.orEmpty(),
                     formatP2pSpeed(p2pConnecting.downloadSpeed),
@@ -63,7 +63,7 @@ internal fun PlayerScreenRuntime.RenderPlayerRuntimeUi() {
                 null
             } else {
                 org.jetbrains.compose.resources.stringResource(
-                    nuvio.composeapp.generated.resources.Res.string.player_torrent_loading_status,
+                    streamvault.composeapp.generated.resources.Res.string.player_torrent_loading_status,
                     formatP2pMegabytes(p2pLoadingBytes),
                     p2pPeerInfo.orEmpty(),
                     p2pDownloadSpeed.orEmpty(),
@@ -71,7 +71,7 @@ internal fun PlayerScreenRuntime.RenderPlayerRuntimeUi() {
             }
         }
         else -> org.jetbrains.compose.resources.stringResource(
-            nuvio.composeapp.generated.resources.Res.string.player_torrent_starting_engine,
+            streamvault.composeapp.generated.resources.Res.string.player_torrent_starting_engine,
         )
     }
     val bufferedAheadMs = (playbackSnapshot.bufferedPositionMs - playbackSnapshot.positionMs)
@@ -226,13 +226,13 @@ internal fun PlayerScreenRuntime.RenderPlayerRuntimeUi() {
 @Composable
 private fun p2pConnectingPhaseLabel(phase: String): String = when (phase) {
     "add_magnet" -> org.jetbrains.compose.resources.stringResource(
-        nuvio.composeapp.generated.resources.Res.string.player_torrent_fetching_metadata,
+        streamvault.composeapp.generated.resources.Res.string.player_torrent_fetching_metadata,
     )
     "prepare_stream", "attach_route" -> org.jetbrains.compose.resources.stringResource(
-        nuvio.composeapp.generated.resources.Res.string.player_torrent_preparing_stream,
+        streamvault.composeapp.generated.resources.Res.string.player_torrent_preparing_stream,
     )
     else -> org.jetbrains.compose.resources.stringResource(
-        nuvio.composeapp.generated.resources.Res.string.player_torrent_starting_engine,
+        streamvault.composeapp.generated.resources.Res.string.player_torrent_starting_engine,
     )
 }
 

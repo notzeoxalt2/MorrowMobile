@@ -1,6 +1,6 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 import platform.Foundation.NSUserDefaults
 
 actual object ContinueWatchingPreferencesStorage {

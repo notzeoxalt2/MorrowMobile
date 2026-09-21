@@ -1,12 +1,12 @@
-package com.nuvio.app.core.storage
+﻿package com.streamvault.app.core.storage
 
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.features.tracking.WatchProgressSource
-import com.nuvio.app.features.watchprogress.CachedNextUpItem
-import com.nuvio.app.features.watchprogress.ContinueWatchingEnrichmentCache
-import com.nuvio.app.features.watchprogress.ContinueWatchingEnrichmentStorage
+import com.streamvault.app.features.tracking.WatchProgressSource
+import com.streamvault.app.features.watchprogress.CachedNextUpItem
+import com.streamvault.app.features.watchprogress.ContinueWatchingEnrichmentCache
+import com.streamvault.app.features.watchprogress.ContinueWatchingEnrichmentStorage
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment

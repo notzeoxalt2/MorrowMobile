@@ -1,4 +1,4 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
 import kotlin.test.Test
 import kotlin.test.assertFalse

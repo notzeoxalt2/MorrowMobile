@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details.components
+﻿package com.streamvault.app.features.details.components
 
 import androidx.compose.ui.graphics.ImageBitmap
 import coil3.request.SuccessResult

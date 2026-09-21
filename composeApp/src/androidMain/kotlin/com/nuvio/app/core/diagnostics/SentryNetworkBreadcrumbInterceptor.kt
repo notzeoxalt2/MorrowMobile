@@ -1,4 +1,4 @@
-package com.nuvio.app.core.diagnostics
+﻿package com.streamvault.app.core.diagnostics
 
 import io.sentry.Breadcrumb
 import io.sentry.Sentry

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.os.Build
 import android.os.LocaleList

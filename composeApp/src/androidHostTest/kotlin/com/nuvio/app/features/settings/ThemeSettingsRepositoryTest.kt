@@ -1,12 +1,12 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import android.app.Application
 import android.content.Context
-import com.nuvio.app.core.sync.decodeSyncString
-import com.nuvio.app.core.ui.AppTheme
-import com.nuvio.app.core.ui.CustomThemeColors
-import com.nuvio.app.features.membership.MemberAccessRepository
-import com.nuvio.app.features.membership.MemberAssetStorage
+import com.streamvault.app.core.sync.decodeSyncString
+import com.streamvault.app.core.ui.AppTheme
+import com.streamvault.app.core.ui.CustomThemeColors
+import com.streamvault.app.features.membership.MemberAccessRepository
+import com.streamvault.app.features.membership.MemberAssetStorage
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment

@@ -1,9 +1,9 @@
-package com.nuvio.app.features.cloud
+﻿package com.streamvault.app.features.cloud
 
-import com.nuvio.app.features.debrid.DebridProviders
-import com.nuvio.app.features.debrid.TorboxApiClient
-import com.nuvio.app.features.debrid.TorboxCloudFileDto
-import com.nuvio.app.features.debrid.TorboxCloudItemDto
+import com.streamvault.app.features.debrid.DebridProviders
+import com.streamvault.app.features.debrid.TorboxApiClient
+import com.streamvault.app.features.debrid.TorboxCloudFileDto
+import com.streamvault.app.features.debrid.TorboxCloudItemDto
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.JsonPrimitive
 
@@ -60,7 +60,7 @@ internal class TorboxCloudLibraryProviderApi : CloudLibraryProviderApi {
         }
     }
 
-    private fun com.nuvio.app.features.debrid.DebridApiResponse<com.nuvio.app.features.debrid.TorboxEnvelopeDto<List<TorboxCloudItemDto>>>.itemsOrThrow(
+    private fun com.streamvault.app.features.debrid.DebridApiResponse<com.streamvault.app.features.debrid.TorboxEnvelopeDto<List<TorboxCloudItemDto>>>.itemsOrThrow(
         type: CloudLibraryItemType,
     ): List<CloudLibraryItem> =
         toCloudLibraryItemsOrThrow(
@@ -70,7 +70,7 @@ internal class TorboxCloudLibraryProviderApi : CloudLibraryProviderApi {
         )
 }
 
-internal fun com.nuvio.app.features.debrid.DebridApiResponse<com.nuvio.app.features.debrid.TorboxEnvelopeDto<List<TorboxCloudItemDto>>>.toCloudLibraryItemsOrThrow(
+internal fun com.streamvault.app.features.debrid.DebridApiResponse<com.streamvault.app.features.debrid.TorboxEnvelopeDto<List<TorboxCloudItemDto>>>.toCloudLibraryItemsOrThrow(
     providerId: String,
     providerName: String,
     type: CloudLibraryItemType,

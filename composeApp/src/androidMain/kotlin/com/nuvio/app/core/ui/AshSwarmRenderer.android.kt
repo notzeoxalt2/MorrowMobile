@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import android.graphics.Canvas as AndroidCanvas
 import android.graphics.Paint as AndroidPaint

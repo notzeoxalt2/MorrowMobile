@@ -1,6 +1,6 @@
-package com.nuvio.app.features.updater
+﻿package com.streamvault.app.features.updater
 
-import com.nuvio.app.core.build.AppVersionConfig
+import com.streamvault.app.core.build.AppVersionConfig
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 

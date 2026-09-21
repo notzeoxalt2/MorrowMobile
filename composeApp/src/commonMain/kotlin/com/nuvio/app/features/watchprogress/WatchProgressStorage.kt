@@ -1,4 +1,4 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
 internal expect object WatchProgressStorage {
     fun loadPayload(profileId: Int): String?

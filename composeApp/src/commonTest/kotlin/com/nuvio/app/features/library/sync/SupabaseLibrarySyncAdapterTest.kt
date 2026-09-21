@@ -1,9 +1,9 @@
-package com.nuvio.app.features.library.sync
+﻿package com.streamvault.app.features.library.sync
 
-import com.nuvio.app.features.library.LibraryItem
-import com.nuvio.app.features.library.LibraryLocalState
-import com.nuvio.app.features.library.LibraryStoragePayloadCodec
-import com.nuvio.app.features.library.toMetaPreview
+import com.streamvault.app.features.library.LibraryItem
+import com.streamvault.app.features.library.LibraryLocalState
+import com.streamvault.app.features.library.LibraryStoragePayloadCodec
+import com.streamvault.app.features.library.toMetaPreview
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject

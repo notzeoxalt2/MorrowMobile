@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui.jelly
+﻿package com.streamvault.app.core.ui.jelly
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,12 +35,12 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nuvio.app.core.ui.FloatingNavigationItem
-import com.nuvio.app.core.ui.accentBrush
-import com.nuvio.app.core.ui.gradientMask
-import com.nuvio.app.core.ui.nuvio
-import com.nuvio.app.core.ui.themePalette
-import com.nuvio.app.core.ui.visualNavIndex
+import com.streamvault.app.core.ui.FloatingNavigationItem
+import com.streamvault.app.core.ui.accentBrush
+import com.streamvault.app.core.ui.gradientMask
+import com.streamvault.app.core.ui.nuvio
+import com.streamvault.app.core.ui.themePalette
+import com.streamvault.app.core.ui.visualNavIndex
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.abs
 

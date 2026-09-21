@@ -1,10 +1,10 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
 import androidx.compose.runtime.Composable
-import com.nuvio.app.core.format.formatReleaseDateWithoutYear
-import com.nuvio.app.core.time.daysUntilEpisodeRelease
-import com.nuvio.app.core.time.parseEpisodeReleaseEpochMs
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.format.formatReleaseDateWithoutYear
+import com.streamvault.app.core.time.daysUntilEpisodeRelease
+import com.streamvault.app.core.time.parseEpisodeReleaseEpochMs
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 

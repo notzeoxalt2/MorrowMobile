@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -7,29 +7,29 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.nuvio.app.features.details.MetaDetailsRepository
-import com.nuvio.app.features.p2p.P2pSettingsRepository
-import com.nuvio.app.features.p2p.P2pStreamRequest
-import com.nuvio.app.features.p2p.P2pStreamingEngine
-import com.nuvio.app.features.p2p.P2pStreamingState
-import com.nuvio.app.features.player.skip.NextEpisodeInfo
-import com.nuvio.app.features.player.skip.PlayerNextEpisodeRules
-import com.nuvio.app.features.player.skip.SkipIntroRepository
-import com.nuvio.app.features.player.skip.shouldAutoSkip
-import com.nuvio.app.features.player.skip.internalSkipAction
-import com.nuvio.app.features.player.skip.intervalsAtSeekPositions
-import com.nuvio.app.features.streams.BingeGroupCacheRepository
-import com.nuvio.app.features.streams.StreamLinkCacheRepository
-import com.nuvio.app.features.streams.StreamItem
-import com.nuvio.app.features.streams.hasLikelyExpiringPlaybackCredentials
-import com.nuvio.app.features.tracking.TrackingScrobbleAction
-import com.nuvio.app.features.watchprogress.WatchProgressRepository
-import com.nuvio.app.features.watchprogress.buildPlaybackVideoId
-import com.nuvio.app.features.watching.application.WatchingState
+import com.streamvault.app.features.details.MetaDetailsRepository
+import com.streamvault.app.features.p2p.P2pSettingsRepository
+import com.streamvault.app.features.p2p.P2pStreamRequest
+import com.streamvault.app.features.p2p.P2pStreamingEngine
+import com.streamvault.app.features.p2p.P2pStreamingState
+import com.streamvault.app.features.player.skip.NextEpisodeInfo
+import com.streamvault.app.features.player.skip.PlayerNextEpisodeRules
+import com.streamvault.app.features.player.skip.SkipIntroRepository
+import com.streamvault.app.features.player.skip.shouldAutoSkip
+import com.streamvault.app.features.player.skip.internalSkipAction
+import com.streamvault.app.features.player.skip.intervalsAtSeekPositions
+import com.streamvault.app.features.streams.BingeGroupCacheRepository
+import com.streamvault.app.features.streams.StreamLinkCacheRepository
+import com.streamvault.app.features.streams.StreamItem
+import com.streamvault.app.features.streams.hasLikelyExpiringPlaybackCredentials
+import com.streamvault.app.features.tracking.TrackingScrobbleAction
+import com.streamvault.app.features.watchprogress.WatchProgressRepository
+import com.streamvault.app.features.watchprogress.buildPlaybackVideoId
+import com.streamvault.app.features.watching.application.WatchingState
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
 @Composable

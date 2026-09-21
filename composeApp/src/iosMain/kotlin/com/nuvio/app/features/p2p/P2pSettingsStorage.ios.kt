@@ -1,6 +1,6 @@
-package com.nuvio.app.features.p2p
+﻿package com.streamvault.app.features.p2p
 
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 import platform.Foundation.NSUserDefaults
 
 internal actual object P2pSettingsStorage {

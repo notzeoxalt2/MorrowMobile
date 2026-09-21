@@ -1,17 +1,17 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nuvio.app.core.build.AppFeaturePolicy
-import com.nuvio.app.features.addons.AddonManifest
-import com.nuvio.app.features.addons.AddonRepository
-import com.nuvio.app.features.addons.ManagedAddon
-import com.nuvio.app.features.details.MetaDetailsRepository
-import com.nuvio.app.features.downloads.DownloadsRepository
-import com.nuvio.app.features.plugins.PluginRepository
-import com.nuvio.app.features.plugins.PluginsUiState
+import com.streamvault.app.core.build.AppFeaturePolicy
+import com.streamvault.app.features.addons.AddonManifest
+import com.streamvault.app.features.addons.AddonRepository
+import com.streamvault.app.features.addons.ManagedAddon
+import com.streamvault.app.features.details.MetaDetailsRepository
+import com.streamvault.app.features.downloads.DownloadsRepository
+import com.streamvault.app.features.plugins.PluginRepository
+import com.streamvault.app.features.plugins.PluginsUiState
 
 internal fun AddonManifest.supportsStream(type: String, videoId: String): Boolean =
     resources.any { resource ->

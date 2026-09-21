@@ -1,8 +1,8 @@
-package com.nuvio.app.features.library
+﻿package com.streamvault.app.features.library
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 
 actual object LibraryDisplaySettingsStorage {
     private const val preferencesName = "nuvio_library_display_settings"

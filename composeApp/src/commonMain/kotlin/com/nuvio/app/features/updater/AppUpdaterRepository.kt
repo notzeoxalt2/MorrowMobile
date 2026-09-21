@@ -1,13 +1,13 @@
-package com.nuvio.app.features.updater
+package com.streamvault.app.features.updater
 
-import com.nuvio.app.features.addons.httpRequestRaw
+import com.streamvault.app.features.addons.httpRequestRaw
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.updates_github_api_error
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.updates_github_api_error
 import org.jetbrains.compose.resources.getString
 
 @Serializable
@@ -40,10 +40,10 @@ internal object AppUpdaterRepository {
     suspend fun getLatestChannelUpdate(channel: UpdateChannel): Result<AppUpdate> = runCatching {
         val response = httpRequestRaw(
             method = "GET",
-            url = "https://api.github.com/repos/NuvioMedia/NuvioMobile/${releasePath(channel)}",
+            url = "https://api.github.com/repos/notzeoxalt2/MorrowMobile/${releasePath(channel)}",
             headers = mapOf(
                 "Accept" to "application/vnd.github+json",
-                "User-Agent" to "NuvioMobile",
+                "User-Agent" to "MorrowMobile",
             ),
             body = "",
         )

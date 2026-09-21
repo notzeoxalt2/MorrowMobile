@@ -1,8 +1,8 @@
-package com.nuvio.app.features.membership
+﻿package com.streamvault.app.features.membership
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.auth.AuthRepository
-import com.nuvio.app.core.auth.AuthState
+import com.streamvault.app.core.auth.AuthRepository
+import com.streamvault.app.core.auth.AuthState
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import android.app.Application
 import androidx.compose.foundation.clickable
@@ -19,8 +19,8 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.jelly.JellyMotion
-import com.nuvio.app.core.ui.jelly.JellyTabTargets
+import com.streamvault.app.core.ui.jelly.JellyMotion
+import com.streamvault.app.core.ui.jelly.JellyTabTargets
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.membership
+﻿package com.streamvault.app.features.membership
 
 enum class MemberTier {
     SUPPORTER,

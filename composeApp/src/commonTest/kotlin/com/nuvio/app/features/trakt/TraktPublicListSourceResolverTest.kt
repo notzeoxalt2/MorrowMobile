@@ -1,7 +1,7 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
-import com.nuvio.app.features.collection.TraktListSort
-import com.nuvio.app.features.collection.TraktSortHow
+import com.streamvault.app.features.collection.TraktListSort
+import com.streamvault.app.features.collection.TraktSortHow
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull

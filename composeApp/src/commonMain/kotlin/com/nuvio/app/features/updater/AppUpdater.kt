@@ -1,12 +1,12 @@
-package com.nuvio.app.features.updater
+﻿package com.streamvault.app.features.updater
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import com.nuvio.app.core.build.AppFeaturePolicy
-import com.nuvio.app.core.build.AppVersionConfig
-import com.nuvio.app.core.i18n.localizedByteUnit
-import com.nuvio.app.core.ui.NuvioToastController
+import com.streamvault.app.core.build.AppFeaturePolicy
+import com.streamvault.app.core.build.AppVersionConfig
+import com.streamvault.app.core.i18n.localizedByteUnit
+import com.streamvault.app.core.ui.NuvioToastController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Job
@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
 data class AppUpdate(

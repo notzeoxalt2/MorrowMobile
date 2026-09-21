@@ -1,8 +1,8 @@
-package com.nuvio.app.features.p2p
+﻿package com.streamvault.app.features.p2p
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 
 internal actual object P2pSettingsStorage {
     private const val preferencesName = "torrent_settings"

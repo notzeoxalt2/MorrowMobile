@@ -1,4 +1,4 @@
-package com.nuvio.app.features.plugins
+﻿package com.streamvault.app.features.plugins
 
 import java.nio.file.Files
 import kotlin.test.Test

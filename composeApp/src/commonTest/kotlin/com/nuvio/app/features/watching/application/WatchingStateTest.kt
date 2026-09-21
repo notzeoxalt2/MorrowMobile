@@ -1,13 +1,13 @@
-package com.nuvio.app.features.watching.application
+﻿package com.streamvault.app.features.watching.application
 
-import com.nuvio.app.core.time.parseZonedIsoDateTimeToEpochMs
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.watched.WatchedItem
-import com.nuvio.app.features.watched.watchedItemKey
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
-import com.nuvio.app.features.watchprogress.WatchProgressSourceTraktPlayback
-import com.nuvio.app.features.watching.domain.WatchingCompletedEpisode
-import com.nuvio.app.features.watching.domain.WatchingContentRef
+import com.streamvault.app.core.time.parseZonedIsoDateTimeToEpochMs
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.watched.WatchedItem
+import com.streamvault.app.features.watched.watchedItemKey
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watchprogress.WatchProgressSourceTraktPlayback
+import com.streamvault.app.features.watching.domain.WatchingCompletedEpisode
+import com.streamvault.app.features.watching.domain.WatchingContentRef
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue

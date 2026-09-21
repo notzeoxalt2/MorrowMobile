@@ -1,4 +1,4 @@
-package com.nuvio.app.features.addons
+﻿package com.streamvault.app.features.addons
 
 internal fun addonTransportBaseUrl(manifestUrl: String): String =
     manifestUrl.substringBefore("?").removeSuffix("/manifest.json")

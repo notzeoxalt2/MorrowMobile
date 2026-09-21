@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details.components
+﻿package com.streamvault.app.features.details.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -32,13 +32,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nuvio.app.core.ui.SkeletonBlock
-import com.nuvio.app.core.ui.nuvio
-import com.nuvio.app.core.ui.nuvioHorizontalScrollBleed
-import com.nuvio.app.core.ui.withDuplicateSafeLazyKeys
-import com.nuvio.app.features.trakt.TraktCommentReview
+import com.streamvault.app.core.ui.SkeletonBlock
+import com.streamvault.app.core.ui.nuvio
+import com.streamvault.app.core.ui.nuvioHorizontalScrollBleed
+import com.streamvault.app.core.ui.withDuplicateSafeLazyKeys
+import com.streamvault.app.features.trakt.TraktCommentReview
 import kotlinx.coroutines.flow.distinctUntilChanged
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

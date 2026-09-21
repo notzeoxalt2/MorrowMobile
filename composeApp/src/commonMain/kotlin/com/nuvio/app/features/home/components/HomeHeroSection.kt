@@ -1,4 +1,4 @@
-package com.nuvio.app.features.home.components
+﻿package com.streamvault.app.features.home.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -54,15 +54,15 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.format.formatReleaseDateForDisplay
-import com.nuvio.app.core.ui.heroStretchHeight
-import com.nuvio.app.core.ui.ScreenActivityEffect
-import com.nuvio.app.core.ui.heroStretchZoom
-import com.nuvio.app.features.home.MetaPreview
+import com.streamvault.app.core.format.formatReleaseDateForDisplay
+import com.streamvault.app.core.ui.heroStretchHeight
+import com.streamvault.app.core.ui.ScreenActivityEffect
+import com.streamvault.app.core.ui.heroStretchZoom
+import com.streamvault.app.features.home.MetaPreview
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.abs
 

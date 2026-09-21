@@ -1,19 +1,19 @@
-package com.nuvio.app.core.tracking
+﻿package com.streamvault.app.core.tracking
 
-import com.nuvio.app.features.simkl.SimklAuthRepository
-import com.nuvio.app.features.simkl.SimklMutationRepository
-import com.nuvio.app.features.simkl.SimklLibraryRepository
-import com.nuvio.app.features.simkl.SimklProgressRepository
-import com.nuvio.app.features.simkl.SimklTrackingLibraryProvider
-import com.nuvio.app.features.simkl.SimklTrackingProgressProvider
-import com.nuvio.app.features.simkl.SimklWatchedSyncAdapter
-import com.nuvio.app.features.simkl.SimklSyncRepository
-import com.nuvio.app.features.tracking.TrackingProviderRegistry
-import com.nuvio.app.features.trakt.TraktAuthRepository
-import com.nuvio.app.features.trakt.TraktScrobbleRepository
-import com.nuvio.app.features.trakt.TraktTrackingLibraryProvider
-import com.nuvio.app.features.trakt.TraktTrackingProgressProvider
-import com.nuvio.app.features.watching.sync.TraktWatchedSyncAdapter
+import com.streamvault.app.features.simkl.SimklAuthRepository
+import com.streamvault.app.features.simkl.SimklMutationRepository
+import com.streamvault.app.features.simkl.SimklLibraryRepository
+import com.streamvault.app.features.simkl.SimklProgressRepository
+import com.streamvault.app.features.simkl.SimklTrackingLibraryProvider
+import com.streamvault.app.features.simkl.SimklTrackingProgressProvider
+import com.streamvault.app.features.simkl.SimklWatchedSyncAdapter
+import com.streamvault.app.features.simkl.SimklSyncRepository
+import com.streamvault.app.features.tracking.TrackingProviderRegistry
+import com.streamvault.app.features.trakt.TraktAuthRepository
+import com.streamvault.app.features.trakt.TraktScrobbleRepository
+import com.streamvault.app.features.trakt.TraktTrackingLibraryProvider
+import com.streamvault.app.features.trakt.TraktTrackingProgressProvider
+import com.streamvault.app.features.watching.sync.TraktWatchedSyncAdapter
 
 fun ensureTrackingProvidersRegistered() {
     TraktAuthRepository.descriptor

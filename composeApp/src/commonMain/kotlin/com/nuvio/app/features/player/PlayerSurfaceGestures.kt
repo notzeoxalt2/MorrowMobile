@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.profiles
+﻿package com.streamvault.app.features.profiles
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
@@ -72,13 +72,13 @@ import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.ui.NuvioTokens
-import com.nuvio.app.core.ui.nuvio
+import com.streamvault.app.core.ui.NuvioTokens
+import com.streamvault.app.core.ui.nuvio
 import dev.chrisbanes.haze.HazeState
-import com.nuvio.app.isIos
+import com.streamvault.app.isIos
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.max
 import kotlin.math.min

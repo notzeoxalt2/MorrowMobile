@@ -1,16 +1,16 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.features.player.OpeningOverlay
-import com.nuvio.app.features.player.subtitleLoadingStatusMessage
-import com.nuvio.app.features.streams.StreamLaunch
-import com.nuvio.app.features.streams.StreamsUiState
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.debrid_resolving_stream
-import nuvio.composeapp.generated.resources.player_loading_preparing
-import nuvio.composeapp.generated.resources.streams_finding_source
-import nuvio.composeapp.generated.resources.streams_loading_subtitles
+import com.streamvault.app.features.player.OpeningOverlay
+import com.streamvault.app.features.player.subtitleLoadingStatusMessage
+import com.streamvault.app.features.streams.StreamLaunch
+import com.streamvault.app.features.streams.StreamsUiState
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.debrid_resolving_stream
+import streamvault.composeapp.generated.resources.player_loading_preparing
+import streamvault.composeapp.generated.resources.streams_finding_source
+import streamvault.composeapp.generated.resources.streams_loading_subtitles
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

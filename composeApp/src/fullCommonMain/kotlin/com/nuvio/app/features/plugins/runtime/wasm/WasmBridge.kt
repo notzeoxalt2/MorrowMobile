@@ -1,7 +1,7 @@
-package com.nuvio.app.features.plugins.runtime.wasm
+﻿package com.streamvault.app.features.plugins.runtime.wasm
 
 import com.dokar.quickjs.QuickJs
-import com.nuvio.app.features.plugins.runtime.host.HostModule
+import com.streamvault.app.features.plugins.runtime.host.HostModule
 
 /**
  * Lightweight WASM Helpers bridge.

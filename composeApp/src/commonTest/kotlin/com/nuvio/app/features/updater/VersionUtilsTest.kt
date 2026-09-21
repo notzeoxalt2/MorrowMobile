@@ -1,4 +1,4 @@
-package com.nuvio.app.features.updater
+﻿package com.streamvault.app.features.updater
 
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue

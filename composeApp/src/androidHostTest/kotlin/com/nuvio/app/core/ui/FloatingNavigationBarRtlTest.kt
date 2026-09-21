@@ -1,6 +1,6 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
-import com.nuvio.app.core.ui.jelly.JellyMotion
+import com.streamvault.app.core.ui.jelly.JellyMotion
 import kotlin.math.abs
 import kotlin.test.Test
 import kotlin.test.assertEquals

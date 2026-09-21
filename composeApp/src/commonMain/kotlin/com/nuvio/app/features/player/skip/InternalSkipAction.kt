@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player.skip
+﻿package com.streamvault.app.features.player.skip
 
 internal data class InternalSkipAction(
     val targetMs: Long,

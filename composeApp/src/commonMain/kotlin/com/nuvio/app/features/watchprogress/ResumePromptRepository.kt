@@ -1,7 +1,7 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
-import com.nuvio.app.features.details.MetaDetailsRepository
-import com.nuvio.app.features.details.nextReleasedEpisodeAfter
+import com.streamvault.app.features.details.MetaDetailsRepository
+import com.streamvault.app.features.details.nextReleasedEpisodeAfter
 
 object ResumePromptRepository {
 

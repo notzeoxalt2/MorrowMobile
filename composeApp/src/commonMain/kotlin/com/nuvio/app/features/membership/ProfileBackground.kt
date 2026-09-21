@@ -1,6 +1,6 @@
-package com.nuvio.app.features.membership
+﻿package com.streamvault.app.features.membership
 
-import com.nuvio.app.features.profiles.NuvioProfile
+import com.streamvault.app.features.profiles.NuvioProfile
 
 sealed interface ProfileBackgroundSelection {
     data class Catalog(val id: String) : ProfileBackgroundSelection

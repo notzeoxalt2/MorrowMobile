@@ -1,11 +1,11 @@
-package com.nuvio.app.features.plugins
+﻿package com.streamvault.app.features.plugins
 
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.plugins_manifest_name_missing
-import nuvio.composeapp.generated.resources.plugins_manifest_no_providers
-import nuvio.composeapp.generated.resources.plugins_manifest_version_missing
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.plugins_manifest_name_missing
+import streamvault.composeapp.generated.resources.plugins_manifest_no_providers
+import streamvault.composeapp.generated.resources.plugins_manifest_version_missing
 import org.jetbrains.compose.resources.getString
 
 internal object PluginManifestParser {

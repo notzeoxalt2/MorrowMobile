@@ -1,10 +1,10 @@
-package com.nuvio.app.features.plugins.runtime.host
+﻿package com.streamvault.app.features.plugins.runtime.host
 
 import co.touchlab.kermit.Logger
 import com.dokar.quickjs.QuickJs
 import com.dokar.quickjs.binding.define
 import com.dokar.quickjs.binding.function
-import com.nuvio.app.features.tmdb.TmdbSettingsRepository
+import com.streamvault.app.features.tmdb.TmdbSettingsRepository
 
 internal class HostFunctions(
     private val scraperId: String,

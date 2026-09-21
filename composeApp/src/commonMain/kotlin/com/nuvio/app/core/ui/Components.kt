@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
@@ -65,15 +65,15 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_back
-import nuvio.composeapp.generated.resources.action_ok
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_back
+import streamvault.composeapp.generated.resources.action_ok
 import org.jetbrains.compose.resources.stringResource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import com.nuvio.app.navigation.LocalNativeNavigationBarHidden
-import com.nuvio.app.navigation.LocalUseNativeNavigation
+import com.streamvault.app.navigation.LocalNativeNavigationBarHidden
+import com.streamvault.app.navigation.LocalUseNativeNavigation
 
 @Composable
 fun NuvioScreen(

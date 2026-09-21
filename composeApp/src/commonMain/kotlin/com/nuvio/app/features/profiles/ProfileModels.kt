@@ -1,4 +1,4 @@
-package com.nuvio.app.features.profiles
+﻿package com.streamvault.app.features.profiles
 
 import androidx.compose.ui.graphics.Color
 import kotlinx.serialization.SerialName
@@ -89,7 +89,7 @@ fun avatarStorageUrl(storagePath: String): String =
     if (storagePath.startsWith("https://") || storagePath.startsWith("http://")) {
         storagePath
     } else {
-        "${com.nuvio.app.core.network.ServerConfigurationRepository.active.value.backendUrl}/storage/v1/object/public/avatars/$storagePath"
+        "${com.streamvault.app.core.network.ServerConfigurationRepository.active.value.backendUrl}/storage/v1/object/public/avatars/$storagePath"
     }
 
 fun avatarImageUrl(avatar: AvatarCatalogItem): String? =

@@ -1,8 +1,8 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
-import com.nuvio.app.features.cloud.TorboxCloudLibraryPosterUrl
-import com.nuvio.app.features.details.MetaVideo
-import com.nuvio.app.features.trakt.parseTraktIsoDateTimeToEpochMs
+import com.streamvault.app.features.cloud.TorboxCloudLibraryPosterUrl
+import com.streamvault.app.features.details.MetaVideo
+import com.streamvault.app.features.trakt.parseTraktIsoDateTimeToEpochMs
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

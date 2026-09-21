@@ -1,7 +1,7 @@
-package com.nuvio.app.features.cloud
+﻿package com.streamvault.app.features.cloud
 
-import com.nuvio.app.features.debrid.DebridProviders
-import com.nuvio.app.features.debrid.PremiumizeCloudFileDto
+import com.streamvault.app.features.debrid.DebridProviders
+import com.streamvault.app.features.debrid.PremiumizeCloudFileDto
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

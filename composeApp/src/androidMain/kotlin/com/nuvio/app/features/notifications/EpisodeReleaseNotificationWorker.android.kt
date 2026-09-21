@@ -1,4 +1,4 @@
-package com.nuvio.app.features.notifications
+﻿package com.streamvault.app.features.notifications
 
 import android.app.PendingIntent
 import android.content.Intent

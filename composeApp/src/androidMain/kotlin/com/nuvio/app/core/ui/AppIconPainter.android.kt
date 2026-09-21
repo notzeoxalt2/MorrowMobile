@@ -1,9 +1,9 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import com.nuvio.app.R
+import com.streamvault.app.R
 
 @Composable
 actual fun appIconPainter(icon: AppIconResource): Painter =

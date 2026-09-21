@@ -1,4 +1,4 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
 internal expect object HomeCatalogSettingsStorage {
     fun loadPayload(): String?

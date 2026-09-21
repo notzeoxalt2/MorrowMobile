@@ -1,4 +1,4 @@
-package com.nuvio.app.core.network
+﻿package com.streamvault.app.core.network
 
 import io.ktor.client.plugins.api.createClientPlugin
 import io.ktor.http.HttpHeaders

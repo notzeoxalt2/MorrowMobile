@@ -1,10 +1,10 @@
-package com.nuvio.app.features.profiles
+package com.streamvault.app.features.profiles
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.network.SupabaseProvider
-import com.nuvio.app.features.membership.CosmeticEntitlement
-import com.nuvio.app.features.membership.MemberAccessRepository
-import com.nuvio.app.features.membership.MemberAssetStorage
+import com.streamvault.app.core.network.SupabaseProvider
+import com.streamvault.app.features.membership.CosmeticEntitlement
+import com.streamvault.app.features.membership.MemberAccessRepository
+import com.streamvault.app.features.membership.MemberAssetStorage
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.rpc
 import io.github.jan.supabase.storage.storage
@@ -60,13 +60,13 @@ object AvatarRepository {
     private val log = Logger.withTag("AvatarRepository")
     private val json = Json { ignoreUnknownKeys = true; encodeDefaults = true }
 
-    private val _avatars = MutableStateFlow<List<AvatarCatalogItem>>(emptyList())
+    private val _avatars = MutableStateFlow<List<AvatarCatalogItem>>(NetflixAvatars.DEFAULT_CATALOG)
     val avatars: StateFlow<List<AvatarCatalogItem>> = _avatars.asStateFlow()
 
-    private var standardCatalog = emptyList<AvatarCatalogItem>()
+    private var standardCatalog = NetflixAvatars.DEFAULT_CATALOG
     private var memberCatalog = emptyList<AvatarCatalogItem>()
     private var memberCatalogMetadata = emptyList<MemberAvatarCatalogItem>()
-    private var standardLoaded = false
+    private var standardLoaded = true
     private var cacheHydrated = false
     private var accessObserverStarted = false
     private var standardFetchInFlight = false
@@ -78,8 +78,11 @@ object AvatarRepository {
     suspend fun fetchAvatars() {
         hydrateFromCacheIfNeeded()
         ensureMemberAccessObserver()
+        if (standardCatalog.isEmpty()) {
+            standardCatalog = NetflixAvatars.DEFAULT_CATALOG
+        }
+        publishCatalog()
         if (standardLoaded && standardCatalog.isNotEmpty()) {
-            publishCatalog()
             return
         }
         fetchStandardCatalog()
@@ -243,8 +246,9 @@ object AvatarRepository {
     }
 
     private fun publishCatalog() {
+        val standard = if (standardCatalog.isNotEmpty()) standardCatalog else NetflixAvatars.DEFAULT_CATALOG
         _avatars.value = availableAvatarCatalog(
-            standardCatalog = standardCatalog,
+            standardCatalog = standard,
             memberCatalog = memberCatalog,
             hasMemberAccess = hasMemberAccess,
         )

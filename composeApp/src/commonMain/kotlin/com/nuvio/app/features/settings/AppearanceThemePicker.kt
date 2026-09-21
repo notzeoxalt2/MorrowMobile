@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -35,19 +35,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nuvio.app.core.ui.AppTheme
-import com.nuvio.app.core.ui.CustomThemeColors
-import com.nuvio.app.core.ui.NuvioTokens
-import com.nuvio.app.core.ui.ThemeColors
-import com.nuvio.app.core.ui.accentBrush
-import com.nuvio.app.core.ui.labelRes
-import com.nuvio.app.core.ui.nuvio
-import com.nuvio.app.features.membership.MemberAccessRepository
-import com.nuvio.app.features.membership.availableAppThemes
-import com.nuvio.app.features.profiles.ProfileRepository
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.cd_selected
-import nuvio.composeapp.generated.resources.custom_theme_edit
+import com.streamvault.app.core.ui.AppTheme
+import com.streamvault.app.core.ui.CustomThemeColors
+import com.streamvault.app.core.ui.NuvioTokens
+import com.streamvault.app.core.ui.ThemeColors
+import com.streamvault.app.core.ui.accentBrush
+import com.streamvault.app.core.ui.labelRes
+import com.streamvault.app.core.ui.nuvio
+import com.streamvault.app.features.membership.MemberAccessRepository
+import com.streamvault.app.features.membership.availableAppThemes
+import com.streamvault.app.features.profiles.ProfileRepository
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.cd_selected
+import streamvault.composeapp.generated.resources.custom_theme_edit
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

@@ -1,8 +1,8 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 
 internal actual object MetaScreenSettingsStorage {
     private const val preferencesName = "nuvio_meta_screen_settings"

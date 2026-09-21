@@ -1,4 +1,4 @@
-package com.nuvio.app.navigation
+﻿package com.streamvault.app.navigation
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.geometry.Rect
 import androidx.navigation3.runtime.NavKey
-import com.nuvio.app.core.ui.PosterZoomAnchor
+import com.streamvault.app.core.ui.PosterZoomAnchor
 import kotlin.time.TimeMark
 import kotlin.time.TimeSource
 import kotlin.time.Duration.Companion.seconds

@@ -1,9 +1,9 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.addons.RawHttpResponse
-import com.nuvio.app.features.addons.httpRequestRaw
-import com.nuvio.app.features.library.LibraryItem
+import com.streamvault.app.features.addons.RawHttpResponse
+import com.streamvault.app.features.addons.httpRequestRaw
+import com.streamvault.app.features.library.LibraryItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +18,7 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withLock
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
 import kotlinx.coroutines.sync.withPermit

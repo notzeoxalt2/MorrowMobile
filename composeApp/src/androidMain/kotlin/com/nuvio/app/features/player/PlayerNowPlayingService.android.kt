@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.app.Notification
 import android.app.NotificationManager
@@ -9,16 +9,16 @@ import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import androidx.core.content.IntentCompat
-import com.nuvio.app.core.build.AppFeaturePolicy
-import com.nuvio.app.core.concurrent.ConflatedTaskDispatcher
+import com.streamvault.app.core.build.AppFeaturePolicy
+import com.streamvault.app.core.concurrent.ConflatedTaskDispatcher
 import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicBoolean
 
 internal const val NOW_PLAYING_TAG = "NuvioNowPlaying"
 internal const val NOW_PLAYING_CHANNEL_ID = "nuvio_playback"
 internal const val NOW_PLAYING_NOTIFICATION_ID = 0x4E55
-private const val ACTION_START_FOREGROUND = "com.nuvio.app.nowplaying.START_FOREGROUND"
-private const val EXTRA_START_NOTIFICATION = "com.nuvio.app.nowplaying.START_NOTIFICATION"
+private const val ACTION_START_FOREGROUND = "com.streamvault.app.nowplaying.START_FOREGROUND"
+private const val EXTRA_START_NOTIFICATION = "com.streamvault.app.nowplaying.START_NOTIFICATION"
 
 class PlayerNowPlayingService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null

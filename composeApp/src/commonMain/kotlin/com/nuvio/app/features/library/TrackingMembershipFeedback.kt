@@ -1,11 +1,11 @@
-package com.nuvio.app.features.library
+﻿package com.streamvault.app.features.library
 
-import com.nuvio.app.core.ui.NuvioToastController
-import com.nuvio.app.features.tracking.TrackingLibraryTab
-import com.nuvio.app.features.tracking.TrackingMembershipApplyResult
-import com.nuvio.app.features.tracking.TrackingProviderRegistry
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.tracking_list_status_rewritten
+import com.streamvault.app.core.ui.NuvioToastController
+import com.streamvault.app.features.tracking.TrackingLibraryTab
+import com.streamvault.app.features.tracking.TrackingMembershipApplyResult
+import com.streamvault.app.features.tracking.TrackingProviderRegistry
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.tracking_list_status_rewritten
 import org.jetbrains.compose.resources.getString
 
 internal suspend fun showTrackingMembershipRewriteFeedback(result: TrackingMembershipApplyResult) {

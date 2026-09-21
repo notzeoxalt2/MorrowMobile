@@ -1,10 +1,10 @@
-package com.nuvio.app.features.catalog
+﻿package com.streamvault.app.features.catalog
 
-import com.nuvio.app.features.library.LibraryItem
-import com.nuvio.app.features.library.LibrarySection
-import com.nuvio.app.features.library.LibrarySortOption
-import com.nuvio.app.features.library.LibrarySourceMode
-import com.nuvio.app.features.library.LibraryUiState
+import com.streamvault.app.features.library.LibraryItem
+import com.streamvault.app.features.library.LibrarySection
+import com.streamvault.app.features.library.LibrarySortOption
+import com.streamvault.app.features.library.LibrarySourceMode
+import com.streamvault.app.features.library.LibraryUiState
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.MutableStateFlow

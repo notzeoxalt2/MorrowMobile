@@ -1,13 +1,13 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
-import com.nuvio.app.features.profiles.AvatarRepository
-import com.nuvio.app.features.profiles.AvatarCatalogItem
-import com.nuvio.app.features.profiles.MAX_PROFILES
-import com.nuvio.app.features.profiles.NuvioProfile
-import com.nuvio.app.features.profiles.PinVerifyResult
-import com.nuvio.app.features.profiles.ProfileRepository
-import com.nuvio.app.features.profiles.profileAvatarImageUrl
-import com.nuvio.app.features.profiles.showAlreadyActiveProfileToast
+import com.streamvault.app.features.profiles.AvatarRepository
+import com.streamvault.app.features.profiles.AvatarCatalogItem
+import com.streamvault.app.features.profiles.MAX_PROFILES
+import com.streamvault.app.features.profiles.NuvioProfile
+import com.streamvault.app.features.profiles.PinVerifyResult
+import com.streamvault.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.profiles.profileAvatarImageUrl
+import com.streamvault.app.features.profiles.showAlreadyActiveProfileToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

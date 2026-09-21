@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -17,7 +17,7 @@
             android:name="androidx.work.impl.foreground.SystemForegroundService"
             tools:node="remove" />
         <service
-            android:name="com.nuvio.app.features.player.PlayerNowPlayingService"
+            android:name="com.streamvault.app.features.player.PlayerNowPlayingService"
             tools:node="remove" />
     </application>
 

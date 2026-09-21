@@ -1,10 +1,10 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
-import com.nuvio.app.core.i18n.localizedBadgeEnterUrl
-import com.nuvio.app.core.i18n.localizedBadgeImportFailed
-import com.nuvio.app.core.i18n.localizedBadgeImportLimit
-import com.nuvio.app.core.i18n.localizedBadgeUrlSchemeInvalid
-import com.nuvio.app.features.addons.httpGetText
+import com.streamvault.app.core.i18n.localizedBadgeEnterUrl
+import com.streamvault.app.core.i18n.localizedBadgeImportFailed
+import com.streamvault.app.core.i18n.localizedBadgeImportLimit
+import com.streamvault.app.core.i18n.localizedBadgeUrlSchemeInvalid
+import com.streamvault.app.features.addons.httpGetText
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

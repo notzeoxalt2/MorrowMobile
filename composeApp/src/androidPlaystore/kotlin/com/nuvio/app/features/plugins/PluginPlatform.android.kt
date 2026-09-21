@@ -1,4 +1,4 @@
-package com.nuvio.app.features.plugins
+﻿package com.streamvault.app.features.plugins
 
 import android.content.Context
 

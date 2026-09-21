@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,16 +18,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nuvio.app.features.debrid.DebridSettingsRepository
-import com.nuvio.app.features.streams.LocalStreamSizeLabelFormat
-import com.nuvio.app.features.streams.StreamBadgeSettingsRepository
-import com.nuvio.app.features.streams.StreamCard
-import com.nuvio.app.features.streams.StreamItem
-import com.nuvio.app.features.streams.StreamsUiState
-import com.nuvio.app.features.streams.isSelectableForPlayback
-import com.nuvio.app.features.streams.rememberStreamSizeLabelFormat
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.compose_player_no_streams_found
+import com.streamvault.app.features.debrid.DebridSettingsRepository
+import com.streamvault.app.features.streams.LocalStreamSizeLabelFormat
+import com.streamvault.app.features.streams.StreamBadgeSettingsRepository
+import com.streamvault.app.features.streams.StreamCard
+import com.streamvault.app.features.streams.StreamItem
+import com.streamvault.app.features.streams.StreamsUiState
+import com.streamvault.app.features.streams.isSelectableForPlayback
+import com.streamvault.app.features.streams.rememberStreamSizeLabelFormat
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.compose_player_no_streams_found
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -28,14 +28,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.FloatingNavigationBar
-import com.nuvio.app.core.ui.FloatingNavigationItem
-import com.nuvio.app.core.ui.NuvioClassicNavigationBar
-import com.nuvio.app.core.ui.NuvioNavBarScrollState
-import com.nuvio.app.core.ui.nuvio
+import com.streamvault.app.core.ui.FloatingNavigationBar
+import com.streamvault.app.core.ui.FloatingNavigationItem
+import com.streamvault.app.core.ui.NuvioClassicNavigationBar
+import com.streamvault.app.core.ui.NuvioNavBarScrollState
+import com.streamvault.app.core.ui.nuvio
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

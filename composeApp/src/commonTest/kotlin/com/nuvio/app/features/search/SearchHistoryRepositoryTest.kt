@@ -1,4 +1,4 @@
-package com.nuvio.app.features.search
+﻿package com.streamvault.app.features.search
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

@@ -1,14 +1,14 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
-import com.nuvio.app.features.library.LibraryItem
-import com.nuvio.app.features.library.LibrarySection
-import com.nuvio.app.features.tracking.TrackingLibraryProvider
-import com.nuvio.app.features.tracking.TrackingLibrarySnapshot
-import com.nuvio.app.features.tracking.TrackingLibraryTab
-import com.nuvio.app.features.tracking.TrackingLibraryTabKind
-import com.nuvio.app.features.tracking.TrackingMembershipResolution
-import com.nuvio.app.features.tracking.TrackingProviderId
-import com.nuvio.app.features.tracking.TrackingRefreshIntent
+import com.streamvault.app.features.library.LibraryItem
+import com.streamvault.app.features.library.LibrarySection
+import com.streamvault.app.features.tracking.TrackingLibraryProvider
+import com.streamvault.app.features.tracking.TrackingLibrarySnapshot
+import com.streamvault.app.features.tracking.TrackingLibraryTab
+import com.streamvault.app.features.tracking.TrackingLibraryTabKind
+import com.streamvault.app.features.tracking.TrackingMembershipResolution
+import com.streamvault.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.TrackingRefreshIntent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

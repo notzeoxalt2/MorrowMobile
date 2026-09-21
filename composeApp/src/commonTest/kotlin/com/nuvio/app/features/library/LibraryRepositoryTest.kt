@@ -1,11 +1,11 @@
-package com.nuvio.app.features.library
+﻿package com.streamvault.app.features.library
 
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.home.PosterShape
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.tracking.TrackingLibraryTab
-import com.nuvio.app.features.tracking.TrackingLibraryTabKind
-import com.nuvio.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.home.PosterShape
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.tracking.TrackingLibraryTab
+import com.streamvault.app.features.tracking.TrackingLibraryTabKind
+import com.streamvault.app.features.tracking.TrackingProviderId
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

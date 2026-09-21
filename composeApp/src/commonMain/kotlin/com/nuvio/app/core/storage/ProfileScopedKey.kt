@@ -1,6 +1,6 @@
-package com.nuvio.app.core.storage
+﻿package com.streamvault.app.core.storage
 
-import com.nuvio.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.profiles.ProfileRepository
 
 
 object ProfileScopedKey {

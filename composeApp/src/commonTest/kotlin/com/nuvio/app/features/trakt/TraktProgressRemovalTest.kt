@@ -1,6 +1,6 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue

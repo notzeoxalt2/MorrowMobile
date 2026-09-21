@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -36,10 +36,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.accentBrush
-import com.nuvio.app.core.ui.themePalette
-import com.nuvio.app.core.ui.nuvioTypeScale
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.ui.accentBrush
+import com.streamvault.app.core.ui.themePalette
+import com.streamvault.app.core.ui.nuvioTypeScale
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 internal val PlayerTimelineContentInset = 2.dp

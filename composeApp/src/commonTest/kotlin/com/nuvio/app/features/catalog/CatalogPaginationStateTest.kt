@@ -1,8 +1,8 @@
-package com.nuvio.app.features.catalog
+﻿package com.streamvault.app.features.catalog
 
-import com.nuvio.app.features.addons.AddonCatalog
-import com.nuvio.app.features.addons.AddonExtraProperty
-import com.nuvio.app.features.home.MetaPreview
+import com.streamvault.app.features.addons.AddonCatalog
+import com.streamvault.app.features.addons.AddonExtraProperty
+import com.streamvault.app.features.home.MetaPreview
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull

@@ -1,14 +1,14 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.lazy.LazyListScope
-import nuvio.composeapp.generated.resources.compose_settings_page_debrid
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.compose_settings_page_mdblist_ratings
-import nuvio.composeapp.generated.resources.compose_settings_page_tmdb_enrichment
-import nuvio.composeapp.generated.resources.settings_integrations_mdblist_description
-import nuvio.composeapp.generated.resources.settings_integrations_debrid_description
-import nuvio.composeapp.generated.resources.settings_integrations_section_title
-import nuvio.composeapp.generated.resources.settings_integrations_tmdb_description
+import streamvault.composeapp.generated.resources.compose_settings_page_debrid
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.compose_settings_page_mdblist_ratings
+import streamvault.composeapp.generated.resources.compose_settings_page_tmdb_enrichment
+import streamvault.composeapp.generated.resources.settings_integrations_mdblist_description
+import streamvault.composeapp.generated.resources.settings_integrations_debrid_description
+import streamvault.composeapp.generated.resources.settings_integrations_section_title
+import streamvault.composeapp.generated.resources.settings_integrations_tmdb_description
 import org.jetbrains.compose.resources.stringResource
 
 internal fun LazyListScope.integrationsContent(

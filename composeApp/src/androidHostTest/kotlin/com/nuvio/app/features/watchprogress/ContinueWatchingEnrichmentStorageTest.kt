@@ -1,10 +1,10 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
 import android.app.Application
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.SharedPreferences
-import com.nuvio.app.features.tracking.WatchProgressSource
+import com.streamvault.app.features.tracking.WatchProgressSource
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment

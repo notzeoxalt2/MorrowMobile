@@ -1,13 +1,13 @@
-package com.nuvio.app.features.settings
+package com.streamvault.app.features.settings
 
-import com.nuvio.app.core.ui.AppTheme
-import com.nuvio.app.core.ui.CustomThemeColors
-import com.nuvio.app.core.ui.NativeTabBridge
-import com.nuvio.app.core.ui.ThemeColors
-import com.nuvio.app.features.membership.MemberAccessRepository
-import com.nuvio.app.features.membership.availableAppThemes
-import com.nuvio.app.features.membership.resolveAppTheme
-import com.nuvio.app.features.membership.resolveCustomThemeColors
+import com.streamvault.app.core.ui.AppTheme
+import com.streamvault.app.core.ui.CustomThemeColors
+import com.streamvault.app.core.ui.NativeTabBridge
+import com.streamvault.app.core.ui.ThemeColors
+import com.streamvault.app.features.membership.MemberAccessRepository
+import com.streamvault.app.features.membership.availableAppThemes
+import com.streamvault.app.features.membership.resolveAppTheme
+import com.streamvault.app.features.membership.resolveCustomThemeColors
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -20,7 +20,7 @@ object ThemeSettingsRepository {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private val _selectedThemePreference = MutableStateFlow<AppTheme?>(null)
     val selectedThemePreference: StateFlow<AppTheme?> = _selectedThemePreference.asStateFlow()
-    private val _selectedTheme = MutableStateFlow(AppTheme.WHITE)
+    private val _selectedTheme = MutableStateFlow(AppTheme.CRIMSON)
     val selectedTheme: StateFlow<AppTheme> = _selectedTheme.asStateFlow()
 
     private val _customThemePreference = MutableStateFlow(CustomThemeColors.Default)

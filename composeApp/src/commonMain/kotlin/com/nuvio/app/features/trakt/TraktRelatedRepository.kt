@@ -1,11 +1,11 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.addons.httpRequestRaw
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.PosterShape
-import com.nuvio.app.features.tmdb.TmdbService
+import com.streamvault.app.features.addons.httpRequestRaw
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.PosterShape
+import com.streamvault.app.features.tmdb.TmdbService
 import io.ktor.http.encodeURLParameter
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock

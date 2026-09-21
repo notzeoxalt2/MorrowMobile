@@ -1,9 +1,9 @@
-package com.nuvio.app.features.p2p
+﻿package com.streamvault.app.features.p2p
 
 import android.content.Context
 import android.os.SystemClock
 import android.util.Log
-import com.nuvio.app.core.i18n.localizedP2pUnknownTorrentError
+import com.streamvault.app.core.i18n.localizedP2pUnknownTorrentError
 import com.nuvio.engine.NuvioEngine
 import com.nuvio.engine.NuvioEngineConfig
 import com.nuvio.engine.NuvioEventType

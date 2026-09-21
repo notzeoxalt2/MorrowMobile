@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -31,9 +31,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_play
-import nuvio.composeapp.generated.resources.player_error_mpv_unavailable
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_play
+import streamvault.composeapp.generated.resources.player_error_mpv_unavailable
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
 
@@ -46,7 +46,7 @@ actual fun PlatformPlayerSurface(
     sourceAudioUrl: String?,
     sourceHeaders: Map<String, String>,
     sourceResponseHeaders: Map<String, String>,
-    externalSubtitles: List<com.nuvio.app.features.streams.StreamSubtitle>,
+    externalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle>,
     streamType: String?,
     useYoutubeChunkedPlayback: Boolean,
     modifier: Modifier,
@@ -454,7 +454,7 @@ private fun Int.toHexByte(): String {
     }
 }
 
-private fun encodeExternalSubtitlesForBridge(subtitles: List<com.nuvio.app.features.streams.StreamSubtitle>): String? {
+private fun encodeExternalSubtitlesForBridge(subtitles: List<com.streamvault.app.features.streams.StreamSubtitle>): String? {
     if (subtitles.isEmpty()) return null
     return runCatching {
         Json.encodeToString(subtitles)

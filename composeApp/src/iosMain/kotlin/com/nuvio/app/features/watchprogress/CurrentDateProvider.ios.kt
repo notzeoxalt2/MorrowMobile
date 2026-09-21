@@ -1,4 +1,4 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
 import platform.Foundation.NSDate
 import platform.Foundation.NSDateFormatter

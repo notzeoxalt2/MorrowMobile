@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -6,11 +6,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.nuvio.app.core.network.NetworkCondition
-import com.nuvio.app.core.network.messageForEmptyState
-import com.nuvio.app.core.network.titleForEmptyState
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_retry
+import com.streamvault.app.core.network.NetworkCondition
+import com.streamvault.app.core.network.messageForEmptyState
+import com.streamvault.app.core.network.titleForEmptyState
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_retry
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

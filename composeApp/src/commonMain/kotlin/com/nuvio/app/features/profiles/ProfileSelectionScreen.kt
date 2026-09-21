@@ -1,4 +1,4 @@
-package com.nuvio.app.features.profiles
+﻿package com.streamvault.app.features.profiles
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
@@ -59,13 +59,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.ui.NuvioBackButton
-import com.nuvio.app.core.ui.NuvioToastHost
-import com.nuvio.app.features.membership.CosmeticEntitlement
-import com.nuvio.app.features.settings.MemberBrandWordmark
+import com.streamvault.app.core.ui.NuvioBackButton
+import com.streamvault.app.core.ui.NuvioToastHost
+import com.streamvault.app.features.membership.CosmeticEntitlement
+import com.streamvault.app.features.settings.MemberBrandWordmark
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

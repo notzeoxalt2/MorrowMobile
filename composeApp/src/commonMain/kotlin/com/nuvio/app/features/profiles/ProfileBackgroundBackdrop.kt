@@ -1,4 +1,4 @@
-package com.nuvio.app.features.profiles
+﻿package com.streamvault.app.features.profiles
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -13,11 +13,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.ui.ProfileMeshBackground
-import com.nuvio.app.features.membership.MemberAccessRepository
-import com.nuvio.app.features.membership.ProfileBackgroundRepository
-import com.nuvio.app.features.membership.ProfileBackgroundSelection
-import com.nuvio.app.features.membership.resolveProfileBackground
+import com.streamvault.app.core.ui.ProfileMeshBackground
+import com.streamvault.app.features.membership.MemberAccessRepository
+import com.streamvault.app.features.membership.ProfileBackgroundRepository
+import com.streamvault.app.features.membership.ProfileBackgroundSelection
+import com.streamvault.app.features.membership.resolveProfileBackground
 
 @Composable
 fun ProfileBackgroundBackdrop(

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
 internal expect object TraktLibraryStorage {
     fun loadPayload(): String?

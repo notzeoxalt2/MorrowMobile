@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -39,12 +39,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.accentBrush
-import com.nuvio.app.core.ui.nuvioTypeScale
-import com.nuvio.app.core.ui.themePalette
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.compose_player_brightness
-import nuvio.composeapp.generated.resources.compose_player_volume
+import com.streamvault.app.core.ui.accentBrush
+import com.streamvault.app.core.ui.nuvioTypeScale
+import com.streamvault.app.core.ui.themePalette
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.compose_player_brightness
+import streamvault.composeapp.generated.resources.compose_player_volume
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

@@ -1,7 +1,7 @@
-package com.nuvio.app.features.player.skip
+﻿package com.streamvault.app.features.player.skip
 
-import com.nuvio.app.features.player.PlayerSettingsRepository
-import com.nuvio.app.features.tmdb.TmdbService
+import com.streamvault.app.features.player.PlayerSettingsRepository
+import com.streamvault.app.features.tmdb.TmdbService
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 

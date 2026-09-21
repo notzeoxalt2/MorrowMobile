@@ -1,10 +1,10 @@
-package com.nuvio.app.features.watching.domain
+﻿package com.streamvault.app.features.watching.domain
 
-import com.nuvio.app.core.time.EpisodeReleaseDatePlatform
-import com.nuvio.app.core.time.daysUntilEpisodeRelease
-import com.nuvio.app.core.time.isEpisodeReleaseAired
-import com.nuvio.app.core.time.isoEpochDay as coreIsoEpochDay
-import com.nuvio.app.core.time.parseEpisodeReleaseLocalDate
+import com.streamvault.app.core.time.EpisodeReleaseDatePlatform
+import com.streamvault.app.core.time.daysUntilEpisodeRelease
+import com.streamvault.app.core.time.isEpisodeReleaseAired
+import com.streamvault.app.core.time.isoEpochDay as coreIsoEpochDay
+import com.streamvault.app.core.time.parseEpisodeReleaseLocalDate
 
 private const val CompletionThresholdFraction = 0.90
 private const val ProgressStoreThresholdMs = 1_000L

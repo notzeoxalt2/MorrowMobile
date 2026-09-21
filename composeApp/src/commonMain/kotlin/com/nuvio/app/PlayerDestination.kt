@@ -1,4 +1,4 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -6,15 +6,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import com.nuvio.app.core.ui.NuvioToastController
-import com.nuvio.app.features.player.ExternalPlayerIntentResult
-import com.nuvio.app.features.player.ExternalPlayerPlatform
-import com.nuvio.app.features.player.PlayerLaunch
-import com.nuvio.app.features.player.PlayerLaunchStore
-import com.nuvio.app.features.player.PlayerScreen
-import com.nuvio.app.features.watchprogress.ResumePromptRepository
-import com.nuvio.app.navigation.NuvioNavigator
-import com.nuvio.app.navigation.PlayerRoute
+import com.streamvault.app.core.ui.NuvioToastController
+import com.streamvault.app.features.player.ExternalPlayerIntentResult
+import com.streamvault.app.features.player.ExternalPlayerPlatform
+import com.streamvault.app.features.player.PlayerLaunch
+import com.streamvault.app.features.player.PlayerLaunchStore
+import com.streamvault.app.features.player.PlayerScreen
+import com.streamvault.app.features.watchprogress.ResumePromptRepository
+import com.streamvault.app.navigation.NuvioNavigator
+import com.streamvault.app.navigation.PlayerRoute
 
 @Composable
 internal fun PlayerDestination(

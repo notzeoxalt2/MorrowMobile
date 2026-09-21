@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details.components
+﻿package com.streamvault.app.features.details.components
 
 import android.content.Context
 import android.graphics.Matrix
@@ -27,7 +27,7 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.exoplayer.source.MergingMediaSource
-import com.nuvio.app.features.player.PlatformPlaybackDataSourceFactory
+import com.streamvault.app.features.player.PlatformPlaybackDataSourceFactory
 
 @androidx.annotation.OptIn(UnstableApi::class)
 @Composable

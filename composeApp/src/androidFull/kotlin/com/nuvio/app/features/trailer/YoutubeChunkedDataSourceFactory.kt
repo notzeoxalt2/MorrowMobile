@@ -1,4 +1,4 @@
-package com.nuvio.app.features.trailer
+﻿package com.streamvault.app.features.trailer
 
 import android.net.Uri
 import android.util.Log
@@ -9,8 +9,8 @@ import androidx.media3.datasource.DataSpec
 import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.datasource.TransferListener
 import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.player_error_unable_to_play_stream
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.player_error_unable_to_play_stream
 import org.jetbrains.compose.resources.getString
 
 /**

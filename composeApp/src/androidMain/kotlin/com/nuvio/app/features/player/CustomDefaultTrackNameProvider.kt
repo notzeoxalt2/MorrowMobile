@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.content.res.Resources
 import androidx.media3.common.Format

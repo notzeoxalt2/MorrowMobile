@@ -1,8 +1,8 @@
-package com.nuvio.app.features.player.skip
+﻿package com.streamvault.app.features.player.skip
 
-import com.nuvio.app.features.addons.httpGetText
-import com.nuvio.app.features.simkl.SIMKL_API_BASE_URL
-import com.nuvio.app.features.simkl.SimklConfig
+import com.streamvault.app.features.addons.httpGetText
+import com.streamvault.app.features.simkl.SIMKL_API_BASE_URL
+import com.streamvault.app.features.simkl.SimklConfig
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject

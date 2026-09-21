@@ -1,6 +1,6 @@
-package com.nuvio.app.features.tracking
+﻿package com.streamvault.app.features.tracking
 
-import com.nuvio.app.features.library.LibrarySourceMode
+import com.streamvault.app.features.library.LibrarySourceMode
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull

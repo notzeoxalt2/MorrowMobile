@@ -1,4 +1,4 @@
-package com.nuvio.app.features.profiles
+﻿package com.streamvault.app.features.profiles
 
 internal expect object ProfilePinCacheStorage {
     fun loadPayload(profileIndex: Int): String?

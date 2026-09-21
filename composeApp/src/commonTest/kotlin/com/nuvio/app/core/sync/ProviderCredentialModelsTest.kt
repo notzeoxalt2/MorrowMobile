@@ -1,9 +1,9 @@
-package com.nuvio.app.core.sync
+﻿package com.streamvault.app.core.sync
 
-import com.nuvio.app.features.debrid.DebridSettings
-import com.nuvio.app.features.mdblist.MdbListSettings
-import com.nuvio.app.features.player.PlayerSettingsUiState
-import com.nuvio.app.features.tmdb.TmdbSettings
+import com.streamvault.app.features.debrid.DebridSettings
+import com.streamvault.app.features.mdblist.MdbListSettings
+import com.streamvault.app.features.player.PlayerSettingsUiState
+import com.streamvault.app.features.tmdb.TmdbSettings
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlinx.serialization.json.buildJsonObject

@@ -1,8 +1,8 @@
-package com.nuvio.app.features.cloud
+﻿package com.streamvault.app.features.cloud
 
-import com.nuvio.app.features.debrid.DebridProviders
-import com.nuvio.app.features.debrid.PremiumizeApiClient
-import com.nuvio.app.features.debrid.PremiumizeCloudFileDto
+import com.streamvault.app.features.debrid.DebridProviders
+import com.streamvault.app.features.debrid.PremiumizeApiClient
+import com.streamvault.app.features.debrid.PremiumizeCloudFileDto
 import kotlinx.coroutines.CancellationException
 
 internal class PremiumizeCloudLibraryProviderApi : CloudLibraryProviderApi {

@@ -1,11 +1,11 @@
-package com.nuvio.app.features.plugins
+package com.streamvault.app.features.plugins
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.network.SupabaseProvider
-import com.nuvio.app.features.addons.httpGetText
-import com.nuvio.app.features.profiles.ProfileRepository
-import com.nuvio.app.features.tmdb.TmdbService
-import com.nuvio.app.features.plugins.runtime.PluginRuntime
+import com.streamvault.app.core.network.SupabaseProvider
+import com.streamvault.app.features.addons.httpGetText
+import com.streamvault.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.tmdb.TmdbService
+import com.streamvault.app.features.plugins.runtime.PluginRuntime
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.query.Order
 import io.github.jan.supabase.postgrest.rpc
@@ -16,12 +16,17 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -30,13 +35,13 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.encodeToJsonElement
 import kotlinx.serialization.json.put
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.plugins_error_enter_repo_url
-import nuvio.composeapp.generated.resources.plugins_error_enter_valid_url
-import nuvio.composeapp.generated.resources.plugins_error_provider_not_found
-import nuvio.composeapp.generated.resources.plugins_repository_already_installed
-import nuvio.composeapp.generated.resources.plugins_repository_install_failed
-import nuvio.composeapp.generated.resources.plugins_repository_refresh_failed
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.plugins_error_enter_repo_url
+import streamvault.composeapp.generated.resources.plugins_error_enter_valid_url
+import streamvault.composeapp.generated.resources.plugins_error_provider_not_found
+import streamvault.composeapp.generated.resources.plugins_repository_already_installed
+import streamvault.composeapp.generated.resources.plugins_repository_install_failed
+import streamvault.composeapp.generated.resources.plugins_repository_refresh_failed
 import org.jetbrains.compose.resources.getString
 
 @Serializable
@@ -92,7 +97,7 @@ actual object PluginRepository {
         val state = _uiState.value
         val nowEpochMs = currentEpochMillis()
         state.repositories.filter { repo ->
-            shouldRefreshRepository(repo, state.scrapers, nowEpochMs)
+            repo.isRefreshing || shouldRefreshRepository(repo, state.scrapers, nowEpochMs)
         }.forEach { repo ->
             refreshRepositoryInternal(repo.manifestUrl, pushAfterRefresh = false, ensureInitialized = false)
         }
@@ -360,7 +365,7 @@ actual object PluginRepository {
         mediaType = mediaType,
         season = season,
         episode = episode,
-        respectSearchPause = true,
+        respectSearchPause = false,
     )
 
     private suspend fun executeScraperInternal(
@@ -371,16 +376,22 @@ actual object PluginRepository {
         episode: Int?,
         respectSearchPause: Boolean,
     ): Result<List<PluginRuntimeResult>> {
+        val effectiveMediaType = if (mediaType.equals("anime", ignoreCase = true)) {
+            if (season != null || episode != null) "tv" else "movie"
+        } else {
+            normalizePluginType(mediaType)
+        }
+
         val resolvedTmdbId = resolvePluginTmdbId(
             tmdbId = tmdbId,
-            mediaType = mediaType,
+            mediaType = effectiveMediaType,
         )
 
         return runCatching {
             PluginRuntime.executePlugin(
                 code = scraper.code,
                 tmdbId = resolvedTmdbId,
-                mediaType = normalizePluginType(mediaType),
+                mediaType = effectiveMediaType,
                 season = season,
                 episode = episode,
                 scraperId = scraper.id,
@@ -396,10 +407,14 @@ actual object PluginRepository {
         val trimmed = tmdbId.trim()
         if (trimmed.isBlank()) return tmdbId
 
-        return TmdbService.ensureTmdbId(
+        val resolved = TmdbService.ensureTmdbId(
             videoId = trimmed,
             mediaType = mediaType,
         ) ?: trimmed
+        if (resolved != trimmed) {
+            log.d { "Resolved plugin tmdbId '$trimmed' ($mediaType) -> '$resolved'" }
+        }
+        return resolved
     }
 
     private suspend fun fetchRepositoryData(
@@ -412,51 +427,58 @@ actual object PluginRepository {
             val manifest = PluginManifestParser.parse(payload)
             val baseUrl = manifestUrl.substringBefore("?").removeSuffix("/manifest.json")
 
-            val scrapers = manifest.scrapers
-                .filter { scraper -> scraper.isSupportedOnCurrentPlatform() }
-                .mapNotNull { info ->
-                    val codeUrl = if (info.filename.startsWith("http://") || info.filename.startsWith("https://")) {
-                        info.filename
-                    } else {
-                        "$baseUrl/${info.filename.trimStart('/')}"
-                    }
-                    runCatching {
-                        val code = httpGetText(codeUrl)
-                        val scraperId = "${manifestUrl.lowercase()}:${info.id}"
-                        val cached = PluginStorage.saveScraperCode(
-                            profileId = storageProfileId,
-                            scraperId = scraperId,
-                            code = code,
-                            overwrite = true,
-                        )
-                        if (!cached) {
-                            log.w { "Failed to cache plugin scraper $scraperId" }
-                        }
-                        val previous = previousScrapers[scraperId]
-                        val enabled = when {
-                            !info.enabled -> false
-                            previous != null -> previous.enabled
-                            else -> info.enabled
-                        }
+            val downloadSemaphore = Semaphore(10)
+            val scrapers = coroutineScope {
+                manifest.scrapers
+                    .filter { scraper -> scraper.isSupportedOnCurrentPlatform() }
+                    .map { info ->
+                        async {
+                            downloadSemaphore.withPermit {
+                                val codeUrl = if (info.filename.startsWith("http://") || info.filename.startsWith("https://")) {
+                                    info.filename
+                                } else {
+                                    "$baseUrl/${info.filename.trimStart('/')}"
+                                }
+                                runCatching {
+                                    val code = httpGetText(codeUrl)
+                                    val scraperId = "${manifestUrl.lowercase()}:${info.id}"
+                                    val cached = PluginStorage.saveScraperCode(
+                                        profileId = storageProfileId,
+                                        scraperId = scraperId,
+                                        code = code,
+                                        overwrite = true,
+                                    )
+                                    if (!cached) {
+                                        log.w { "Failed to cache plugin scraper $scraperId" }
+                                    }
+                                    val previous = previousScrapers[scraperId]
+                                    val enabled = when {
+                                        !info.enabled -> false
+                                        previous != null -> previous.enabled
+                                        else -> info.enabled
+                                    }
 
-                        PluginScraper(
-                            id = scraperId,
-                            repositoryUrl = manifestUrl,
-                            name = info.name,
-                            description = info.description.orEmpty(),
-                            version = info.version,
-                            filename = info.filename,
-                            supportedTypes = info.supportedTypes,
-                            enabled = enabled,
-                            manifestEnabled = info.enabled,
-                            hasSettings = info.hasSettings,
-                            logo = info.logo,
-                            contentLanguage = info.contentLanguage ?: emptyList(),
-                            formats = info.formats ?: info.supportedFormats,
-                            code = code,
-                        )
-                    }.getOrNull()
-                }
+                                    PluginScraper(
+                                        id = scraperId,
+                                        repositoryUrl = manifestUrl,
+                                        name = info.name,
+                                        description = info.description.orEmpty(),
+                                        version = info.version,
+                                        filename = info.filename,
+                                        supportedTypes = info.supportedTypes,
+                                        enabled = enabled,
+                                        manifestEnabled = info.enabled,
+                                        hasSettings = info.hasSettings,
+                                        logo = info.logo,
+                                        contentLanguage = info.contentLanguage ?: emptyList(),
+                                        formats = info.formats ?: info.supportedFormats,
+                                        code = code,
+                                    )
+                                }.getOrNull()
+                            }
+                        }
+                    }.awaitAll().filterNotNull()
+            }
 
             val repo = PluginRepositoryItem(
                 manifestUrl = manifestUrl,
@@ -486,6 +508,8 @@ actual object PluginRepository {
         scrapers: List<PluginScraper>,
         nowEpochMs: Long,
     ): Boolean = isPluginRepositoryRefreshDue(repository.lastUpdated, nowEpochMs) ||
+        repository.scraperCount <= 0 ||
+        scrapers.none { it.repositoryUrl == repository.manifestUrl } ||
         scrapers.count { scraper -> scraper.repositoryUrl == repository.manifestUrl } < repository.scraperCount
 
     private fun markRefreshing(manifestUrl: String) {
@@ -610,24 +634,53 @@ actual object PluginRepository {
                 }?.scraper
             }
             ?: emptyList()
+        val defaultPluginRepoUrls = listOf(
+            "https://raw.githubusercontent.com/D3adlyRocket/All-in-One-Nuvio/refs/heads/main/manifest.json",
+            "https://raw.githubusercontent.com/yoruix/nuvio-providers/refs/heads/main/manifest.json",
+            "https://raw.githubusercontent.com/Abinanthankv/NuvioRepo/refs/heads/master/manifest.json",
+            "https://raw.githubusercontent.com/michat88/nuvio-providers/refs/heads/main/manifest.json"
+        )
+        val storedRepos = stored?.repositories
+        val existingUrls = storedRepos?.map { it.manifestUrl }?.toSet().orEmpty()
+        val missingDefaults = defaultPluginRepoUrls.filterNot { it in existingUrls }.map { url ->
+            requiresMigration = true
+            PluginRepositoryItem(
+                manifestUrl = url,
+                name = when {
+                    url.contains("D3adlyRocket") -> "All-in-One Providers"
+                    url.contains("yoruix") -> "Yoruix Anime & Media"
+                    url.contains("Abinanthankv") -> "Nuvio Main Repo"
+                    url.contains("michat88") -> "Michat88 KDrama & Media"
+                    else -> url.substringBefore("?").substringAfterLast('/')
+                },
+                description = "Pre-installed native provider scrapers",
+                version = "1.0.0",
+                isRefreshing = true,
+            )
+        }
+
+        val repositories = if (storedRepos.isNullOrEmpty()) {
+            requiresMigration = true
+            missingDefaults
+        } else {
+            storedRepos.map {
+                PluginRepositoryItem(
+                    manifestUrl = it.manifestUrl,
+                    name = it.name,
+                    description = it.description,
+                    version = it.version,
+                    scraperCount = it.scraperCount,
+                    lastUpdated = it.lastUpdated,
+                    isRefreshing = it.scraperCount <= 0 || scrapers.none { s -> s.repositoryUrl == it.manifestUrl },
+                    errorMessage = null,
+                )
+            } + missingDefaults
+        }
         return LoadedPluginState(
             state = PluginsUiState(
                 pluginsEnabled = stored?.pluginsEnabled ?: true,
                 groupStreamsByRepository = stored?.groupStreamsByRepository ?: false,
-                repositories = stored?.repositories
-                    ?.map {
-                        PluginRepositoryItem(
-                            manifestUrl = it.manifestUrl,
-                            name = it.name,
-                            description = it.description,
-                            version = it.version,
-                            scraperCount = it.scraperCount,
-                            lastUpdated = it.lastUpdated,
-                            isRefreshing = false,
-                            errorMessage = null,
-                        )
-                    }
-                    ?: emptyList(),
+                repositories = repositories,
                 scrapers = scrapers,
             ),
             requiresMigration = requiresMigration,

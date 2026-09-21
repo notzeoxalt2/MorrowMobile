@@ -1,4 +1,4 @@
-package com.nuvio.app.features.profiles
+﻿package com.streamvault.app.features.profiles
 
 import kotlin.random.Random
 import kotlinx.serialization.Serializable

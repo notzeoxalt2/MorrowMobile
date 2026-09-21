@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details.components
+﻿package com.streamvault.app.features.details.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -39,15 +39,15 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.ui.NuvioCardDepthSurface
-import com.nuvio.app.core.ui.nuvioCardDepth
-import com.nuvio.app.core.ui.nuvioHorizontalScrollBleed
-import com.nuvio.app.core.ui.rememberPosterCardStyleUiState
-import com.nuvio.app.features.details.MetaTrailer
-import nuvio.composeapp.generated.resources.*
-import nuvio.composeapp.generated.resources.detail_tab_trailer
-import nuvio.composeapp.generated.resources.detail_trailer_category_count
-import nuvio.composeapp.generated.resources.detail_trailers_title
+import com.streamvault.app.core.ui.NuvioCardDepthSurface
+import com.streamvault.app.core.ui.nuvioCardDepth
+import com.streamvault.app.core.ui.nuvioHorizontalScrollBleed
+import com.streamvault.app.core.ui.rememberPosterCardStyleUiState
+import com.streamvault.app.features.details.MetaTrailer
+import streamvault.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.detail_tab_trailer
+import streamvault.composeapp.generated.resources.detail_trailer_category_count
+import streamvault.composeapp.generated.resources.detail_trailers_title
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

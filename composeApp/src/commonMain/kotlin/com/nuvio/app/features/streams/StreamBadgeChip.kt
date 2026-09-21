@@ -1,4 +1,4 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -22,12 +22,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.i18n.localizedByteUnit
-import com.nuvio.app.core.ui.NuvioTokens
-import com.nuvio.app.core.ui.nuvio
+import com.streamvault.app.core.i18n.localizedByteUnit
+import com.streamvault.app.core.ui.NuvioTokens
+import com.streamvault.app.core.ui.nuvio
 import kotlin.math.round
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.streams_size
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.streams_size
 import org.jetbrains.compose.resources.stringResource
 
 private const val STREAM_SIZE_PLACEHOLDER = "\uE000"

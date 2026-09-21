@@ -1,13 +1,13 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.tracking.TrackingProgressProvider
-import com.nuvio.app.features.tracking.TrackingProgressSnapshot
-import com.nuvio.app.features.tracking.TrackingProviderId
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
-import com.nuvio.app.features.watchprogress.WatchProgressSourceTraktPlayback
-import com.nuvio.app.features.watchprogress.buildPlaybackVideoId
-import com.nuvio.app.features.watchprogress.shouldUseAsCompletedSeedForContinueWatching
+import com.streamvault.app.features.tracking.TrackingProgressProvider
+import com.streamvault.app.features.tracking.TrackingProgressSnapshot
+import com.streamvault.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watchprogress.WatchProgressSourceTraktPlayback
+import com.streamvault.app.features.watchprogress.buildPlaybackVideoId
+import com.streamvault.app.features.watchprogress.shouldUseAsCompletedSeedForContinueWatching
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

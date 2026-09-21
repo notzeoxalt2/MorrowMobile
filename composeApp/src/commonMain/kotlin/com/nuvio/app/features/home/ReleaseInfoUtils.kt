@@ -1,7 +1,7 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
-import com.nuvio.app.core.time.EpisodeReleaseDatePlatform
-import com.nuvio.app.core.time.isEpisodeReleaseAired
+import com.streamvault.app.core.time.EpisodeReleaseDatePlatform
+import com.streamvault.app.core.time.isEpisodeReleaseAired
 
 private val yearRegex = Regex("""\b(19|20)\d{2}\b""")
 

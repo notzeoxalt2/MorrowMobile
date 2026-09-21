@@ -1,8 +1,8 @@
-package com.nuvio.app.features.catalog
+﻿package com.streamvault.app.features.catalog
 
-import com.nuvio.app.features.library.LibraryUiState
-import com.nuvio.app.features.library.sortLibraryItems
-import com.nuvio.app.features.library.toMetaPreview
+import com.streamvault.app.features.library.LibraryUiState
+import com.streamvault.app.features.library.sortLibraryItems
+import com.streamvault.app.features.library.toMetaPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map

@@ -1,7 +1,7 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
-import com.nuvio.app.core.ui.AppTheme
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.ui.AppTheme
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

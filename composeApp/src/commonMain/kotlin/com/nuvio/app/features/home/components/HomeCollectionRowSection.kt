@@ -1,4 +1,4 @@
-package com.nuvio.app.features.home.components
+﻿package com.streamvault.app.features.home.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,17 +23,17 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nuvio.app.core.ui.NuvioCardDepthSurface
-import com.nuvio.app.core.ui.LocalScreenActive
-import com.nuvio.app.core.ui.NuvioShelfSection
-import com.nuvio.app.core.ui.PosterLandscapeAspectRatio
-import com.nuvio.app.core.ui.landscapePosterWidth
-import com.nuvio.app.core.ui.nuvioCardDepth
-import com.nuvio.app.core.ui.posterCardClickable
-import com.nuvio.app.core.ui.rememberPosterCardStyleUiState
-import com.nuvio.app.features.collection.Collection
-import com.nuvio.app.features.collection.CollectionFolder
-import com.nuvio.app.features.home.PosterShape
+import com.streamvault.app.core.ui.NuvioCardDepthSurface
+import com.streamvault.app.core.ui.LocalScreenActive
+import com.streamvault.app.core.ui.NuvioShelfSection
+import com.streamvault.app.core.ui.PosterLandscapeAspectRatio
+import com.streamvault.app.core.ui.landscapePosterWidth
+import com.streamvault.app.core.ui.nuvioCardDepth
+import com.streamvault.app.core.ui.posterCardClickable
+import com.streamvault.app.core.ui.rememberPosterCardStyleUiState
+import com.streamvault.app.features.collection.Collection
+import com.streamvault.app.features.collection.CollectionFolder
+import com.streamvault.app.features.home.PosterShape
 
 @Composable
 fun HomeCollectionRowSection(

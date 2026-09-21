@@ -1,4 +1,4 @@
-package com.nuvio.app
+package com.streamvault.app
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -9,64 +9,65 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.SystemBarStyle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.nuvio.app.core.auth.AuthStorage
-import com.nuvio.app.core.network.ServerConfigurationStorage
-import com.nuvio.app.core.diagnostics.SentryInitializer
-import com.nuvio.app.core.deeplink.handleAppUrl
-import com.nuvio.app.core.storage.PlatformLocalAccountDataCleaner
-import com.nuvio.app.core.sync.SyncClientIdentityStorage
-import com.nuvio.app.features.addons.AddonHttpClientProvider
-import com.nuvio.app.features.addons.AddonStorage
-import com.nuvio.app.features.collection.CollectionMobileSettingsStorage
-import com.nuvio.app.features.collection.CollectionStorage
-import com.nuvio.app.features.debrid.DebridSettingsStorage
-import com.nuvio.app.features.downloads.DownloadsLiveStatusPlatform
-import com.nuvio.app.features.downloads.DownloadsPlatformDownloader
-import com.nuvio.app.features.downloads.DownloadsStorage
-import com.nuvio.app.features.library.LibraryDisplaySettingsStorage
-import com.nuvio.app.features.membership.MemberAssetStorage
-import com.nuvio.app.features.library.LibraryStorage
-import com.nuvio.app.features.details.MetaScreenSettingsStorage
-import com.nuvio.app.features.home.HomeCatalogSettingsStorage
-import com.nuvio.app.features.mdblist.MdbListSettingsStorage
-import com.nuvio.app.features.notifications.EpisodeReleaseNotificationPlatform
-import com.nuvio.app.features.notifications.EpisodeReleaseNotificationsStorage
-import com.nuvio.app.features.player.PlayerSettingsStorage
-import com.nuvio.app.features.player.PlayerTrackPreferenceStorage
-import com.nuvio.app.features.player.ExternalPlayerPlatform
-import com.nuvio.app.features.player.SubtitleFileCache
-import com.nuvio.app.features.player.PlayerPictureInPictureManager
-import com.nuvio.app.features.player.PipRemoteActionReceiver
-import com.nuvio.app.features.p2p.P2pSettingsStorage
-import com.nuvio.app.features.p2p.P2pStreamingEngine
-import com.nuvio.app.features.plugins.PluginStorage
-import com.nuvio.app.features.profiles.AvatarStorage
-import com.nuvio.app.features.profiles.ProfilePinCacheStorage
-import com.nuvio.app.features.profiles.ProfileStorage
-import com.nuvio.app.features.details.SeasonViewModeStorage
-import com.nuvio.app.features.search.DiscoverSelectionStorage
-import com.nuvio.app.features.search.SearchHistoryStorage
-import com.nuvio.app.features.settings.SentrySettingsStorage
-import com.nuvio.app.features.settings.AppIconPlatform
-import com.nuvio.app.features.settings.ThemeSettingsStorage
-import com.nuvio.app.features.trakt.TraktAuthStorage
-import com.nuvio.app.features.trakt.TraktCommentsStorage
-import com.nuvio.app.features.trakt.TraktLibraryStorage
-import com.nuvio.app.features.trakt.TraktSettingsStorage
-import com.nuvio.app.features.simkl.SimklAuthStorage
-import com.nuvio.app.features.simkl.SimklSyncStorage
-import com.nuvio.app.features.tmdb.TmdbSettingsStorage
-import com.nuvio.app.features.updater.AndroidAppUpdaterPlatform
-import com.nuvio.app.core.ui.CardDepthStyleStorage
-import com.nuvio.app.core.ui.PosterCardStyleStorage
-import com.nuvio.app.features.watched.WatchedStorage
-import com.nuvio.app.features.streams.StreamLinkCacheStorage
-import com.nuvio.app.features.streams.StreamBadgeSettingsStorage
-import com.nuvio.app.features.streams.BingeGroupCacheStorage
-import com.nuvio.app.features.watchprogress.ContinueWatchingEnrichmentStorage
-import com.nuvio.app.features.watchprogress.ContinueWatchingPreferencesStorage
-import com.nuvio.app.features.watchprogress.ResumePromptStorage
-import com.nuvio.app.features.watchprogress.WatchProgressStorage
+import com.streamvault.app.core.auth.AuthStorage
+import com.streamvault.app.core.network.ServerConfigurationStorage
+import com.streamvault.app.core.diagnostics.SentryInitializer
+import com.streamvault.app.core.deeplink.handleAppUrl
+import com.streamvault.app.core.storage.PlatformLocalAccountDataCleaner
+import com.streamvault.app.core.sync.SyncClientIdentityStorage
+import com.streamvault.app.features.addons.AddonHttpClientProvider
+import com.streamvault.app.features.addons.AddonStorage
+import com.streamvault.app.features.addons.DefaultAddonsSeedStorage
+import com.streamvault.app.features.collection.CollectionMobileSettingsStorage
+import com.streamvault.app.features.collection.CollectionStorage
+import com.streamvault.app.features.debrid.DebridSettingsStorage
+import com.streamvault.app.features.downloads.DownloadsLiveStatusPlatform
+import com.streamvault.app.features.downloads.DownloadsPlatformDownloader
+import com.streamvault.app.features.downloads.DownloadsStorage
+import com.streamvault.app.features.library.LibraryDisplaySettingsStorage
+import com.streamvault.app.features.membership.MemberAssetStorage
+import com.streamvault.app.features.library.LibraryStorage
+import com.streamvault.app.features.details.MetaScreenSettingsStorage
+import com.streamvault.app.features.home.HomeCatalogSettingsStorage
+import com.streamvault.app.features.mdblist.MdbListSettingsStorage
+import com.streamvault.app.features.notifications.EpisodeReleaseNotificationPlatform
+import com.streamvault.app.features.notifications.EpisodeReleaseNotificationsStorage
+import com.streamvault.app.features.player.PlayerSettingsStorage
+import com.streamvault.app.features.player.PlayerTrackPreferenceStorage
+import com.streamvault.app.features.player.ExternalPlayerPlatform
+import com.streamvault.app.features.player.SubtitleFileCache
+import com.streamvault.app.features.player.PlayerPictureInPictureManager
+import com.streamvault.app.features.player.PipRemoteActionReceiver
+import com.streamvault.app.features.p2p.P2pSettingsStorage
+import com.streamvault.app.features.p2p.P2pStreamingEngine
+import com.streamvault.app.features.plugins.PluginStorage
+import com.streamvault.app.features.profiles.AvatarStorage
+import com.streamvault.app.features.profiles.ProfilePinCacheStorage
+import com.streamvault.app.features.profiles.ProfileStorage
+import com.streamvault.app.features.details.SeasonViewModeStorage
+import com.streamvault.app.features.search.DiscoverSelectionStorage
+import com.streamvault.app.features.search.SearchHistoryStorage
+import com.streamvault.app.features.settings.SentrySettingsStorage
+import com.streamvault.app.features.settings.AppIconPlatform
+import com.streamvault.app.features.settings.ThemeSettingsStorage
+import com.streamvault.app.features.trakt.TraktAuthStorage
+import com.streamvault.app.features.trakt.TraktCommentsStorage
+import com.streamvault.app.features.trakt.TraktLibraryStorage
+import com.streamvault.app.features.trakt.TraktSettingsStorage
+import com.streamvault.app.features.simkl.SimklAuthStorage
+import com.streamvault.app.features.simkl.SimklSyncStorage
+import com.streamvault.app.features.tmdb.TmdbSettingsStorage
+import com.streamvault.app.features.updater.AndroidAppUpdaterPlatform
+import com.streamvault.app.core.ui.CardDepthStyleStorage
+import com.streamvault.app.core.ui.PosterCardStyleStorage
+import com.streamvault.app.features.watched.WatchedStorage
+import com.streamvault.app.features.streams.StreamLinkCacheStorage
+import com.streamvault.app.features.streams.StreamBadgeSettingsStorage
+import com.streamvault.app.features.streams.BingeGroupCacheStorage
+import com.streamvault.app.features.watchprogress.ContinueWatchingEnrichmentStorage
+import com.streamvault.app.features.watchprogress.ContinueWatchingPreferencesStorage
+import com.streamvault.app.features.watchprogress.ResumePromptStorage
+import com.streamvault.app.features.watchprogress.WatchProgressStorage
 
 open class MainActivity : AppCompatActivity() {
     private var pipRemoteActionReceiver: PipRemoteActionReceiver? = null
@@ -83,11 +84,12 @@ open class MainActivity : AppCompatActivity() {
         SentrySettingsStorage.initialize(applicationContext)
         SentryInitializer.start(application)
         super.onCreate(savedInstanceState)
-        window.setBackgroundDrawableResource(R.color.nuvio_background)
+        window.setBackgroundDrawableResource(R.color.streamvault_background)
         pipRemoteActionReceiver = PipRemoteActionReceiver.register(this)
         SyncClientIdentityStorage.initialize(applicationContext)
         AddonHttpClientProvider.initialize(applicationContext)
         AddonStorage.initialize(applicationContext)
+        DefaultAddonsSeedStorage.initialize(applicationContext)
         AuthStorage.initialize(applicationContext)
         ServerConfigurationStorage.initialize(applicationContext)
         LibraryStorage.initialize(applicationContext)

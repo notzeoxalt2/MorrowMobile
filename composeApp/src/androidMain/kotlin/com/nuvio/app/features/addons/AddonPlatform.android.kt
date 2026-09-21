@@ -1,18 +1,18 @@
-package com.nuvio.app.features.addons
+﻿package com.streamvault.app.features.addons
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.diagnostics.SentryNetworkBreadcrumbInterceptor
-import com.nuvio.app.core.network.IPv4FirstDns
+import com.streamvault.app.core.diagnostics.SentryNetworkBreadcrumbInterceptor
+import com.streamvault.app.core.network.IPv4FirstDns
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import java.io.IOException
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.network_empty_response_body
-import nuvio.composeapp.generated.resources.network_request_failed_http
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.network_empty_response_body
+import streamvault.composeapp.generated.resources.network_request_failed_http
 import org.jetbrains.compose.resources.getString
 import okhttp3.Cache
 import okhttp3.ResponseBody

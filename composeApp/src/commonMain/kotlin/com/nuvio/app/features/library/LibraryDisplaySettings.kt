@@ -1,4 +1,4 @@
-package com.nuvio.app.features.library
+﻿package com.streamvault.app.features.library
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,4 +1,4 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
 interface Platform {
     val name: String

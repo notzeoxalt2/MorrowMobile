@@ -1,4 +1,4 @@
-package com.nuvio.app.features.tracking
+﻿package com.streamvault.app.features.tracking
 
 enum class TrackingListStatus(val wireValue: String) {
     WATCHING("watching"),

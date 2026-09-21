@@ -1,14 +1,14 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.Intent
-import com.nuvio.app.features.profiles.ProfileRepository
-import com.nuvio.app.features.watchprogress.WatchProgressCodec
-import com.nuvio.app.features.watchprogress.WatchProgressPlaybackSession
-import com.nuvio.app.features.watchprogress.WatchProgressRepository
-import com.nuvio.app.features.watchprogress.WatchProgressStorage
+import com.streamvault.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.watchprogress.WatchProgressCodec
+import com.streamvault.app.features.watchprogress.WatchProgressPlaybackSession
+import com.streamvault.app.features.watchprogress.WatchProgressRepository
+import com.streamvault.app.features.watchprogress.WatchProgressStorage
 import io.ktor.http.Url
 import io.ktor.http.encodeURLParameter
 import kotlinx.coroutines.runBlocking

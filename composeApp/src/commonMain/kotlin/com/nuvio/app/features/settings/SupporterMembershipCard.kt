@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -32,25 +32,25 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.NuvioLoadingIndicator
-import com.nuvio.app.features.membership.MemberTier
-import com.nuvio.app.features.membership.MembershipOverview
-import com.nuvio.app.features.membership.MembershipOverviewState
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.community_membership_connected_description
-import nuvio.composeapp.generated.resources.community_membership_connected_title
-import nuvio.composeapp.generated.resources.community_membership_description
-import nuvio.composeapp.generated.resources.community_membership_manage
-import nuvio.composeapp.generated.resources.community_membership_refresh
-import nuvio.composeapp.generated.resources.community_membership_refreshing
-import nuvio.composeapp.generated.resources.community_membership_supporter_since
-import nuvio.composeapp.generated.resources.community_membership_tier_supporter
-import nuvio.composeapp.generated.resources.community_membership_tier_supporter_plus
-import nuvio.composeapp.generated.resources.community_membership_title
-import nuvio.composeapp.generated.resources.community_membership_thank_you
-import nuvio.composeapp.generated.resources.community_membership_unable_load
-import nuvio.composeapp.generated.resources.community_membership_you_are
-import nuvio.composeapp.generated.resources.community_view_supporter_membership
+import com.streamvault.app.core.ui.NuvioLoadingIndicator
+import com.streamvault.app.features.membership.MemberTier
+import com.streamvault.app.features.membership.MembershipOverview
+import com.streamvault.app.features.membership.MembershipOverviewState
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.community_membership_connected_description
+import streamvault.composeapp.generated.resources.community_membership_connected_title
+import streamvault.composeapp.generated.resources.community_membership_description
+import streamvault.composeapp.generated.resources.community_membership_manage
+import streamvault.composeapp.generated.resources.community_membership_refresh
+import streamvault.composeapp.generated.resources.community_membership_refreshing
+import streamvault.composeapp.generated.resources.community_membership_supporter_since
+import streamvault.composeapp.generated.resources.community_membership_tier_supporter
+import streamvault.composeapp.generated.resources.community_membership_tier_supporter_plus
+import streamvault.composeapp.generated.resources.community_membership_title
+import streamvault.composeapp.generated.resources.community_membership_thank_you
+import streamvault.composeapp.generated.resources.community_membership_unable_load
+import streamvault.composeapp.generated.resources.community_membership_you_are
+import streamvault.composeapp.generated.resources.community_view_supporter_membership
 import org.jetbrains.compose.resources.stringResource
 
 private val CardColor = Color(0xFF07080B)

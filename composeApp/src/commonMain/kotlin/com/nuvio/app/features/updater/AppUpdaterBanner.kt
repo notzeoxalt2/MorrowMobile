@@ -1,4 +1,4 @@
-package com.nuvio.app.features.updater
+﻿package com.streamvault.app.features.updater
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -54,28 +54,28 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nuvio.app.core.build.AppFeaturePolicy
-import com.nuvio.app.core.ui.AppTheme
-import com.nuvio.app.core.ui.themePalette
-import com.nuvio.app.core.ui.accentBrush
-import com.nuvio.app.core.ui.appTheme
-import com.nuvio.app.core.ui.nuvio
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_close
-import nuvio.composeapp.generated.resources.action_continue
-import nuvio.composeapp.generated.resources.action_install
-import nuvio.composeapp.generated.resources.action_later
-import nuvio.composeapp.generated.resources.action_retry
-import nuvio.composeapp.generated.resources.action_update
-import nuvio.composeapp.generated.resources.updates_debug_test_complete
-import nuvio.composeapp.generated.resources.updates_downloading_progress
-import nuvio.composeapp.generated.resources.updates_message_allow_installs
-import nuvio.composeapp.generated.resources.updates_message_ready
-import nuvio.composeapp.generated.resources.updates_no_release_notes
-import nuvio.composeapp.generated.resources.updates_preparing_download
-import nuvio.composeapp.generated.resources.updates_release_notes
-import nuvio.composeapp.generated.resources.updates_title_allow_installs
-import nuvio.composeapp.generated.resources.updates_title_available
+import com.streamvault.app.core.build.AppFeaturePolicy
+import com.streamvault.app.core.ui.AppTheme
+import com.streamvault.app.core.ui.themePalette
+import com.streamvault.app.core.ui.accentBrush
+import com.streamvault.app.core.ui.appTheme
+import com.streamvault.app.core.ui.nuvio
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_close
+import streamvault.composeapp.generated.resources.action_continue
+import streamvault.composeapp.generated.resources.action_install
+import streamvault.composeapp.generated.resources.action_later
+import streamvault.composeapp.generated.resources.action_retry
+import streamvault.composeapp.generated.resources.action_update
+import streamvault.composeapp.generated.resources.updates_debug_test_complete
+import streamvault.composeapp.generated.resources.updates_downloading_progress
+import streamvault.composeapp.generated.resources.updates_message_allow_installs
+import streamvault.composeapp.generated.resources.updates_message_ready
+import streamvault.composeapp.generated.resources.updates_no_release_notes
+import streamvault.composeapp.generated.resources.updates_preparing_download
+import streamvault.composeapp.generated.resources.updates_release_notes
+import streamvault.composeapp.generated.resources.updates_title_allow_installs
+import streamvault.composeapp.generated.resources.updates_title_available
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

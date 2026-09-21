@@ -1,9 +1,9 @@
-package com.nuvio.app.features.library.sync
+﻿package com.streamvault.app.features.library.sync
 
-import com.nuvio.app.core.network.SupabaseProvider
-import com.nuvio.app.core.sync.putSyncOriginClientId
-import com.nuvio.app.features.home.PosterShape
-import com.nuvio.app.features.library.LibraryItem
+import com.streamvault.app.core.network.SupabaseProvider
+import com.streamvault.app.core.sync.putSyncOriginClientId
+import com.streamvault.app.features.home.PosterShape
+import com.streamvault.app.features.library.LibraryItem
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.rpc
 import kotlinx.serialization.SerialName

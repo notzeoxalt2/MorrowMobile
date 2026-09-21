@@ -1,4 +1,4 @@
-package com.nuvio.app.features.plugins
+package com.streamvault.app.features.plugins
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -69,6 +69,12 @@ data class PluginScraper(
 ) {
     fun supportsType(type: String): Boolean {
         val normalizedType = normalizePluginType(type)
+        if (normalizedType == "anime") {
+            return supportedTypes.any { st ->
+                val norm = normalizePluginType(st)
+                norm == "anime" || norm == "tv" || norm == "movie"
+            }
+        }
         return supportedTypes.map { normalizePluginType(it) }.contains(normalizedType)
     }
 }

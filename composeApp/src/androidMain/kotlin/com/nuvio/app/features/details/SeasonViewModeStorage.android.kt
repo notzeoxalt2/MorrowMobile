@@ -1,8 +1,8 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 
 actual object SeasonViewModeStorage {
     private const val preferencesName = "nuvio_season_view_mode"

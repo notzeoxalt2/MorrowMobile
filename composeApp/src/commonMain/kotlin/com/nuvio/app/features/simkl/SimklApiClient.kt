@@ -1,8 +1,8 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.addons.RawHttpResponse
-import com.nuvio.app.features.addons.httpRequestRaw
+import com.streamvault.app.features.addons.RawHttpResponse
+import com.streamvault.app.features.addons.httpRequestRaw
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.sync.Mutex

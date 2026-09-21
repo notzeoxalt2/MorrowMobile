@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -11,11 +11,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.features.p2p.P2pLoadingStatus
-import com.nuvio.app.features.player.skip.NextEpisodeCard
-import com.nuvio.app.features.player.skip.NextEpisodeInfo
-import com.nuvio.app.features.player.skip.SkipIntroButton
-import com.nuvio.app.features.player.skip.SkipInterval
+import com.streamvault.app.features.p2p.P2pLoadingStatus
+import com.streamvault.app.features.player.skip.NextEpisodeCard
+import com.streamvault.app.features.player.skip.NextEpisodeInfo
+import com.streamvault.app.features.player.skip.SkipIntroButton
+import com.streamvault.app.features.player.skip.SkipInterval
 
 @Composable
 internal fun BoxScope.PlayerPlaybackOverlays(

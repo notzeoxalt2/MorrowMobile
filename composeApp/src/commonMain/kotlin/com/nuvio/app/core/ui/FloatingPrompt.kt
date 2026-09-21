@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
@@ -51,8 +51,8 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.floating_prompt_continue_where_left_off
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.floating_prompt_continue_where_left_off
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.roundToInt
 

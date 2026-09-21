@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player.skip
+﻿package com.streamvault.app.features.player.skip
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
@@ -37,13 +37,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.player_skip
-import nuvio.composeapp.generated.resources.player_skip_intro
-import nuvio.composeapp.generated.resources.player_skip_outro
-import nuvio.composeapp.generated.resources.player_skip_recap
-import nuvio.composeapp.generated.resources.player_skip_movie_credits
-import nuvio.composeapp.generated.resources.player_skip_to_post_credits
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.player_skip
+import streamvault.composeapp.generated.resources.player_skip_intro
+import streamvault.composeapp.generated.resources.player_skip_outro
+import streamvault.composeapp.generated.resources.player_skip_recap
+import streamvault.composeapp.generated.resources.player_skip_movie_credits
+import streamvault.composeapp.generated.resources.player_skip_to_post_credits
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

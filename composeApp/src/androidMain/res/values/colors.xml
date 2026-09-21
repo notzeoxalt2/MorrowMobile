@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="app_icon_background">#000000</color>
-    <color name="nuvio_background">#0D0D0D</color>
+    <color name="app_icon_background">#0D0D14</color>
+    <!-- StreamVault brand background: deep dark violet-black -->
+    <color name="streamvault_background">#0D0D14</color>
+    <!-- Keep the old name as alias so any remaining references still compile -->
+    <color name="nuvio_background">#0D0D14</color>
+    <!-- Morrow primary accent: Cinema Red -->
+    <color name="streamvault_primary">#E50914</color>
+    <!-- Morrow secondary accent: bright red -->
+    <color name="streamvault_secondary">#FF334B</color>
 </resources>

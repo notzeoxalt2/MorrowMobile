@@ -1,8 +1,8 @@
-package com.nuvio.app.features.search
+﻿package com.streamvault.app.features.search
 
 import android.app.Application
 import android.content.Context
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment

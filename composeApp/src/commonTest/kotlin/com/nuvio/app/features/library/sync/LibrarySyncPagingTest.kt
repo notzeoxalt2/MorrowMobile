@@ -1,4 +1,4 @@
-package com.nuvio.app.features.library.sync
+﻿package com.streamvault.app.features.library.sync
 
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test

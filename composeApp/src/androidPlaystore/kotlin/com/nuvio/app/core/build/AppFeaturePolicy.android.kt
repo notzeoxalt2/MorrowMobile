@@ -1,4 +1,4 @@
-package com.nuvio.app.core.build
+﻿package com.streamvault.app.core.build
 
 actual object AppFeaturePolicy {
     actual val pluginsEnabled: Boolean = false

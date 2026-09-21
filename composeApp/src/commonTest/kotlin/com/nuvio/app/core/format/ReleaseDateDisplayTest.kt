@@ -1,4 +1,4 @@
-package com.nuvio.app.core.format
+﻿package com.streamvault.app.core.format
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

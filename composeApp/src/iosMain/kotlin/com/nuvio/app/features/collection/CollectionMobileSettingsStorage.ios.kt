@@ -1,6 +1,6 @@
-package com.nuvio.app.features.collection
+﻿package com.streamvault.app.features.collection
 
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 import platform.Foundation.NSUserDefaults
 
 actual object CollectionMobileSettingsStorage {

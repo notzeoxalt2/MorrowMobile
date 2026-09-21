@@ -1,23 +1,23 @@
-package com.nuvio.app.features.plugins.runtime.crypto
+﻿package com.streamvault.app.features.plugins.runtime.crypto
 
 import com.dokar.quickjs.QuickJs
 import com.dokar.quickjs.binding.function
-import com.nuvio.app.features.plugins.runtime.host.HostModule
-import com.nuvio.app.features.plugins.pluginDigestHex
-import com.nuvio.app.features.plugins.pluginHmacHex
-import com.nuvio.app.features.plugins.pluginBase64Encode
-import com.nuvio.app.features.plugins.pluginBase64Decode
-import com.nuvio.app.features.plugins.pluginUtf8ToHex
-import com.nuvio.app.features.plugins.pluginHexToUtf8
-import com.nuvio.app.features.plugins.pluginHexToByteArray
-import com.nuvio.app.features.plugins.pluginGetRandomValues
-import com.nuvio.app.features.plugins.pluginDigest
-import com.nuvio.app.features.plugins.pluginHmac
-import com.nuvio.app.features.plugins.pluginPbkdf2
-import com.nuvio.app.features.plugins.pluginAesDecrypt
-import com.nuvio.app.features.plugins.pluginAesEncrypt
-import com.nuvio.app.features.plugins.pluginSign
-import com.nuvio.app.features.plugins.pluginVerify
+import com.streamvault.app.features.plugins.runtime.host.HostModule
+import com.streamvault.app.features.plugins.pluginDigestHex
+import com.streamvault.app.features.plugins.pluginHmacHex
+import com.streamvault.app.features.plugins.pluginBase64Encode
+import com.streamvault.app.features.plugins.pluginBase64Decode
+import com.streamvault.app.features.plugins.pluginUtf8ToHex
+import com.streamvault.app.features.plugins.pluginHexToUtf8
+import com.streamvault.app.features.plugins.pluginHexToByteArray
+import com.streamvault.app.features.plugins.pluginGetRandomValues
+import com.streamvault.app.features.plugins.pluginDigest
+import com.streamvault.app.features.plugins.pluginHmac
+import com.streamvault.app.features.plugins.pluginPbkdf2
+import com.streamvault.app.features.plugins.pluginAesDecrypt
+import com.streamvault.app.features.plugins.pluginAesEncrypt
+import com.streamvault.app.features.plugins.pluginSign
+import com.streamvault.app.features.plugins.pluginVerify
 
 internal class CryptoBridge : HostModule {
     override fun register(runtime: QuickJs) {

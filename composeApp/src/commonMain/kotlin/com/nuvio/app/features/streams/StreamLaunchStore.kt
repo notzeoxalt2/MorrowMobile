@@ -1,4 +1,4 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
 data class StreamLaunch(
     val profileId: Int,

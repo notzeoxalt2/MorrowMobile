@@ -1,15 +1,15 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.addons.httpGetTextWithHeaders
-import com.nuvio.app.features.addons.httpPostJsonWithHeaders
-import com.nuvio.app.features.addons.httpRequestRaw
-import com.nuvio.app.features.profiles.ProfileRepository
-import com.nuvio.app.features.tracking.TrackingAuthProvider
-import com.nuvio.app.features.tracking.TrackingCapability
-import com.nuvio.app.features.tracking.TrackingProviderDescriptor
-import com.nuvio.app.features.tracking.TrackingProviderId
-import com.nuvio.app.features.tracking.TrackingProviderRegistry
+import com.streamvault.app.features.addons.httpGetTextWithHeaders
+import com.streamvault.app.features.addons.httpPostJsonWithHeaders
+import com.streamvault.app.features.addons.httpRequestRaw
+import com.streamvault.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.tracking.TrackingAuthProvider
+import com.streamvault.app.features.tracking.TrackingCapability
+import com.streamvault.app.features.tracking.TrackingProviderDescriptor
+import com.streamvault.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.TrackingProviderRegistry
 import io.ktor.http.Url
 import io.ktor.http.encodeURLParameter
 import kotlinx.coroutines.CancellationException
@@ -28,7 +28,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlin.random.Random
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.StringResource
 import kotlinx.coroutines.runBlocking

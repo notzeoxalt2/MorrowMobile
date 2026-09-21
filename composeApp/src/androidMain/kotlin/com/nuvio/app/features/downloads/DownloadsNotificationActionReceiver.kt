@@ -1,4 +1,4 @@
-package com.nuvio.app.features.downloads
+﻿package com.streamvault.app.features.downloads
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -37,8 +37,8 @@ class DownloadsNotificationActionReceiver : BroadcastReceiver() {
     }
 
     companion object {
-        const val actionPause = "com.nuvio.app.downloads.action.PAUSE"
-        const val actionResume = "com.nuvio.app.downloads.action.RESUME"
+        const val actionPause = "com.streamvault.app.downloads.action.PAUSE"
+        const val actionResume = "com.streamvault.app.downloads.action.RESUME"
         const val extraDownloadId = "download_id"
     }
 }

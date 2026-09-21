@@ -1,8 +1,8 @@
-package com.nuvio.app.core.auth
+package com.streamvault.app.core.auth
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.network.SupabaseProvider
-import com.nuvio.app.core.storage.LocalAccountDataCleaner
+import com.streamvault.app.core.network.SupabaseProvider
+import com.streamvault.app.core.storage.LocalAccountDataCleaner
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.exception.AuthRestException
 import io.github.jan.supabase.auth.providers.builtin.Email
@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
 object AuthRepository {
@@ -48,11 +48,12 @@ object AuthRepository {
                 email = null,
                 isAnonymous = true,
             )
+        } else {
+            signInAnonymously()
         }
 
         sessionStatusJob = scope.launch {
             SupabaseProvider.client.auth.sessionStatus.collect { status ->
-                if (AuthStorage.loadAnonymousUserId() != null) return@collect
                 when (status) {
                     is SessionStatus.Authenticated -> {
                         val user = status.session.user
@@ -65,15 +66,19 @@ object AuthRepository {
                         )
                     }
                     is SessionStatus.NotAuthenticated -> {
-                        _state.value = AuthState.Unauthenticated
+                        if (AuthStorage.loadAnonymousUserId() == null) {
+                            signInAnonymously()
+                        }
                     }
                     is SessionStatus.Initializing -> {
                         if (AuthStorage.loadAnonymousUserId() == null) {
-                            _state.value = AuthState.Loading
+                            signInAnonymously()
                         }
                     }
                     is SessionStatus.RefreshFailure -> {
-                        _state.value = AuthState.Unauthenticated
+                        if (AuthStorage.loadAnonymousUserId() == null) {
+                            signInAnonymously()
+                        }
                     }
                 }
             }

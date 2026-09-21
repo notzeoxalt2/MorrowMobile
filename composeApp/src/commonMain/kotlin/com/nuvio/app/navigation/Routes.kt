@@ -1,4 +1,4 @@
-package com.nuvio.app.navigation
+﻿package com.streamvault.app.navigation
 
 import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.streams
+package com.streamvault.app.features.streams
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
@@ -39,7 +39,7 @@ import androidx.compose.material.icons.rounded.ContentCopy
 import androidx.compose.material.icons.rounded.Download
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.SearchOff
-import com.nuvio.app.core.ui.NuvioLoadingIndicator
+import com.streamvault.app.core.ui.NuvioLoadingIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -69,33 +69,33 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
-import com.nuvio.app.core.build.AppFeaturePolicy
-import com.nuvio.app.core.ui.NuvioBackButton
-import com.nuvio.app.core.ui.NuvioBottomSheetActionRow
-import com.nuvio.app.core.ui.NuvioBottomSheetDivider
-import com.nuvio.app.core.ui.NuvioModalBottomSheet
-import com.nuvio.app.core.ui.NuvioToastController
-import com.nuvio.app.core.ui.dismissNuvioBottomSheet
-import com.nuvio.app.features.downloads.DownloadsRepository
-import com.nuvio.app.features.details.MetaScreenSettingsRepository
+import com.streamvault.app.core.build.AppFeaturePolicy
+import com.streamvault.app.core.ui.NuvioBackButton
+import com.streamvault.app.core.ui.NuvioBottomSheetActionRow
+import com.streamvault.app.core.ui.NuvioBottomSheetDivider
+import com.streamvault.app.core.ui.NuvioModalBottomSheet
+import com.streamvault.app.core.ui.NuvioToastController
+import com.streamvault.app.core.ui.dismissNuvioBottomSheet
+import com.streamvault.app.features.downloads.DownloadsRepository
+import com.streamvault.app.features.details.MetaScreenSettingsRepository
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.rememberModalBottomSheetState
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.ui.nuvioSafeBottomPadding
-import com.nuvio.app.features.debrid.DebridSettingsRepository
-import com.nuvio.app.features.debrid.DirectDebridPlayableResult
-import com.nuvio.app.features.debrid.DirectDebridPlaybackResolver
-import com.nuvio.app.features.debrid.toastMessage
-import com.nuvio.app.features.player.PlayerSettingsRepository
-import com.nuvio.app.features.watchprogress.WatchProgressRepository
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
-import com.nuvio.app.features.watched.WatchedRepository
-import com.nuvio.app.features.watched.watchedItemKeys
-import com.nuvio.app.navigation.LocalUseNativeNavigation
+import com.streamvault.app.core.ui.nuvioSafeBottomPadding
+import com.streamvault.app.features.debrid.DebridSettingsRepository
+import com.streamvault.app.features.debrid.DirectDebridPlayableResult
+import com.streamvault.app.features.debrid.DirectDebridPlaybackResolver
+import com.streamvault.app.features.debrid.toastMessage
+import com.streamvault.app.features.player.PlayerSettingsRepository
+import com.streamvault.app.features.watchprogress.WatchProgressRepository
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watched.WatchedRepository
+import com.streamvault.app.features.watched.watchedItemKeys
+import com.streamvault.app.navigation.LocalUseNativeNavigation
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 // ---------------------------------------------------------------------------
@@ -187,11 +187,12 @@ fun StreamsScreen(
     val effectiveResumePositionMs = resumeState.positionMs
     val effectiveResumeProgressFraction = resumeState.progressFraction
 
-    LaunchedEffect(type, videoId, seasonNumber, episodeNumber, manualSelection) {
+    LaunchedEffect(type, videoId, seasonNumber, episodeNumber, manualSelection, title) {
         StreamsRepository.load(
             type = type,
             videoId = videoId,
             parentMetaId = parentMetaId,
+            title = title,
             season = seasonNumber,
             episode = episodeNumber,
             manualSelection = manualSelection,
@@ -227,6 +228,7 @@ fun StreamsScreen(
             type = type,
             videoId = videoId,
             parentMetaId = parentMetaId,
+            title = title,
             season = seasonNumber,
             episode = episodeNumber,
             manualSelection = manualSelection,

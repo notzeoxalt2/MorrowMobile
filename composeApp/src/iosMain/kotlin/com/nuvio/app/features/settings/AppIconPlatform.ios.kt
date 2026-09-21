@@ -1,8 +1,8 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
-import com.nuvio.app.nativebridge.NuvioIsCurrentAlternateAppIcon
-import com.nuvio.app.nativebridge.NuvioSetAlternateAppIconName
-import com.nuvio.app.nativebridge.NuvioSupportsAlternateAppIcons
+import com.streamvault.app.nativebridge.NuvioIsCurrentAlternateAppIcon
+import com.streamvault.app.nativebridge.NuvioSetAlternateAppIconName
+import com.streamvault.app.nativebridge.NuvioSupportsAlternateAppIcons
 import kotlinx.cinterop.CFunction
 import kotlinx.cinterop.CPointer
 import kotlinx.cinterop.ExperimentalForeignApi

@@ -1,4 +1,4 @@
-package com.nuvio.app.core.auth
+﻿package com.streamvault.app.core.auth
 
 sealed interface AuthState {
     data object Loading : AuthState

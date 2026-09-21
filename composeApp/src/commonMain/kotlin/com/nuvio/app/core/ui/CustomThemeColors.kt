@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 data class CustomThemeColors(
     val first: Int = 0xB75AFF,

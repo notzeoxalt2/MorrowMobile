@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -44,12 +44,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.ui.nuvioTypeScale
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.compose_player_episode_code_full
-import nuvio.composeapp.generated.resources.compose_player_go_back
-import nuvio.composeapp.generated.resources.compose_player_playback_error
-import nuvio.composeapp.generated.resources.compose_player_youre_watching
+import com.streamvault.app.core.ui.nuvioTypeScale
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.compose_player_episode_code_full
+import streamvault.composeapp.generated.resources.compose_player_go_back
+import streamvault.composeapp.generated.resources.compose_player_playback_error
+import streamvault.composeapp.generated.resources.compose_player_youre_watching
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.max

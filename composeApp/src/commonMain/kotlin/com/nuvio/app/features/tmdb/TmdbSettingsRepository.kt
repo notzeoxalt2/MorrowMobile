@@ -1,8 +1,8 @@
-package com.nuvio.app.features.tmdb
+package com.streamvault.app.features.tmdb
 
-import com.nuvio.app.features.details.MetaDetailsRepository
-import com.nuvio.app.features.profiles.ProfileRepository
-import com.nuvio.app.features.watchprogress.ContinueWatchingEnrichmentCache
+import com.streamvault.app.features.details.MetaDetailsRepository
+import com.streamvault.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.watchprogress.ContinueWatchingEnrichmentCache
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -43,7 +43,7 @@ object TmdbSettingsRepository {
         return _uiState.value
     }
 
-    fun effectiveApiKey(): String = snapshot().apiKey.ifBlank { TmdbConfig.API_KEY }
+    fun effectiveApiKey(): String = snapshot().apiKey.ifBlank { TmdbConfig.API_KEY.ifBlank { TmdbService.DEFAULT_TMDB_API_KEY } }
 
     fun setEnabled(value: Boolean) {
         ensureLoaded()

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
 internal expect object StreamLinkCacheStorage {
     fun loadEntry(hashedKey: String): String?

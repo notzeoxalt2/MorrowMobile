@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
@@ -48,23 +48,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
-import com.nuvio.app.core.ui.landscapePosterHeightForWidth
-import com.nuvio.app.core.ui.landscapePosterWidth
-import com.nuvio.app.core.ui.rememberPosterCardStyleUiState
-import com.nuvio.app.features.home.components.HomeSkeletonRow
-import com.nuvio.app.core.ui.skeleton
-import com.nuvio.app.features.details.components.DetailPosterRailSection
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.tmdb.TmdbEntityBrowseData
-import com.nuvio.app.features.tmdb.TmdbEntityKind
-import com.nuvio.app.features.tmdb.TmdbEntityMediaType
-import com.nuvio.app.features.tmdb.TmdbEntityRailType
-import com.nuvio.app.features.tmdb.TmdbMetadataService
-import com.nuvio.app.features.watched.WatchedRepository
-import com.nuvio.app.navigation.LocalUseNativeNavigation
+import com.streamvault.app.core.ui.landscapePosterHeightForWidth
+import com.streamvault.app.core.ui.landscapePosterWidth
+import com.streamvault.app.core.ui.rememberPosterCardStyleUiState
+import com.streamvault.app.features.home.components.HomeSkeletonRow
+import com.streamvault.app.core.ui.skeleton
+import com.streamvault.app.features.details.components.DetailPosterRailSection
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.tmdb.TmdbEntityBrowseData
+import com.streamvault.app.features.tmdb.TmdbEntityKind
+import com.streamvault.app.features.tmdb.TmdbEntityMediaType
+import com.streamvault.app.features.tmdb.TmdbEntityRailType
+import com.streamvault.app.features.tmdb.TmdbMetadataService
+import com.streamvault.app.features.watched.WatchedRepository
+import com.streamvault.app.navigation.LocalUseNativeNavigation
 
 private sealed interface EntityBrowseUiState {
     data object Loading : EntityBrowseUiState
@@ -312,7 +312,7 @@ private fun WideEntityBrowseContent(
 
 @Composable
 private fun EntityIdentitySidebar(
-    header: com.nuvio.app.features.tmdb.TmdbEntityHeader,
+    header: com.streamvault.app.features.tmdb.TmdbEntityHeader,
     catalogueCount: Int,
     modifier: Modifier = Modifier,
 ) {
@@ -483,7 +483,7 @@ private fun EntitySidebarLabel(text: String) {
 }
 
 @Composable
-private fun entityRailTitle(rail: com.nuvio.app.features.tmdb.TmdbEntityRail): String {
+private fun entityRailTitle(rail: com.streamvault.app.features.tmdb.TmdbEntityRail): String {
     val mediaLabel = when (rail.mediaType) {
         TmdbEntityMediaType.MOVIE -> stringResource(Res.string.media_movies)
         TmdbEntityMediaType.TV -> stringResource(Res.string.media_series)
@@ -498,7 +498,7 @@ private fun entityRailTitle(rail: com.nuvio.app.features.tmdb.TmdbEntityRail): S
 
 @Composable
 private fun EntityHeroSection(
-    header: com.nuvio.app.features.tmdb.TmdbEntityHeader,
+    header: com.streamvault.app.features.tmdb.TmdbEntityHeader,
     modifier: Modifier = Modifier,
 ) {
     val hasLogo = !header.logo.isNullOrBlank()

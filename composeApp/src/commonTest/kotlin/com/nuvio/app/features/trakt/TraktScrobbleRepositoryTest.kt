@@ -1,6 +1,6 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
-import com.nuvio.app.features.tracking.buildTrackingMediaReference
+import com.streamvault.app.features.tracking.buildTrackingMediaReference
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

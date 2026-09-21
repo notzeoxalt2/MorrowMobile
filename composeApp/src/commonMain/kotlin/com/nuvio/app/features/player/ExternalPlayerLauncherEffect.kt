@@ -1,7 +1,7 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.runtime.Composable
-import com.nuvio.app.features.watchprogress.WatchProgressPlaybackSession
+import com.streamvault.app.features.watchprogress.WatchProgressPlaybackSession
 
 /**
  * Common playback result from an external player.

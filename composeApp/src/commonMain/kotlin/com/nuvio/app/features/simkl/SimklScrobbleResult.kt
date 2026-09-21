@@ -1,9 +1,9 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
-import com.nuvio.app.features.tracking.TrackingMediaKind
-import com.nuvio.app.features.tracking.TrackingMediaReference
-import com.nuvio.app.features.tracking.TrackingScrobbleAction
-import com.nuvio.app.features.tracking.TrackingScrobbleEvent
+import com.streamvault.app.features.tracking.TrackingMediaKind
+import com.streamvault.app.features.tracking.TrackingMediaReference
+import com.streamvault.app.features.tracking.TrackingScrobbleAction
+import com.streamvault.app.features.tracking.TrackingScrobbleEvent
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement

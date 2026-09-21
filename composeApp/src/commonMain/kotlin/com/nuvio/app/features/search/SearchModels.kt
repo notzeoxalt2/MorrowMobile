@@ -1,7 +1,7 @@
-package com.nuvio.app.features.search
+﻿package com.streamvault.app.features.search
 
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.HomeCatalogSection
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.HomeCatalogSection
 
 enum class SearchEmptyStateReason {
     NoActiveAddons,

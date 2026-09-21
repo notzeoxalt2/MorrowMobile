@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
 enum class EpisodeRatingsVisibility {
     SHOW_ALL,

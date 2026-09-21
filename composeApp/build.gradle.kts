@@ -53,7 +53,7 @@ abstract class GenerateRuntimeConfigsTask : DefaultTask() {
             mkdirs()
             resolve("SupabaseConfig.kt").writeText(
                 """
-                |package com.nuvio.app.core.network
+                |package com.streamvault.app.core.network
                 |
                 |object SupabaseConfig {
                 |    const val URL = "${supabaseUrl.get()}"
@@ -68,7 +68,7 @@ abstract class GenerateRuntimeConfigsTask : DefaultTask() {
             mkdirs()
             resolve("SentryConfig.kt").writeText(
                 """
-                |package com.nuvio.app.core.diagnostics
+                |package com.streamvault.app.core.diagnostics
                 |
                 |object SentryConfig {
                 |    const val DSN = "${sentryDsn.get()}"
@@ -82,7 +82,7 @@ abstract class GenerateRuntimeConfigsTask : DefaultTask() {
             mkdirs()
             resolve("TmdbConfig.kt").writeText(
                 """
-                |package com.nuvio.app.features.tmdb
+                |package com.streamvault.app.features.tmdb
                 |
                 |object TmdbConfig {
                 |    const val API_KEY = "${tmdbApiKey.get()}"
@@ -95,7 +95,7 @@ abstract class GenerateRuntimeConfigsTask : DefaultTask() {
             mkdirs()
             resolve("TraktConfig.kt").writeText(
                 """
-                |package com.nuvio.app.features.trakt
+                |package com.streamvault.app.features.trakt
                 |
                 |object TraktConfig {
                 |    const val CLIENT_ID = "${props.getProperty("TRAKT_CLIENT_ID", "")}" 
@@ -110,12 +110,12 @@ abstract class GenerateRuntimeConfigsTask : DefaultTask() {
             mkdirs()
             resolve("SimklConfig.kt").writeText(
                 """
-                |package com.nuvio.app.features.simkl
+                |package com.streamvault.app.features.simkl
                 |
                 |object SimklConfig {
                 |    const val CLIENT_ID = "${props.getProperty("SIMKL_CLIENT_ID", "")}"
                 |    const val REDIRECT_URI = "${props.getProperty("SIMKL_REDIRECT_URI", "nuvio://auth/simkl")}"
-                |    const val APP_NAME = "${props.getProperty("SIMKL_APP_NAME", "nuvio")}"
+                |    const val APP_NAME = "${props.getProperty("SIMKL_APP_NAME", "streamvault")}"
                 |}
                 """.trimMargin()
             )
@@ -125,7 +125,7 @@ abstract class GenerateRuntimeConfigsTask : DefaultTask() {
             mkdirs()
             resolve("IntroDbConfig.kt").writeText(
                 """
-                |package com.nuvio.app.features.player.skip
+                |package com.streamvault.app.features.player.skip
                 |
                 |object IntroDbConfig {
                 |    const val URL = "${props.getProperty("INTRODB_API_URL", "")}" 
@@ -138,7 +138,7 @@ abstract class GenerateRuntimeConfigsTask : DefaultTask() {
             mkdirs()
             resolve("ImdbEpisodeRatingsConfig.kt").writeText(
                 """
-                |package com.nuvio.app.features.details
+                |package com.streamvault.app.features.details
                 |
                 |object ImdbEpisodeRatingsConfig {
                 |    const val IMDB_RATINGS_API_BASE_URL = "${props.getProperty("IMDB_RATINGS_API_BASE_URL", "")}" 
@@ -152,7 +152,7 @@ abstract class GenerateRuntimeConfigsTask : DefaultTask() {
             mkdirs()
             resolve("PremiumizeConfig.kt").writeText(
                 """
-                |package com.nuvio.app.features.debrid
+                |package com.streamvault.app.features.debrid
                 |
                 |object PremiumizeConfig {
                 |    const val CLIENT_ID = "${props.getProperty("PREMIUMIZE_CLIENT_ID", "")}"
@@ -165,7 +165,7 @@ abstract class GenerateRuntimeConfigsTask : DefaultTask() {
             mkdirs()
             resolve("AppVersionConfig.kt").writeText(
                 """
-                |package com.nuvio.app.core.build
+                |package com.streamvault.app.core.build
                 |
                 |object AppVersionConfig {
                 |    const val VERSION_NAME = "${appVersionName.get()}"
@@ -179,7 +179,7 @@ abstract class GenerateRuntimeConfigsTask : DefaultTask() {
             mkdirs()
             resolve("CommunityConfig.kt").writeText(
                 """
-                |package com.nuvio.app.features.settings
+                |package com.streamvault.app.features.settings
                 |
                 |object CommunityConfig {
                 |    const val CONTRIBUTIONS_URL = "${props.getProperty("CONTRIBUTIONS_URL", "")}" 
@@ -308,7 +308,7 @@ val generateRuntimeConfigs = tasks.register<GenerateRuntimeConfigsTask>("generat
     supabaseAnonKey.set(runtimeConfigValue("NUVIO_SUPABASE_ANON_KEY"))
     supabaseFallbackUrl.set(runtimeConfigValue("NUVIO_SUPABASE_FALLBACK_URL"))
     sentryDsn.set(runtimeConfigValue("SENTRY_DSN"))
-    tmdbApiKey.set(runtimeConfigValue("TMDB_API_KEY"))
+    tmdbApiKey.set(runtimeConfigValue("TMDB_API_KEY", "439c478a771f35c05022f9feabcca01c"))
     sentryEnvironment.set(
         when {
             requestedGradleTasks.any { "benchmark" in it } -> "benchmark"
@@ -324,7 +324,7 @@ tasks.withType<KotlinCompilationTask<*>>().configureEach {
 
 kotlin {
     android {
-        namespace = "com.nuvio.app"
+        namespace = "com.streamvault.app"
         compileSdk {
             version = release(libs.versions.android.compileSdk.get().toInt()) {
                 minorApiLevel = libs.versions.android.compileSdkMinor.get().toInt()
@@ -339,10 +339,15 @@ kotlin {
         }
     }
     
-    val iosTargets = listOf(
-        iosArm64(),
-        iosSimulatorArm64()
-    )
+    val isHostMac = System.getProperty("os.name").contains("Mac", ignoreCase = true)
+    val iosTargets = if (isHostMac) {
+        listOf(
+            iosArm64(),
+            iosSimulatorArm64()
+        )
+    } else {
+        emptyList()
+    }
 
     iosTargets.forEach { iosTarget ->
         val nuvioEngineSlice = if (iosTarget.name == "iosArm64") {
@@ -444,6 +449,8 @@ kotlin {
                     implementation(files("libs/quickjs-kt-android-1.0.5-nuvio.aar"))
                     implementation(libs.ksoup)
                 }
+                // StreamVault: Aniyomi extension engine
+                implementation(project(":aniyomi-ext-engine"))
             }
         }
         val androidHostTest by getting {

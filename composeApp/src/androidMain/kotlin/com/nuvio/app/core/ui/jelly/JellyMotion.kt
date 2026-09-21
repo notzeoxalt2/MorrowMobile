@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui.jelly
+﻿package com.streamvault.app.core.ui.jelly
 
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue

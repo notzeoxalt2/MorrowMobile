@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details.components
+﻿package com.streamvault.app.features.details.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -16,10 +16,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.format.formatReleaseDateForDisplay
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.details.formatRuntimeForDisplay
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.format.formatReleaseDateForDisplay
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.details.formatRuntimeForDisplay
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

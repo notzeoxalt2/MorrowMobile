@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -13,11 +13,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nuvio.app.isIos
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.compose_player_resize_fill
-import nuvio.composeapp.generated.resources.compose_player_resize_fit
-import nuvio.composeapp.generated.resources.compose_player_resize_zoom
+import com.streamvault.app.isIos
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.compose_player_resize_fill
+import streamvault.composeapp.generated.resources.compose_player_resize_fit
+import streamvault.composeapp.generated.resources.compose_player_resize_zoom
 import org.jetbrains.compose.resources.StringResource
 import kotlin.math.max
 

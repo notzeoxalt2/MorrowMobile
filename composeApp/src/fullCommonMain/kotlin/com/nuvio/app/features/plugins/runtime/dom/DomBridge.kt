@@ -1,4 +1,4 @@
-package com.nuvio.app.features.plugins.runtime.dom
+package com.streamvault.app.features.plugins.runtime.dom
 
 import com.dokar.quickjs.QuickJs
 import com.dokar.quickjs.binding.function
@@ -6,7 +6,7 @@ import com.fleeksoft.ksoup.Ksoup
 import com.fleeksoft.ksoup.nodes.Document
 import com.fleeksoft.ksoup.nodes.Element
 import com.fleeksoft.ksoup.select.Elements
-import com.nuvio.app.features.plugins.runtime.host.HostModule
+import com.streamvault.app.features.plugins.runtime.host.HostModule
 import kotlin.random.Random
 
 internal class DomBridge : HostModule {
@@ -54,6 +54,29 @@ internal class DomBridge : HostModule {
                 val elements = element.select(selector)
                 val ids = elements.mapIndexed { index, el ->
                     val id = "$docId:find:$index:${el.hashCode()}"
+                    elementCache[id] = el
+                    id
+                }
+                "[" + ids.joinToString(",") { "\"${it.replace("\"", "\\\"")}\"" } + "]"
+            } catch (_: Exception) {
+                "[]"
+            }
+        }
+
+        runtime.function("__cheerio_children") { args ->
+            val docId = args.getOrNull(0)?.toString() ?: ""
+            val elementId = args.getOrNull(1)?.toString() ?: ""
+            val selector = args.getOrNull(2)?.toString() ?: ""
+            val element = elementCache[elementId] ?: return@function "[]"
+            try {
+                val elements = if (selector.isBlank() || selector == "*") {
+                    element.children()
+                } else {
+                    val formatted = selector.replace(containsRegex, ":contains($1)")
+                    element.children().select(formatted)
+                }
+                val ids = elements.mapIndexed { index, el ->
+                    val id = "$docId:child:$index:${el.hashCode()}"
                     elementCache[id] = el
                     id
                 }
@@ -111,6 +134,16 @@ internal class DomBridge : HostModule {
             val prevId = "$docId:prev:${prev.hashCode()}"
             elementCache[prevId] = prev
             prevId
+        }
+
+        runtime.function("__cheerio_parent") { args ->
+            val docId = args.getOrNull(0)?.toString() ?: ""
+            val elementId = args.getOrNull(1)?.toString() ?: ""
+            val element = elementCache[elementId] ?: return@function "__NONE__"
+            val parent = element.parent() ?: return@function "__NONE__"
+            val parentId = "$docId:parent:${parent.hashCode()}"
+            elementCache[parentId] = parent
+            parentId
         }
     }
 

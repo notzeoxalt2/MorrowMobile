@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -46,18 +46,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.nuvio
-import com.nuvio.app.core.ui.withDuplicateSafeLazyKeys
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.addon_title
-import nuvio.composeapp.generated.resources.compose_player_built_in
-import nuvio.composeapp.generated.resources.compose_player_fetch_subtitles
-import nuvio.composeapp.generated.resources.compose_player_languages
-import nuvio.composeapp.generated.resources.compose_player_none
-import nuvio.composeapp.generated.resources.compose_player_style
-import nuvio.composeapp.generated.resources.compose_player_subtitles
-import nuvio.composeapp.generated.resources.settings_playback_option_forced
-import nuvio.composeapp.generated.resources.subtitle_language_unknown
+import com.streamvault.app.core.ui.nuvio
+import com.streamvault.app.core.ui.withDuplicateSafeLazyKeys
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.addon_title
+import streamvault.composeapp.generated.resources.compose_player_built_in
+import streamvault.composeapp.generated.resources.compose_player_fetch_subtitles
+import streamvault.composeapp.generated.resources.compose_player_languages
+import streamvault.composeapp.generated.resources.compose_player_none
+import streamvault.composeapp.generated.resources.compose_player_style
+import streamvault.composeapp.generated.resources.compose_player_subtitles
+import streamvault.composeapp.generated.resources.settings_playback_option_forced
+import streamvault.composeapp.generated.resources.subtitle_language_unknown
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

@@ -1,14 +1,14 @@
-package com.nuvio.app.features.watching.sync
+﻿package com.streamvault.app.features.watching.sync
 
-import com.nuvio.app.features.addons.DefaultRawHttpResponseMaxBytes
-import com.nuvio.app.features.addons.RawHttpResponse
-import com.nuvio.app.features.trakt.TRAKT_WATCHED_MAX_RESPONSE_BODY_BYTES
-import com.nuvio.app.features.trakt.TraktWatchedHttpEngine
-import com.nuvio.app.features.trakt.TraktWatchedHttpException
-import com.nuvio.app.features.trakt.TraktWatchedPageClient
-import com.nuvio.app.features.watched.WatchedItem
-import com.nuvio.app.features.watched.watchedItemKey
-import com.nuvio.app.features.watched.watchedItemKeys
+import com.streamvault.app.features.addons.DefaultRawHttpResponseMaxBytes
+import com.streamvault.app.features.addons.RawHttpResponse
+import com.streamvault.app.features.trakt.TRAKT_WATCHED_MAX_RESPONSE_BODY_BYTES
+import com.streamvault.app.features.trakt.TraktWatchedHttpEngine
+import com.streamvault.app.features.trakt.TraktWatchedHttpException
+import com.streamvault.app.features.trakt.TraktWatchedPageClient
+import com.streamvault.app.features.watched.WatchedItem
+import com.streamvault.app.features.watched.watchedItemKey
+import com.streamvault.app.features.watched.watchedItemKeys
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals

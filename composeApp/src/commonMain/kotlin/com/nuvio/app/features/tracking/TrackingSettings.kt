@@ -1,10 +1,10 @@
-package com.nuvio.app.features.tracking
+﻿package com.streamvault.app.features.tracking
 
-import com.nuvio.app.features.library.LibrarySourceMode
-import com.nuvio.app.features.simkl.SimklAnimeIdPreference
-import com.nuvio.app.features.trakt.MoreLikeThisSourcePreference
-import com.nuvio.app.features.trakt.TraktSettingsRepository
-import com.nuvio.app.features.trakt.TraktSettingsUiState
+import com.streamvault.app.features.library.LibrarySourceMode
+import com.streamvault.app.features.simkl.SimklAnimeIdPreference
+import com.streamvault.app.features.trakt.MoreLikeThisSourcePreference
+import com.streamvault.app.features.trakt.TraktSettingsRepository
+import com.streamvault.app.features.trakt.TraktSettingsUiState
 import kotlinx.coroutines.flow.StateFlow
 
 /**

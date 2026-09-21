@@ -1,4 +1,4 @@
-package com.nuvio.app.features.profiles
+﻿package com.streamvault.app.features.profiles
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -36,12 +36,12 @@ import coil3.compose.LocalPlatformContext
 import coil3.request.CachePolicy
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import com.nuvio.app.core.ui.themePalette
-import com.nuvio.app.core.ui.accentBrush
-import com.nuvio.app.features.membership.ProfileBackgroundCatalogItem
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.profile_background_custom
-import nuvio.composeapp.generated.resources.profile_background_normal
+import com.streamvault.app.core.ui.themePalette
+import com.streamvault.app.core.ui.accentBrush
+import com.streamvault.app.features.membership.ProfileBackgroundCatalogItem
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.profile_background_custom
+import streamvault.composeapp.generated.resources.profile_background_normal
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalLayoutApi::class)

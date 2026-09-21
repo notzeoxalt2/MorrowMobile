@@ -1,8 +1,8 @@
-package com.nuvio.app.features.collection
+﻿package com.streamvault.app.features.collection
 
-import com.nuvio.app.features.addons.AddonCatalog
-import com.nuvio.app.features.addons.ManagedAddon
-import com.nuvio.app.features.addons.enabledAddons
+import com.streamvault.app.features.addons.AddonCatalog
+import com.streamvault.app.features.addons.ManagedAddon
+import com.streamvault.app.features.addons.enabledAddons
 
 internal data class ResolvedCollectionCatalog(
     val addon: ManagedAddon,

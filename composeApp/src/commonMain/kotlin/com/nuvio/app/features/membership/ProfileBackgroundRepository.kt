@@ -1,7 +1,7 @@
-package com.nuvio.app.features.membership
+﻿package com.streamvault.app.features.membership
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.network.SupabaseProvider
+import com.streamvault.app.core.network.SupabaseProvider
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.storage.storage
 import kotlinx.coroutines.CancellationException

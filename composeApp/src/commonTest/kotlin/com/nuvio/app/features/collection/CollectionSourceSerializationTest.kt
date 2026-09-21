@@ -1,4 +1,4 @@
-package com.nuvio.app.features.collection
+﻿package com.streamvault.app.features.collection
 
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString

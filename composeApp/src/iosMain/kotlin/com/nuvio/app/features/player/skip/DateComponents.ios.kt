@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player.skip
+﻿package com.streamvault.app.features.player.skip
 
 import platform.Foundation.NSCalendar
 import platform.Foundation.NSCalendarUnitDay

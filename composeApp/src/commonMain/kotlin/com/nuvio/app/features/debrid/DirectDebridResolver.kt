@@ -1,10 +1,10 @@
-package com.nuvio.app.features.debrid
+﻿package com.streamvault.app.features.debrid
 
-import com.nuvio.app.features.streams.StreamBehaviorHints
-import com.nuvio.app.features.streams.StreamClientResolve
-import com.nuvio.app.features.streams.StreamDebridCacheState
-import com.nuvio.app.features.streams.StreamItem
-import com.nuvio.app.features.streams.epochMs
+import com.streamvault.app.features.streams.StreamBehaviorHints
+import com.streamvault.app.features.streams.StreamClientResolve
+import com.streamvault.app.features.streams.StreamDebridCacheState
+import com.streamvault.app.features.streams.StreamItem
+import com.streamvault.app.features.streams.epochMs
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
@@ -15,11 +15,11 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.debrid_missing_api_key
-import nuvio.composeapp.generated.resources.debrid_not_cached
-import nuvio.composeapp.generated.resources.debrid_resolve_failed
-import nuvio.composeapp.generated.resources.debrid_stream_stale
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.debrid_missing_api_key
+import streamvault.composeapp.generated.resources.debrid_not_cached
+import streamvault.composeapp.generated.resources.debrid_resolve_failed
+import streamvault.composeapp.generated.resources.debrid_stream_stale
 import org.jetbrains.compose.resources.getString
 
 object DirectDebridPlaybackResolver {

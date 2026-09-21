@@ -1,8 +1,8 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
-import com.nuvio.app.features.downloads.DownloadSubtitles
-import com.nuvio.app.features.player.skip.SkipInterval
-import com.nuvio.app.features.player.skip.SkipIntroRepository
+import com.streamvault.app.features.downloads.DownloadSubtitles
+import com.streamvault.app.features.player.skip.SkipInterval
+import com.streamvault.app.features.player.skip.SkipIntroRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -12,9 +12,9 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.serialization.json.addJsonObject
 import kotlinx.serialization.json.buildJsonArray
 import kotlinx.serialization.json.put
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.player_external_downloading_subtitles
-import nuvio.composeapp.generated.resources.player_external_loading_subtitles
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.player_external_downloading_subtitles
+import streamvault.composeapp.generated.resources.player_external_loading_subtitles
 import org.jetbrains.compose.resources.getString
 
 private const val SkipSegmentResolveTimeoutMs = 4_000L

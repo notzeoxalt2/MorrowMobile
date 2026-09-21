@@ -1,4 +1,4 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
 import io.ktor.http.Url
 import io.ktor.http.encodeURLParameter

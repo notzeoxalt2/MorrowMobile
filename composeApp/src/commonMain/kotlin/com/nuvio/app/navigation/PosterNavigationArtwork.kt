@@ -1,4 +1,4 @@
-package com.nuvio.app.navigation
+﻿package com.streamvault.app.navigation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,8 +15,8 @@ import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.platform.LocalDensity
-import com.nuvio.app.core.ui.PosterOpenMotion
-import com.nuvio.app.core.ui.drawLiftedPoster
+import com.streamvault.app.core.ui.PosterOpenMotion
+import com.streamvault.app.core.ui.drawLiftedPoster
 
 @Composable
 internal fun PosterNavigationArtwork(request: PosterNavigationRequest) {

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
@@ -21,14 +21,14 @@ import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.NuvioBottomSheetActionRow
-import com.nuvio.app.core.ui.NuvioBottomSheetDivider
-import com.nuvio.app.core.ui.NuvioModalBottomSheet
-import com.nuvio.app.core.ui.NuvioPrimaryButton
-import com.nuvio.app.core.ui.dismissNuvioBottomSheet
-import com.nuvio.app.core.ui.floatingNavigationGlowSupported
+import com.streamvault.app.core.ui.NuvioBottomSheetActionRow
+import com.streamvault.app.core.ui.NuvioBottomSheetDivider
+import com.streamvault.app.core.ui.NuvioModalBottomSheet
+import com.streamvault.app.core.ui.NuvioPrimaryButton
+import com.streamvault.app.core.ui.dismissNuvioBottomSheet
+import com.streamvault.app.core.ui.floatingNavigationGlowSupported
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)

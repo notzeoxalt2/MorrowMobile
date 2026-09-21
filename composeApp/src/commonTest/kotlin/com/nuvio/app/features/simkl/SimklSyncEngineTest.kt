@@ -1,6 +1,6 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
-import com.nuvio.app.features.addons.RawHttpResponse
+import com.streamvault.app.features.addons.RawHttpResponse
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json

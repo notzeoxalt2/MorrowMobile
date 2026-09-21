@@ -1,6 +1,6 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
-import com.nuvio.app.core.build.AppFeaturePolicy
+import com.streamvault.app.core.build.AppFeaturePolicy
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -24,7 +24,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material3.BasicAlertDialog
-import com.nuvio.app.core.ui.NuvioLoadingIndicator
+import com.streamvault.app.core.ui.NuvioLoadingIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -52,42 +52,42 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nuvio.app.features.addons.AddonRepository
-import com.nuvio.app.features.addons.enabledAddons
-import com.nuvio.app.features.player.AndroidLibmpvVideoOutput
-import com.nuvio.app.features.player.AndroidPlaybackEngine
-import com.nuvio.app.features.player.AudioLanguageOption
-import com.nuvio.app.features.player.AvailableLanguageOptions
-import com.nuvio.app.features.player.ExternalPlayerApp
-import com.nuvio.app.features.player.ExternalPlayerPlatform
-import com.nuvio.app.features.player.IosAudioOutputMode
-import com.nuvio.app.features.player.IosHardwareDecoderMode
-import com.nuvio.app.features.player.localizedLabel
-import com.nuvio.app.features.player.IosTargetPrimaries
-import com.nuvio.app.features.player.IosTargetTransfer
-import com.nuvio.app.features.player.PlayerSettingsRepository
-import com.nuvio.app.features.player.STREAM_AUTO_PLAY_TIMEOUT_VALUES
-import com.nuvio.app.features.player.SubtitleBackgroundColorSwatches
-import com.nuvio.app.features.player.SubtitleColorSwatches
-import com.nuvio.app.features.player.SubtitleLanguageOption
-import com.nuvio.app.features.player.formatPlaybackSpeedLabel
-import com.nuvio.app.features.player.languageLabelForCode
-import com.nuvio.app.features.player.subtitleFontSizeRangeSp
-import com.nuvio.app.features.player.toStorageHexString
-import com.nuvio.app.features.p2p.P2pConsentDialog
-import com.nuvio.app.features.p2p.P2pCacheClearResult
-import com.nuvio.app.features.p2p.P2pCacheSize
-import com.nuvio.app.features.p2p.P2pSettingsRepository
-import com.nuvio.app.features.p2p.P2pStreamingEngine
-import com.nuvio.app.features.p2p.P2pStreamingState
-import com.nuvio.app.features.p2p.P2pTorrentProfile
-import com.nuvio.app.features.plugins.PluginsUiState
-import com.nuvio.app.features.plugins.PluginRepository
-import com.nuvio.app.features.streams.StreamAutoPlayMode
-import com.nuvio.app.features.streams.StreamAutoPlaySource
-import com.nuvio.app.isIos
+import com.streamvault.app.features.addons.AddonRepository
+import com.streamvault.app.features.addons.enabledAddons
+import com.streamvault.app.features.player.AndroidLibmpvVideoOutput
+import com.streamvault.app.features.player.AndroidPlaybackEngine
+import com.streamvault.app.features.player.AudioLanguageOption
+import com.streamvault.app.features.player.AvailableLanguageOptions
+import com.streamvault.app.features.player.ExternalPlayerApp
+import com.streamvault.app.features.player.ExternalPlayerPlatform
+import com.streamvault.app.features.player.IosAudioOutputMode
+import com.streamvault.app.features.player.IosHardwareDecoderMode
+import com.streamvault.app.features.player.localizedLabel
+import com.streamvault.app.features.player.IosTargetPrimaries
+import com.streamvault.app.features.player.IosTargetTransfer
+import com.streamvault.app.features.player.PlayerSettingsRepository
+import com.streamvault.app.features.player.STREAM_AUTO_PLAY_TIMEOUT_VALUES
+import com.streamvault.app.features.player.SubtitleBackgroundColorSwatches
+import com.streamvault.app.features.player.SubtitleColorSwatches
+import com.streamvault.app.features.player.SubtitleLanguageOption
+import com.streamvault.app.features.player.formatPlaybackSpeedLabel
+import com.streamvault.app.features.player.languageLabelForCode
+import com.streamvault.app.features.player.subtitleFontSizeRangeSp
+import com.streamvault.app.features.player.toStorageHexString
+import com.streamvault.app.features.p2p.P2pConsentDialog
+import com.streamvault.app.features.p2p.P2pCacheClearResult
+import com.streamvault.app.features.p2p.P2pCacheSize
+import com.streamvault.app.features.p2p.P2pSettingsRepository
+import com.streamvault.app.features.p2p.P2pStreamingEngine
+import com.streamvault.app.features.p2p.P2pStreamingState
+import com.streamvault.app.features.p2p.P2pTorrentProfile
+import com.streamvault.app.features.plugins.PluginsUiState
+import com.streamvault.app.features.plugins.PluginRepository
+import com.streamvault.app.features.streams.StreamAutoPlayMode
+import com.streamvault.app.features.streams.StreamAutoPlaySource
+import com.streamvault.app.isIos
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
@@ -1176,7 +1176,7 @@ private fun PlaybackSettingsSection(
                 }
                 SettingsGroupDivider(isTablet = isTablet)
                 when (autoPlayPlayerSettings.nextEpisodeThresholdMode) {
-                    com.nuvio.app.features.player.skip.NextEpisodeThresholdMode.PERCENTAGE -> {
+                    com.streamvault.app.features.player.skip.NextEpisodeThresholdMode.PERCENTAGE -> {
                         val thresholdPercent = autoPlayPlayerSettings.nextEpisodeThresholdPercent
                         Column(
                             modifier = Modifier
@@ -1229,7 +1229,7 @@ private fun PlaybackSettingsSection(
                             )
                         }
                     }
-                    com.nuvio.app.features.player.skip.NextEpisodeThresholdMode.MINUTES_BEFORE_END -> {
+                    com.streamvault.app.features.player.skip.NextEpisodeThresholdMode.MINUTES_BEFORE_END -> {
                         val thresholdMinutes = autoPlayPlayerSettings.nextEpisodeThresholdMinutesBeforeEnd
                         Column(
                             modifier = Modifier
@@ -3358,7 +3358,7 @@ private fun IntroDbApiKeyDialog(
                             isVerifying = true
                             errorMessage = null
                             scope.launch {
-                                val isValid = com.nuvio.app.features.player.skip.SkipIntroRepository.verifyIntroDbApiKey(trimmed)
+                                val isValid = com.streamvault.app.features.player.skip.SkipIntroRepository.verifyIntroDbApiKey(trimmed)
                                 isVerifying = false
                                 if (isValid) {
                                     onSave(trimmed)
@@ -3387,11 +3387,11 @@ private fun IntroDbApiKeyDialog(
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 private fun NextEpisodeThresholdModeDialog(
-    selected: com.nuvio.app.features.player.skip.NextEpisodeThresholdMode,
-    onSelect: (com.nuvio.app.features.player.skip.NextEpisodeThresholdMode) -> Unit,
+    selected: com.streamvault.app.features.player.skip.NextEpisodeThresholdMode,
+    onSelect: (com.streamvault.app.features.player.skip.NextEpisodeThresholdMode) -> Unit,
     onDismiss: () -> Unit,
 ) {
-    val options = com.nuvio.app.features.player.skip.NextEpisodeThresholdMode.entries
+    val options = com.streamvault.app.features.player.skip.NextEpisodeThresholdMode.entries
 
     BasicAlertDialog(onDismissRequest = onDismiss) {
         Surface(
@@ -3488,11 +3488,11 @@ private val StreamAutoPlayMode.labelRes: StringResource
         StreamAutoPlayMode.REGEX_MATCH -> Res.string.settings_playback_stream_selection_mode_regex
     }
 
-private val com.nuvio.app.features.player.skip.NextEpisodeThresholdMode.labelRes: StringResource
+private val com.streamvault.app.features.player.skip.NextEpisodeThresholdMode.labelRes: StringResource
     get() = when (this) {
-        com.nuvio.app.features.player.skip.NextEpisodeThresholdMode.PERCENTAGE ->
+        com.streamvault.app.features.player.skip.NextEpisodeThresholdMode.PERCENTAGE ->
             Res.string.settings_playback_threshold_mode_percentage
-        com.nuvio.app.features.player.skip.NextEpisodeThresholdMode.MINUTES_BEFORE_END ->
+        com.streamvault.app.features.player.skip.NextEpisodeThresholdMode.MINUTES_BEFORE_END ->
             Res.string.settings_playback_threshold_mode_minutes_before_end
     }
 

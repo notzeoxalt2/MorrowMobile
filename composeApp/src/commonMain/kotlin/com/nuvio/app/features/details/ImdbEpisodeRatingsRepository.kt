@@ -1,7 +1,7 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.library.LibraryClock
+import com.streamvault.app.features.library.LibraryClock
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers

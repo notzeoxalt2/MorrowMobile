@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.content.ActivityNotFoundException
 import android.content.Context
@@ -6,8 +6,8 @@ import android.content.Intent
 import android.net.Uri
 import androidx.core.content.FileProvider
 import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.external_player_android_system
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.external_player_android_system
 import org.jetbrains.compose.resources.getString
 import java.io.File
 import java.net.URI

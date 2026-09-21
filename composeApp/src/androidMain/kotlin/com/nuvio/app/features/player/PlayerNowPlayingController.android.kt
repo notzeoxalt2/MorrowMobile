@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -17,8 +17,8 @@ import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
-import com.nuvio.app.R
-import com.nuvio.app.core.build.AppFeaturePolicy
+import com.streamvault.app.R
+import com.streamvault.app.core.build.AppFeaturePolicy
 import java.io.ByteArrayOutputStream
 import java.lang.ref.WeakReference
 import java.net.HttpURLConnection
@@ -31,10 +31,10 @@ private const val SEEK_INTERVAL_MS = 10_000L
 private const val MAX_ARTWORK_DOWNLOAD_BYTES = 12 * 1024 * 1024
 private const val MAX_ARTWORK_EDGE_PX = 1_024
 
-private const val ACTION_PLAY = "com.nuvio.app.nowplaying.PLAY"
-private const val ACTION_PAUSE = "com.nuvio.app.nowplaying.PAUSE"
-private const val ACTION_REWIND = "com.nuvio.app.nowplaying.REWIND"
-private const val ACTION_FAST_FORWARD = "com.nuvio.app.nowplaying.FAST_FORWARD"
+private const val ACTION_PLAY = "com.streamvault.app.nowplaying.PLAY"
+private const val ACTION_PAUSE = "com.streamvault.app.nowplaying.PAUSE"
+private const val ACTION_REWIND = "com.streamvault.app.nowplaying.REWIND"
+private const val ACTION_FAST_FORWARD = "com.streamvault.app.nowplaying.FAST_FORWARD"
 
 private data class AndroidNowPlayingMetadata(
     val title: String,

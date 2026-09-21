@@ -1,4 +1,4 @@
-package com.nuvio.app.features.search
+﻿package com.streamvault.app.features.search
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player.skip
+﻿package com.streamvault.app.features.player.skip
 
 enum class AutoSkipSegmentType(val storedValue: String) {
     INTRO("intro"),

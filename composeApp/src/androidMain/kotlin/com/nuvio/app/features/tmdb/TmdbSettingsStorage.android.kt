@@ -1,12 +1,12 @@
-package com.nuvio.app.features.tmdb
+﻿package com.streamvault.app.features.tmdb
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.sync.decodeSyncBoolean
-import com.nuvio.app.core.sync.decodeSyncString
-import com.nuvio.app.core.sync.encodeSyncBoolean
-import com.nuvio.app.core.sync.encodeSyncString
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.sync.decodeSyncBoolean
+import com.streamvault.app.core.sync.decodeSyncString
+import com.streamvault.app.core.sync.encodeSyncBoolean
+import com.streamvault.app.core.sync.encodeSyncString
+import com.streamvault.app.core.storage.ProfileScopedKey
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put

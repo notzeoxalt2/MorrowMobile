@@ -1,4 +1,4 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow

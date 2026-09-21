@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size

@@ -1,19 +1,19 @@
-package com.nuvio.app.features.watched
+﻿package com.streamvault.app.features.watched
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.details.MetaDetailsRepository
-import com.nuvio.app.features.simkl.SimklSyncRepository
-import com.nuvio.app.features.simkl.toSimklShowIdSiblings
-import com.nuvio.app.features.tracking.TrackingProviderId
-import com.nuvio.app.features.tracking.TrackingSettingsRepository
-import com.nuvio.app.features.tracking.WatchProgressSource
-import com.nuvio.app.features.tracking.effectiveWatchProgressSource
-import com.nuvio.app.features.tracking.providerId
-import com.nuvio.app.features.trakt.TraktProgressRepository
-import com.nuvio.app.features.watchprogress.CurrentDateProvider
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
-import com.nuvio.app.features.watchprogress.WatchProgressRepository
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.details.MetaDetailsRepository
+import com.streamvault.app.features.simkl.SimklSyncRepository
+import com.streamvault.app.features.simkl.toSimklShowIdSiblings
+import com.streamvault.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.TrackingSettingsRepository
+import com.streamvault.app.features.tracking.WatchProgressSource
+import com.streamvault.app.features.tracking.effectiveWatchProgressSource
+import com.streamvault.app.features.tracking.providerId
+import com.streamvault.app.features.trakt.TraktProgressRepository
+import com.streamvault.app.features.watchprogress.CurrentDateProvider
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watchprogress.WatchProgressRepository
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Semaphore
@@ -76,7 +76,7 @@ suspend fun resolveWatchedBadgesBulk(
                         } else {
                             val episodeNumber = episode.episode
                             if (episodeNumber != null) {
-                                com.nuvio.app.features.simkl.SimklAnimeWatchedFallback.isWatched(episode.id, episodeNumber)
+                                com.streamvault.app.features.simkl.SimklAnimeWatchedFallback.isWatched(episode.id, episodeNumber)
                             } else {
                                 false
                             }
@@ -145,7 +145,7 @@ private fun getActiveProviderSiblingMap(): Map<String, Set<String>> {
     val effectiveSource = effectiveWatchProgressSource(
         requestedSource = source,
         isProviderAuthenticated = { providerId ->
-            com.nuvio.app.features.tracking.TrackingProviderRegistry.isAuthenticated(providerId)
+            com.streamvault.app.features.tracking.TrackingProviderRegistry.isAuthenticated(providerId)
         },
     )
     return when (effectiveSource.providerId) {

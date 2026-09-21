@@ -1,8 +1,8 @@
-package com.nuvio.app.features.debrid
+﻿package com.streamvault.app.features.debrid
 
-import com.nuvio.app.features.streams.AddonStreamGroup
-import com.nuvio.app.features.streams.StreamDebridCacheState
-import com.nuvio.app.features.streams.StreamItem
+import com.streamvault.app.features.streams.AddonStreamGroup
+import com.streamvault.app.features.streams.StreamDebridCacheState
+import com.streamvault.app.features.streams.StreamItem
 
 object DebridStreamPresentation {
     private val formatter = DebridStreamFormatter()

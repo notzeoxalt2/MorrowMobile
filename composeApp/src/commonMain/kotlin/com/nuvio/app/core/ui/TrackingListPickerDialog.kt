@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,13 +25,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.nuvio.app.features.tracking.TrackingLibraryTab
-import com.nuvio.app.features.tracking.trackingMembershipDestinations
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_cancel
-import nuvio.composeapp.generated.resources.action_save
-import nuvio.composeapp.generated.resources.compose_tracking_list_picker_loading
-import nuvio.composeapp.generated.resources.compose_tracking_list_picker_subtitle
+import com.streamvault.app.features.tracking.TrackingLibraryTab
+import com.streamvault.app.features.tracking.trackingMembershipDestinations
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_cancel
+import streamvault.composeapp.generated.resources.action_save
+import streamvault.composeapp.generated.resources.compose_tracking_list_picker_loading
+import streamvault.composeapp.generated.resources.compose_tracking_list_picker_subtitle
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -1,6 +1,6 @@
-package com.nuvio.app.features.watching.sync
+﻿package com.streamvault.app.features.watching.sync
 
-import com.nuvio.app.features.watched.WatchedItem
+import com.streamvault.app.features.watched.WatchedItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 

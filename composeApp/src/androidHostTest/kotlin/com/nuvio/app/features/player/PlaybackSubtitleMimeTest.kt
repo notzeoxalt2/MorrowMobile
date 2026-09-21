@@ -1,7 +1,7 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.media3.common.MimeTypes
-import com.nuvio.app.features.streams.StreamSubtitle
+import com.streamvault.app.features.streams.StreamSubtitle
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config

@@ -1,8 +1,8 @@
-package com.nuvio.app.core.diagnostics
+﻿package com.streamvault.app.core.diagnostics
 
 import android.app.Application
-import com.nuvio.app.core.build.AppVersionConfig
-import com.nuvio.app.features.settings.SentrySettingsRepository
+import com.streamvault.app.core.build.AppVersionConfig
+import com.streamvault.app.features.settings.SentrySettingsRepository
 import io.sentry.Sentry
 import io.sentry.SentryEvent
 import io.sentry.SentryOptions

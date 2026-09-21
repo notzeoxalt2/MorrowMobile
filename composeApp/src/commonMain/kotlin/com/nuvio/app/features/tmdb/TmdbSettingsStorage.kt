@@ -1,4 +1,4 @@
-package com.nuvio.app.features.tmdb
+﻿package com.streamvault.app.features.tmdb
 
 import kotlinx.serialization.json.JsonObject
 

@@ -1,15 +1,15 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
-import com.nuvio.app.features.tmdb.TmdbService
-import com.nuvio.app.features.tracking.TrackingMediaReference
-import com.nuvio.app.features.tracking.TrackingScrobbleAction
-import com.nuvio.app.features.tracking.TrackingScrobbleCoordinator
-import com.nuvio.app.features.tracking.TrackingScrobbleEvent
-import com.nuvio.app.features.tracking.buildTrackingMediaReference
-import com.nuvio.app.features.watchprogress.WatchProgressClock
-import com.nuvio.app.features.watchprogress.WatchProgressPlaybackSession
-import com.nuvio.app.features.watchprogress.WatchProgressRepository
-import com.nuvio.app.features.watchprogress.buildPlaybackVideoId
+import com.streamvault.app.features.tmdb.TmdbService
+import com.streamvault.app.features.tracking.TrackingMediaReference
+import com.streamvault.app.features.tracking.TrackingScrobbleAction
+import com.streamvault.app.features.tracking.TrackingScrobbleCoordinator
+import com.streamvault.app.features.tracking.TrackingScrobbleEvent
+import com.streamvault.app.features.tracking.buildTrackingMediaReference
+import com.streamvault.app.features.watchprogress.WatchProgressClock
+import com.streamvault.app.features.watchprogress.WatchProgressPlaybackSession
+import com.streamvault.app.features.watchprogress.WatchProgressRepository
+import com.streamvault.app.features.watchprogress.buildPlaybackVideoId
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

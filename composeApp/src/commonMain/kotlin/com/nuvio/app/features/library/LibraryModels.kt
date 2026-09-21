@@ -1,9 +1,9 @@
-package com.nuvio.app.features.library
+﻿package com.streamvault.app.features.library
 
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.PosterShape
-import com.nuvio.app.features.tracking.TrackingAttributedItem
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.PosterShape
+import com.streamvault.app.features.tracking.TrackingAttributedItem
 import kotlinx.serialization.Serializable
 
 @Serializable

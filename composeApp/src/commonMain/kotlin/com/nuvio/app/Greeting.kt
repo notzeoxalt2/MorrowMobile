@@ -1,4 +1,4 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
 class Greeting {
     private val platform = getPlatform()

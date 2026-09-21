@@ -1,4 +1,4 @@
-package com.nuvio.app.features.library
+﻿package com.streamvault.app.features.library
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -6,22 +6,22 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import com.nuvio.app.core.ui.NuvioStatusModal
-import com.nuvio.app.features.tracking.TrackingMembershipApplyResult
-import com.nuvio.app.features.tracking.TrackingMembershipRemovalConfirmation
-import com.nuvio.app.features.tracking.TrackingMembershipRemovalImpact
-import com.nuvio.app.features.tracking.TrackingProviderId
-import com.nuvio.app.features.tracking.TrackingProviderRegistry
+import com.streamvault.app.core.ui.NuvioStatusModal
+import com.streamvault.app.features.tracking.TrackingMembershipApplyResult
+import com.streamvault.app.features.tracking.TrackingMembershipRemovalConfirmation
+import com.streamvault.app.features.tracking.TrackingMembershipRemovalImpact
+import com.streamvault.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.TrackingProviderRegistry
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_cancel
-import nuvio.composeapp.generated.resources.action_remove_anyway
-import nuvio.composeapp.generated.resources.tracking_remove_confirmation_message
-import nuvio.composeapp.generated.resources.tracking_remove_confirmation_title
-import nuvio.composeapp.generated.resources.tracking_removal_impact_history
-import nuvio.composeapp.generated.resources.tracking_removal_impact_history_and_rating
-import nuvio.composeapp.generated.resources.tracking_removal_impact_rating
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_cancel
+import streamvault.composeapp.generated.resources.action_remove_anyway
+import streamvault.composeapp.generated.resources.tracking_remove_confirmation_message
+import streamvault.composeapp.generated.resources.tracking_remove_confirmation_title
+import streamvault.composeapp.generated.resources.tracking_removal_impact_history
+import streamvault.composeapp.generated.resources.tracking_removal_impact_history_and_rating
+import streamvault.composeapp.generated.resources.tracking_removal_impact_rating
 import org.jetbrains.compose.resources.stringResource
 
 class PendingTrackingMembershipRemoval(

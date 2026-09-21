@@ -1,11 +1,11 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
-import com.nuvio.app.features.cloud.CloudLibraryContentType
-import com.nuvio.app.features.cloud.cloudLibraryProviderPosterUrl
-import com.nuvio.app.features.details.MetaVideo
-import com.nuvio.app.features.tracking.TrackingAttributedItem
-import com.nuvio.app.features.tracking.WatchProgressSource
-import com.nuvio.app.features.watching.domain.WatchingContentRef
+import com.streamvault.app.features.cloud.CloudLibraryContentType
+import com.streamvault.app.features.cloud.cloudLibraryProviderPosterUrl
+import com.streamvault.app.features.details.MetaVideo
+import com.streamvault.app.features.tracking.TrackingAttributedItem
+import com.streamvault.app.features.tracking.WatchProgressSource
+import com.streamvault.app.features.watching.domain.WatchingContentRef
 import kotlinx.serialization.Serializable
 
 internal const val WatchProgressCompletionPercentThreshold = 90f
@@ -377,7 +377,7 @@ fun buildPlaybackVideoId(
     seasonNumber: Int?,
     episodeNumber: Int?,
     fallbackVideoId: String? = null,
-): String = com.nuvio.app.features.watching.domain.buildPlaybackVideoId(
+): String = com.streamvault.app.features.watching.domain.buildPlaybackVideoId(
     content = WatchingContentRef(type = "", id = parentMetaId),
     seasonNumber = seasonNumber,
     episodeNumber = episodeNumber,

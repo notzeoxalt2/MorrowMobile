@@ -1,4 +1,4 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -11,12 +11,12 @@ import coil3.compose.setSingletonImageLoaderFactory
 import coil3.request.CachePolicy
 import coil3.request.crossfade
 import coil3.svg.SvgDecoder
-import com.nuvio.app.core.ui.NativeProfileSwitcherController
-import com.nuvio.app.core.ui.NuvioTheme
-import com.nuvio.app.core.ui.configurePlatformImageLoader
-import com.nuvio.app.features.settings.ThemeSettingsRepository
-import com.nuvio.app.navigation.AppRoute
-import com.nuvio.app.navigation.TabsRoute
+import com.streamvault.app.core.ui.NativeProfileSwitcherController
+import com.streamvault.app.core.ui.NuvioTheme
+import com.streamvault.app.core.ui.configurePlatformImageLoader
+import com.streamvault.app.features.settings.ThemeSettingsRepository
+import com.streamvault.app.navigation.AppRoute
+import com.streamvault.app.navigation.TabsRoute
 
 fun disposeRoute(route: AppRoute) {
     disposeRouteResources(route)

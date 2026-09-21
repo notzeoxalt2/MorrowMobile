@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 internal expect object SentrySettingsPlatform {
     val crashReportsSupported: Boolean

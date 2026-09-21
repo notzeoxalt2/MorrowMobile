@@ -1,4 +1,4 @@
-package com.nuvio.app.features.plugins.runtime
+﻿package com.streamvault.app.features.plugins.runtime
 
 import com.dokar.quickjs.QuickJs
 import kotlinx.coroutines.CoroutineDispatcher

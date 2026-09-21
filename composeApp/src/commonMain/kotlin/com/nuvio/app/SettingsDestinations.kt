@@ -1,31 +1,31 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import com.nuvio.app.features.collection.CollectionEditorPage
-import com.nuvio.app.features.collection.CollectionEditorScreen
-import com.nuvio.app.features.collection.CollectionManagementScreen
-import com.nuvio.app.features.collection.CollectionRepository
-import com.nuvio.app.features.collection.FolderDetailRepository
-import com.nuvio.app.features.collection.FolderDetailScreen
-import com.nuvio.app.features.downloads.DownloadItem
-import com.nuvio.app.features.downloads.DownloadsScreen
-import com.nuvio.app.features.home.HomeCatalogSection
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.settings.SettingsScreen
-import com.nuvio.app.navigation.AppRoute
-import com.nuvio.app.navigation.CollectionEditorPageRoute
-import com.nuvio.app.navigation.CollectionEditorRoute
-import com.nuvio.app.navigation.CollectionsRoute
-import com.nuvio.app.navigation.DetailRoute
-import com.nuvio.app.navigation.DownloadShowRoute
-import com.nuvio.app.navigation.DownloadsSettingsRoute
-import com.nuvio.app.navigation.FolderDetailRoute
-import com.nuvio.app.navigation.NuvioNavigator
-import com.nuvio.app.navigation.SettingsPageRoute
+import com.streamvault.app.features.collection.CollectionEditorPage
+import com.streamvault.app.features.collection.CollectionEditorScreen
+import com.streamvault.app.features.collection.CollectionManagementScreen
+import com.streamvault.app.features.collection.CollectionRepository
+import com.streamvault.app.features.collection.FolderDetailRepository
+import com.streamvault.app.features.collection.FolderDetailScreen
+import com.streamvault.app.features.downloads.DownloadItem
+import com.streamvault.app.features.downloads.DownloadsScreen
+import com.streamvault.app.features.home.HomeCatalogSection
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.settings.SettingsScreen
+import com.streamvault.app.navigation.AppRoute
+import com.streamvault.app.navigation.CollectionEditorPageRoute
+import com.streamvault.app.navigation.CollectionEditorRoute
+import com.streamvault.app.navigation.CollectionsRoute
+import com.streamvault.app.navigation.DetailRoute
+import com.streamvault.app.navigation.DownloadShowRoute
+import com.streamvault.app.navigation.DownloadsSettingsRoute
+import com.streamvault.app.navigation.FolderDetailRoute
+import com.streamvault.app.navigation.NuvioNavigator
+import com.streamvault.app.navigation.SettingsPageRoute
 
 @Composable
 internal fun SettingsDestination(

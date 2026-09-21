@@ -1,13 +1,13 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
-import com.nuvio.app.features.watching.domain.DefaultContinueWatchingLimit
-import com.nuvio.app.features.watching.domain.WatchingContentRef
-import com.nuvio.app.features.watching.domain.WatchingProgressRecord
-import com.nuvio.app.features.watching.domain.continueWatchingProgressEntries
-import com.nuvio.app.features.watching.domain.isProgressComplete
-import com.nuvio.app.features.watching.domain.isSeriesLikeWatchingContentType
-import com.nuvio.app.features.watching.domain.resumeProgressForSeries
-import com.nuvio.app.features.watching.domain.shouldStoreProgress
+import com.streamvault.app.features.watching.domain.DefaultContinueWatchingLimit
+import com.streamvault.app.features.watching.domain.WatchingContentRef
+import com.streamvault.app.features.watching.domain.WatchingProgressRecord
+import com.streamvault.app.features.watching.domain.continueWatchingProgressEntries
+import com.streamvault.app.features.watching.domain.isProgressComplete
+import com.streamvault.app.features.watching.domain.isSeriesLikeWatchingContentType
+import com.streamvault.app.features.watching.domain.resumeProgressForSeries
+import com.streamvault.app.features.watching.domain.shouldStoreProgress
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString

@@ -1,10 +1,10 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.tracking.TrackingProgressSnapshot
-import com.nuvio.app.features.tracking.WatchProgressSource
-import com.nuvio.app.features.watching.sync.ProgressSyncRecord
-import com.nuvio.app.features.watching.sync.ProgressDeltaEvent
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.tracking.TrackingProgressSnapshot
+import com.streamvault.app.features.tracking.WatchProgressSource
+import com.streamvault.app.features.watching.sync.ProgressSyncRecord
+import com.streamvault.app.features.watching.sync.ProgressDeltaEvent
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals

@@ -1,10 +1,10 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
-import com.nuvio.app.features.addons.AddonRepository
-import com.nuvio.app.features.addons.AddonResource
-import com.nuvio.app.features.addons.buildAddonResourceUrl
-import com.nuvio.app.features.addons.enabledAddons
-import com.nuvio.app.features.addons.fetchAddonResponseText
+import com.streamvault.app.features.addons.AddonRepository
+import com.streamvault.app.features.addons.AddonResource
+import com.streamvault.app.features.addons.buildAddonResourceUrl
+import com.streamvault.app.features.addons.enabledAddons
+import com.streamvault.app.features.addons.fetchAddonResponseText
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -19,8 +19,8 @@ import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.player_addon_subtitle_display_format
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.player_addon_subtitle_display_format
 import org.jetbrains.compose.resources.getString
 
 @Serializable

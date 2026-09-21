@@ -1,6 +1,6 @@
-package com.nuvio.app.features.watched
+﻿package com.streamvault.app.features.watched
 
-import com.nuvio.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.TrackingProviderId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch

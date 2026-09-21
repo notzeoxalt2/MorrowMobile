@@ -1,4 +1,4 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
 internal expect object ResumePromptStorage {
     fun loadWasInPlayer(): Boolean

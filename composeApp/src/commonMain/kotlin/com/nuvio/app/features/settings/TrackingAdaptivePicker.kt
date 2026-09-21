@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,14 +26,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.NuvioBottomSheetDivider
-import com.nuvio.app.core.ui.NuvioModalBottomSheet
-import com.nuvio.app.core.ui.dismissNuvioBottomSheet
-import com.nuvio.app.core.ui.nuvio
+import com.streamvault.app.core.ui.NuvioBottomSheetDivider
+import com.streamvault.app.core.ui.NuvioModalBottomSheet
+import com.streamvault.app.core.ui.dismissNuvioBottomSheet
+import com.streamvault.app.core.ui.nuvio
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_close
-import nuvio.composeapp.generated.resources.cd_selected
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_close
+import streamvault.composeapp.generated.resources.cd_selected
 import org.jetbrains.compose.resources.stringResource
 
 internal data class TrackingPickerOption<T>(

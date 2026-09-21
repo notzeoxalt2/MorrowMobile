@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -37,9 +37,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.NuvioLoadingIndicator
-import com.nuvio.app.core.ui.PlatformBackHandler
-import com.nuvio.app.core.ui.nuvio
+import com.streamvault.app.core.ui.NuvioLoadingIndicator
+import com.streamvault.app.core.ui.PlatformBackHandler
+import com.streamvault.app.core.ui.nuvio
 
 @Composable
 internal fun PlayerSidePanel(

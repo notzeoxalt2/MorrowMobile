@@ -1,4 +1,4 @@
-package com.nuvio.app
+package com.streamvault.app
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.MutableTransitionState
@@ -22,27 +22,27 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nuvio.app.core.auth.AuthRepository
-import com.nuvio.app.core.auth.AuthState
-import com.nuvio.app.core.auth.DeviceSessionRegistration
-import com.nuvio.app.core.network.NetworkCondition
-import com.nuvio.app.core.network.NetworkStatusRepository
-import com.nuvio.app.core.sync.SyncManager
-import com.nuvio.app.core.ui.NativeProfileSwitcherController
-import com.nuvio.app.core.ui.NativeTabBridge
-import com.nuvio.app.core.ui.NuvioLoadingIndicator
-import com.nuvio.app.core.ui.NuvioTokens
-import com.nuvio.app.core.ui.PlatformBackHandler
-import com.nuvio.app.core.ui.nuvio
-import com.nuvio.app.features.auth.AuthScreen
-import com.nuvio.app.features.membership.MemberAccessRepository
-import com.nuvio.app.features.profiles.AvatarRepository
-import com.nuvio.app.features.profiles.NuvioProfile
-import com.nuvio.app.features.profiles.ProfileEditScreen
-import com.nuvio.app.features.profiles.ProfileRepository
-import com.nuvio.app.features.profiles.ProfileSelectionScreen
-import com.nuvio.app.features.profiles.profileAvatarImageUrl
-import com.nuvio.app.navigation.AppRoute
+import com.streamvault.app.core.auth.AuthRepository
+import com.streamvault.app.core.auth.AuthState
+import com.streamvault.app.core.auth.DeviceSessionRegistration
+import com.streamvault.app.core.network.NetworkCondition
+import com.streamvault.app.core.network.NetworkStatusRepository
+import com.streamvault.app.core.sync.SyncManager
+import com.streamvault.app.core.ui.NativeProfileSwitcherController
+import com.streamvault.app.core.ui.NativeTabBridge
+import com.streamvault.app.core.ui.NuvioLoadingIndicator
+import com.streamvault.app.core.ui.NuvioTokens
+import com.streamvault.app.core.ui.PlatformBackHandler
+import com.streamvault.app.core.ui.nuvio
+import com.streamvault.app.features.auth.AuthScreen
+import com.streamvault.app.features.membership.MemberAccessRepository
+import com.streamvault.app.features.profiles.AvatarRepository
+import com.streamvault.app.features.profiles.NuvioProfile
+import com.streamvault.app.features.profiles.ProfileEditScreen
+import com.streamvault.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.profiles.ProfileSelectionScreen
+import com.streamvault.app.features.profiles.profileAvatarImageUrl
+import com.streamvault.app.navigation.AppRoute
 
 private enum class AppGateScreen {
     Loading,
@@ -265,6 +265,15 @@ internal fun AppGate(
         profileSelectionLoading = false
         profileSelectionTransitionActive = false
         if (profiles.isEmpty()) {
+            val userId = (AuthRepository.state.value as? AuthState.Authenticated)?.userId ?: "guest"
+            ProfileRepository.ensureLoaded(userId)
+            val updated = ProfileRepository.state.value.profiles
+            if (updated.isNotEmpty()) {
+                selectProfile(updated.first(), sync = false)
+                gateScreen = AppGateScreen.Main.name
+                autoSkipProfileSelection = false
+                return
+            }
             autoSkipProfileSelection = true
             gateScreen = AppGateScreen.ProfileSelection.name
             return
@@ -316,10 +325,7 @@ internal fun AppGate(
                 if (allowCachedProfileAccess) {
                     enterProfileGate(cachedProfiles, syncOnEnter = false)
                 } else {
-                    ProfileRepository.clearInMemory()
-                    profileSelectionLoading = false
-                    profileSelectionTransitionActive = false
-                    gateScreen = AppGateScreen.Auth.name
+                    AuthRepository.signInAnonymously()
                 }
             }
             is AuthState.Authenticated -> {

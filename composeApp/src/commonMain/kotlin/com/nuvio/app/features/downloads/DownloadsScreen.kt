@@ -1,4 +1,4 @@
-package com.nuvio.app.features.downloads
+﻿package com.streamvault.app.features.downloads
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -36,12 +36,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nuvio.app.core.i18n.localizedByteUnit
-import com.nuvio.app.core.ui.NuvioScreen
-import com.nuvio.app.core.ui.NuvioScreenHeader
-import com.nuvio.app.core.ui.NuvioStatusModal
-import com.nuvio.app.core.ui.NuvioToastController
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.i18n.localizedByteUnit
+import com.streamvault.app.core.ui.NuvioScreen
+import com.streamvault.app.core.ui.NuvioScreenHeader
+import com.streamvault.app.core.ui.NuvioStatusModal
+import com.streamvault.app.core.ui.NuvioToastController
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

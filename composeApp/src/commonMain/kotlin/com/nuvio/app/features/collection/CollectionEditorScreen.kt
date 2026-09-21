@@ -1,4 +1,4 @@
-package com.nuvio.app.features.collection
+﻿package com.streamvault.app.features.collection
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -59,18 +59,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.animation.core.animateDpAsState
-import com.nuvio.app.core.ui.NuvioInputField
-import com.nuvio.app.core.ui.NuvioModalBottomSheet
-import com.nuvio.app.core.ui.NuvioPrimaryButton
-import com.nuvio.app.core.ui.NuvioScreen
-import com.nuvio.app.core.ui.NuvioScreenHeader
-import com.nuvio.app.core.ui.NuvioSectionLabel
-import com.nuvio.app.core.ui.NuvioSurfaceCard
-import com.nuvio.app.core.ui.nuvioSafeBottomPadding
-import com.nuvio.app.core.ui.PlatformBackHandler
-import com.nuvio.app.features.home.PosterShape
-import com.nuvio.app.features.trakt.TraktPublicListSearchResult
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.ui.NuvioInputField
+import com.streamvault.app.core.ui.NuvioModalBottomSheet
+import com.streamvault.app.core.ui.NuvioPrimaryButton
+import com.streamvault.app.core.ui.NuvioScreen
+import com.streamvault.app.core.ui.NuvioScreenHeader
+import com.streamvault.app.core.ui.NuvioSectionLabel
+import com.streamvault.app.core.ui.NuvioSurfaceCard
+import com.streamvault.app.core.ui.nuvioSafeBottomPadding
+import com.streamvault.app.core.ui.PlatformBackHandler
+import com.streamvault.app.features.home.PosterShape
+import com.streamvault.app.features.trakt.TraktPublicListSearchResult
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 import sh.calvin.reorderable.ReorderableCollectionItemScope
 import sh.calvin.reorderable.ReorderableItem

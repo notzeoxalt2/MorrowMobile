@@ -1,4 +1,4 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
 import platform.Foundation.NSDate
 import platform.Foundation.timeIntervalSince1970

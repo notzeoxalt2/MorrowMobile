@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.app.Activity
 import android.content.Context
@@ -29,7 +29,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.Lifecycle
 import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -64,8 +64,8 @@ import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
 import androidx.media3.ui.SubtitleView
 import androidx.media3.ui.CaptionStyleCompat
-import com.nuvio.app.R
-import com.nuvio.app.features.streams.normalizeStreamType
+import com.streamvault.app.R
+import com.streamvault.app.features.streams.normalizeStreamType
 import `is`.xyz.mpv.BaseMPVView
 import `is`.xyz.mpv.MPV
 import `is`.xyz.mpv.MPVNode
@@ -101,7 +101,7 @@ actual fun PlatformPlayerSurface(
     sourceAudioUrl: String?,
     sourceHeaders: Map<String, String>,
     sourceResponseHeaders: Map<String, String>,
-    externalSubtitles: List<com.nuvio.app.features.streams.StreamSubtitle>,
+    externalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle>,
     streamType: String?,
     useYoutubeChunkedPlayback: Boolean,
     modifier: Modifier,
@@ -207,7 +207,7 @@ private fun ExoPlayerSurface(
     sourceAudioUrl: String?,
     sourceHeaders: Map<String, String>,
     sourceResponseHeaders: Map<String, String>,
-    externalSubtitles: List<com.nuvio.app.features.streams.StreamSubtitle>,
+    externalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle>,
     streamType: String?,
     useYoutubeChunkedPlayback: Boolean,
     modifier: Modifier,
@@ -969,7 +969,7 @@ private fun LibmpvPlayerSurface(
     sourceUrl: String,
     sourceAudioUrl: String?,
     sourceHeaders: Map<String, String>,
-    externalSubtitles: List<com.nuvio.app.features.streams.StreamSubtitle>,
+    externalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle>,
     modifier: Modifier,
     playWhenReady: Boolean,
     resizeMode: PlayerResizeMode,
@@ -1274,7 +1274,7 @@ private class NuvioLibmpvView(
     private var currentSourceUrl: String? = null
     private var currentSourceAudioUrl: String? = null
     private var currentRequestHeaders: Map<String, String> = emptyMap()
-    private var currentExternalSubtitles: List<com.nuvio.app.features.streams.StreamSubtitle> = emptyList()
+    private var currentExternalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle> = emptyList()
     @Volatile
     private var latestSnapshot = PlayerPlaybackSnapshot()
     @Volatile
@@ -1323,7 +1323,7 @@ private class NuvioLibmpvView(
         sourceUrl: String,
         sourceAudioUrl: String?,
         requestHeaders: Map<String, String>,
-        externalSubtitles: List<com.nuvio.app.features.streams.StreamSubtitle>,
+        externalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle>,
         playWhenReady: Boolean,
     ) = withContext(mpvDispatcher) {
         if (!released.get()) {
@@ -2327,7 +2327,7 @@ private fun diagnosticThrowableChain(value: Throwable): String =
 
 internal class SubtitleRequestHeaderDataSourceFactory(
     private val upstreamFactory: DataSource.Factory,
-    private val externalSubtitles: List<com.nuvio.app.features.streams.StreamSubtitle>,
+    private val externalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle>,
 ) : DataSource.Factory {
     override fun createDataSource(): DataSource =
         SubtitleRequestHeaderDataSource(
@@ -2338,7 +2338,7 @@ internal class SubtitleRequestHeaderDataSourceFactory(
 
 internal class SubtitleRequestHeaderDataSource(
     private val upstream: DataSource,
-    private val externalSubtitles: List<com.nuvio.app.features.streams.StreamSubtitle>,
+    private val externalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle>,
 ) : DataSource {
     override fun addTransferListener(transferListener: TransferListener) {
         upstream.addTransferListener(transferListener)

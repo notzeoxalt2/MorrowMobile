@@ -1,4 +1,4 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
 import android.app.Application
 import androidx.compose.foundation.layout.width
@@ -15,7 +15,7 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.swipe
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.features.home.components.HomeHeroSection
+import com.streamvault.app.features.home.components.HomeHeroSection
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner

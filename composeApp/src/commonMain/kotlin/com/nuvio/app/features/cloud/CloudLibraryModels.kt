@@ -1,6 +1,6 @@
-package com.nuvio.app.features.cloud
+﻿package com.streamvault.app.features.cloud
 
-import com.nuvio.app.features.debrid.DebridProvider
+import com.streamvault.app.features.debrid.DebridProvider
 
 enum class CloudLibraryItemType {
     Torrent,

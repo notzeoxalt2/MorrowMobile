@@ -1,8 +1,8 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 
 actual object PosterCardStyleStorage {
     private const val preferencesName = "nuvio_poster_card_style"

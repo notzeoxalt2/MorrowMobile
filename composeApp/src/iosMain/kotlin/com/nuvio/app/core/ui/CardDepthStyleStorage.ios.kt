@@ -1,6 +1,6 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 import platform.Foundation.NSUserDefaults
 
 internal actual object CardDepthStyleStorage {

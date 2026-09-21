@@ -1,7 +1,7 @@
-package com.nuvio.app.features.player.skip
+﻿package com.streamvault.app.features.player.skip
 
-import com.nuvio.app.features.addons.httpGetText
-import com.nuvio.app.features.addons.httpPostJsonWithHeaders
+import com.streamvault.app.features.addons.httpGetText
+import com.streamvault.app.features.addons.httpPostJsonWithHeaders
 import kotlinx.serialization.json.Json
 import kotlinx.coroutines.CancellationException
 
@@ -56,7 +56,7 @@ internal object SkipIntroApi {
             "Content-Type" to "application/json"
         )
         return try {
-            val response = com.nuvio.app.features.addons.httpRequestRaw(
+            val response = com.streamvault.app.features.addons.httpRequestRaw(
                 method = "POST",
                 url = url,
                 headers = headers,
@@ -77,7 +77,7 @@ internal object SkipIntroApi {
             "Content-Type" to "application/json"
         )
         return try {
-            val response = com.nuvio.app.features.addons.httpRequestRaw(
+            val response = com.streamvault.app.features.addons.httpRequestRaw(
                 method = "POST",
                 url = url,
                 headers = headers,

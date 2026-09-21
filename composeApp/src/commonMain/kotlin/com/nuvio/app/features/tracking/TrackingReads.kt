@@ -1,10 +1,10 @@
-package com.nuvio.app.features.tracking
+﻿package com.streamvault.app.features.tracking
 
-import com.nuvio.app.features.library.LibraryItem
-import com.nuvio.app.features.library.LibrarySection
-import com.nuvio.app.features.watching.sync.WatchedSyncAdapter
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
-import com.nuvio.app.features.watchprogress.shouldUseAsCompletedSeedForContinueWatching
+import com.streamvault.app.features.library.LibraryItem
+import com.streamvault.app.features.library.LibrarySection
+import com.streamvault.app.features.watching.sync.WatchedSyncAdapter
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watchprogress.shouldUseAsCompletedSeedForContinueWatching
 import kotlinx.coroutines.flow.Flow
 
 enum class TrackingLibraryTabKind {

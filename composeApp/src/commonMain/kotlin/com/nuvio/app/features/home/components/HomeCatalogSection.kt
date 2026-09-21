@@ -1,4 +1,4 @@
-package com.nuvio.app.features.home.components
+﻿package com.streamvault.app.features.home.components
 
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.PaddingValues
@@ -6,13 +6,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
-import com.nuvio.app.core.ui.NuvioShelfSection
-import com.nuvio.app.core.ui.NuvioViewAllPillSize
-import com.nuvio.app.core.ui.rememberPosterCardStyleUiState
-import com.nuvio.app.features.home.HomeCatalogSection
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.stableKey
-import com.nuvio.app.features.watching.application.WatchingState
+import com.streamvault.app.core.ui.NuvioShelfSection
+import com.streamvault.app.core.ui.NuvioViewAllPillSize
+import com.streamvault.app.core.ui.rememberPosterCardStyleUiState
+import com.streamvault.app.features.home.HomeCatalogSection
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.stableKey
+import com.streamvault.app.features.watching.application.WatchingState
 
 @Composable
 fun HomeCatalogRowSection(

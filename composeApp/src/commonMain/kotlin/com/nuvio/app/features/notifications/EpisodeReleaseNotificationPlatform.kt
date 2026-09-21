@@ -1,4 +1,4 @@
-package com.nuvio.app.features.notifications
+﻿package com.streamvault.app.features.notifications
 
 internal expect object EpisodeReleaseNotificationPlatform {
     suspend fun notificationsAuthorized(): Boolean

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.trailer
+﻿package com.streamvault.app.features.trailer
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.darwin.Darwin

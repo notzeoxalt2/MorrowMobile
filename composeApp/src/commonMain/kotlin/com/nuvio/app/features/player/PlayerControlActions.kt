@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -45,11 +45,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nuvio.app.core.ui.AppIconResource
-import com.nuvio.app.core.ui.NuvioBackButton
-import com.nuvio.app.core.ui.appIconPainter
-import com.nuvio.app.core.ui.nuvioTypeScale
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.ui.AppIconResource
+import com.streamvault.app.core.ui.NuvioBackButton
+import com.streamvault.app.core.ui.appIconPainter
+import com.streamvault.app.core.ui.nuvioTypeScale
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

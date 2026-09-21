@@ -1,6 +1,6 @@
-package com.nuvio.app.features.p2p
+package com.streamvault.app.features.p2p
 
-import com.nuvio.app.core.build.AppFeaturePolicy
+import com.streamvault.app.core.build.AppFeaturePolicy
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -47,7 +47,7 @@ object P2pSettingsRepository {
         get() = AppFeaturePolicy.p2pEnabled
 
     private var hasLoaded = false
-    private var p2pEnabled = false
+    private var p2pEnabled = AppFeaturePolicy.p2pEnabled
     private var enableUpload = true
     private var hideTorrentStats = false
     private var torrentProfile = P2pTorrentProfile.BALANCED
@@ -64,7 +64,7 @@ object P2pSettingsRepository {
 
     fun clearLocalState() {
         hasLoaded = false
-        p2pEnabled = false
+        p2pEnabled = AppFeaturePolicy.p2pEnabled
         enableUpload = true
         hideTorrentStats = false
         torrentProfile = P2pTorrentProfile.BALANCED
@@ -114,7 +114,7 @@ object P2pSettingsRepository {
 
     private fun loadFromDisk() {
         hasLoaded = true
-        p2pEnabled = P2pSettingsStorage.loadP2pEnabled() ?: false
+        p2pEnabled = P2pSettingsStorage.loadP2pEnabled() ?: AppFeaturePolicy.p2pEnabled
         enableUpload = P2pSettingsStorage.loadEnableUpload() ?: true
         hideTorrentStats = P2pSettingsStorage.loadHideTorrentStats() ?: false
         torrentProfile = P2pSettingsStorage.loadTorrentProfile()

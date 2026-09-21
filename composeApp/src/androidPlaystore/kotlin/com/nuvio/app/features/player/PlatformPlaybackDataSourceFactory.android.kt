@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.content.Context
 import androidx.media3.datasource.DataSource
@@ -11,7 +11,7 @@ internal object PlatformPlaybackDataSourceFactory {
         defaultResponseHeaders: Map<String, String>,
         useYoutubeChunkedPlayback: Boolean,
         useLongReadTimeout: Boolean = false,
-        externalSubtitles: List<com.nuvio.app.features.streams.StreamSubtitle> = emptyList(),
+        externalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle> = emptyList(),
     ): DataSource.Factory {
         val httpFactory = PlayerPlaybackNetworking.createHttpDataSourceFactory(
             defaultRequestHeaders,

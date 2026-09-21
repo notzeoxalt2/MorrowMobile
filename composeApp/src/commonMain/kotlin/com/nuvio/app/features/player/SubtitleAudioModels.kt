@@ -1,10 +1,10 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.nuvio.app.isIos
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.compose_player_track_number
+import com.streamvault.app.isIos
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.compose_player_track_number
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.roundToInt
 

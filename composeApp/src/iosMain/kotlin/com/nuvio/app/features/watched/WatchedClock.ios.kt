@@ -1,4 +1,4 @@
-package com.nuvio.app.features.watched
+﻿package com.streamvault.app.features.watched
 
 import kotlinx.cinterop.ExperimentalForeignApi
 import platform.posix.time

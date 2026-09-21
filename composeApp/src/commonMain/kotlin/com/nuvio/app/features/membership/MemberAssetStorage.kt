@@ -1,4 +1,4 @@
-package com.nuvio.app.features.membership
+﻿package com.streamvault.app.features.membership
 
 internal expect object MemberAssetStorage {
     fun loadAccessPayload(): String?

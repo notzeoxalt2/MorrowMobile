@@ -1,7 +1,7 @@
-package com.nuvio.app.features.watching.sync
+﻿package com.streamvault.app.features.watching.sync
 
-import com.nuvio.app.features.watched.WatchedItem
-import com.nuvio.app.features.watched.watchedItemKey
+import com.streamvault.app.features.watched.WatchedItem
+import com.streamvault.app.features.watched.watchedItemKey
 
 internal data class TraktWatchedProjectionCandidate(
     val item: WatchedItem,

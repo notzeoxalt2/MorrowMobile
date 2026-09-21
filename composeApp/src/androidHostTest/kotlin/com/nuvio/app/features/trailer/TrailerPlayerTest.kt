@@ -1,4 +1,4 @@
-package com.nuvio.app.features.trailer
+﻿package com.streamvault.app.features.trailer
 
 import android.app.Application
 import androidx.compose.ui.semantics.SemanticsActions
@@ -8,12 +8,12 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performSemanticsAction
-import com.nuvio.app.core.ui.NuvioTheme
-import com.nuvio.app.features.details.components.TrailerPlayerPopup
-import com.nuvio.app.features.player.AudioTrack
-import com.nuvio.app.features.player.PlayerEngineController
-import com.nuvio.app.features.player.PlayerPlaybackSnapshot
-import com.nuvio.app.features.player.SubtitleTrack
+import com.streamvault.app.core.ui.NuvioTheme
+import com.streamvault.app.features.details.components.TrailerPlayerPopup
+import com.streamvault.app.features.player.AudioTrack
+import com.streamvault.app.features.player.PlayerEngineController
+import com.streamvault.app.features.player.PlayerPlaybackSnapshot
+import com.streamvault.app.features.player.SubtitleTrack
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner

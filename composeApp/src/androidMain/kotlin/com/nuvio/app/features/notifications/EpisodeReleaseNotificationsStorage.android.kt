@@ -1,8 +1,8 @@
-package com.nuvio.app.features.notifications
+﻿package com.streamvault.app.features.notifications
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 
 internal actual object EpisodeReleaseNotificationsStorage {
     private const val preferencesName = "nuvio_episode_release_notifications"

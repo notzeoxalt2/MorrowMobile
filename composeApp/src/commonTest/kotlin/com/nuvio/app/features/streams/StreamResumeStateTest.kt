@@ -1,6 +1,6 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

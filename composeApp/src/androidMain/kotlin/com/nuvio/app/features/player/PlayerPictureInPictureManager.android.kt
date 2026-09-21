@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.app.Activity
 import android.app.PictureInPictureParams
@@ -18,11 +18,11 @@ import android.util.Rational
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.unit.IntSize
 import androidx.lifecycle.Lifecycle
-import com.nuvio.app.R
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.R
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
-internal const val PIP_ACTION_TOGGLE_PLAY_PAUSE = "com.nuvio.app.action.PIP_TOGGLE_PLAY_PAUSE"
+internal const val PIP_ACTION_TOGGLE_PLAY_PAUSE = "com.streamvault.app.action.PIP_TOGGLE_PLAY_PAUSE"
 
 internal object PlayerPictureInPictureManager {
     private data class SessionState(

@@ -1,7 +1,7 @@
-package com.nuvio.app.features.tracking
+﻿package com.streamvault.app.features.tracking
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.profiles.ProfileRepository
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll

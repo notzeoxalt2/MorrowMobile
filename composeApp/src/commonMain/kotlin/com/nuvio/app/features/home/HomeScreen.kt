@@ -1,4 +1,4 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
@@ -22,77 +22,77 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nuvio.app.core.auth.AuthRepository
-import com.nuvio.app.core.auth.AuthState
-import com.nuvio.app.core.network.NetworkCondition
-import com.nuvio.app.core.network.NetworkStatusRepository
-import com.nuvio.app.core.ui.LocalNuvioBottomNavigationOverlayPadding
-import com.nuvio.app.core.ui.ScreenActivityEffect
-import com.nuvio.app.core.ui.NuvioScreen
-import com.nuvio.app.core.ui.NuvioNetworkOfflineCard
-import com.nuvio.app.core.ui.nuvioSafeBottomPadding
-import com.nuvio.app.core.ui.rememberHeroStretchState
-import com.nuvio.app.core.ui.rememberPosterCardStyleUiState
-import com.nuvio.app.core.ui.withDuplicateSafeLazyKeys
-import com.nuvio.app.features.addons.AddonRepository
-import com.nuvio.app.features.addons.enabledAddons
-import com.nuvio.app.features.addons.firstEnabledManifestError
-import com.nuvio.app.features.cloud.CloudLibraryContentType
-import com.nuvio.app.features.cloud.CloudLibraryRepository
-import com.nuvio.app.features.cloud.CloudLibraryUiState
-import com.nuvio.app.features.cloud.findPlaybackTargetForProgress
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.details.MetaDetailsRepository
-import com.nuvio.app.features.details.MetaVideo
-import com.nuvio.app.features.details.SeriesPrimaryAction
-import com.nuvio.app.features.details.seriesPrimaryAction
-import com.nuvio.app.features.home.components.HomeCatalogRowSection
-import com.nuvio.app.features.home.components.HomeContinueWatchingSection
-import com.nuvio.app.features.home.components.HomeEmptyStateCard
-import com.nuvio.app.features.home.components.HomeHeroReservedSpace
-import com.nuvio.app.features.home.components.HomeHeroSection
-import com.nuvio.app.features.home.components.HomeSkeletonHero
-import com.nuvio.app.features.home.components.HomeSkeletonRow
-import com.nuvio.app.features.home.components.HomeContinueWatchingSectionBottomPadding
-import com.nuvio.app.features.home.components.ContinueWatchingLayout
-import com.nuvio.app.features.tracking.TrackingSettingsRepository
-import com.nuvio.app.features.tracking.WatchProgressSource
-import com.nuvio.app.features.watched.WatchedItem
-import com.nuvio.app.features.watched.WatchedRepository
-import com.nuvio.app.features.watched.WatchedUiState
-import com.nuvio.app.features.watched.episodePlaybackId
-import com.nuvio.app.features.watched.resolveWatchedBadgesBulk
-import com.nuvio.app.features.watched.watchedItemKey
-import com.nuvio.app.features.watchprogress.CachedInProgressItem
-import com.nuvio.app.features.watchprogress.CachedNextUpItem
-import com.nuvio.app.features.watchprogress.ContinueWatchingEnrichmentCache
-import com.nuvio.app.features.watchprogress.CurrentDateProvider
-import com.nuvio.app.features.watchprogress.ContinueWatchingPreferencesRepository
-import com.nuvio.app.features.watchprogress.ContinueWatchingPreferencesUiState
-import com.nuvio.app.features.watchprogress.ContinueWatchingItem
-import com.nuvio.app.features.watchprogress.ContinueWatchingSortMode
-import com.nuvio.app.features.watchprogress.isMalformedNextUpSeedContentId
-import com.nuvio.app.features.watchprogress.isSeriesTypeForContinueWatching
-import com.nuvio.app.features.watchprogress.nextUpDismissKey
-import com.nuvio.app.features.watchprogress.parseReleaseDateToEpochMs
-import com.nuvio.app.features.watchprogress.resolvedProgressKey
-import com.nuvio.app.features.watchprogress.shouldTreatAsInProgressForContinueWatching
-import com.nuvio.app.features.watchprogress.shouldUseAsCompletedSeedForContinueWatching
-import com.nuvio.app.features.watchprogress.WatchProgressClock
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
-import com.nuvio.app.features.watchprogress.WatchProgressRepository
-import com.nuvio.app.features.watchprogress.WatchProgressSourceCoordinator
-import com.nuvio.app.features.watchprogress.buildContinueWatchingEpisodeSubtitle
-import com.nuvio.app.features.watchprogress.continueWatchingEntries
-import com.nuvio.app.features.watchprogress.toContinueWatchingItem
-import com.nuvio.app.features.watchprogress.toUpNextContinueWatchingItem
-import com.nuvio.app.core.ui.DisintegrationRequest
-import com.nuvio.app.features.watching.application.WatchingState
-import com.nuvio.app.features.watching.domain.WatchingContentRef
-import com.nuvio.app.features.watching.domain.isReleasedBy
-import com.nuvio.app.features.collection.CollectionRepository
-import com.nuvio.app.features.profiles.ProfileRepository
-import com.nuvio.app.features.home.components.HomeCollectionRowSection
+import com.streamvault.app.core.auth.AuthRepository
+import com.streamvault.app.core.auth.AuthState
+import com.streamvault.app.core.network.NetworkCondition
+import com.streamvault.app.core.network.NetworkStatusRepository
+import com.streamvault.app.core.ui.LocalNuvioBottomNavigationOverlayPadding
+import com.streamvault.app.core.ui.ScreenActivityEffect
+import com.streamvault.app.core.ui.NuvioScreen
+import com.streamvault.app.core.ui.NuvioNetworkOfflineCard
+import com.streamvault.app.core.ui.nuvioSafeBottomPadding
+import com.streamvault.app.core.ui.rememberHeroStretchState
+import com.streamvault.app.core.ui.rememberPosterCardStyleUiState
+import com.streamvault.app.core.ui.withDuplicateSafeLazyKeys
+import com.streamvault.app.features.addons.AddonRepository
+import com.streamvault.app.features.addons.enabledAddons
+import com.streamvault.app.features.addons.firstEnabledManifestError
+import com.streamvault.app.features.cloud.CloudLibraryContentType
+import com.streamvault.app.features.cloud.CloudLibraryRepository
+import com.streamvault.app.features.cloud.CloudLibraryUiState
+import com.streamvault.app.features.cloud.findPlaybackTargetForProgress
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.details.MetaDetailsRepository
+import com.streamvault.app.features.details.MetaVideo
+import com.streamvault.app.features.details.SeriesPrimaryAction
+import com.streamvault.app.features.details.seriesPrimaryAction
+import com.streamvault.app.features.home.components.HomeCatalogRowSection
+import com.streamvault.app.features.home.components.HomeContinueWatchingSection
+import com.streamvault.app.features.home.components.HomeEmptyStateCard
+import com.streamvault.app.features.home.components.HomeHeroReservedSpace
+import com.streamvault.app.features.home.components.HomeHeroSection
+import com.streamvault.app.features.home.components.HomeSkeletonHero
+import com.streamvault.app.features.home.components.HomeSkeletonRow
+import com.streamvault.app.features.home.components.HomeContinueWatchingSectionBottomPadding
+import com.streamvault.app.features.home.components.ContinueWatchingLayout
+import com.streamvault.app.features.tracking.TrackingSettingsRepository
+import com.streamvault.app.features.tracking.WatchProgressSource
+import com.streamvault.app.features.watched.WatchedItem
+import com.streamvault.app.features.watched.WatchedRepository
+import com.streamvault.app.features.watched.WatchedUiState
+import com.streamvault.app.features.watched.episodePlaybackId
+import com.streamvault.app.features.watched.resolveWatchedBadgesBulk
+import com.streamvault.app.features.watched.watchedItemKey
+import com.streamvault.app.features.watchprogress.CachedInProgressItem
+import com.streamvault.app.features.watchprogress.CachedNextUpItem
+import com.streamvault.app.features.watchprogress.ContinueWatchingEnrichmentCache
+import com.streamvault.app.features.watchprogress.CurrentDateProvider
+import com.streamvault.app.features.watchprogress.ContinueWatchingPreferencesRepository
+import com.streamvault.app.features.watchprogress.ContinueWatchingPreferencesUiState
+import com.streamvault.app.features.watchprogress.ContinueWatchingItem
+import com.streamvault.app.features.watchprogress.ContinueWatchingSortMode
+import com.streamvault.app.features.watchprogress.isMalformedNextUpSeedContentId
+import com.streamvault.app.features.watchprogress.isSeriesTypeForContinueWatching
+import com.streamvault.app.features.watchprogress.nextUpDismissKey
+import com.streamvault.app.features.watchprogress.parseReleaseDateToEpochMs
+import com.streamvault.app.features.watchprogress.resolvedProgressKey
+import com.streamvault.app.features.watchprogress.shouldTreatAsInProgressForContinueWatching
+import com.streamvault.app.features.watchprogress.shouldUseAsCompletedSeedForContinueWatching
+import com.streamvault.app.features.watchprogress.WatchProgressClock
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watchprogress.WatchProgressRepository
+import com.streamvault.app.features.watchprogress.WatchProgressSourceCoordinator
+import com.streamvault.app.features.watchprogress.buildContinueWatchingEpisodeSubtitle
+import com.streamvault.app.features.watchprogress.continueWatchingEntries
+import com.streamvault.app.features.watchprogress.toContinueWatchingItem
+import com.streamvault.app.features.watchprogress.toUpNextContinueWatchingItem
+import com.streamvault.app.core.ui.DisintegrationRequest
+import com.streamvault.app.features.watching.application.WatchingState
+import com.streamvault.app.features.watching.domain.WatchingContentRef
+import com.streamvault.app.features.watching.domain.isReleasedBy
+import com.streamvault.app.features.collection.CollectionRepository
+import com.streamvault.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.home.components.HomeCollectionRowSection
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
@@ -103,11 +103,11 @@ import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
-import com.nuvio.app.features.home.components.continueWatchingHeroViewportReserveHeight
-import com.nuvio.app.features.home.components.homeSectionHorizontalPaddingForWidth
-import com.nuvio.app.features.home.components.rememberContinueWatchingLayout
+import com.streamvault.app.features.home.components.continueWatchingHeroViewportReserveHeight
+import com.streamvault.app.features.home.components.homeSectionHorizontalPaddingForWidth
+import com.streamvault.app.features.home.components.rememberContinueWatchingLayout
 import kotlinx.coroutines.CancellationException
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -1345,7 +1345,7 @@ internal fun isHomeNextUpSeedSourceLoaded(
 internal fun cachedNextUpHasAired(
     cached: CachedNextUpItem,
     nowEpochMs: Long = WatchProgressClock.nowEpochMs(),
-    releaseEpochMs: Long? = com.nuvio.app.features.watchprogress.parseReleaseDateToEpochMs(cached.released),
+    releaseEpochMs: Long? = com.streamvault.app.features.watchprogress.parseReleaseDateToEpochMs(cached.released),
 ): Boolean =
     releaseEpochMs?.let { nowEpochMs >= it }
         ?: cached.hasAired
@@ -1503,7 +1503,7 @@ private suspend fun resolveHomeNextUpCandidate(
     }
 
     val sortTimestamp = if (item.isReleaseAlert) {
-        com.nuvio.app.features.watchprogress.parseReleaseDateToEpochMs(item.released) ?: completedEntry.markedAtEpochMs
+        com.streamvault.app.features.watchprogress.parseReleaseDateToEpochMs(item.released) ?: completedEntry.markedAtEpochMs
     } else {
         completedEntry.markedAtEpochMs
     }
@@ -1520,7 +1520,7 @@ private fun MetaDetails.videoForSeriesAction(action: SeriesPrimaryAction): MetaV
         }?.let { return it }
     }
     return videos.firstOrNull { video ->
-        com.nuvio.app.features.watchprogress.buildPlaybackVideoId(
+        com.streamvault.app.features.watchprogress.buildPlaybackVideoId(
             parentMetaId = id,
             seasonNumber = video.season,
             episodeNumber = video.episode,
@@ -1804,7 +1804,7 @@ internal fun buildHomeInProgressCacheSnapshot(
     }
 }
 
-private fun CompletedSeriesCandidate.toContinueWatchingSeed(meta: com.nuvio.app.features.details.MetaDetails) =
+private fun CompletedSeriesCandidate.toContinueWatchingSeed(meta: com.streamvault.app.features.details.MetaDetails) =
     WatchProgressEntry(
         contentType = content.type,
         parentMetaId = content.id,
@@ -1829,7 +1829,7 @@ private fun CachedNextUpItem.toContinueWatchingItem(
     releaseEpochMs: Long?,
     nowEpochMs: Long,
 ): ContinueWatchingItem {
-    val alertState = com.nuvio.app.features.watchprogress.calculateReleaseAlertState(
+    val alertState = com.streamvault.app.features.watchprogress.calculateReleaseAlertState(
         seedLastUpdatedEpochMs = lastWatched,
         seedSeasonNumber = seedSeason,
         nextSeasonNumber = season,

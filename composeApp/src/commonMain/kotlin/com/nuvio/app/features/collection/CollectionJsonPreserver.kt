@@ -1,4 +1,4 @@
-package com.nuvio.app.features.collection
+﻿package com.streamvault.app.features.collection
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray

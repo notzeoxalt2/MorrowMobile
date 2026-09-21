@@ -1,16 +1,16 @@
-package com.nuvio.app.features.tmdb
+﻿package com.streamvault.app.features.tmdb
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.addons.httpGetText
-import com.nuvio.app.features.details.MetaCompany
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.details.MetaPerson
-import com.nuvio.app.features.details.MetaTrailer
-import com.nuvio.app.features.details.MetaVideo
-import com.nuvio.app.features.details.MoreLikeThisSource
-import com.nuvio.app.features.details.PersonDetail
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.PosterShape
+import com.streamvault.app.features.addons.httpGetText
+import com.streamvault.app.features.details.MetaCompany
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.details.MetaPerson
+import com.streamvault.app.features.details.MetaTrailer
+import com.streamvault.app.features.details.MetaVideo
+import com.streamvault.app.features.details.MoreLikeThisSource
+import com.streamvault.app.features.details.PersonDetail
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.PosterShape
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -24,7 +24,7 @@ import kotlinx.coroutines.sync.withPermit
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
 object TmdbMetadataService {

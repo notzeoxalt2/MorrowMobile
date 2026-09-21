@@ -1,11 +1,11 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
-import com.nuvio.app.core.auth.AuthRepository
-import com.nuvio.app.core.auth.AuthState
-import com.nuvio.app.features.library.LibrarySourceMode
-import com.nuvio.app.features.profiles.ProfileRepository
-import com.nuvio.app.features.simkl.DEFAULT_SIMKL_ANIME_ID_PREFERENCE
-import com.nuvio.app.features.simkl.SimklAnimeIdPreference
+import com.streamvault.app.core.auth.AuthRepository
+import com.streamvault.app.core.auth.AuthState
+import com.streamvault.app.features.library.LibrarySourceMode
+import com.streamvault.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.simkl.DEFAULT_SIMKL_ANIME_ID_PREFERENCE
+import com.streamvault.app.features.simkl.SimklAnimeIdPreference
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,15 +14,15 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-typealias WatchProgressSource = com.nuvio.app.features.tracking.WatchProgressSource
+typealias WatchProgressSource = com.streamvault.app.features.tracking.WatchProgressSource
 
 val DEFAULT_WATCH_PROGRESS_SOURCE: WatchProgressSource =
-    com.nuvio.app.features.tracking.DEFAULT_WATCH_PROGRESS_SOURCE
+    com.streamvault.app.features.tracking.DEFAULT_WATCH_PROGRESS_SOURCE
 val DEFAULT_LIBRARY_SOURCE_MODE: LibrarySourceMode =
-    com.nuvio.app.features.tracking.DEFAULT_LIBRARY_SOURCE_MODE
+    com.streamvault.app.features.tracking.DEFAULT_LIBRARY_SOURCE_MODE
 
 fun librarySourceModeFromStorage(value: String?): LibrarySourceMode =
-    com.nuvio.app.features.tracking.librarySourceModeFromStorage(value)
+    com.streamvault.app.features.tracking.librarySourceModeFromStorage(value)
 
 const val TRAKT_CONTINUE_WATCHING_DAYS_CAP_ALL = 0
 const val TRAKT_DEFAULT_CONTINUE_WATCHING_DAYS_CAP = 60
@@ -140,7 +140,7 @@ object TraktSettingsRepository {
         if (_uiState.value.simklAnimeIdPreference == preference) return
         _uiState.value = _uiState.value.copy(simklAnimeIdPreference = preference)
         persist()
-        com.nuvio.app.features.simkl.SimklSyncRepository.invalidateProjections()
+        com.streamvault.app.features.simkl.SimklSyncRepository.invalidateProjections()
     }
 
     private fun loadFromDisk() {

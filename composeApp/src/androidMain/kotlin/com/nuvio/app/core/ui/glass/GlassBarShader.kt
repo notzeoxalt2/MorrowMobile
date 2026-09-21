@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui.glass
+﻿package com.streamvault.app.core.ui.glass
 
 internal const val GlassBarShader = """
 uniform shader backdrop;

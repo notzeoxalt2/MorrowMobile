@@ -1,4 +1,4 @@
-package com.nuvio.app.features.plugins
+﻿package com.streamvault.app.features.plugins
 
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.refTo
@@ -13,7 +13,7 @@ import kotlinx.cinterop.ptr
 import kotlinx.cinterop.value
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
-import com.nuvio.app.features.plugins.cryptointerop.*
+import com.streamvault.app.features.plugins.cryptointerop.*
 import platform.Security.SecRandomCopyBytes
 import platform.Security.kSecRandomDefault
 
@@ -118,7 +118,7 @@ internal fun pluginAesEncrypt(
     if (isGcm) {
         var encryptedData: ByteArray? = null
         memScoped {
-            val cryptorRefVar = alloc<com.nuvio.app.features.plugins.cryptointerop.CCCryptorRefVar>()
+            val cryptorRefVar = alloc<com.streamvault.app.features.plugins.cryptointerop.CCCryptorRefVar>()
             
             key.usePinned { pinnedKey ->
                 iv.usePinned { pinnedIv ->
@@ -263,7 +263,7 @@ internal fun pluginAesDecrypt(
         var decryptedData: ByteArray? = null
         
         memScoped {
-            val cryptorRefVar = alloc<com.nuvio.app.features.plugins.cryptointerop.CCCryptorRefVar>()
+            val cryptorRefVar = alloc<com.streamvault.app.features.plugins.cryptointerop.CCCryptorRefVar>()
             
             key.usePinned { pinnedKey ->
                 iv.usePinned { pinnedIv ->

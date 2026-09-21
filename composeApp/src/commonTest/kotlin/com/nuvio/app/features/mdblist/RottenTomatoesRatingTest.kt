@@ -1,9 +1,9 @@
-package com.nuvio.app.features.mdblist
+﻿package com.streamvault.app.features.mdblist
 
-import com.nuvio.app.features.details.MetaExternalRating
-import com.nuvio.app.features.mdblist.MdbListMetadataService.PROVIDER_AUDIENCE
-import com.nuvio.app.features.mdblist.MdbListMetadataService.PROVIDER_IMDB
-import com.nuvio.app.features.mdblist.MdbListMetadataService.PROVIDER_TOMATOES
+import com.streamvault.app.features.details.MetaExternalRating
+import com.streamvault.app.features.mdblist.MdbListMetadataService.PROVIDER_AUDIENCE
+import com.streamvault.app.features.mdblist.MdbListMetadataService.PROVIDER_IMDB
+import com.streamvault.app.features.mdblist.MdbListMetadataService.PROVIDER_TOMATOES
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

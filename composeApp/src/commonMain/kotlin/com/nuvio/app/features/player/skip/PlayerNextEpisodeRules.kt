@@ -1,6 +1,6 @@
-package com.nuvio.app.features.player.skip
+﻿package com.streamvault.app.features.player.skip
 
-import com.nuvio.app.features.details.MetaVideo
+import com.streamvault.app.features.details.MetaVideo
 
 object PlayerNextEpisodeRules {
 

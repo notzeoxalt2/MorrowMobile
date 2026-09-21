@@ -1,9 +1,9 @@
-package com.nuvio.app.features.debrid
+﻿package com.streamvault.app.features.debrid
 
-import com.nuvio.app.features.player.PlayerSettingsUiState
-import com.nuvio.app.features.streams.StreamAutoPlayMode
-import com.nuvio.app.features.streams.StreamClientResolve
-import com.nuvio.app.features.streams.StreamItem
+import com.streamvault.app.features.player.PlayerSettingsUiState
+import com.streamvault.app.features.streams.StreamAutoPlayMode
+import com.streamvault.app.features.streams.StreamClientResolve
+import com.streamvault.app.features.streams.StreamItem
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

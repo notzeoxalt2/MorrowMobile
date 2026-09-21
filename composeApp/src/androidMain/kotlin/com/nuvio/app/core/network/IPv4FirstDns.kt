@@ -1,4 +1,4 @@
-package com.nuvio.app.core.network
+﻿package com.streamvault.app.core.network
 
 import okhttp3.Dns
 import java.net.Inet4Address

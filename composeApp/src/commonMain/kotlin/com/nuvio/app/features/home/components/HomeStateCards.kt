@@ -1,4 +1,4 @@
-package com.nuvio.app.features.home.components
+﻿package com.streamvault.app.features.home.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -7,8 +7,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.NuvioPrimaryButton
-import com.nuvio.app.core.ui.NuvioSurfaceCard
+import com.streamvault.app.core.ui.NuvioPrimaryButton
+import com.streamvault.app.core.ui.NuvioSurfaceCard
 
 @Composable
 fun HomeEmptyStateCard(

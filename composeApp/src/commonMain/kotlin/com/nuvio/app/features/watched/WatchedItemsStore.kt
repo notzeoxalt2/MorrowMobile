@@ -1,6 +1,6 @@
-package com.nuvio.app.features.watched
+﻿package com.streamvault.app.features.watched
 
-import com.nuvio.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.TrackingProviderId
 import kotlinx.atomicfu.locks.SynchronizedObject
 import kotlinx.atomicfu.locks.synchronized
 

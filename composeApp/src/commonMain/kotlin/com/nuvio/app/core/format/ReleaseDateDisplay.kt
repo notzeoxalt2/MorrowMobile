@@ -1,7 +1,7 @@
-package com.nuvio.app.core.format
+﻿package com.streamvault.app.core.format
 
-import com.nuvio.app.core.i18n.localizedMonthName
-import com.nuvio.app.core.time.parseEpisodeReleaseLocalDate
+import com.streamvault.app.core.i18n.localizedMonthName
+import com.streamvault.app.core.time.parseEpisodeReleaseLocalDate
 
 /**
  * Formats ISO calendar dates (yyyy-MM-dd or yyyy-MM-ddTHH:mm:ss…) for UI as "2025 February 1".

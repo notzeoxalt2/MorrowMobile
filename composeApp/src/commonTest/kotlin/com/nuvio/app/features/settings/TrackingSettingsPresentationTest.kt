@@ -1,8 +1,8 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
-import com.nuvio.app.features.simkl.SimklConnectionMode
-import com.nuvio.app.features.trakt.MoreLikeThisSourcePreference
-import com.nuvio.app.features.trakt.TraktConnectionMode
+import com.streamvault.app.features.simkl.SimklConnectionMode
+import com.streamvault.app.features.trakt.MoreLikeThisSourcePreference
+import com.streamvault.app.features.trakt.TraktConnectionMode
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

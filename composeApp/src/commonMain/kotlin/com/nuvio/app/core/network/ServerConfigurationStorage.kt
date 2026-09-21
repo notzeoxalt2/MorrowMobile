@@ -1,4 +1,4 @@
-package com.nuvio.app.core.network
+﻿package com.streamvault.app.core.network
 
 internal expect object ServerConfigurationStorage {
     fun loadCustom(): ServerConfiguration?

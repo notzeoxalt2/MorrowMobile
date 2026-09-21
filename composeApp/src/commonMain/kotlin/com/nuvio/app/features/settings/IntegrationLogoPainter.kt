@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter

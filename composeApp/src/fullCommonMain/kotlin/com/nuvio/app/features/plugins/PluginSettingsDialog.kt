@@ -1,4 +1,4 @@
-package com.nuvio.app.features.plugins
+﻿package com.streamvault.app.features.plugins
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -12,8 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.nuvio.app.core.ui.NuvioInputField
-import com.nuvio.app.core.ui.NuvioPrimaryButton
+import com.streamvault.app.core.ui.NuvioInputField
+import com.streamvault.app.core.ui.NuvioPrimaryButton
 import kotlinx.serialization.json.*
 
 @Composable

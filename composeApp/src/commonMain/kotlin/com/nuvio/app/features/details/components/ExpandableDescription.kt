@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details.components
+﻿package com.streamvault.app.features.details.components
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.clickable
@@ -18,9 +18,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.details_show_less
-import nuvio.composeapp.generated.resources.details_show_more
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.details_show_less
+import streamvault.composeapp.generated.resources.details_show_more
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

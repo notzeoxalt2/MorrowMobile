@@ -1,10 +1,10 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
-import com.nuvio.app.features.home.PosterShape
-import com.nuvio.app.features.library.LibraryItem
-import com.nuvio.app.features.library.LibrarySection
-import com.nuvio.app.features.tracking.TrackingListStatus
-import com.nuvio.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.home.PosterShape
+import com.streamvault.app.features.library.LibraryItem
+import com.streamvault.app.features.library.LibrarySection
+import com.streamvault.app.features.tracking.TrackingListStatus
+import com.streamvault.app.features.tracking.TrackingProviderId
 
 internal const val SIMKL_STATUS_SELECTION_GROUP = "simkl:status"
 

@@ -1,22 +1,22 @@
-package com.nuvio.app.features.collection
+﻿package com.streamvault.app.features.collection
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.addons.AddonRepository
-import com.nuvio.app.features.catalog.CATALOG_PAGE_SIZE
-import com.nuvio.app.features.catalog.CatalogPage
-import com.nuvio.app.features.catalog.CatalogTarget
-import com.nuvio.app.features.catalog.fetchCatalogPage
-import com.nuvio.app.features.catalog.mergeCatalogItems
-import com.nuvio.app.features.catalog.nextCatalogPaginationState
-import com.nuvio.app.features.catalog.supportsPagination
-import com.nuvio.app.core.i18n.localizedMediaTypeLabel
-import com.nuvio.app.features.home.HomeCatalogSettingsRepository
-import com.nuvio.app.features.home.HomeCatalogSection
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.filterReleasedItems
-import com.nuvio.app.features.home.stableKey
-import com.nuvio.app.features.trakt.TraktPublicListSourceResolver
-import com.nuvio.app.features.watchprogress.CurrentDateProvider
+import com.streamvault.app.features.addons.AddonRepository
+import com.streamvault.app.features.catalog.CATALOG_PAGE_SIZE
+import com.streamvault.app.features.catalog.CatalogPage
+import com.streamvault.app.features.catalog.CatalogTarget
+import com.streamvault.app.features.catalog.fetchCatalogPage
+import com.streamvault.app.features.catalog.mergeCatalogItems
+import com.streamvault.app.features.catalog.nextCatalogPaginationState
+import com.streamvault.app.features.catalog.supportsPagination
+import com.streamvault.app.core.i18n.localizedMediaTypeLabel
+import com.streamvault.app.features.home.HomeCatalogSettingsRepository
+import com.streamvault.app.features.home.HomeCatalogSection
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.filterReleasedItems
+import com.streamvault.app.features.home.stableKey
+import com.streamvault.app.features.trakt.TraktPublicListSourceResolver
+import com.streamvault.app.features.watchprogress.CurrentDateProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -26,11 +26,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.collections_folder_addon_not_found
-import nuvio.composeapp.generated.resources.collections_folder_trakt_movie_list
-import nuvio.composeapp.generated.resources.collections_folder_trakt_series_list
-import nuvio.composeapp.generated.resources.collections_tab_all
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.collections_folder_addon_not_found
+import streamvault.composeapp.generated.resources.collections_folder_trakt_movie_list
+import streamvault.composeapp.generated.resources.collections_folder_trakt_series_list
+import streamvault.composeapp.generated.resources.collections_tab_all
 import org.jetbrains.compose.resources.getString
 
 data class FolderTab(

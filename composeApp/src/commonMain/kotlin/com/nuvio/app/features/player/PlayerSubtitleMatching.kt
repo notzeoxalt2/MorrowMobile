@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 internal object SubtitleLanguageMatching {
     internal val BRAZILIAN_TAGS = listOf(

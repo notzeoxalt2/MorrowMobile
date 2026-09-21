@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,21 +14,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.features.notifications.EpisodeReleaseNotificationsRepository
-import com.nuvio.app.features.notifications.EpisodeReleaseNotificationsUiState
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.settings_notifications_disabled_in_app
-import nuvio.composeapp.generated.resources.settings_notifications_episode_release_alerts
-import nuvio.composeapp.generated.resources.settings_notifications_episode_release_alerts_description
-import nuvio.composeapp.generated.resources.settings_notifications_permission_disabled
-import nuvio.composeapp.generated.resources.settings_notifications_scheduled_count
-import nuvio.composeapp.generated.resources.settings_notifications_section_alerts
-import nuvio.composeapp.generated.resources.settings_notifications_section_test
-import nuvio.composeapp.generated.resources.settings_notifications_send_test
-import nuvio.composeapp.generated.resources.settings_notifications_sending_test
-import nuvio.composeapp.generated.resources.settings_notifications_test_for_title
-import nuvio.composeapp.generated.resources.settings_notifications_test_requires_saved_show
-import nuvio.composeapp.generated.resources.settings_notifications_test_title
+import com.streamvault.app.features.notifications.EpisodeReleaseNotificationsRepository
+import com.streamvault.app.features.notifications.EpisodeReleaseNotificationsUiState
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.settings_notifications_disabled_in_app
+import streamvault.composeapp.generated.resources.settings_notifications_episode_release_alerts
+import streamvault.composeapp.generated.resources.settings_notifications_episode_release_alerts_description
+import streamvault.composeapp.generated.resources.settings_notifications_permission_disabled
+import streamvault.composeapp.generated.resources.settings_notifications_scheduled_count
+import streamvault.composeapp.generated.resources.settings_notifications_section_alerts
+import streamvault.composeapp.generated.resources.settings_notifications_section_test
+import streamvault.composeapp.generated.resources.settings_notifications_send_test
+import streamvault.composeapp.generated.resources.settings_notifications_sending_test
+import streamvault.composeapp.generated.resources.settings_notifications_test_for_title
+import streamvault.composeapp.generated.resources.settings_notifications_test_requires_saved_show
+import streamvault.composeapp.generated.resources.settings_notifications_test_title
 import org.jetbrains.compose.resources.stringResource
 
 internal fun LazyListScope.notificationsSettingsContent(

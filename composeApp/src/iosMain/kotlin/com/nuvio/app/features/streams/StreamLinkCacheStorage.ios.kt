@@ -1,6 +1,6 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 import platform.Foundation.NSUserDefaults
 
 actual object StreamLinkCacheStorage {

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -11,7 +11,7 @@ fun PlayerScreen(
     sourceAudioUrl: String? = null,
     sourceHeaders: Map<String, String> = emptyMap(),
     sourceResponseHeaders: Map<String, String> = emptyMap(),
-    externalSubtitles: List<com.nuvio.app.features.streams.StreamSubtitle> = emptyList(),
+    externalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle> = emptyList(),
     streamType: String? = null,
     providerName: String,
     streamTitle: String,

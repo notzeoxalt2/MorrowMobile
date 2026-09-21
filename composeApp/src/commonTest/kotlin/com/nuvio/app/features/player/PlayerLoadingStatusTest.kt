@@ -1,9 +1,9 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.player_loading_buffering
-import nuvio.composeapp.generated.resources.player_loading_building
-import nuvio.composeapp.generated.resources.player_loading_starting
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.player_loading_buffering
+import streamvault.composeapp.generated.resources.player_loading_building
+import streamvault.composeapp.generated.resources.player_loading_starting
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull

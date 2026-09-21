@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 internal const val SubtitleOffLanguageKey = "__off__"
 internal const val SubtitleUnknownLanguageKey = "__unknown__"

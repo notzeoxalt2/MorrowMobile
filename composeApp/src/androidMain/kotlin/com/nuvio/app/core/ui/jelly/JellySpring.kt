@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui.jelly
+﻿package com.streamvault.app.core.ui.jelly
 
 import kotlin.math.abs
 import kotlin.math.cos

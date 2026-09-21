@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,18 +12,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.features.details.EpisodeRatingsVisibility
-import com.nuvio.app.features.details.MetaScreenSettingsRepository
-import com.nuvio.app.features.details.MetaScreenSettingsUiState
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.layout_episode_ratings
-import nuvio.composeapp.generated.resources.layout_episode_ratings_sub
-import nuvio.composeapp.generated.resources.layout_overall_ratings
-import nuvio.composeapp.generated.resources.layout_overall_ratings_sub_off
-import nuvio.composeapp.generated.resources.layout_overall_ratings_sub_on
-import nuvio.composeapp.generated.resources.layout_ratings_hide
-import nuvio.composeapp.generated.resources.layout_ratings_hide_unwatched
-import nuvio.composeapp.generated.resources.layout_ratings_show
+import com.streamvault.app.features.details.EpisodeRatingsVisibility
+import com.streamvault.app.features.details.MetaScreenSettingsRepository
+import com.streamvault.app.features.details.MetaScreenSettingsUiState
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.layout_episode_ratings
+import streamvault.composeapp.generated.resources.layout_episode_ratings_sub
+import streamvault.composeapp.generated.resources.layout_overall_ratings
+import streamvault.composeapp.generated.resources.layout_overall_ratings_sub_off
+import streamvault.composeapp.generated.resources.layout_overall_ratings_sub_on
+import streamvault.composeapp.generated.resources.layout_ratings_hide
+import streamvault.composeapp.generated.resources.layout_ratings_hide_unwatched
+import streamvault.composeapp.generated.resources.layout_ratings_show
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalLayoutApi::class)

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.library.sync
+﻿package com.streamvault.app.features.library.sync
 
 internal const val librarySnapshotPageSize = 500
 internal const val libraryDeltaPageSize = 500

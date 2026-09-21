@@ -1,11 +1,11 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.Base64
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 import java.security.KeyStore
 import java.security.MessageDigest
 import java.security.SecureRandom

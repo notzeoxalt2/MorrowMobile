@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -26,21 +26,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nuvio.app.core.ui.nuvio
-import com.nuvio.app.features.debrid.DebridSettingsRepository
-import com.nuvio.app.features.streams.StreamBadgeSettingsRepository
-import com.nuvio.app.features.streams.StreamCard
-import com.nuvio.app.features.streams.StreamItem
-import com.nuvio.app.features.streams.StreamsUiState
-import com.nuvio.app.features.streams.isSelectableForPlayback
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_close
-import nuvio.composeapp.generated.resources.collections_tab_all
-import nuvio.composeapp.generated.resources.compose_action_reload
-import nuvio.composeapp.generated.resources.compose_player_episode_code_full
-import nuvio.composeapp.generated.resources.compose_player_no_streams_found
-import nuvio.composeapp.generated.resources.compose_player_panel_sources
-import nuvio.composeapp.generated.resources.compose_player_playing
+import com.streamvault.app.core.ui.nuvio
+import com.streamvault.app.features.debrid.DebridSettingsRepository
+import com.streamvault.app.features.streams.StreamBadgeSettingsRepository
+import com.streamvault.app.features.streams.StreamCard
+import com.streamvault.app.features.streams.StreamItem
+import com.streamvault.app.features.streams.StreamsUiState
+import com.streamvault.app.features.streams.isSelectableForPlayback
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_close
+import streamvault.composeapp.generated.resources.collections_tab_all
+import streamvault.composeapp.generated.resources.compose_action_reload
+import streamvault.composeapp.generated.resources.compose_player_episode_code_full
+import streamvault.composeapp.generated.resources.compose_player_no_streams_found
+import streamvault.composeapp.generated.resources.compose_player_panel_sources
+import streamvault.composeapp.generated.resources.compose_player_playing
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

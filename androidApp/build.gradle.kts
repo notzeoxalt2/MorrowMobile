@@ -23,10 +23,10 @@ val localProps = Properties().apply {
     val propsFile = rootProject.file("local.properties")
     if (propsFile.exists()) propsFile.inputStream().use { load(it) }
 }
-val releaseStoreFile = localProps.getProperty("NUVIO_RELEASE_STORE_FILE")?.takeIf { it.isNotBlank() }
-val releaseStorePassword = localProps.getProperty("NUVIO_RELEASE_STORE_PASSWORD")?.takeIf { it.isNotBlank() }
-val releaseKeyAlias = localProps.getProperty("NUVIO_RELEASE_KEY_ALIAS")?.takeIf { it.isNotBlank() }
-val releaseKeyPassword = localProps.getProperty("NUVIO_RELEASE_KEY_PASSWORD")?.takeIf { it.isNotBlank() }
+val releaseStoreFile = localProps.getProperty("STREAMVAULT_RELEASE_STORE_FILE")?.takeIf { it.isNotBlank() }
+val releaseStorePassword = localProps.getProperty("STREAMVAULT_RELEASE_STORE_PASSWORD")?.takeIf { it.isNotBlank() }
+val releaseKeyAlias = localProps.getProperty("STREAMVAULT_RELEASE_KEY_ALIAS")?.takeIf { it.isNotBlank() }
+val releaseKeyPassword = localProps.getProperty("STREAMVAULT_RELEASE_KEY_PASSWORD")?.takeIf { it.isNotBlank() }
 val releaseKeystore = releaseStoreFile?.let(rootProject::file)
 fun envOrLocalProperty(key: String): String? =
     providers.environmentVariable(key).orNull?.trim()?.takeIf { it.isNotBlank() }
@@ -37,7 +37,7 @@ val sentryOrg = envOrLocalProperty("SENTRY_ORG")
 val sentryProject = envOrLocalProperty("SENTRY_PROJECT")
 val sentryMappingUploadEnabled = sentryAuthToken != null && sentryOrg != null && sentryProject != null
 val appVersionConfigFile = rootProject.file("iosApp/Configuration/Version.xcconfig")
-val releaseAppVersionName = providers.gradleProperty("nuvio.app.versionName").orNull
+val releaseAppVersionName = providers.gradleProperty("streamvault.app.versionName").orNull
     ?: readXcconfigValue(appVersionConfigFile, "MARKETING_VERSION")
     ?: error("MARKETING_VERSION is missing from ${appVersionConfigFile.path}")
 val releaseAppVersionCode = readXcconfigValue(appVersionConfigFile, "CURRENT_PROJECT_VERSION")
@@ -49,7 +49,7 @@ val buildsReleaseApks = requestedTaskNames.any {
 }
 
 android {
-    namespace = "com.nuvio.android"
+    namespace = "com.streamvault.android"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     compileSdkMinor = libs.versions.android.compileSdkMinor.get().toInt()
 
@@ -65,7 +65,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.nuvio.app"
+        applicationId = "com.streamvault.app"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = releaseAppVersionCode
@@ -144,7 +144,23 @@ android {
 
 androidComponents {
     onVariants(selector().withBuildType("debug")) { variant ->
-        variant.applicationId.set("com.nuviodebug.com")
+        variant.applicationId.set("com.streamvault.debug")
+    }
+}
+
+tasks.matching { it.name.contains("Manifest", ignoreCase = true) || it.name.startsWith("process") || it.name.startsWith("package") }.configureEach {
+    doLast {
+        fileTree(layout.buildDirectory.dir("intermediates")).matching {
+            include("**/AndroidManifest.xml")
+        }.forEach { manifestFile ->
+            if (manifestFile.exists()) {
+                val text = manifestFile.readText()
+                if (text.contains("""package="is.xyz.mpv"""")) {
+                    manifestFile.writeText(text.replace("""package="is.xyz.mpv"""", ""))
+                    logger.lifecycle("Stripped invalid package='is.xyz.mpv' from ${manifestFile.path}")
+                }
+            }
+        }
     }
 }
 

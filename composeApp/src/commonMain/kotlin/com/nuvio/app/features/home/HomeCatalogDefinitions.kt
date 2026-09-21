@@ -1,14 +1,14 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
-import com.nuvio.app.core.i18n.localizedMediaTypeLabel
-import com.nuvio.app.features.addons.AddonCatalog
-import com.nuvio.app.features.addons.AddonManifest
-import com.nuvio.app.features.addons.ManagedAddon
-import com.nuvio.app.features.addons.enabledAddons
-import com.nuvio.app.features.catalog.supportsPagination
+import com.streamvault.app.core.i18n.localizedMediaTypeLabel
+import com.streamvault.app.features.addons.AddonCatalog
+import com.streamvault.app.features.addons.AddonManifest
+import com.streamvault.app.features.addons.ManagedAddon
+import com.streamvault.app.features.addons.enabledAddons
+import com.streamvault.app.features.catalog.supportsPagination
 import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.home_catalog_default_title
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.home_catalog_default_title
 import org.jetbrains.compose.resources.getString
 
 data class HomeCatalogDefinition(

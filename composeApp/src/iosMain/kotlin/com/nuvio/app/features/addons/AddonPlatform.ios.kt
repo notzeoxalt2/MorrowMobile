@@ -1,4 +1,4 @@
-package com.nuvio.app.features.addons
+﻿package com.streamvault.app.features.addons
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.darwin.Darwin
@@ -16,9 +16,9 @@ import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod
 import io.ktor.http.isSuccess
 import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.network_empty_response_body
-import nuvio.composeapp.generated.resources.network_request_failed_http
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.network_empty_response_body
+import streamvault.composeapp.generated.resources.network_request_failed_http
 import org.jetbrains.compose.resources.getString
 import platform.Foundation.NSUserDefaults
 

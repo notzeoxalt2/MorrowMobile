@@ -1,6 +1,6 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
-import com.nuvio.app.features.player.PlayerSettingsUiState
+import com.streamvault.app.features.player.PlayerSettingsUiState
 
 object StreamAutoPlayPolicy {
     fun isEffectivelyEnabled(settings: PlayerSettingsUiState): Boolean {

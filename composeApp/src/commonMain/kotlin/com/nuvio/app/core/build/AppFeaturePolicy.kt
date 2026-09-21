@@ -1,4 +1,4 @@
-package com.nuvio.app.core.build
+﻿package com.streamvault.app.core.build
 
 enum class TrailerPlaybackMode {
     IN_APP,

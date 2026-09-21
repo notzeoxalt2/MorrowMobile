@@ -1,10 +1,10 @@
-package com.nuvio.app.features.cloud
+﻿package com.streamvault.app.features.cloud
 
-import com.nuvio.app.features.debrid.DebridProviderCapability
-import com.nuvio.app.features.debrid.DebridProviders
-import com.nuvio.app.features.debrid.DebridServiceCredential
-import com.nuvio.app.features.debrid.DebridSettingsRepository
-import com.nuvio.app.features.debrid.supports
+import com.streamvault.app.features.debrid.DebridProviderCapability
+import com.streamvault.app.features.debrid.DebridProviders
+import com.streamvault.app.features.debrid.DebridServiceCredential
+import com.streamvault.app.features.debrid.DebridSettingsRepository
+import com.streamvault.app.features.debrid.supports
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -12,9 +12,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.cloud_library_playback_disabled
-import nuvio.composeapp.generated.resources.cloud_library_provider_unavailable
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.cloud_library_playback_disabled
+import streamvault.composeapp.generated.resources.cloud_library_provider_unavailable
 import org.jetbrains.compose.resources.getString
 
 internal class CloudLibraryStore(

@@ -1,10 +1,10 @@
-package com.nuvio.app.features.plugins
+﻿package com.streamvault.app.features.plugins
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.plugins_error_unavailable_build
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.plugins_error_unavailable_build
 import org.jetbrains.compose.resources.getString
 
 actual object PluginRepository {

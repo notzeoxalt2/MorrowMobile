@@ -1,8 +1,8 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.ui.Modifier
-import com.nuvio.app.features.streams.StreamsUiState
+import com.streamvault.app.features.streams.StreamsUiState
 import kotlinx.coroutines.Job
 import kotlin.test.Test
 import kotlin.test.assertEquals

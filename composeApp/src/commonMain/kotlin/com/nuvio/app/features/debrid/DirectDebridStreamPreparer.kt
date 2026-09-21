@@ -1,12 +1,12 @@
-package com.nuvio.app.features.debrid
+﻿package com.streamvault.app.features.debrid
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.player.PlayerSettingsUiState
-import com.nuvio.app.features.streams.AddonStreamGroup
-import com.nuvio.app.features.streams.StreamAutoPlayMode
-import com.nuvio.app.features.streams.StreamAutoPlaySelector
-import com.nuvio.app.features.streams.StreamItem
-import com.nuvio.app.features.streams.epochMs
+import com.streamvault.app.features.player.PlayerSettingsUiState
+import com.streamvault.app.features.streams.AddonStreamGroup
+import com.streamvault.app.features.streams.StreamAutoPlayMode
+import com.streamvault.app.features.streams.StreamAutoPlaySelector
+import com.streamvault.app.features.streams.StreamItem
+import com.streamvault.app.features.streams.epochMs
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock

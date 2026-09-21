@@ -1,4 +1,4 @@
-package com.nuvio.app.features.collection
+﻿package com.streamvault.app.features.collection
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -23,7 +23,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.LocalRippleConfiguration
-import com.nuvio.app.core.ui.NuvioLoadingIndicator
+import com.streamvault.app.core.ui.NuvioLoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
@@ -50,27 +50,27 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.ui.NuvioPosterCard
-import com.nuvio.app.core.ui.NuvioPosterShape
-import com.nuvio.app.core.ui.NuvioScreenHeader
-import com.nuvio.app.core.ui.nuvioSafeBottomPadding
-import com.nuvio.app.core.ui.withDuplicateSafeLazyKeys
-import com.nuvio.app.features.home.HomeCatalogSection
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.PosterShape
-import com.nuvio.app.features.home.canOpenCatalog
-import com.nuvio.app.features.home.stableKey
-import com.nuvio.app.features.home.components.HomeCatalogRowSection
-import com.nuvio.app.features.watched.WatchedRepository
-import com.nuvio.app.features.watching.application.WatchingState
-import com.nuvio.app.navigation.LocalUseNativeNavigation
+import com.streamvault.app.core.ui.NuvioPosterCard
+import com.streamvault.app.core.ui.NuvioPosterShape
+import com.streamvault.app.core.ui.NuvioScreenHeader
+import com.streamvault.app.core.ui.nuvioSafeBottomPadding
+import com.streamvault.app.core.ui.withDuplicateSafeLazyKeys
+import com.streamvault.app.features.home.HomeCatalogSection
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.PosterShape
+import com.streamvault.app.features.home.canOpenCatalog
+import com.streamvault.app.features.home.stableKey
+import com.streamvault.app.features.home.components.HomeCatalogRowSection
+import com.streamvault.app.features.watched.WatchedRepository
+import com.streamvault.app.features.watching.application.WatchingState
+import com.streamvault.app.navigation.LocalUseNativeNavigation
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.collections_folder_empty_items
-import nuvio.composeapp.generated.resources.collections_folder_not_found
-import nuvio.composeapp.generated.resources.collections_tab_all
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.collections_folder_empty_items
+import streamvault.composeapp.generated.resources.collections_folder_not_found
+import streamvault.composeapp.generated.resources.collections_tab_all
 import org.jetbrains.compose.resources.stringResource
 
 private val FolderCoverHeight = 176.dp

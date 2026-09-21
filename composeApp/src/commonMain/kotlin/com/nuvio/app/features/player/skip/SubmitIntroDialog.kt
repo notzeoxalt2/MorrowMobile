@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player.skip
+﻿package com.streamvault.app.features.player.skip
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -28,7 +28,7 @@ import androidx.compose.material.icons.rounded.Replay
 import androidx.compose.material.icons.rounded.Send
 import androidx.compose.material.icons.rounded.StopCircle
 import androidx.compose.material3.BasicAlertDialog
-import com.nuvio.app.core.ui.NuvioLoadingIndicator
+import com.streamvault.app.core.ui.NuvioLoadingIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -51,18 +51,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_cancel
-import nuvio.composeapp.generated.resources.action_close
-import nuvio.composeapp.generated.resources.submit_intro_button_submit
-import nuvio.composeapp.generated.resources.submit_intro_capture_button
-import nuvio.composeapp.generated.resources.submit_intro_end_time_label
-import nuvio.composeapp.generated.resources.submit_intro_segment_intro
-import nuvio.composeapp.generated.resources.submit_intro_segment_outro
-import nuvio.composeapp.generated.resources.submit_intro_segment_recap
-import nuvio.composeapp.generated.resources.submit_intro_segment_type_label
-import nuvio.composeapp.generated.resources.submit_intro_start_time_label
-import nuvio.composeapp.generated.resources.submit_intro_title
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_cancel
+import streamvault.composeapp.generated.resources.action_close
+import streamvault.composeapp.generated.resources.submit_intro_button_submit
+import streamvault.composeapp.generated.resources.submit_intro_capture_button
+import streamvault.composeapp.generated.resources.submit_intro_end_time_label
+import streamvault.composeapp.generated.resources.submit_intro_segment_intro
+import streamvault.composeapp.generated.resources.submit_intro_segment_outro
+import streamvault.composeapp.generated.resources.submit_intro_segment_recap
+import streamvault.composeapp.generated.resources.submit_intro_segment_type_label
+import streamvault.composeapp.generated.resources.submit_intro_start_time_label
+import streamvault.composeapp.generated.resources.submit_intro_title
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.floor
 

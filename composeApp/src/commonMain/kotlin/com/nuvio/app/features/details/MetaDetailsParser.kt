@@ -1,9 +1,9 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
-import com.nuvio.app.features.streams.StreamBehaviorHints
-import com.nuvio.app.features.streams.StreamItem
-import com.nuvio.app.features.streams.StreamProxyHeaders
-import com.nuvio.app.features.streams.normalizeStreamType
+import com.streamvault.app.features.streams.StreamBehaviorHints
+import com.streamvault.app.features.streams.StreamItem
+import com.streamvault.app.features.streams.StreamProxyHeaders
+import com.streamvault.app.features.streams.normalizeStreamType
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
@@ -16,7 +16,7 @@ import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.longOrNull
 import kotlinx.serialization.json.jsonPrimitive
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
 internal object MetaDetailsParser {

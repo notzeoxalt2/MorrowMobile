@@ -1,13 +1,13 @@
-package com.nuvio.app.features.auth
+﻿package com.streamvault.app.features.auth
 
-import com.nuvio.app.core.auth.AuthRepository
-import com.nuvio.app.core.network.NetworkStatusRepository
-import com.nuvio.app.core.network.ServerConfiguration
-import com.nuvio.app.core.network.ServerConfigurationRepository
-import com.nuvio.app.core.network.ServerDiscoveryException
-import com.nuvio.app.core.network.ServerDiscoveryFailure
-import com.nuvio.app.core.network.ServerDiscoveryService
-import com.nuvio.app.core.network.SupabaseProvider
+import com.streamvault.app.core.auth.AuthRepository
+import com.streamvault.app.core.network.NetworkStatusRepository
+import com.streamvault.app.core.network.ServerConfiguration
+import com.streamvault.app.core.network.ServerConfigurationRepository
+import com.streamvault.app.core.network.ServerDiscoveryException
+import com.streamvault.app.core.network.ServerDiscoveryFailure
+import com.streamvault.app.core.network.ServerDiscoveryService
+import com.streamvault.app.core.network.SupabaseProvider
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

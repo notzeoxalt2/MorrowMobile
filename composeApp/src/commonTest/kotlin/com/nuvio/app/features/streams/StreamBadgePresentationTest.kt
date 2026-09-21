@@ -1,6 +1,6 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
-import com.nuvio.app.features.debrid.DebridProviders
+import com.streamvault.app.features.debrid.DebridProviders
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

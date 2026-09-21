@@ -1,8 +1,8 @@
-package com.nuvio.app.features.plugins.runtime.network
+﻿package com.streamvault.app.features.plugins.runtime.network
 
 import com.dokar.quickjs.QuickJs
 import com.dokar.quickjs.binding.function
-import com.nuvio.app.features.plugins.runtime.host.HostModule
+import com.streamvault.app.features.plugins.runtime.host.HostModule
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 

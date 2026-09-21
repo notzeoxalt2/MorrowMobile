@@ -1,4 +1,4 @@
-package com.nuvio.app.features.home.components
+﻿package com.streamvault.app.features.home.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -24,16 +24,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.format.formatReleaseDateForDisplay
-import com.nuvio.app.core.ui.NuvioCardDepthSurface
-import com.nuvio.app.core.ui.NuvioPosterWatchedOverlay
-import com.nuvio.app.core.ui.SkeletonPoster
-import com.nuvio.app.core.ui.nuvioCardDepth
-import com.nuvio.app.core.ui.posterCardClickable
-import com.nuvio.app.core.ui.rememberPosterCardStyleUiState
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.PosterShape
-import com.nuvio.app.features.watching.application.WatchingState
+import com.streamvault.app.core.format.formatReleaseDateForDisplay
+import com.streamvault.app.core.ui.NuvioCardDepthSurface
+import com.streamvault.app.core.ui.NuvioPosterWatchedOverlay
+import com.streamvault.app.core.ui.SkeletonPoster
+import com.streamvault.app.core.ui.nuvioCardDepth
+import com.streamvault.app.core.ui.posterCardClickable
+import com.streamvault.app.core.ui.rememberPosterCardStyleUiState
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.PosterShape
+import com.streamvault.app.features.watching.application.WatchingState
 
 internal fun posterGridColumnCountForWidth(screenWidth: Dp): Int =
     when {

@@ -1,7 +1,7 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
-import com.nuvio.app.features.watching.sync.ProgressDeltaEvent
-import com.nuvio.app.features.watching.sync.ProgressSyncRecord
+import com.streamvault.app.features.watching.sync.ProgressDeltaEvent
+import com.streamvault.app.features.watching.sync.ProgressSyncRecord
 
 /**
  * Stable storage/sync identity for a progress row.

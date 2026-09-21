@@ -1,4 +1,4 @@
-package com.nuvio.app.core.time
+﻿package com.streamvault.app.core.time
 
 private val IsoDateRegex = Regex("""^\d{4}-\d{2}-\d{2}$""")
 private val EmbeddedIsoDateRegex = Regex("""(?<!\d)\d{4}-\d{2}-\d{2}(?!\d)""")

@@ -1,9 +1,9 @@
-package com.nuvio.app.features.updater
+﻿package com.streamvault.app.features.updater
 
 import android.app.Application
 import android.content.Context
 import android.content.pm.ApplicationInfo
-import com.nuvio.app.core.build.AppVersionConfig
+import com.streamvault.app.core.build.AppVersionConfig
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

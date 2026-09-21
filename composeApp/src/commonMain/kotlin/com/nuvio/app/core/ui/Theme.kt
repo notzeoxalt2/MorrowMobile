@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+package com.streamvault.app.core.ui
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.LocalRippleConfiguration
@@ -19,14 +19,14 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Density
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.jetbrains_sans_bold
-import nuvio.composeapp.generated.resources.jetbrains_sans_regular
-import nuvio.composeapp.generated.resources.jetbrains_sans_semibold
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.jetbrains_sans_bold
+import streamvault.composeapp.generated.resources.jetbrains_sans_regular
+import streamvault.composeapp.generated.resources.jetbrains_sans_semibold
 import org.jetbrains.compose.resources.Font
 
-val LocalAppTheme = staticCompositionLocalOf { AppTheme.WHITE }
-val LocalThemePalette = staticCompositionLocalOf { ThemeColors.White }
+val LocalAppTheme = staticCompositionLocalOf { AppTheme.CRIMSON }
+val LocalThemePalette = staticCompositionLocalOf { ThemeColors.Crimson }
 
 val MaterialTheme.themePalette: ThemeColorPalette
     @Composable

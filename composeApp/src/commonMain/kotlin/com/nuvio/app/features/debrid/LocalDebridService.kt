@@ -1,4 +1,4 @@
-package com.nuvio.app.features.debrid
+﻿package com.streamvault.app.features.debrid
 
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.JsonPrimitive

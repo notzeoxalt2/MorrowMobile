@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.AnimatedVisibility
@@ -61,22 +61,22 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import coil3.compose.LocalPlatformContext
 import coil3.request.ImageRequest
-import com.nuvio.app.core.i18n.localizedShortMonthName
-import com.nuvio.app.core.ui.SkeletonPosterRow
-import com.nuvio.app.core.ui.landscapePosterHeightForWidth
-import com.nuvio.app.core.ui.landscapePosterWidth
-import com.nuvio.app.core.ui.rememberPosterCardStyleUiState
-import com.nuvio.app.core.ui.skeleton
-import com.nuvio.app.features.details.components.DetailPosterRailSection
-import com.nuvio.app.features.details.components.ExpandableDescription
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.tmdb.TmdbMetadataService
-import com.nuvio.app.features.watched.WatchedRepository
-import com.nuvio.app.features.watchprogress.CurrentDateProvider
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.i18n.localizedShortMonthName
+import com.streamvault.app.core.ui.SkeletonPosterRow
+import com.streamvault.app.core.ui.landscapePosterHeightForWidth
+import com.streamvault.app.core.ui.landscapePosterWidth
+import com.streamvault.app.core.ui.rememberPosterCardStyleUiState
+import com.streamvault.app.core.ui.skeleton
+import com.streamvault.app.features.details.components.DetailPosterRailSection
+import com.streamvault.app.features.details.components.ExpandableDescription
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.tmdb.TmdbMetadataService
+import com.streamvault.app.features.watched.WatchedRepository
+import com.streamvault.app.features.watchprogress.CurrentDateProvider
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
-import com.nuvio.app.navigation.LocalUseNativeNavigation
+import com.streamvault.app.navigation.LocalUseNativeNavigation
 
 private sealed interface PersonDetailUiState {
     data object Loading : PersonDetailUiState

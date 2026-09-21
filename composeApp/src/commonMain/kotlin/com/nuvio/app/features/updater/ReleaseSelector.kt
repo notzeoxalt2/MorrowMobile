@@ -1,4 +1,4 @@
-package com.nuvio.app.features.updater
+﻿package com.streamvault.app.features.updater
 
 internal object ReleaseSelector {
     private val prereleaseNamePattern = Regex(

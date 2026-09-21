@@ -1,9 +1,9 @@
-package com.nuvio.app.features.downloads
+﻿package com.streamvault.app.features.downloads
 
-import com.nuvio.app.features.addons.httpGetTextWithHeaders
-import com.nuvio.app.features.player.PlayerSubtitleCueParser
-import com.nuvio.app.features.player.loadAddonSubtitles
-import com.nuvio.app.features.streams.StreamSubtitle
+import com.streamvault.app.features.addons.httpGetTextWithHeaders
+import com.streamvault.app.features.player.PlayerSubtitleCueParser
+import com.streamvault.app.features.player.loadAddonSubtitles
+import com.streamvault.app.features.streams.StreamSubtitle
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

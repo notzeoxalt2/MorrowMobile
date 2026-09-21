@@ -1,6 +1,6 @@
-package com.nuvio.app.features.catalog
+﻿package com.streamvault.app.features.catalog
 
-import com.nuvio.app.features.library.LibrarySortOption
+import com.streamvault.app.features.library.LibrarySortOption
 import kotlinx.serialization.Serializable
 
 sealed interface CatalogTarget {

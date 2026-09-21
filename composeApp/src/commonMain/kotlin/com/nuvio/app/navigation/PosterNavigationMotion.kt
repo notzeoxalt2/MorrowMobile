@@ -1,4 +1,4 @@
-package com.nuvio.app.navigation
+﻿package com.streamvault.app.navigation
 
 import androidx.compose.animation.EnterExitState
 import androidx.compose.animation.core.LinearEasing
@@ -13,7 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.navigation3.ui.LocalNavAnimatedContentScope
-import com.nuvio.app.core.ui.PosterOpenMotion
+import com.streamvault.app.core.ui.PosterOpenMotion
 import kotlinx.coroutines.flow.first
 
 @Composable

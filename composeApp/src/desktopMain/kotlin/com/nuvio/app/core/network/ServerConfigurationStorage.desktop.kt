@@ -1,4 +1,4 @@
-package com.nuvio.app.core.network
+﻿package com.streamvault.app.core.network
 
 internal actual object ServerConfigurationStorage {
     actual fun loadCustom(): ServerConfiguration? = null

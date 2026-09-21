@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -35,13 +35,13 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.glass.GlassBarSurface
-import com.nuvio.app.core.ui.jelly.JellyMotion
-import com.nuvio.app.core.ui.jelly.JellyTabRow
-import com.nuvio.app.core.ui.jelly.JellyTabTargets
-import com.nuvio.app.core.ui.jelly.drawJellyGlow
-import com.nuvio.app.core.ui.jelly.drawJellyPill
-import com.nuvio.app.core.ui.jelly.jellyPillPath
+import com.streamvault.app.core.ui.glass.GlassBarSurface
+import com.streamvault.app.core.ui.jelly.JellyMotion
+import com.streamvault.app.core.ui.jelly.JellyTabRow
+import com.streamvault.app.core.ui.jelly.JellyTabTargets
+import com.streamvault.app.core.ui.jelly.drawJellyGlow
+import com.streamvault.app.core.ui.jelly.drawJellyPill
+import com.streamvault.app.core.ui.jelly.jellyPillPath
 import dev.chrisbanes.haze.HazeState
 import kotlin.math.abs
 import kotlin.math.max

@@ -1,6 +1,6 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
-import com.nuvio.app.features.tracking.TrackingExternalIds
+import com.streamvault.app.features.tracking.TrackingExternalIds
 
 internal fun SimklSyncSnapshot.applyScrobbleResult(
     result: SimklScrobbleResult,

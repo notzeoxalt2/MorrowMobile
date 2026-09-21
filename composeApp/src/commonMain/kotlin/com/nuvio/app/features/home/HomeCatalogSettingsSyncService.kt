@@ -1,12 +1,12 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.auth.AuthRepository
-import com.nuvio.app.core.auth.AuthState
-import com.nuvio.app.core.network.SupabaseProvider
-import com.nuvio.app.core.sync.HOME_CATALOG_SHARED_SYNC_PLATFORM
-import com.nuvio.app.core.sync.putSyncOriginClientId
-import com.nuvio.app.features.profiles.ProfileRepository
+import com.streamvault.app.core.auth.AuthRepository
+import com.streamvault.app.core.auth.AuthState
+import com.streamvault.app.core.network.SupabaseProvider
+import com.streamvault.app.core.sync.HOME_CATALOG_SHARED_SYNC_PLATFORM
+import com.streamvault.app.core.sync.putSyncOriginClientId
+import com.streamvault.app.features.profiles.ProfileRepository
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.rpc
 import kotlin.concurrent.Volatile

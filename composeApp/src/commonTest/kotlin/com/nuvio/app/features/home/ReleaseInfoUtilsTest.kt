@@ -1,7 +1,7 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
-import com.nuvio.app.core.time.parseEpisodeReleaseEpochMs
-import com.nuvio.app.features.catalog.CatalogTarget
+import com.streamvault.app.core.time.parseEpisodeReleaseEpochMs
+import com.streamvault.app.features.catalog.CatalogTarget
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

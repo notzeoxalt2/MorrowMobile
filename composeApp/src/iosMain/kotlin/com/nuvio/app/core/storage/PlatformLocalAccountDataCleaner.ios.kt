@@ -1,11 +1,11 @@
-@file:OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
+﻿@file:OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
 
-package com.nuvio.app.core.storage
+package com.streamvault.app.core.storage
 
 import platform.Foundation.NSUserDefaults
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSHomeDirectory
-import com.nuvio.app.features.profiles.MAX_PROFILES
+import com.streamvault.app.features.profiles.MAX_PROFILES
 
 internal actual object PlatformLocalAccountDataCleaner {
     private val plainKeys = listOf(

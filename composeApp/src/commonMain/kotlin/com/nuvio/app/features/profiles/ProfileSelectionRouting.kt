@@ -1,8 +1,8 @@
-package com.nuvio.app.features.profiles
+﻿package com.streamvault.app.features.profiles
 
-import com.nuvio.app.core.ui.NuvioToastController
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.profile_already_active
+import com.streamvault.app.core.ui.NuvioToastController
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.profile_already_active
 import org.jetbrains.compose.resources.getString
 
 internal fun routeProfileSelection(

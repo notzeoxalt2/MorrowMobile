@@ -1,7 +1,7 @@
-package com.nuvio.app.features.library
+﻿package com.streamvault.app.features.library
 
-import com.nuvio.app.features.library.sync.LibraryDeltaEvent
-import com.nuvio.app.features.library.sync.LibrarySyncKey
+import com.streamvault.app.features.library.sync.LibraryDeltaEvent
+import com.streamvault.app.features.library.sync.LibrarySyncKey
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

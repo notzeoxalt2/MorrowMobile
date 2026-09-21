@@ -1,4 +1,4 @@
-package com.nuvio.app.features.downloads
+﻿package com.streamvault.app.features.downloads
 
 import android.Manifest
 import android.app.NotificationChannel
@@ -11,10 +11,10 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
-import com.nuvio.app.core.deeplink.buildDownloadsDeepLinkUrl
-import com.nuvio.app.features.settings.AppIconPlatform
+import com.streamvault.app.core.deeplink.buildDownloadsDeepLinkUrl
+import com.streamvault.app.features.settings.AppIconPlatform
 import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
 internal actual object DownloadsLiveStatusPlatform {
@@ -119,7 +119,7 @@ internal actual object DownloadsLiveStatusPlatform {
         )
 
         val notificationBuilder = NotificationCompat.Builder(context, channelId)
-            .setSmallIcon(com.nuvio.app.R.drawable.ic_notification_small)
+            .setSmallIcon(com.streamvault.app.R.drawable.ic_notification_small)
             .setContentTitle(item.title)
             .setContentText(subtitle)
             .setStyle(NotificationCompat.BigTextStyle().bigText(subtitle))

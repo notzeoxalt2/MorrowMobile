@@ -1,8 +1,8 @@
-package com.nuvio.app.features.search
+﻿package com.streamvault.app.features.search
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 
 actual object SearchHistoryStorage {
     private const val preferencesName = "nuvio_search_history"

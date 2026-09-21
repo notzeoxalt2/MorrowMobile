@@ -1,6 +1,6 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
-import com.nuvio.app.features.streams.StreamSubtitle
+import com.streamvault.app.features.streams.StreamSubtitle
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -11,7 +11,7 @@ class PlayerStartupSubtitlesTest {
     fun localUriDetectionMatchesFileAndContentSchemes() {
         assertTrue("file:///storage/emulated/0/Movie.en.srt".isLocalSubtitleUri())
         assertTrue("content://downloads/captions.vtt".isLocalSubtitleUri())
-        assertTrue("android.resource://com.nuvio.app/raw/sample".isLocalSubtitleUri())
+        assertTrue("android.resource://com.streamvault.app/raw/sample".isLocalSubtitleUri())
         assertTrue("/storage/emulated/0/Movie.en.srt".isLocalSubtitleUri())
         assertFalse("https://opensubtitles.example/download/12345".isLocalSubtitleUri())
         assertFalse("http://example.com/sub.srt".isLocalSubtitleUri())

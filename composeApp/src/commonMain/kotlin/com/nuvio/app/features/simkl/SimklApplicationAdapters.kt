@@ -1,15 +1,15 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.profiles.ProfileRepository
-import com.nuvio.app.features.tracking.TrackingHistoryItem
-import com.nuvio.app.features.tracking.TrackingProviderId
-import com.nuvio.app.features.tracking.TrackingProgressProvider
-import com.nuvio.app.features.tracking.TrackingProgressSnapshot
-import com.nuvio.app.features.tracking.TrackingRefreshIntent
-import com.nuvio.app.features.tracking.TrackingWatchedProvider
-import com.nuvio.app.features.watched.WatchedItem
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.tracking.TrackingHistoryItem
+import com.streamvault.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.TrackingProgressProvider
+import com.streamvault.app.features.tracking.TrackingProgressSnapshot
+import com.streamvault.app.features.tracking.TrackingRefreshIntent
+import com.streamvault.app.features.tracking.TrackingWatchedProvider
+import com.streamvault.app.features.watched.WatchedItem
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
 import kotlinx.atomicfu.locks.SynchronizedObject
 import kotlinx.atomicfu.locks.synchronized
 import kotlinx.coroutines.CancellationException

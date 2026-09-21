@@ -1,9 +1,9 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
-import com.nuvio.app.features.tracking.TrackingSettingsRepository
-import com.nuvio.app.features.tracking.parseTrackingExternalIds
-import com.nuvio.app.features.watched.WatchedItem
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.tracking.TrackingSettingsRepository
+import com.streamvault.app.features.tracking.parseTrackingExternalIds
+import com.streamvault.app.features.watched.WatchedItem
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
 import kotlinx.atomicfu.atomic
 
 internal fun SimklSyncSnapshot.reconcileWatchedPlayback(): SimklSyncSnapshot {

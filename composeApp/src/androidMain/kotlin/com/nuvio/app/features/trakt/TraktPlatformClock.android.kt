@@ -1,4 +1,4 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
 import java.time.Instant
 

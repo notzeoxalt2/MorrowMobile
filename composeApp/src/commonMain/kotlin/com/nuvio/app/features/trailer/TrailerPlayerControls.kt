@@ -1,4 +1,4 @@
-package com.nuvio.app.features.trailer
+﻿package com.streamvault.app.features.trailer
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -37,15 +37,15 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.nuvioTypeScale
-import com.nuvio.app.features.player.PlayPauseControlButton
-import com.nuvio.app.features.player.PlayerHeaderIconButton
-import com.nuvio.app.features.player.playerHorizontalSafePadding
-import com.nuvio.app.features.player.PlayerLayoutMetrics
-import com.nuvio.app.features.player.PlayerSeekBar
+import com.streamvault.app.core.ui.nuvioTypeScale
+import com.streamvault.app.features.player.PlayPauseControlButton
+import com.streamvault.app.features.player.PlayerHeaderIconButton
+import com.streamvault.app.features.player.playerHorizontalSafePadding
+import com.streamvault.app.features.player.PlayerLayoutMetrics
+import com.streamvault.app.features.player.PlayerSeekBar
 import kotlinx.coroutines.delay
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.trailer_exit_fullscreen
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.trailer_exit_fullscreen
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

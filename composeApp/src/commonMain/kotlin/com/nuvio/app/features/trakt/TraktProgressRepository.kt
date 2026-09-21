@@ -1,18 +1,18 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.addons.httpGetTextWithHeaders
-import com.nuvio.app.features.addons.httpRequestRaw
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.details.MetaDetailsRepository
-import com.nuvio.app.features.tmdb.TmdbService
-import com.nuvio.app.features.watchprogress.ContinueWatchingPreferencesRepository
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
-import com.nuvio.app.features.watchprogress.WatchProgressSourceTraktHistory
-import com.nuvio.app.features.watchprogress.WatchProgressSourceTraktPlayback
-import com.nuvio.app.features.watchprogress.WatchProgressSourceTraktShowProgress
-import com.nuvio.app.features.watchprogress.buildPlaybackVideoId
-import com.nuvio.app.features.watchprogress.shouldReplaceProgressSnapshotEntry
+import com.streamvault.app.features.addons.httpGetTextWithHeaders
+import com.streamvault.app.features.addons.httpRequestRaw
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.details.MetaDetailsRepository
+import com.streamvault.app.features.tmdb.TmdbService
+import com.streamvault.app.features.watchprogress.ContinueWatchingPreferencesRepository
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watchprogress.WatchProgressSourceTraktHistory
+import com.streamvault.app.features.watchprogress.WatchProgressSourceTraktPlayback
+import com.streamvault.app.features.watchprogress.WatchProgressSourceTraktShowProgress
+import com.streamvault.app.features.watchprogress.buildPlaybackVideoId
+import com.streamvault.app.features.watchprogress.shouldReplaceProgressSnapshotEntry
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
@@ -37,7 +37,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -1534,7 +1534,7 @@ object TraktProgressRepository {
     private fun Int.pad2(): String = if (this < 10) "0$this" else "$this"
     private fun Int.pad4(): String = toString().padStart(4, '0')
 
-    private fun com.nuvio.app.features.addons.RawHttpResponse.headerInt(name: String): Int? =
+    private fun com.streamvault.app.features.addons.RawHttpResponse.headerInt(name: String): Int? =
         headers[name.lowercase()]
             ?.substringBefore(',')
             ?.trim()

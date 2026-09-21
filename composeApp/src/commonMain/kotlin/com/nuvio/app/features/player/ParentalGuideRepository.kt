@@ -1,7 +1,7 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.addons.httpRequestRaw
+import com.streamvault.app.features.addons.httpRequestRaw
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.SerialName

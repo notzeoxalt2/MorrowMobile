@@ -1,24 +1,25 @@
-package com.nuvio.app.features.details
+package com.streamvault.app.features.details
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.addons.AddonManifest
-import com.nuvio.app.features.addons.AddonRepository
-import com.nuvio.app.features.addons.buildAddonResourceUrl
-import com.nuvio.app.features.addons.enabledAddons
-import com.nuvio.app.features.addons.fetchAddonResponseText
-import com.nuvio.app.features.home.HomeCatalogSettingsRepository
-import com.nuvio.app.features.home.filterReleasedItems
-import com.nuvio.app.features.mdblist.MdbListMetadataService
-import com.nuvio.app.features.mdblist.MdbListSettingsRepository
-import com.nuvio.app.features.tmdb.TmdbMetadataService
-import com.nuvio.app.features.tmdb.TmdbService
-import com.nuvio.app.features.tmdb.TmdbSettingsRepository
-import com.nuvio.app.features.trakt.TraktAuthRepository
-import com.nuvio.app.features.trakt.TraktConnectionMode
-import com.nuvio.app.features.trakt.TraktRelatedRepository
-import com.nuvio.app.features.tracking.TrackingSettingsRepository
-import com.nuvio.app.features.trakt.shouldUseTraktMoreLikeThis
-import com.nuvio.app.features.watchprogress.CurrentDateProvider
+import com.streamvault.app.features.addons.AddonManifest
+import com.streamvault.app.features.addons.AddonRepository
+import com.streamvault.app.features.addons.buildAddonResourceUrl
+import com.streamvault.app.features.addons.enabledAddons
+import com.streamvault.app.features.addons.fetchAddonResponseText
+import com.streamvault.app.features.home.HomeCatalogSettingsRepository
+import com.streamvault.app.features.home.filterReleasedItems
+import com.streamvault.app.features.mdblist.MdbListMetadataService
+import com.streamvault.app.features.mdblist.MdbListSettingsRepository
+import com.streamvault.app.features.tmdb.TmdbMetadataService
+import com.streamvault.app.features.tmdb.TmdbService
+import com.streamvault.app.features.tmdb.TmdbSettingsRepository
+import com.streamvault.app.features.trakt.TraktAuthRepository
+import com.streamvault.app.features.trakt.TraktConnectionMode
+import com.streamvault.app.features.trakt.TraktRelatedRepository
+import com.streamvault.app.features.tracking.TrackingSettingsRepository
+import com.streamvault.app.features.trakt.shouldUseTraktMoreLikeThis
+import com.streamvault.app.features.anime.AnimeMetadataService
+import com.streamvault.app.features.watchprogress.CurrentDateProvider
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +31,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
 object MetaDetailsRepository {
@@ -262,12 +263,19 @@ object MetaDetailsRepository {
             } else {
                 tmdbEnriched
             }
-            log.d { "Parsed meta: type=${enriched.type}, name=${enriched.name}, videos=${enriched.videos.size}" }
-            if (enriched.videos.isNotEmpty()) {
-                val first = enriched.videos.first()
+            val animeEnriched = if (enriched.type.equals("anime", ignoreCase = true) || id.startsWith("kitsu:") || id.startsWith("mal:") || id.startsWith("anilist:")) {
+                withTimeoutOrNull(4000L) {
+                    AnimeMetadataService.enrichMeta(enriched, id)
+                } ?: enriched
+            } else {
+                enriched
+            }
+            log.d { "Parsed meta: type=${animeEnriched.type}, name=${animeEnriched.name}, videos=${animeEnriched.videos.size}" }
+            if (animeEnriched.videos.isNotEmpty()) {
+                val first = animeEnriched.videos.first()
                 log.d { "First video: id=${first.id} title=${first.title} s=${first.season} e=${first.episode} embeddedStreams=${first.streams.size}" }
             }
-            enriched
+            animeEnriched
         } catch (e: Throwable) {
             if (e is CancellationException) throw e
             log.e(e) { "Failed to fetch/parse meta from $url (manifest=${manifest.transportUrl})" }
@@ -294,7 +302,7 @@ object MetaDetailsRepository {
         return findMetaManifests(readyState, type, id)
     }
 
-    private fun findMetaManifests(state: com.nuvio.app.features.addons.AddonsUiState, type: String, id: String): List<AddonManifest> =
+    private fun findMetaManifests(state: com.streamvault.app.features.addons.AddonsUiState, type: String, id: String): List<AddonManifest> =
         state.addons
             .enabledAddons()
             .mapNotNull { it.manifest }
@@ -306,7 +314,7 @@ object MetaDetailsRepository {
                 }
             }
 
-    private fun com.nuvio.app.features.addons.AddonsUiState.hasPendingEnabledAddonManifests(): Boolean =
+    private fun com.streamvault.app.features.addons.AddonsUiState.hasPendingEnabledAddonManifests(): Boolean =
         addons.enabledAddons().any { addon -> addon.manifest == null && addon.isRefreshing }
 
     private suspend fun resolveMetaLookupId(itemId: String, itemType: String): String {
@@ -338,7 +346,7 @@ object MetaDetailsRepository {
         meta: MetaDetails,
         fallbackItemId: String,
         fallbackItemType: String,
-        mdbListSettings: com.nuvio.app.features.mdblist.MdbListSettings,
+        mdbListSettings: com.streamvault.app.features.mdblist.MdbListSettings,
         metaScreenSettingsFingerprint: String,
     ) {
         val cachedEntry = CachedMetaEntry(baseMeta = meta)
@@ -377,7 +385,7 @@ object MetaDetailsRepository {
         meta: MetaDetails,
         fallbackItemId: String,
         fallbackItemType: String,
-        settings: com.nuvio.app.features.mdblist.MdbListSettings,
+        settings: com.streamvault.app.features.mdblist.MdbListSettings,
         settingsFingerprint: String,
     ): MetaDetails {
         val mdbListEnrichedMeta = withTimeoutOrNull(MDBLIST_ENRICH_TIMEOUT_MS) {
@@ -453,7 +461,7 @@ object MetaDetailsRepository {
     private fun shouldFetchMdbListOnMetaScreen(
         meta: MetaDetails,
         fallbackItemId: String,
-        settings: com.nuvio.app.features.mdblist.MdbListSettings,
+        settings: com.streamvault.app.features.mdblist.MdbListSettings,
     ): Boolean = MdbListMetadataService.shouldFetchForMeta(
         meta = meta,
         fallbackItemId = fallbackItemId,
@@ -463,7 +471,7 @@ object MetaDetailsRepository {
     private fun shouldEnrichForMetaScreen(
         meta: MetaDetails,
         fallbackItemId: String,
-        settings: com.nuvio.app.features.mdblist.MdbListSettings,
+        settings: com.streamvault.app.features.mdblist.MdbListSettings,
     ): Boolean {
         if (shouldFetchMdbListOnMetaScreen(meta, fallbackItemId, settings)) return true
         return shouldApplyMoreLikeThisSource(meta)
@@ -484,7 +492,7 @@ object MetaDetailsRepository {
     }
 
     private fun buildMetaScreenSettingsFingerprint(
-        settings: com.nuvio.app.features.mdblist.MdbListSettings,
+        settings: com.streamvault.app.features.mdblist.MdbListSettings,
     ): String {
         TrackingSettingsRepository.ensureLoaded()
         TraktAuthRepository.ensureLoaded()
@@ -521,8 +529,14 @@ object MetaDetailsRepository {
         )
     }
 
-   
-    fun findEmbeddedStreams(videoId: String): List<com.nuvio.app.features.streams.StreamItem> {
+    fun getActiveMeta(id: String? = null): MetaDetails? {
+        val current = _uiState.value.meta
+        if (id == null) return current
+        if (current?.id == id || current?.imdbId == id) return current
+        return cachedMetaByRequestKey.values.firstOrNull { it.baseMeta.id == id || it.baseMeta.imdbId == id }?.baseMeta
+    }
+
+    fun findEmbeddedStreams(videoId: String): List<com.streamvault.app.features.streams.StreamItem> {
         val meta = _uiState.value.meta ?: return emptyList()
         val videosWithStreams = meta.videos.filter { it.streams.isNotEmpty() }
         if (videosWithStreams.isEmpty()) return emptyList()

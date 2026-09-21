@@ -1,8 +1,8 @@
-package com.nuvio.app.features.downloads
+﻿package com.streamvault.app.features.downloads
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 
 internal actual object DownloadsStorage {
     private const val preferencesName = "nuvio_downloads"

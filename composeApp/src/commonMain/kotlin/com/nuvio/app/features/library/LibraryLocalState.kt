@@ -1,8 +1,8 @@
-package com.nuvio.app.features.library
+﻿package com.streamvault.app.features.library
 
-import com.nuvio.app.features.library.sync.LibraryDeltaEvent
-import com.nuvio.app.features.library.sync.LibrarySyncKey
-import com.nuvio.app.features.library.sync.toLibrarySyncKey
+import com.streamvault.app.features.library.sync.LibraryDeltaEvent
+import com.streamvault.app.features.library.sync.LibrarySyncKey
+import com.streamvault.app.features.library.sync.toLibrarySyncKey
 import kotlinx.atomicfu.locks.SynchronizedObject
 import kotlinx.atomicfu.locks.synchronized
 import kotlinx.coroutines.Job

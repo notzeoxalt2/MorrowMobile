@@ -1,11 +1,11 @@
-package com.nuvio.app.features.cloud
+﻿package com.streamvault.app.features.cloud
 
-import com.nuvio.app.features.debrid.DebridApiJson
-import com.nuvio.app.features.debrid.DebridApiResponse
-import com.nuvio.app.features.debrid.DebridProviders
-import com.nuvio.app.features.debrid.TorboxCloudFileDto
-import com.nuvio.app.features.debrid.TorboxCloudItemDto
-import com.nuvio.app.features.debrid.TorboxEnvelopeDto
+import com.streamvault.app.features.debrid.DebridApiJson
+import com.streamvault.app.features.debrid.DebridApiResponse
+import com.streamvault.app.features.debrid.DebridProviders
+import com.streamvault.app.features.debrid.TorboxCloudFileDto
+import com.streamvault.app.features.debrid.TorboxCloudItemDto
+import com.streamvault.app.features.debrid.TorboxEnvelopeDto
 import kotlinx.serialization.json.JsonPrimitive
 import kotlin.test.Test
 import kotlin.test.assertEquals

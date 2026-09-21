@@ -1,7 +1,7 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
-import com.nuvio.app.features.watching.domain.isProgressComplete
-import com.nuvio.app.features.watchprogress.WatchProgressPlaybackSession
+import com.streamvault.app.features.watching.domain.isProgressComplete
+import com.streamvault.app.features.watchprogress.WatchProgressPlaybackSession
 import io.ktor.http.Url
 import io.ktor.http.encodeURLParameter
 import kotlin.test.Test

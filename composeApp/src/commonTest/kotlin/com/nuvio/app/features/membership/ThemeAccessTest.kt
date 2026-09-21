@@ -1,7 +1,7 @@
-package com.nuvio.app.features.membership
+﻿package com.streamvault.app.features.membership
 
-import com.nuvio.app.core.ui.AppTheme
-import com.nuvio.app.core.ui.CustomThemeColors
+import com.streamvault.app.core.ui.AppTheme
+import com.streamvault.app.core.ui.CustomThemeColors
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue

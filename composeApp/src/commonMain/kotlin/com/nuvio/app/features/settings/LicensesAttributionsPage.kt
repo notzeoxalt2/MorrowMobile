@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -29,13 +29,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.ui.NuvioScreen
-import com.nuvio.app.core.ui.NuvioScreenHeader
-import com.nuvio.app.features.cloud.PremiumizeCloudLibraryPosterUrl
-import com.nuvio.app.features.cloud.TorboxCloudLibraryPosterUrl
-import com.nuvio.app.features.cloud.cloudLibraryDisplayArtworkUrl
-import com.nuvio.app.isIos
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.ui.NuvioScreen
+import com.streamvault.app.core.ui.NuvioScreenHeader
+import com.streamvault.app.features.cloud.PremiumizeCloudLibraryPosterUrl
+import com.streamvault.app.features.cloud.TorboxCloudLibraryPosterUrl
+import com.streamvault.app.features.cloud.cloudLibraryDisplayArtworkUrl
+import com.streamvault.app.isIos
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.CubicBezierEasing
@@ -9,7 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
-import com.nuvio.app.supportsPosterNavigationMotion
+import com.streamvault.app.supportsPosterNavigationMotion
 
 @Composable
 internal fun Modifier.detailsContentReveal(enabled: Boolean): Modifier {

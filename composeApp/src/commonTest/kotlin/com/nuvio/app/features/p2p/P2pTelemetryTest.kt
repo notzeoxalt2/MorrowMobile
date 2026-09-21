@@ -1,6 +1,6 @@
-package com.nuvio.app.features.p2p
+﻿package com.streamvault.app.features.p2p
 
-import com.nuvio.app.features.player.p2pInitialLoadingProgress
+import com.streamvault.app.features.player.p2pInitialLoadingProgress
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

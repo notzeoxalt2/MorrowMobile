@@ -1,6 +1,6 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
-import com.nuvio.app.core.time.parseZonedIsoDateTimeToEpochMs
+import com.streamvault.app.core.time.parseZonedIsoDateTimeToEpochMs
 
 internal fun parseTraktIsoDateTimeToEpochMs(value: String): Long? =
     parseZonedIsoDateTimeToEpochMs(value)

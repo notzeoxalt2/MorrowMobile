@@ -1,4 +1,4 @@
-package com.nuvio.app.features.profiles
+﻿package com.streamvault.app.features.profiles
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -41,18 +41,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.ui.NuvioInputField
-import com.nuvio.app.core.ui.NuvioPrimaryButton
-import com.nuvio.app.core.ui.NuvioScreen
-import com.nuvio.app.core.ui.NuvioScreenHeader
-import com.nuvio.app.core.ui.NuvioStatusModal
-import com.nuvio.app.core.ui.NuvioSurfaceCard
-import com.nuvio.app.core.ui.themePalette
-import com.nuvio.app.features.membership.CosmeticEntitlement
-import com.nuvio.app.features.membership.MemberAccessRepository
-import com.nuvio.app.features.membership.ProfileBackgroundRepository
+import com.streamvault.app.core.ui.NuvioInputField
+import com.streamvault.app.core.ui.NuvioPrimaryButton
+import com.streamvault.app.core.ui.NuvioScreen
+import com.streamvault.app.core.ui.NuvioScreenHeader
+import com.streamvault.app.core.ui.NuvioStatusModal
+import com.streamvault.app.core.ui.NuvioSurfaceCard
+import com.streamvault.app.core.ui.themePalette
+import com.streamvault.app.features.membership.CosmeticEntitlement
+import com.streamvault.app.features.membership.MemberAccessRepository
+import com.streamvault.app.features.membership.ProfileBackgroundRepository
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

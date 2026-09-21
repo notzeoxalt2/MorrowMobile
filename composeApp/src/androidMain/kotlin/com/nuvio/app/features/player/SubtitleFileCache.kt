@@ -1,10 +1,10 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.content.Context
 import android.net.Uri
 import android.util.Log
 import androidx.core.content.FileProvider
-import com.nuvio.app.core.diagnostics.SentryNetworkBreadcrumbInterceptor
+import com.streamvault.app.core.diagnostics.SentryNetworkBreadcrumbInterceptor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient

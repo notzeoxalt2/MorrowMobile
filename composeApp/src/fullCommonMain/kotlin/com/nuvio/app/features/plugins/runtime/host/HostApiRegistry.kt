@@ -1,4 +1,4 @@
-package com.nuvio.app.features.plugins.runtime.host
+﻿package com.streamvault.app.features.plugins.runtime.host
 
 import com.dokar.quickjs.QuickJs
 

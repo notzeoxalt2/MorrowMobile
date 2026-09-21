@@ -1,8 +1,8 @@
-package com.nuvio.app.features.debrid
+﻿package com.streamvault.app.features.debrid
 
-import com.nuvio.app.features.addons.RawHttpResponse
-import com.nuvio.app.features.addons.DefaultRawHttpResponseMaxBytes
-import com.nuvio.app.features.addons.httpRequestRaw
+import com.streamvault.app.features.addons.RawHttpResponse
+import com.streamvault.app.features.addons.DefaultRawHttpResponseMaxBytes
+import com.streamvault.app.features.addons.httpRequestRaw
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.decodeFromString

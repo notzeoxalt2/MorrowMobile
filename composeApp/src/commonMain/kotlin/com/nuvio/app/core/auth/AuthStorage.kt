@@ -1,4 +1,4 @@
-package com.nuvio.app.core.auth
+﻿package com.streamvault.app.core.auth
 
 internal expect object AuthStorage {
     fun loadAnonymousUserId(): String?

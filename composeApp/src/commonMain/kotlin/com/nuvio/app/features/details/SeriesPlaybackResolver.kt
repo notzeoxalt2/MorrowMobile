@@ -1,24 +1,24 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
-import com.nuvio.app.features.watched.WatchedItem
-import com.nuvio.app.features.watched.normalizeWatchedMarkedAtEpochMs
-import com.nuvio.app.features.watched.watchedItemKey
-import com.nuvio.app.features.watching.application.WatchingState
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
-import com.nuvio.app.features.watching.domain.WatchingCompletedEpisode
-import com.nuvio.app.features.watching.domain.WatchingContentRef
-import com.nuvio.app.features.watching.domain.WatchingProgressRecord
-import com.nuvio.app.features.watching.domain.WatchingReleasedEpisode
-import com.nuvio.app.features.watching.domain.WatchingSeriesPrimaryAction
-import com.nuvio.app.features.watching.domain.WatchingWatchedRecord
-import com.nuvio.app.features.watching.domain.buildPlaybackVideoId
-import com.nuvio.app.features.watching.domain.decideSeriesPrimaryAction
-import com.nuvio.app.features.watching.domain.isReleasedBy
-import com.nuvio.app.features.watching.domain.latestCompletedSeriesEpisode
-import com.nuvio.app.features.watching.domain.playLabel
-import com.nuvio.app.features.watching.domain.resumeLabel
-import com.nuvio.app.features.watching.domain.shouldSurfaceNextEpisode
-import com.nuvio.app.features.watching.domain.upNextLabel
+import com.streamvault.app.features.watched.WatchedItem
+import com.streamvault.app.features.watched.normalizeWatchedMarkedAtEpochMs
+import com.streamvault.app.features.watched.watchedItemKey
+import com.streamvault.app.features.watching.application.WatchingState
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watching.domain.WatchingCompletedEpisode
+import com.streamvault.app.features.watching.domain.WatchingContentRef
+import com.streamvault.app.features.watching.domain.WatchingProgressRecord
+import com.streamvault.app.features.watching.domain.WatchingReleasedEpisode
+import com.streamvault.app.features.watching.domain.WatchingSeriesPrimaryAction
+import com.streamvault.app.features.watching.domain.WatchingWatchedRecord
+import com.streamvault.app.features.watching.domain.buildPlaybackVideoId
+import com.streamvault.app.features.watching.domain.decideSeriesPrimaryAction
+import com.streamvault.app.features.watching.domain.isReleasedBy
+import com.streamvault.app.features.watching.domain.latestCompletedSeriesEpisode
+import com.streamvault.app.features.watching.domain.playLabel
+import com.streamvault.app.features.watching.domain.resumeLabel
+import com.streamvault.app.features.watching.domain.shouldSurfaceNextEpisode
+import com.streamvault.app.features.watching.domain.upNextLabel
 
 internal fun MetaDetails.sortedPlayableEpisodes(): List<MetaVideo> =
     videos

@@ -1,8 +1,8 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
-import com.nuvio.app.features.watchprogress.CachedNextUpItem
-import com.nuvio.app.features.watchprogress.calculateReleaseAlertState
-import com.nuvio.app.features.watchprogress.parseReleaseDateToEpochMs
+import com.streamvault.app.features.watchprogress.CachedNextUpItem
+import com.streamvault.app.features.watchprogress.calculateReleaseAlertState
+import com.streamvault.app.features.watchprogress.parseReleaseDateToEpochMs
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

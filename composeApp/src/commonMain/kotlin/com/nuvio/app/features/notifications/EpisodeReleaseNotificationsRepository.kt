@@ -1,15 +1,15 @@
-package com.nuvio.app.features.notifications
+﻿package com.streamvault.app.features.notifications
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.deeplink.buildMetaDeepLinkUrl
-import com.nuvio.app.features.addons.AddonRepository
-import com.nuvio.app.features.details.MetaDetailsRepository
-import com.nuvio.app.features.library.LibraryItem
-import com.nuvio.app.features.library.LibraryRepository
-import com.nuvio.app.features.library.LibraryUiState
-import com.nuvio.app.features.profiles.ProfileRepository
-import com.nuvio.app.core.time.EpisodeReleaseDatePlatform
-import com.nuvio.app.features.watchprogress.CurrentDateProvider
+import com.streamvault.app.core.deeplink.buildMetaDeepLinkUrl
+import com.streamvault.app.features.addons.AddonRepository
+import com.streamvault.app.features.details.MetaDetailsRepository
+import com.streamvault.app.features.library.LibraryItem
+import com.streamvault.app.features.library.LibraryRepository
+import com.streamvault.app.features.library.LibraryUiState
+import com.streamvault.app.features.profiles.ProfileRepository
+import com.streamvault.app.core.time.EpisodeReleaseDatePlatform
+import com.streamvault.app.features.watchprogress.CurrentDateProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -29,7 +29,7 @@ import kotlin.concurrent.Volatile
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 import kotlinx.serialization.json.Json
 

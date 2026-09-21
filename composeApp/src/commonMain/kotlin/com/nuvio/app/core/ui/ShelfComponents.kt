@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -37,9 +37,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.home_view_all
-import nuvio.composeapp.generated.resources.poster_logo_content_description
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.home_view_all
+import streamvault.composeapp.generated.resources.poster_logo_content_description
 import org.jetbrains.compose.resources.stringResource
 
 enum class NuvioPosterShape {

@@ -1,10 +1,10 @@
-package com.nuvio.app.features.mdblist
+﻿package com.streamvault.app.features.mdblist
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.addons.httpGetText
-import com.nuvio.app.features.addons.httpPostJson
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.details.MetaExternalRating
+import com.streamvault.app.features.addons.httpGetText
+import com.streamvault.app.features.addons.httpPostJson
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.details.MetaExternalRating
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

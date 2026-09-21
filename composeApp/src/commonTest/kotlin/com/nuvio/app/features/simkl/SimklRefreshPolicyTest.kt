@@ -1,6 +1,6 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
-import com.nuvio.app.features.tracking.TrackingRefreshIntent
+import com.streamvault.app.features.tracking.TrackingRefreshIntent
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking

@@ -1,6 +1,6 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
-import com.nuvio.app.core.format.extractReleaseYearForDisplay
+import com.streamvault.app.core.format.extractReleaseYearForDisplay
 
 private fun isTvSeriesType(type: String): Boolean =
     when (type.trim().lowercase()) {

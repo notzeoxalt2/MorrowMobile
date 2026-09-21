@@ -1,9 +1,9 @@
-package com.nuvio.app.features.watched
+﻿package com.streamvault.app.features.watched
 
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.details.MetaVideo
-import com.nuvio.app.features.tracking.TrackingProviderId
-import com.nuvio.app.features.tracking.WatchProgressSource
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.details.MetaVideo
+import com.streamvault.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.WatchProgressSource
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test

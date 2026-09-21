@@ -1,4 +1,4 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -23,27 +23,27 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nuvio.app.core.ui.LocalNuvioBottomNavigationOverlayPadding
-import com.nuvio.app.core.ui.LocalNuvioNavBarScrollState
-import com.nuvio.app.core.ui.NuvioNavBarScrollState
-import com.nuvio.app.core.ui.NuvioClassicNavigationBar
-import com.nuvio.app.core.ui.FloatingNavigationBar
-import com.nuvio.app.core.ui.FloatingNavigationItem
-import com.nuvio.app.core.ui.PlatformBackHandler
-import com.nuvio.app.core.ui.rememberNuvioNavBarScrollState
-import com.nuvio.app.features.profiles.NuvioProfile
-import com.nuvio.app.features.profiles.ProfileSwitcherTab
-import com.nuvio.app.features.settings.NavBarStyle
-import com.nuvio.app.features.settings.ThemeSettingsRepository
+import com.streamvault.app.core.ui.LocalNuvioBottomNavigationOverlayPadding
+import com.streamvault.app.core.ui.LocalNuvioNavBarScrollState
+import com.streamvault.app.core.ui.NuvioNavBarScrollState
+import com.streamvault.app.core.ui.NuvioClassicNavigationBar
+import com.streamvault.app.core.ui.FloatingNavigationBar
+import com.streamvault.app.core.ui.FloatingNavigationItem
+import com.streamvault.app.core.ui.PlatformBackHandler
+import com.streamvault.app.core.ui.rememberNuvioNavBarScrollState
+import com.streamvault.app.features.profiles.NuvioProfile
+import com.streamvault.app.features.profiles.ProfileSwitcherTab
+import com.streamvault.app.features.settings.NavBarStyle
+import com.streamvault.app.features.settings.ThemeSettingsRepository
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.compose_nav_home
-import nuvio.composeapp.generated.resources.compose_nav_library
-import nuvio.composeapp.generated.resources.compose_nav_profile
-import nuvio.composeapp.generated.resources.compose_nav_search
-import nuvio.composeapp.generated.resources.sidebar_library
-import nuvio.composeapp.generated.resources.sidebar_search
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.compose_nav_home
+import streamvault.composeapp.generated.resources.compose_nav_library
+import streamvault.composeapp.generated.resources.compose_nav_profile
+import streamvault.composeapp.generated.resources.compose_nav_search
+import streamvault.composeapp.generated.resources.sidebar_library
+import streamvault.composeapp.generated.resources.sidebar_search
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

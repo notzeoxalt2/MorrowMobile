@@ -1,9 +1,9 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.addons.httpGetTextWithHeaders
-import com.nuvio.app.features.details.MetaDetailsRepository
-import com.nuvio.app.features.details.MetaVideo
+import com.streamvault.app.features.addons.httpGetTextWithHeaders
+import com.streamvault.app.features.details.MetaDetailsRepository
+import com.streamvault.app.features.details.MetaVideo
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.coroutineScope

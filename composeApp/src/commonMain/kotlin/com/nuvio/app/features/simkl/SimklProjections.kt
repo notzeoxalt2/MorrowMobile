@@ -1,20 +1,20 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
-import com.nuvio.app.features.tracking.TrackingCatalogReference
-import com.nuvio.app.features.tracking.TrackingEpisode
-import com.nuvio.app.features.tracking.TrackingExternalIds
-import com.nuvio.app.features.tracking.TrackingMediaKind
-import com.nuvio.app.features.tracking.TrackingMediaReference
-import com.nuvio.app.features.tracking.TrackingProviderId
-import com.nuvio.app.features.tracking.TrackingSettingsRepository
-import com.nuvio.app.features.tracking.extractTrackingYear
-import com.nuvio.app.features.tracking.parseTrackingExternalIds
-import com.nuvio.app.features.tracking.trackingMediaKind
-import com.nuvio.app.features.watched.WatchedItem
-import com.nuvio.app.features.watched.watchedItemKey
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
-import com.nuvio.app.features.watchprogress.WatchProgressSourceSimklPlayback
-import com.nuvio.app.features.watchprogress.buildPlaybackVideoId
+import com.streamvault.app.features.tracking.TrackingCatalogReference
+import com.streamvault.app.features.tracking.TrackingEpisode
+import com.streamvault.app.features.tracking.TrackingExternalIds
+import com.streamvault.app.features.tracking.TrackingMediaKind
+import com.streamvault.app.features.tracking.TrackingMediaReference
+import com.streamvault.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.TrackingSettingsRepository
+import com.streamvault.app.features.tracking.extractTrackingYear
+import com.streamvault.app.features.tracking.parseTrackingExternalIds
+import com.streamvault.app.features.tracking.trackingMediaKind
+import com.streamvault.app.features.watched.WatchedItem
+import com.streamvault.app.features.watched.watchedItemKey
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watchprogress.WatchProgressSourceSimklPlayback
+import com.streamvault.app.features.watchprogress.buildPlaybackVideoId
 
 internal data class SimklWatchedProjection(
     val items: List<WatchedItem>,

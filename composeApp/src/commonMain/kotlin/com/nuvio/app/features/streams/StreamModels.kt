@@ -1,6 +1,6 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
-import com.nuvio.app.core.build.AppFeaturePolicy
+import com.streamvault.app.core.build.AppFeaturePolicy
 import kotlinx.serialization.Serializable
 
 @Serializable

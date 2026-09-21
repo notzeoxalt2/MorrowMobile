@@ -1,4 +1,4 @@
-package com.nuvio.app.core.sync
+﻿package com.streamvault.app.core.sync
 
 import kotlinx.serialization.json.JsonObjectBuilder
 import kotlinx.serialization.json.put

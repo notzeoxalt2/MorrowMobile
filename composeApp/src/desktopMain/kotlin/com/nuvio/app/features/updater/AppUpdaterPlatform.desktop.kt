@@ -1,8 +1,8 @@
-package com.nuvio.app.features.updater
+﻿package com.streamvault.app.features.updater
 
 import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.updates_not_available
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.updates_not_available
 import org.jetbrains.compose.resources.getString
 
 actual object AppUpdaterPlatform {

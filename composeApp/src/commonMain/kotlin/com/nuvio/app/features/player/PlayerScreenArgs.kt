@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.ui.Modifier
 
@@ -31,7 +31,7 @@ internal data class PlayerScreenArgs(
     val parentMetaId: String,
     val parentMetaType: String,
     val providerAddonId: String?,
-    val externalSubtitles: List<com.nuvio.app.features.streams.StreamSubtitle> = emptyList(),
+    val externalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle> = emptyList(),
     val torrentInfoHash: String?,
     val torrentFileIdx: Int?,
     val torrentFilename: String?,

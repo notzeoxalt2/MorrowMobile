@@ -1,4 +1,4 @@
-package com.nuvio.app.core.sync
+﻿package com.streamvault.app.core.sync
 
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.runBlocking

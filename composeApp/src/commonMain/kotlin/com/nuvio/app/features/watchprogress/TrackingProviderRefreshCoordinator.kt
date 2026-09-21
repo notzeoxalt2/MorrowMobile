@@ -1,6 +1,6 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
-import com.nuvio.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.TrackingProviderId
 
 internal suspend fun coordinateTrackingProviderRefresh(
     providerId: TrackingProviderId,

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.debrid
+﻿package com.streamvault.app.features.debrid
 
 object DebridStreamFormatterDefaults {
     const val NAME_TEMPLATE = "{stream.resolution::exists[\"{stream.resolution} \"||\"\"]}{service.shortName::exists[\"{service.shortName}\"||\"Cloud\"]} Instant"

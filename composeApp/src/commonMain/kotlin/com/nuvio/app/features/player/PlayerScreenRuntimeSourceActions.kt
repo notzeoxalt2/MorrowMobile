@@ -1,20 +1,20 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
-import com.nuvio.app.core.ui.NuvioToastController
-import com.nuvio.app.features.debrid.DirectDebridPlayableResult
-import com.nuvio.app.features.debrid.DirectDebridPlaybackResolver
-import com.nuvio.app.features.debrid.toastMessage
-import com.nuvio.app.features.details.MetaDetailsRepository
-import com.nuvio.app.features.details.MetaVideo
-import com.nuvio.app.features.downloads.DownloadItem
-import com.nuvio.app.features.downloads.DownloadSubtitles
-import com.nuvio.app.features.downloads.DownloadsRepository
-import com.nuvio.app.features.p2p.P2pSettingsRepository
-import com.nuvio.app.features.p2p.P2pStreamingEngine
-import com.nuvio.app.features.streams.StreamItem
-import com.nuvio.app.features.streams.StreamLinkCacheRepository
-import com.nuvio.app.features.watchprogress.WatchProgressRepository
-import com.nuvio.app.features.watchprogress.buildPlaybackVideoId
+import com.streamvault.app.core.ui.NuvioToastController
+import com.streamvault.app.features.debrid.DirectDebridPlayableResult
+import com.streamvault.app.features.debrid.DirectDebridPlaybackResolver
+import com.streamvault.app.features.debrid.toastMessage
+import com.streamvault.app.features.details.MetaDetailsRepository
+import com.streamvault.app.features.details.MetaVideo
+import com.streamvault.app.features.downloads.DownloadItem
+import com.streamvault.app.features.downloads.DownloadSubtitles
+import com.streamvault.app.features.downloads.DownloadsRepository
+import com.streamvault.app.features.p2p.P2pSettingsRepository
+import com.streamvault.app.features.p2p.P2pStreamingEngine
+import com.streamvault.app.features.streams.StreamItem
+import com.streamvault.app.features.streams.StreamLinkCacheRepository
+import com.streamvault.app.features.watchprogress.WatchProgressRepository
+import com.streamvault.app.features.watchprogress.buildPlaybackVideoId
 import kotlinx.coroutines.launch
 
 internal fun PlayerScreenRuntime.resolveDebridForPlayer(

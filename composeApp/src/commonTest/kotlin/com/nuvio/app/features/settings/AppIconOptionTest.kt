@@ -1,10 +1,10 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
-import com.nuvio.app.core.ui.AppTheme
+import com.streamvault.app.core.ui.AppTheme
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.app_logo_wordmark_gold
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.app_logo_wordmark_gold
 
 class AppIconOptionTest {
     @Test

@@ -1,9 +1,9 @@
-package com.nuvio.app.core.auth
+﻿package com.streamvault.app.core.auth
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.build.AppVersionConfig
-import com.nuvio.app.core.network.SupabaseProvider
-import com.nuvio.app.core.sync.SyncClientIdentity
+import com.streamvault.app.core.build.AppVersionConfig
+import com.streamvault.app.core.network.SupabaseProvider
+import com.streamvault.app.core.sync.SyncClientIdentity
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.rpc
 import kotlinx.coroutines.CancellationException

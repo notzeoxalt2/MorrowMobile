@@ -1,9 +1,9 @@
-package com.nuvio.app.features.tmdb
+﻿package com.streamvault.app.features.tmdb
 
-import com.nuvio.app.features.details.MetaCompany
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.details.MetaPerson
-import com.nuvio.app.features.details.MetaVideo
+import com.streamvault.app.features.details.MetaCompany
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.details.MetaPerson
+import com.streamvault.app.features.details.MetaVideo
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

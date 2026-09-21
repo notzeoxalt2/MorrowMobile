@@ -1,6 +1,6 @@
-package com.nuvio.app.features.notifications
+﻿package com.streamvault.app.features.notifications
 
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.addressOf
 import kotlinx.cinterop.convert

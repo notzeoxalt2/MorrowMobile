@@ -1,16 +1,16 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.ic_player_aspect_ratio
-import nuvio.composeapp.generated.resources.ic_player_audio_filled
-import nuvio.composeapp.generated.resources.ic_player_episodes
-import nuvio.composeapp.generated.resources.ic_player_pause
-import nuvio.composeapp.generated.resources.ic_player_play
-import nuvio.composeapp.generated.resources.ic_player_source
-import nuvio.composeapp.generated.resources.ic_player_subtitles
-import nuvio.composeapp.generated.resources.library_add_plus
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.ic_player_aspect_ratio
+import streamvault.composeapp.generated.resources.ic_player_audio_filled
+import streamvault.composeapp.generated.resources.ic_player_episodes
+import streamvault.composeapp.generated.resources.ic_player_pause
+import streamvault.composeapp.generated.resources.ic_player_play
+import streamvault.composeapp.generated.resources.ic_player_source
+import streamvault.composeapp.generated.resources.ic_player_subtitles
+import streamvault.composeapp.generated.resources.library_add_plus
 import org.jetbrains.compose.resources.painterResource
 
 @Composable

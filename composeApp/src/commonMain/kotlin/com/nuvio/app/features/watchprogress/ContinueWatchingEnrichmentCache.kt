@@ -1,7 +1,7 @@
-package com.nuvio.app.features.watchprogress
+﻿package com.streamvault.app.features.watchprogress
 
-import com.nuvio.app.core.storage.ProfileScopedKey
-import com.nuvio.app.features.tracking.WatchProgressSource
+import com.streamvault.app.core.storage.ProfileScopedKey
+import com.streamvault.app.features.tracking.WatchProgressSource
 import kotlinx.atomicfu.locks.SynchronizedObject
 import kotlinx.atomicfu.locks.synchronized
 import kotlinx.coroutines.flow.MutableStateFlow

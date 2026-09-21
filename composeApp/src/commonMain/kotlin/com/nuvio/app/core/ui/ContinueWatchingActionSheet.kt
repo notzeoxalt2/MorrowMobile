@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -27,15 +27,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.nuvio.app.features.cloud.CloudLibraryContentType
-import com.nuvio.app.features.cloud.cloudLibraryDisplayArtworkUrl
-import com.nuvio.app.features.watchprogress.ContinueWatchingItem
+import com.streamvault.app.features.cloud.CloudLibraryContentType
+import com.streamvault.app.features.cloud.cloudLibraryDisplayArtworkUrl
+import com.streamvault.app.features.watchprogress.ContinueWatchingItem
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.cw_action_go_to_details
-import nuvio.composeapp.generated.resources.cw_action_remove
-import nuvio.composeapp.generated.resources.cw_action_start_from_beginning
-import nuvio.composeapp.generated.resources.play_manually
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.cw_action_go_to_details
+import streamvault.composeapp.generated.resources.cw_action_remove
+import streamvault.composeapp.generated.resources.cw_action_start_from_beginning
+import streamvault.composeapp.generated.resources.play_manually
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -1,15 +1,15 @@
-package com.nuvio.app.features.debrid
+﻿package com.streamvault.app.features.debrid
 
-import com.nuvio.app.features.streams.AddonStreamGroup
-import com.nuvio.app.features.streams.StreamBehaviorHints
-import com.nuvio.app.features.streams.StreamClientResolve
-import com.nuvio.app.features.streams.StreamClientResolveParsed
-import com.nuvio.app.features.streams.StreamClientResolveRaw
-import com.nuvio.app.features.streams.StreamClientResolveStream
-import com.nuvio.app.features.streams.StreamBadge
-import com.nuvio.app.features.streams.StreamDebridCacheState
-import com.nuvio.app.features.streams.StreamDebridCacheStatus
-import com.nuvio.app.features.streams.StreamItem
+import com.streamvault.app.features.streams.AddonStreamGroup
+import com.streamvault.app.features.streams.StreamBehaviorHints
+import com.streamvault.app.features.streams.StreamClientResolve
+import com.streamvault.app.features.streams.StreamClientResolveParsed
+import com.streamvault.app.features.streams.StreamClientResolveRaw
+import com.streamvault.app.features.streams.StreamClientResolveStream
+import com.streamvault.app.features.streams.StreamBadge
+import com.streamvault.app.features.streams.StreamDebridCacheState
+import com.streamvault.app.features.streams.StreamDebridCacheStatus
+import com.streamvault.app.features.streams.StreamItem
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertEquals

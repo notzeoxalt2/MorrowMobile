@@ -1,4 +1,4 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
 internal class SimklSyncEngine(
     private val remote: SimklSyncRemote,

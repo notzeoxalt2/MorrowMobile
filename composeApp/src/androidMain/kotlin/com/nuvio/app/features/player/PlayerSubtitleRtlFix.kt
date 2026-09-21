@@ -1,6 +1,6 @@
-@file:OptIn(androidx.media3.common.util.UnstableApi::class)
+﻿@file:OptIn(androidx.media3.common.util.UnstableApi::class)
 
-package com.nuvio.app.features.player
+package com.streamvault.app.features.player
 
 import android.text.SpannableStringBuilder
 import android.text.Spanned

@@ -1,7 +1,7 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
-import com.nuvio.app.features.watchprogress.CachedNextUpItem
-import com.nuvio.app.features.watchprogress.parseReleaseDateToEpochMs
+import com.streamvault.app.features.watchprogress.CachedNextUpItem
+import com.streamvault.app.features.watchprogress.parseReleaseDateToEpochMs
 
 internal class CachedNextUpRelease(val item: CachedNextUpItem) {
     private val dependsOnTimeZone = item.released?.trim()?.let { value ->

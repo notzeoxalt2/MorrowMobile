@@ -1,12 +1,12 @@
-package com.nuvio.app.features.plugins
+﻿package com.streamvault.app.features.plugins
 
-import com.nuvio.app.core.network.ServerCapabilities
-import com.nuvio.app.core.network.ServerConfiguration
-import com.nuvio.app.core.network.ServerConfigurationRepository
-import com.nuvio.app.core.network.ServerConfigurationStorage
-import com.nuvio.app.core.network.SupabaseProvider
-import com.nuvio.app.features.addons.AddonRepository
-import com.nuvio.app.features.addons.AddonStorage
+import com.streamvault.app.core.network.ServerCapabilities
+import com.streamvault.app.core.network.ServerConfiguration
+import com.streamvault.app.core.network.ServerConfigurationRepository
+import com.streamvault.app.core.network.ServerConfigurationStorage
+import com.streamvault.app.core.network.SupabaseProvider
+import com.streamvault.app.features.addons.AddonRepository
+import com.streamvault.app.features.addons.AddonStorage
 import com.russhwolf.settings.SettingsInitializer
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking

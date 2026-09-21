@@ -1,4 +1,4 @@
-package com.nuvio.app.features.addons
+﻿package com.streamvault.app.features.addons
 
 internal expect object AddonStorage {
     fun loadInstalledAddonUrls(profileId: Int): List<String>

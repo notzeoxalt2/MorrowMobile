@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details.components
+﻿package com.streamvault.app.features.details.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -29,18 +29,18 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import com.nuvio.app.core.ui.NuvioBottomSheetDivider
-import com.nuvio.app.core.ui.NuvioModalBottomSheet
-import com.nuvio.app.core.ui.dismissNuvioBottomSheet
-import com.nuvio.app.core.ui.nuvioSafeBottomPadding
-import com.nuvio.app.features.player.FullscreenPlayerDialog
-import com.nuvio.app.features.player.LockPlayerToLandscape
-import com.nuvio.app.features.trailer.TrailerPlaybackState
-import com.nuvio.app.features.trailer.TrailerPlayer
-import com.nuvio.app.features.trailer.TrailerPlaybackSource
-import com.nuvio.app.isIos
+import com.streamvault.app.core.ui.NuvioBottomSheetDivider
+import com.streamvault.app.core.ui.NuvioModalBottomSheet
+import com.streamvault.app.core.ui.dismissNuvioBottomSheet
+import com.streamvault.app.core.ui.nuvioSafeBottomPadding
+import com.streamvault.app.features.player.FullscreenPlayerDialog
+import com.streamvault.app.features.player.LockPlayerToLandscape
+import com.streamvault.app.features.trailer.TrailerPlaybackState
+import com.streamvault.app.features.trailer.TrailerPlayer
+import com.streamvault.app.features.trailer.TrailerPlaybackSource
+import com.streamvault.app.isIos
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)

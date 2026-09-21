@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -26,22 +26,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_close
-import nuvio.composeapp.generated.resources.player_video_settings_brightness
-import nuvio.composeapp.generated.resources.player_video_settings_contrast
-import nuvio.composeapp.generated.resources.player_video_settings_deband
-import nuvio.composeapp.generated.resources.player_video_settings_deband_desc
-import nuvio.composeapp.generated.resources.player_video_settings_gamma
-import nuvio.composeapp.generated.resources.player_video_settings_hdr_peak_detection
-import nuvio.composeapp.generated.resources.player_video_settings_hdr_peak_detection_desc
-import nuvio.composeapp.generated.resources.player_video_settings_interpolation
-import nuvio.composeapp.generated.resources.player_video_settings_interpolation_desc
-import nuvio.composeapp.generated.resources.player_video_settings_output_preset
-import nuvio.composeapp.generated.resources.player_video_settings_reset_tuning
-import nuvio.composeapp.generated.resources.player_video_settings_saturation
-import nuvio.composeapp.generated.resources.player_video_settings_title
-import nuvio.composeapp.generated.resources.player_video_settings_tone_mapping
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_close
+import streamvault.composeapp.generated.resources.player_video_settings_brightness
+import streamvault.composeapp.generated.resources.player_video_settings_contrast
+import streamvault.composeapp.generated.resources.player_video_settings_deband
+import streamvault.composeapp.generated.resources.player_video_settings_deband_desc
+import streamvault.composeapp.generated.resources.player_video_settings_gamma
+import streamvault.composeapp.generated.resources.player_video_settings_hdr_peak_detection
+import streamvault.composeapp.generated.resources.player_video_settings_hdr_peak_detection_desc
+import streamvault.composeapp.generated.resources.player_video_settings_interpolation
+import streamvault.composeapp.generated.resources.player_video_settings_interpolation_desc
+import streamvault.composeapp.generated.resources.player_video_settings_output_preset
+import streamvault.composeapp.generated.resources.player_video_settings_reset_tuning
+import streamvault.composeapp.generated.resources.player_video_settings_saturation
+import streamvault.composeapp.generated.resources.player_video_settings_title
+import streamvault.composeapp.generated.resources.player_video_settings_tone_mapping
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.roundToInt
 

@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -17,8 +17,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.Dp
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.episodes_cd_watched
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.episodes_cd_watched
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

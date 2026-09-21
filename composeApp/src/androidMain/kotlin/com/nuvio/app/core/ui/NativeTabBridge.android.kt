@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 internal actual fun isLiquidGlassNativeTabBarSupported(): Boolean = false
 

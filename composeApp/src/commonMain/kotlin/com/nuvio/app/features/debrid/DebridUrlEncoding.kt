@@ -1,4 +1,4 @@
-package com.nuvio.app.features.debrid
+﻿package com.streamvault.app.features.debrid
 
 internal fun encodePathSegment(value: String): String =
     percentEncode(value, spaceAsPlus = false)

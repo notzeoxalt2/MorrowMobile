@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -29,10 +29,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.nuvio
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.compose_player_audio_tracks
-import nuvio.composeapp.generated.resources.compose_player_no_audio_tracks_available
+import com.streamvault.app.core.ui.nuvio
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.compose_player_audio_tracks
+import streamvault.composeapp.generated.resources.compose_player_no_audio_tracks_available
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

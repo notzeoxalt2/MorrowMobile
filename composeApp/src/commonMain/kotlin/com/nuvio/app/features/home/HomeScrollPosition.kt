@@ -1,4 +1,4 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable

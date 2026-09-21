@@ -1,11 +1,11 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.content.Context
 import androidx.media3.datasource.DataSource
 import androidx.media3.datasource.DefaultDataSource
 import androidx.media3.datasource.okhttp.OkHttpDataSource
-import com.nuvio.app.core.diagnostics.SentryNetworkBreadcrumbInterceptor
-import com.nuvio.app.core.network.IPv4FirstDns
+import com.streamvault.app.core.diagnostics.SentryNetworkBreadcrumbInterceptor
+import com.streamvault.app.core.network.IPv4FirstDns
 import okhttp3.OkHttpClient
 import java.net.HttpURLConnection
 import java.net.URL

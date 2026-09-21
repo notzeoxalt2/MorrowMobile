@@ -1,4 +1,4 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
 /**
  * Provides a fallback watched check for anime franchise-parent content IDs.

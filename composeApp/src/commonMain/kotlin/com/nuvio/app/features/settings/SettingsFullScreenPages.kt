@@ -1,6 +1,6 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
-import com.nuvio.app.core.build.AppFeaturePolicy
+import com.streamvault.app.core.build.AppFeaturePolicy
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -8,26 +8,26 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.nuvio.app.core.ui.NuvioScreen
-import com.nuvio.app.core.ui.NuvioScreenHeader
-import com.nuvio.app.features.addons.AddonRepository
-import com.nuvio.app.features.addons.enabledAddons
-import com.nuvio.app.features.addons.firstEnabledManifestError
-import com.nuvio.app.features.addons.hasPendingEnabledManifests
-import com.nuvio.app.features.addons.isWaitingForFirstEnabledManifest
-import com.nuvio.app.features.collection.CollectionRepository
-import com.nuvio.app.features.details.MetaScreenSettingsRepository
-import com.nuvio.app.features.plugins.PluginRepository
-import com.nuvio.app.features.home.HomeCatalogSettingsRepository
-import com.nuvio.app.features.home.buildAddonCatalogRefreshSignature
-import com.nuvio.app.features.watchprogress.ContinueWatchingPreferencesRepository
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.compose_settings_page_account
-import nuvio.composeapp.generated.resources.compose_settings_page_addons
-import nuvio.composeapp.generated.resources.compose_settings_page_continue_watching
-import nuvio.composeapp.generated.resources.compose_settings_page_homescreen
-import nuvio.composeapp.generated.resources.compose_settings_page_meta_screen
-import nuvio.composeapp.generated.resources.compose_settings_page_plugins
+import com.streamvault.app.core.ui.NuvioScreen
+import com.streamvault.app.core.ui.NuvioScreenHeader
+import com.streamvault.app.features.addons.AddonRepository
+import com.streamvault.app.features.addons.enabledAddons
+import com.streamvault.app.features.addons.firstEnabledManifestError
+import com.streamvault.app.features.addons.hasPendingEnabledManifests
+import com.streamvault.app.features.addons.isWaitingForFirstEnabledManifest
+import com.streamvault.app.features.collection.CollectionRepository
+import com.streamvault.app.features.details.MetaScreenSettingsRepository
+import com.streamvault.app.features.plugins.PluginRepository
+import com.streamvault.app.features.home.HomeCatalogSettingsRepository
+import com.streamvault.app.features.home.buildAddonCatalogRefreshSignature
+import com.streamvault.app.features.watchprogress.ContinueWatchingPreferencesRepository
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.compose_settings_page_account
+import streamvault.composeapp.generated.resources.compose_settings_page_addons
+import streamvault.composeapp.generated.resources.compose_settings_page_continue_watching
+import streamvault.composeapp.generated.resources.compose_settings_page_homescreen
+import streamvault.composeapp.generated.resources.compose_settings_page_meta_screen
+import streamvault.composeapp.generated.resources.compose_settings_page_plugins
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

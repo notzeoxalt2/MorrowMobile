@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 /**
  * iOS implementation: returns subtitles unchanged (no caching needed).

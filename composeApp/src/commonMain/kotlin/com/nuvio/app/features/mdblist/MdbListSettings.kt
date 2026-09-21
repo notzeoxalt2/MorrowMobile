@@ -1,4 +1,4 @@
-package com.nuvio.app.features.mdblist
+﻿package com.streamvault.app.features.mdblist
 
 data class MdbListSettings(
     val enabled: Boolean = false,

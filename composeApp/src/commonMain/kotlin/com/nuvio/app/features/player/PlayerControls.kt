@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -33,7 +33,7 @@ import androidx.compose.material.icons.rounded.Forward10
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.LockOpen
 import androidx.compose.material.icons.rounded.Replay10
-import com.nuvio.app.core.ui.NuvioLoadingIndicator
+import com.streamvault.app.core.ui.NuvioLoadingIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
@@ -66,14 +66,14 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.LayoutDirection
-import com.nuvio.app.core.ui.AppIconResource
-import com.nuvio.app.core.ui.NuvioBackButton
-import com.nuvio.app.core.ui.themePalette
-import com.nuvio.app.core.ui.accentBrush
-import com.nuvio.app.core.ui.appIconPainter
-import com.nuvio.app.core.ui.gradientMask
-import com.nuvio.app.core.ui.nuvioTypeScale
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.ui.AppIconResource
+import com.streamvault.app.core.ui.NuvioBackButton
+import com.streamvault.app.core.ui.themePalette
+import com.streamvault.app.core.ui.accentBrush
+import com.streamvault.app.core.ui.appIconPainter
+import com.streamvault.app.core.ui.gradientMask
+import com.streamvault.app.core.ui.nuvioTypeScale
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

@@ -1,9 +1,9 @@
-package com.nuvio.app.features.watching.sync
+﻿package com.streamvault.app.features.watching.sync
 
-import com.nuvio.app.core.network.SupabaseProvider
-import com.nuvio.app.core.sync.putSyncOriginClientId
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
-import com.nuvio.app.features.watchprogress.resolvedProgressKey
+import com.streamvault.app.core.network.SupabaseProvider
+import com.streamvault.app.core.sync.putSyncOriginClientId
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watchprogress.resolvedProgressKey
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.rpc
 import kotlinx.serialization.SerialName

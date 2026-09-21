@@ -1,4 +1,4 @@
-package com.nuvio.app.features.notifications
+﻿package com.streamvault.app.features.notifications
 
 import android.Manifest
 import android.app.PendingIntent
@@ -21,13 +21,13 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.Operation
 import androidx.work.WorkManager
-import com.nuvio.app.core.storage.ProfileScopedKey
-import com.nuvio.app.features.settings.AppIconPlatform
+import com.streamvault.app.core.storage.ProfileScopedKey
+import com.streamvault.app.features.settings.AppIconPlatform
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.okhttp.OkHttp
 import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.request.get
@@ -213,7 +213,7 @@ internal actual object EpisodeReleaseNotificationPlatform {
         )?.toBitmap()
 
         return NotificationCompat.Builder(context, channelId)
-            .setSmallIcon(com.nuvio.app.R.drawable.ic_notification_small)
+            .setSmallIcon(com.streamvault.app.R.drawable.ic_notification_small)
             .setContentTitle(request.notificationTitle)
             .setContentText(request.notificationBody)
             .setStyle(

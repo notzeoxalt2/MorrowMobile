@@ -1,10 +1,10 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
-import com.nuvio.app.core.build.AppFeaturePolicy
-import com.nuvio.app.features.player.skip.AutoSkipSegmentType
-import com.nuvio.app.features.player.skip.NextEpisodeThresholdMode
-import com.nuvio.app.features.streams.StreamAutoPlayMode
-import com.nuvio.app.features.streams.StreamAutoPlaySource
+import com.streamvault.app.core.build.AppFeaturePolicy
+import com.streamvault.app.features.player.skip.AutoSkipSegmentType
+import com.streamvault.app.features.player.skip.NextEpisodeThresholdMode
+import com.streamvault.app.features.streams.StreamAutoPlayMode
+import com.streamvault.app.features.streams.StreamAutoPlaySource
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

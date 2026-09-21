@@ -1,4 +1,4 @@
-package com.nuvio.app.features.profiles
+﻿package com.streamvault.app.features.profiles
 
 internal actual object ProfileHoverHapticFeedback {
     actual fun prepare() = Unit

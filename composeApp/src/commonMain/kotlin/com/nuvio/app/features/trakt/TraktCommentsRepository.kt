@@ -1,14 +1,14 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.addons.httpGetTextWithHeaders
-import com.nuvio.app.features.addons.httpRequestRaw
-import com.nuvio.app.features.details.MetaDetails
+import com.streamvault.app.features.addons.httpGetTextWithHeaders
+import com.streamvault.app.features.addons.httpRequestRaw
+import com.streamvault.app.features.details.MetaDetails
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.json.Json
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
 private const val COMMENTS_SORT = "likes"

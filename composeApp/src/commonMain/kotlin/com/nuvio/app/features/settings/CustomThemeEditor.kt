@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -38,28 +38,28 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
-import com.nuvio.app.core.ui.CustomThemeColors
-import com.nuvio.app.core.ui.NuvioInputField
-import com.nuvio.app.core.ui.NuvioModalBottomSheet
-import com.nuvio.app.core.ui.NuvioPrimaryButton
-import com.nuvio.app.core.ui.NuvioTokens
-import com.nuvio.app.core.ui.dismissNuvioBottomSheet
-import com.nuvio.app.core.ui.formatHexColor
-import com.nuvio.app.core.ui.nuvio
-import com.nuvio.app.core.ui.parseHexColor
+import com.streamvault.app.core.ui.CustomThemeColors
+import com.streamvault.app.core.ui.NuvioInputField
+import com.streamvault.app.core.ui.NuvioModalBottomSheet
+import com.streamvault.app.core.ui.NuvioPrimaryButton
+import com.streamvault.app.core.ui.NuvioTokens
+import com.streamvault.app.core.ui.dismissNuvioBottomSheet
+import com.streamvault.app.core.ui.formatHexColor
+import com.streamvault.app.core.ui.nuvio
+import com.streamvault.app.core.ui.parseHexColor
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_cancel
-import nuvio.composeapp.generated.resources.custom_theme_color_number
-import nuvio.composeapp.generated.resources.custom_theme_hex_error
-import nuvio.composeapp.generated.resources.custom_theme_hex_title
-import nuvio.composeapp.generated.resources.custom_theme_mode_gradient
-import nuvio.composeapp.generated.resources.custom_theme_mode_solid
-import nuvio.composeapp.generated.resources.custom_theme_save
-import nuvio.composeapp.generated.resources.custom_theme_solid_subtitle
-import nuvio.composeapp.generated.resources.custom_theme_solid_title
-import nuvio.composeapp.generated.resources.custom_theme_subtitle
-import nuvio.composeapp.generated.resources.custom_theme_title
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_cancel
+import streamvault.composeapp.generated.resources.custom_theme_color_number
+import streamvault.composeapp.generated.resources.custom_theme_hex_error
+import streamvault.composeapp.generated.resources.custom_theme_hex_title
+import streamvault.composeapp.generated.resources.custom_theme_mode_gradient
+import streamvault.composeapp.generated.resources.custom_theme_mode_solid
+import streamvault.composeapp.generated.resources.custom_theme_save
+import streamvault.composeapp.generated.resources.custom_theme_solid_subtitle
+import streamvault.composeapp.generated.resources.custom_theme_solid_title
+import streamvault.composeapp.generated.resources.custom_theme_subtitle
+import streamvault.composeapp.generated.resources.custom_theme_title
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -1,6 +1,6 @@
-package com.nuvio.app.features.library.sync
+﻿package com.streamvault.app.features.library.sync
 
-import com.nuvio.app.features.library.LibraryItem
+import com.streamvault.app.features.library.LibraryItem
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

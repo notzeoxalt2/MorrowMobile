@@ -1,4 +1,4 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
 import android.app.Application
 import android.content.Context
@@ -8,12 +8,12 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import com.nuvio.app.core.storage.ProfileScopedKey
-import com.nuvio.app.core.sync.decodeSyncString
-import com.nuvio.app.core.ui.NuvioTheme
-import com.nuvio.app.features.settings.SettingsSearchEntry
-import com.nuvio.app.features.settings.settingsSearchEntries
-import com.nuvio.app.features.settings.streamsSettingsContent
+import com.streamvault.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.sync.decodeSyncString
+import com.streamvault.app.core.ui.NuvioTheme
+import com.streamvault.app.features.settings.SettingsSearchEntry
+import com.streamvault.app.features.settings.settingsSearchEntries
+import com.streamvault.app.features.settings.streamsSettingsContent
 import kotlinx.serialization.json.buildJsonObject
 import org.junit.Rule
 import org.junit.runner.RunWith

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player.skip
+﻿package com.streamvault.app.features.player.skip
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -54,15 +54,15 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
-import com.nuvio.app.core.ui.PlatformBackHandler
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.compose_player_episode_title_format
-import nuvio.composeapp.generated.resources.detail_btn_play
-import nuvio.composeapp.generated.resources.player_next_episode
-import nuvio.composeapp.generated.resources.player_next_episode_finding_source
-import nuvio.composeapp.generated.resources.player_next_episode_playing_via_countdown
-import nuvio.composeapp.generated.resources.player_next_episode_thumbnail
-import nuvio.composeapp.generated.resources.player_next_episode_unaired
+import com.streamvault.app.core.ui.PlatformBackHandler
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.compose_player_episode_title_format
+import streamvault.composeapp.generated.resources.detail_btn_play
+import streamvault.composeapp.generated.resources.player_next_episode
+import streamvault.composeapp.generated.resources.player_next_episode_finding_source
+import streamvault.composeapp.generated.resources.player_next_episode_playing_via_countdown
+import streamvault.composeapp.generated.resources.player_next_episode_thumbnail
+import streamvault.composeapp.generated.resources.player_next_episode_unaired
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

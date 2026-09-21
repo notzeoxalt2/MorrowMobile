@@ -1,7 +1,7 @@
-package com.nuvio.app.features.downloads
+﻿package com.streamvault.app.features.downloads
 
-import com.nuvio.app.features.player.addonSubtitleRequests
-import com.nuvio.app.features.streams.StreamItem
+import com.streamvault.app.features.player.addonSubtitleRequests
+import com.streamvault.app.features.streams.StreamItem
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
 object DownloadsRepository {

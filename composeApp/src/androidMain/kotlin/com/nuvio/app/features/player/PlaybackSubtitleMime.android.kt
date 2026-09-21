@@ -1,9 +1,9 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.net.Uri
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
-import com.nuvio.app.features.streams.StreamSubtitle
+import com.streamvault.app.features.streams.StreamSubtitle
 
 internal fun startupSubtitleConfigurations(
     subtitles: List<StreamSubtitle>,

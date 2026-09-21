@@ -1,10 +1,10 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.trakt_logo_wordmark
-import nuvio.composeapp.generated.resources.trakt_tv_favicon
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.trakt_logo_wordmark
+import streamvault.composeapp.generated.resources.trakt_tv_favicon
 import org.jetbrains.compose.resources.painterResource
 
 @Composable

@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring

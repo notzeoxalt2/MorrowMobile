@@ -1,12 +1,12 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.features.tracking.TrackingAuthProvider
-import com.nuvio.app.features.tracking.TrackingCapability
-import com.nuvio.app.features.tracking.TrackingProviderDescriptor
-import com.nuvio.app.features.tracking.TrackingProviderId
-import com.nuvio.app.features.tracking.TrackingProviderRegistry
-import com.nuvio.app.features.tracking.TrackingRefreshIntent
+import com.streamvault.app.features.tracking.TrackingAuthProvider
+import com.streamvault.app.features.tracking.TrackingCapability
+import com.streamvault.app.features.tracking.TrackingProviderDescriptor
+import com.streamvault.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.TrackingProviderRegistry
+import com.streamvault.app.features.tracking.TrackingRefreshIntent
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

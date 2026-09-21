@@ -1,6 +1,6 @@
-@file:OptIn(androidx.media3.common.util.UnstableApi::class)
+﻿@file:OptIn(androidx.media3.common.util.UnstableApi::class)
 
-package com.nuvio.app.features.player
+package com.streamvault.app.features.player
 
 import android.os.Handler
 import android.os.Looper
@@ -15,8 +15,8 @@ import androidx.media3.extractor.text.CuesWithTiming
 import androidx.media3.extractor.text.DefaultSubtitleParserFactory
 import androidx.media3.extractor.text.SubtitleParser
 import androidx.media3.ui.SubtitleView
-import com.nuvio.app.R
-import com.nuvio.app.features.addons.httpGetTextWithHeaders
+import com.streamvault.app.R
+import com.streamvault.app.features.addons.httpGetTextWithHeaders
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

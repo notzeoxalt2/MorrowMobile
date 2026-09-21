@@ -1,12 +1,12 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
-import com.nuvio.app.features.tracking.TrackingScrobbleAction
-import com.nuvio.app.features.tracking.TrackingScrobbleCoordinator
-import com.nuvio.app.features.tracking.TrackingScrobbleEvent
-import com.nuvio.app.features.tracking.buildTrackingMediaReference
-import com.nuvio.app.features.watching.domain.isShortPlaceholderDuration
-import com.nuvio.app.features.watchprogress.WatchProgressPlaybackSession
-import com.nuvio.app.features.watchprogress.WatchProgressRepository
+import com.streamvault.app.features.tracking.TrackingScrobbleAction
+import com.streamvault.app.features.tracking.TrackingScrobbleCoordinator
+import com.streamvault.app.features.tracking.TrackingScrobbleEvent
+import com.streamvault.app.features.tracking.buildTrackingMediaReference
+import com.streamvault.app.features.watching.domain.isShortPlaceholderDuration
+import com.streamvault.app.features.watchprogress.WatchProgressPlaybackSession
+import com.streamvault.app.features.watchprogress.WatchProgressRepository
 
 internal fun PlayerLaunch.externalPlaybackSession(): WatchProgressPlaybackSession = WatchProgressPlaybackSession(
     profileId = profileId,

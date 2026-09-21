@@ -1,12 +1,12 @@
-package com.nuvio.app.features.trailer
+﻿package com.streamvault.app.features.trailer
 
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.setValue
-import com.nuvio.app.features.player.PlayerEngineController
-import com.nuvio.app.features.player.PlayerPlaybackSnapshot
+import com.streamvault.app.features.player.PlayerEngineController
+import com.streamvault.app.features.player.PlayerPlaybackSnapshot
 
 @Stable
 internal class TrailerPlaybackState {

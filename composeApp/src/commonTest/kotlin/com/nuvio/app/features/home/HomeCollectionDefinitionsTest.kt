@@ -1,7 +1,7 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
-import com.nuvio.app.features.collection.Collection
-import com.nuvio.app.features.collection.CollectionFolder
+import com.streamvault.app.features.collection.Collection
+import com.streamvault.app.features.collection.CollectionFolder
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

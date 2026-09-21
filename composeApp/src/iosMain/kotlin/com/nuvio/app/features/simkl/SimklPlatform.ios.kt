@@ -1,8 +1,8 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
-import com.nuvio.app.core.storage.ProfileScopedKey
-import com.nuvio.app.features.plugins.cryptointerop.CC_SHA256
-import com.nuvio.app.features.plugins.cryptointerop.CC_SHA256_DIGEST_LENGTH
+import com.streamvault.app.core.storage.ProfileScopedKey
+import com.streamvault.app.features.plugins.cryptointerop.CC_SHA256
+import com.streamvault.app.features.plugins.cryptointerop.CC_SHA256_DIGEST_LENGTH
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.alloc
 import kotlinx.cinterop.get

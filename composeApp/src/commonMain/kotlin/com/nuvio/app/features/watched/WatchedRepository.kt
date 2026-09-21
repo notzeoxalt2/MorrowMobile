@@ -1,21 +1,21 @@
-package com.nuvio.app.features.watched
+﻿package com.streamvault.app.features.watched
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.auth.AuthRepository
-import com.nuvio.app.core.auth.AuthState
-import com.nuvio.app.core.tracking.ensureTrackingProvidersRegistered
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.details.MetaVideo
-import com.nuvio.app.features.profiles.ProfileRepository
-import com.nuvio.app.features.tracking.TrackingProviderId
-import com.nuvio.app.features.tracking.TrackingProviderRegistry
-import com.nuvio.app.features.tracking.TrackingSettingsRepository
-import com.nuvio.app.features.tracking.WatchProgressSource
-import com.nuvio.app.features.tracking.effectiveWatchProgressSource
-import com.nuvio.app.features.tracking.providerId
-import com.nuvio.app.features.watching.sync.SupabaseWatchedSyncAdapter
-import com.nuvio.app.features.watching.sync.WatchedDeltaEvent
-import com.nuvio.app.features.watching.sync.WatchedSyncAdapter
+import com.streamvault.app.core.auth.AuthRepository
+import com.streamvault.app.core.auth.AuthState
+import com.streamvault.app.core.tracking.ensureTrackingProvidersRegistered
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.details.MetaVideo
+import com.streamvault.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.TrackingProviderRegistry
+import com.streamvault.app.features.tracking.TrackingSettingsRepository
+import com.streamvault.app.features.tracking.WatchProgressSource
+import com.streamvault.app.features.tracking.effectiveWatchProgressSource
+import com.streamvault.app.features.tracking.providerId
+import com.streamvault.app.features.watching.sync.SupabaseWatchedSyncAdapter
+import com.streamvault.app.features.watching.sync.WatchedDeltaEvent
+import com.streamvault.app.features.watching.sync.WatchedSyncAdapter
 import kotlinx.atomicfu.locks.SynchronizedObject
 import kotlinx.atomicfu.locks.synchronized
 import kotlinx.coroutines.CancellationException
@@ -903,7 +903,7 @@ object WatchedRepository {
     fun reconcileSeriesWatchedState(
         meta: MetaDetails,
         todayIsoDate: String,
-        isEpisodeCompleted: (com.nuvio.app.features.details.MetaVideo) -> Boolean = { false },
+        isEpisodeCompleted: (com.streamvault.app.features.details.MetaVideo) -> Boolean = { false },
     ) {
         if (!meta.type.isSeriesLikeWatchedType()) return
 
@@ -940,7 +940,7 @@ object WatchedRepository {
             } else {
                 val episodeNumber = episode.episode
                 if (episodeNumber != null) {
-                    com.nuvio.app.features.simkl.SimklAnimeWatchedFallback.isWatched(episode.id, episodeNumber)
+                    com.streamvault.app.features.simkl.SimklAnimeWatchedFallback.isWatched(episode.id, episodeNumber)
                 } else {
                     false
                 }

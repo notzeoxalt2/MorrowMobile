@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.MutableTransitionState
@@ -43,11 +43,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.NuvioTokens
-import com.nuvio.app.core.ui.nuvio
-import com.nuvio.app.isIos
-import com.nuvio.app.supportsPosterNavigationMotion
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.ui.NuvioTokens
+import com.streamvault.app.core.ui.nuvio
+import com.streamvault.app.isIos
+import com.streamvault.app.supportsPosterNavigationMotion
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 internal sealed class SettingsSearchTarget {

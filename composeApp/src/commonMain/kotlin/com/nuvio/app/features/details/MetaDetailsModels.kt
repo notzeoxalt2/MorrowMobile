@@ -1,7 +1,7 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.streams.StreamItem
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.streams.StreamItem
 
 data class MetaDetails(
     val id: String,

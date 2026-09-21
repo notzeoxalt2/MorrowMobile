@@ -1,4 +1,4 @@
-package com.nuvio.app.features.streams
+﻿package com.streamvault.app.features.streams
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

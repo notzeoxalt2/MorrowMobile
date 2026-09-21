@@ -1,9 +1,9 @@
-package com.nuvio.app.features.addons
+package com.streamvault.app.features.addons
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.network.SupabaseProvider
-import com.nuvio.app.core.sync.putSyncOriginClientId
-import com.nuvio.app.features.profiles.ProfileRepository
+import com.streamvault.app.core.network.SupabaseProvider
+import com.streamvault.app.core.sync.putSyncOriginClientId
+import com.streamvault.app.features.profiles.ProfileRepository
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.query.Order
 import io.github.jan.supabase.postgrest.rpc
@@ -27,7 +27,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.encodeToJsonElement
 import kotlinx.serialization.json.put
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
 @Serializable
@@ -67,10 +67,33 @@ object AddonRepository {
         currentProfileId = effectiveProfileId
         log.d { "initialize() — loading local addons for profile $currentProfileId" }
 
-        val storedUrls = dedupeManifestUrls(AddonStorage.loadInstalledAddonUrls(currentProfileId))
+        var storedUrls = dedupeManifestUrls(AddonStorage.loadInstalledAddonUrls(currentProfileId))
         val enabledByUrl = loadLocalEnabledStates()
         log.d { "initialize() — local addon count: ${storedUrls.size}" }
-        if (storedUrls.isEmpty()) return
+
+        // Seed default StreamVault addons if profile has none
+        if (storedUrls.isEmpty()) {
+            val defaults = DefaultAddons.defaultAddonUrls
+            log.i { "initialize() — seeding ${defaults.size} default addons for profile $currentProfileId" }
+            AddonStorage.saveInstalledAddonUrls(currentProfileId, defaults)
+            storedUrls = defaults
+        }
+
+        // Migrate legacy anime-kitsu to AIOMetadata and ensure AIOMetadata is installed
+        val aioMetadataUrl = "https://aiometadata.elfhosted.com/stremio/d1fa9f04-e1cf-43ae-9d7a-c309528c21e2/manifest.json"
+        var needsSave = false
+        if (storedUrls.any { it.contains("anime-kitsu.strem.fun") }) {
+            storedUrls = storedUrls.map { if (it.contains("anime-kitsu.strem.fun")) aioMetadataUrl else it }
+            needsSave = true
+        }
+        if (storedUrls.none { it.contains("aiometadata.elfhosted.com") }) {
+            storedUrls = storedUrls + aioMetadataUrl
+            needsSave = true
+        }
+        storedUrls = dedupeManifestUrls(storedUrls)
+        if (needsSave) {
+            AddonStorage.saveInstalledAddonUrls(currentProfileId, storedUrls)
+        }
 
         val existingByUrl = _uiState.value.addons.associateBy(ManagedAddon::manifestUrl)
         _uiState.value = AddonsUiState(
@@ -98,6 +121,7 @@ object AddonRepository {
         currentProfileId = effectiveProfileId
         initialized = false
         _uiState.value = AddonsUiState()
+        initialize()
     }
 
     fun clearLocalState() {
@@ -129,9 +153,29 @@ object AddonRepository {
                 }
             }
 
-            val urls = rowsByUrl.keys.toList()
-            log.i { "pullFromServer() — server returned ${rows.size} addons" }
-            urls.forEachIndexed { i, u -> log.d { "  server[$i]: $u" } }
+            val rawUrls = if (rowsByUrl.isEmpty()) {
+                val localStored = dedupeManifestUrls(AddonStorage.loadInstalledAddonUrls(currentProfileId))
+                if (localStored.isNotEmpty()) {
+                    log.i { "pullFromServer() — server returned 0 addons, retaining ${localStored.size} local addons for profile $currentProfileId" }
+                    localStored
+                } else {
+                    log.i { "pullFromServer() — server returned 0 addons, seeding ${DefaultAddons.defaultAddonUrls.size} defaults for profile $currentProfileId" }
+                    val defaults = DefaultAddons.defaultAddonUrls
+                    AddonStorage.saveInstalledAddonUrls(currentProfileId, defaults)
+                    defaults
+                }
+            } else {
+                rowsByUrl.keys.toList()
+            }
+            val aioMetadataUrl = "https://aiometadata.elfhosted.com/stremio/d1fa9f04-e1cf-43ae-9d7a-c309528c21e2/manifest.json"
+            val migratedUrls = rawUrls.map { if (it.contains("anime-kitsu.strem.fun")) aioMetadataUrl else it }
+            val urls = if (migratedUrls.none { it.contains("aiometadata.elfhosted.com") }) {
+                dedupeManifestUrls(migratedUrls + aioMetadataUrl)
+            } else {
+                dedupeManifestUrls(migratedUrls)
+            }
+            log.i { "pullFromServer() — effective addon count: ${urls.size}" }
+            urls.forEachIndexed { i, u -> log.d { "  addon[$i]: $u" } }
 
             val existingByUrl = _uiState.value.addons.associateBy(ManagedAddon::manifestUrl)
             _uiState.value = AddonsUiState(
@@ -140,7 +184,7 @@ object AddonRepository {
                     existingByUrl[url].toPendingAddon(
                         manifestUrl = url,
                         userSetName = row?.name?.takeIf { it.isNotBlank() },
-                        enabled = row?.enabled,
+                        enabled = row?.enabled ?: true,
                     )
                 },
             )

@@ -1,8 +1,8 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
-import com.nuvio.app.features.tracking.TrackingMediaKind
-import com.nuvio.app.features.tracking.TrackingMembershipRemovalImpact
-import com.nuvio.app.features.watchprogress.WatchProgressSourceSimklPlayback
+import com.streamvault.app.features.tracking.TrackingMediaKind
+import com.streamvault.app.features.tracking.TrackingMembershipRemovalImpact
+import com.streamvault.app.features.watchprogress.WatchProgressSourceSimklPlayback
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 import kotlin.test.Test

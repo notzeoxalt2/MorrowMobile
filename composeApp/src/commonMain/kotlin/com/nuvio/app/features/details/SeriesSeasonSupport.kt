@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
 internal const val SPECIALS_SEASON_NUMBER = 0
 

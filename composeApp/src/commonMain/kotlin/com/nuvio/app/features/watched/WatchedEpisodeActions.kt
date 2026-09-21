@@ -1,15 +1,15 @@
-package com.nuvio.app.features.watched
+﻿package com.streamvault.app.features.watched
 
-import com.nuvio.app.features.details.MetaDetails
-import com.nuvio.app.features.details.MetaVideo
-import com.nuvio.app.features.details.normalizeSeasonNumber
-import com.nuvio.app.features.details.sortedPlayableEpisodes
-import com.nuvio.app.features.watching.domain.WatchingContentRef
-import com.nuvio.app.features.watching.domain.WatchingReleasedEpisode
-import com.nuvio.app.features.watching.domain.buildPlaybackVideoId
-import com.nuvio.app.features.watching.domain.hasWatchedAllMainSeasonEpisodes as domainHasWatchedAllMainSeasonEpisodes
-import com.nuvio.app.features.watching.domain.releasedEpisodes
-import com.nuvio.app.features.watching.domain.releasedMainSeasonEpisodes as domainReleasedMainSeasonEpisodes
+import com.streamvault.app.features.details.MetaDetails
+import com.streamvault.app.features.details.MetaVideo
+import com.streamvault.app.features.details.normalizeSeasonNumber
+import com.streamvault.app.features.details.sortedPlayableEpisodes
+import com.streamvault.app.features.watching.domain.WatchingContentRef
+import com.streamvault.app.features.watching.domain.WatchingReleasedEpisode
+import com.streamvault.app.features.watching.domain.buildPlaybackVideoId
+import com.streamvault.app.features.watching.domain.hasWatchedAllMainSeasonEpisodes as domainHasWatchedAllMainSeasonEpisodes
+import com.streamvault.app.features.watching.domain.releasedEpisodes
+import com.streamvault.app.features.watching.domain.releasedMainSeasonEpisodes as domainReleasedMainSeasonEpisodes
 
 fun MetaDetails.toSeriesWatchedItem(markedAtEpochMs: Long = 0L): WatchedItem =
     WatchedItem(

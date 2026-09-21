@@ -1,7 +1,7 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
-import com.nuvio.app.features.addons.ManagedAddon
-import com.nuvio.app.features.catalog.CatalogTarget
+import com.streamvault.app.features.addons.ManagedAddon
+import com.streamvault.app.features.catalog.CatalogTarget
 
 data class MetaPreview(
     val id: String,

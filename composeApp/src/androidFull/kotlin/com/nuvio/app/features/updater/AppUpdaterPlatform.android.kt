@@ -1,4 +1,4 @@
-package com.nuvio.app.features.updater
+﻿package com.streamvault.app.features.updater
 
 actual object AppUpdaterPlatform {
     actual val isSupported: Boolean = true

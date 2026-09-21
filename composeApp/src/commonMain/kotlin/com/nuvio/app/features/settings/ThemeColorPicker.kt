@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -30,15 +30,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
-import com.nuvio.app.core.ui.HsvColor
-import com.nuvio.app.core.ui.NuvioTokens
-import com.nuvio.app.core.ui.formatHexColor
-import com.nuvio.app.core.ui.nuvio
+import com.streamvault.app.core.ui.HsvColor
+import com.streamvault.app.core.ui.NuvioTokens
+import com.streamvault.app.core.ui.formatHexColor
+import com.streamvault.app.core.ui.nuvio
 import kotlin.math.roundToInt
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.custom_theme_brightness
-import nuvio.composeapp.generated.resources.custom_theme_hue
-import nuvio.composeapp.generated.resources.custom_theme_saturation
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.custom_theme_brightness
+import streamvault.composeapp.generated.resources.custom_theme_hue
+import streamvault.composeapp.generated.resources.custom_theme_saturation
 import org.jetbrains.compose.resources.stringResource
 
 private val colorSwatches = listOf(

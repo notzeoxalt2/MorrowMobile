@@ -1,13 +1,13 @@
-package com.nuvio.app.features.home.components
+﻿package com.streamvault.app.features.home.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.nuvio.app.core.format.formatReleaseDateForDisplay
-import com.nuvio.app.core.ui.NuvioPosterCard
-import com.nuvio.app.core.ui.NuvioPosterShape
-import com.nuvio.app.core.ui.rememberPosterCardStyleUiState
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.PosterShape
+import com.streamvault.app.core.format.formatReleaseDateForDisplay
+import com.streamvault.app.core.ui.NuvioPosterCard
+import com.streamvault.app.core.ui.NuvioPosterShape
+import com.streamvault.app.core.ui.rememberPosterCardStyleUiState
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.PosterShape
 
 @Composable
 fun HomePosterCard(

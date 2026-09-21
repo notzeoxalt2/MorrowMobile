@@ -1,10 +1,10 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
 import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.details_runtime_hours_minutes
-import nuvio.composeapp.generated.resources.details_runtime_hours_only
-import nuvio.composeapp.generated.resources.details_runtime_minutes_only
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.details_runtime_hours_minutes
+import streamvault.composeapp.generated.resources.details_runtime_hours_only
+import streamvault.composeapp.generated.resources.details_runtime_minutes_only
 import org.jetbrains.compose.resources.getString
 
 private val hourTokenRegex = Regex("""(?i)(\d+)\s*h(?:ours?)?""")

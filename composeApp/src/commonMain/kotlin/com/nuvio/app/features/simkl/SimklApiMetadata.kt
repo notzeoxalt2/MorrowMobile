@@ -1,6 +1,6 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
-import com.nuvio.app.core.build.AppVersionConfig
+import com.streamvault.app.core.build.AppVersionConfig
 import io.ktor.http.encodeURLParameter
 
 internal const val SIMKL_API_BASE_URL = "https://api.simkl.com"

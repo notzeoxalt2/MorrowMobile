@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
 internal fun selectHeroTrailer(trailers: List<MetaTrailer>): MetaTrailer? =
     trailers

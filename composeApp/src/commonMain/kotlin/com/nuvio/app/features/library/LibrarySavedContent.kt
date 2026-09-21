@@ -1,4 +1,4 @@
-package com.nuvio.app.features.library
+﻿package com.streamvault.app.features.library
 
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.horizontalScroll
@@ -12,22 +12,22 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.i18n.localizedMediaTypeLabel
-import com.nuvio.app.core.ui.NuvioDropdownChip
-import com.nuvio.app.core.ui.NuvioDropdownOption
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.components.PosterGridRow
-import com.nuvio.app.features.home.components.PosterGridSkeletonRow
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.library_filter_all_types
-import nuvio.composeapp.generated.resources.library_filter_list
-import nuvio.composeapp.generated.resources.library_filter_sort
-import nuvio.composeapp.generated.resources.library_filter_type
-import nuvio.composeapp.generated.resources.library_sort_added_asc
-import nuvio.composeapp.generated.resources.library_sort_added_desc
-import nuvio.composeapp.generated.resources.library_sort_title_asc
-import nuvio.composeapp.generated.resources.library_sort_title_desc
-import nuvio.composeapp.generated.resources.library_sort_provider_order
+import com.streamvault.app.core.i18n.localizedMediaTypeLabel
+import com.streamvault.app.core.ui.NuvioDropdownChip
+import com.streamvault.app.core.ui.NuvioDropdownOption
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.components.PosterGridRow
+import com.streamvault.app.features.home.components.PosterGridSkeletonRow
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.library_filter_all_types
+import streamvault.composeapp.generated.resources.library_filter_list
+import streamvault.composeapp.generated.resources.library_filter_sort
+import streamvault.composeapp.generated.resources.library_filter_type
+import streamvault.composeapp.generated.resources.library_sort_added_asc
+import streamvault.composeapp.generated.resources.library_sort_added_desc
+import streamvault.composeapp.generated.resources.library_sort_title_asc
+import streamvault.composeapp.generated.resources.library_sort_title_desc
+import streamvault.composeapp.generated.resources.library_sort_provider_order
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

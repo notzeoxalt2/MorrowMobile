@@ -1,4 +1,4 @@
-package com.nuvio.app.features.tracking
+﻿package com.streamvault.app.features.tracking
 
 data class TrackingMembershipResolution(
     val providerId: TrackingProviderId,

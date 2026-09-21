@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details.components
+﻿package com.streamvault.app.features.details.components
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Column
@@ -19,19 +19,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.nuvioHorizontalScrollBleed
-import com.nuvio.app.core.ui.NuvioShelfSection
-import com.nuvio.app.core.ui.PosterLandscapeAspectRatio
-import com.nuvio.app.core.ui.SkeletonPoster
-import com.nuvio.app.core.ui.landscapePosterWidth
-import com.nuvio.app.core.ui.rememberPosterCardStyleUiState
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.PosterShape
-import com.nuvio.app.features.home.components.HomePosterCard
-import com.nuvio.app.features.home.stableKey
-import com.nuvio.app.features.watching.application.WatchingState
-import com.nuvio.app.features.tmdb.TmdbMetadataService
-import com.nuvio.app.features.tmdb.TmdbSettingsRepository
+import com.streamvault.app.core.ui.nuvioHorizontalScrollBleed
+import com.streamvault.app.core.ui.NuvioShelfSection
+import com.streamvault.app.core.ui.PosterLandscapeAspectRatio
+import com.streamvault.app.core.ui.SkeletonPoster
+import com.streamvault.app.core.ui.landscapePosterWidth
+import com.streamvault.app.core.ui.rememberPosterCardStyleUiState
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.PosterShape
+import com.streamvault.app.features.home.components.HomePosterCard
+import com.streamvault.app.features.home.stableKey
+import com.streamvault.app.features.watching.application.WatchingState
+import com.streamvault.app.features.tmdb.TmdbMetadataService
+import com.streamvault.app.features.tmdb.TmdbSettingsRepository
 
 @Composable
 fun DetailPosterRailSection(

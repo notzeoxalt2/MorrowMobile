@@ -1,6 +1,6 @@
-@file:OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
+﻿@file:OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
 
-package com.nuvio.app.features.plugins
+package com.streamvault.app.features.plugins
 
 import kotlinx.atomicfu.locks.SynchronizedObject
 import kotlinx.atomicfu.locks.synchronized

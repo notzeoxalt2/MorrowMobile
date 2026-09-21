@@ -1,10 +1,10 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.simkl_logo_glyph
-import nuvio.composeapp.generated.resources.simkl_logo_wordmark
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.simkl_logo_glyph
+import streamvault.composeapp.generated.resources.simkl_logo_wordmark
 import org.jetbrains.compose.resources.painterResource
 
 @Composable

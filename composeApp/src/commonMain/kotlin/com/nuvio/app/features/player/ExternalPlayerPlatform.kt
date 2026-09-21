@@ -1,6 +1,6 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
-import com.nuvio.app.features.watchprogress.WatchProgressPlaybackSession
+import com.streamvault.app.features.watchprogress.WatchProgressPlaybackSession
 
 data class ExternalPlayerApp(
     val id: String,

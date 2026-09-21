@@ -1,11 +1,11 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
-import com.nuvio.app.features.tracking.TrackingHistoryItem
-import com.nuvio.app.features.tracking.TrackingListStatus
-import com.nuvio.app.features.tracking.TrackingMediaKind
-import com.nuvio.app.features.tracking.TrackingMediaReference
-import com.nuvio.app.features.tracking.TrackingMutationResolution
-import com.nuvio.app.features.tracking.TrackingMutationResult
+import com.streamvault.app.features.tracking.TrackingHistoryItem
+import com.streamvault.app.features.tracking.TrackingListStatus
+import com.streamvault.app.features.tracking.TrackingMediaKind
+import com.streamvault.app.features.tracking.TrackingMediaReference
+import com.streamvault.app.features.tracking.TrackingMutationResolution
+import com.streamvault.app.features.tracking.TrackingMutationResult
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject

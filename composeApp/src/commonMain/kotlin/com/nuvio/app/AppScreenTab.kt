@@ -1,6 +1,6 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
-import com.nuvio.app.core.ui.NativeNavigationTab
+import com.streamvault.app.core.ui.NativeNavigationTab
 
 enum class AppScreenTab {
     Home,

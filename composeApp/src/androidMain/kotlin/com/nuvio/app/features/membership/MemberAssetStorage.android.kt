@@ -1,4 +1,4 @@
-package com.nuvio.app.features.membership
+﻿package com.streamvault.app.features.membership
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -1,4 +1,4 @@
-package com.nuvio.app.core.deeplink
+﻿package com.streamvault.app.core.deeplink
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

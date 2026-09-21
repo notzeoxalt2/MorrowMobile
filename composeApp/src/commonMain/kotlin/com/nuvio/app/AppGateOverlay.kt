@@ -1,10 +1,10 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
-import com.nuvio.app.core.ui.NativeProfileSwitcherController
-import com.nuvio.app.navigation.TabsRoute
+import com.streamvault.app.core.ui.NativeProfileSwitcherController
+import com.streamvault.app.navigation.TabsRoute
 
 @Composable
 internal fun AppGateOverlay(

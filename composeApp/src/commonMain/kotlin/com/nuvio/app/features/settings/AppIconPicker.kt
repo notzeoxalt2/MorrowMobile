@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -47,18 +47,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.NuvioModalBottomSheet
-import com.nuvio.app.core.ui.NuvioStatusModal
-import com.nuvio.app.core.ui.dismissNuvioBottomSheet
-import com.nuvio.app.core.ui.nuvio
+import com.streamvault.app.core.ui.NuvioModalBottomSheet
+import com.streamvault.app.core.ui.NuvioStatusModal
+import com.streamvault.app.core.ui.dismissNuvioBottomSheet
+import com.streamvault.app.core.ui.nuvio
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_cancel
-import nuvio.composeapp.generated.resources.action_ok
-import nuvio.composeapp.generated.resources.settings_appearance_app_icon_android_confirmation_message
-import nuvio.composeapp.generated.resources.settings_appearance_app_icon_android_confirmation_title
-import nuvio.composeapp.generated.resources.settings_appearance_app_icon_change_failed
-import nuvio.composeapp.generated.resources.settings_appearance_app_icon_sheet_title
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_cancel
+import streamvault.composeapp.generated.resources.action_ok
+import streamvault.composeapp.generated.resources.settings_appearance_app_icon_android_confirmation_message
+import streamvault.composeapp.generated.resources.settings_appearance_app_icon_android_confirmation_title
+import streamvault.composeapp.generated.resources.settings_appearance_app_icon_change_failed
+import streamvault.composeapp.generated.resources.settings_appearance_app_icon_sheet_title
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 

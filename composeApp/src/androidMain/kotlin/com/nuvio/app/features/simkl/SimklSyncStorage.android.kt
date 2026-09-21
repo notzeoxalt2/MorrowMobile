@@ -1,8 +1,8 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 
 internal actual object SimklSyncStorage {
     private const val PREFERENCES_NAME = "nuvio_simkl_sync"

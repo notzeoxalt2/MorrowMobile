@@ -1,9 +1,9 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.fillMaxWidth
-import com.nuvio.app.features.plugins.PluginsSettingsPageContent
+import com.streamvault.app.features.plugins.PluginsSettingsPageContent
 
 internal actual fun LazyListScope.pluginsSettingsContent() {
     item {

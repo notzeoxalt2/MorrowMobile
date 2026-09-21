@@ -1,39 +1,39 @@
-package com.nuvio.app.features.profiles
+package com.streamvault.app.features.profiles
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.auth.AuthRepository
-import com.nuvio.app.core.auth.AuthState
-import com.nuvio.app.core.auth.isAnonymous
-import com.nuvio.app.core.network.SupabaseProvider
-import com.nuvio.app.core.sync.ProfileSettingsSync
-import com.nuvio.app.core.sync.putSyncOriginClientId
-import com.nuvio.app.core.tracking.ensureTrackingProvidersRegistered
-import com.nuvio.app.features.addons.AddonRepository
-import com.nuvio.app.features.collection.CollectionMobileSettingsRepository
-import com.nuvio.app.features.collection.CollectionRepository
-import com.nuvio.app.features.downloads.DownloadsRepository
-import com.nuvio.app.features.details.MetaScreenSettingsRepository
-import com.nuvio.app.features.home.HomeCatalogSettingsRepository
-import com.nuvio.app.features.home.HomeRepository
-import com.nuvio.app.core.ui.CardDepthStyleRepository
-import com.nuvio.app.core.ui.PosterCardStyleRepository
-import com.nuvio.app.features.library.LibraryRepository
-import com.nuvio.app.features.library.LibraryDisplaySettingsRepository
-import com.nuvio.app.features.mdblist.MdbListSettingsRepository
-import com.nuvio.app.features.notifications.EpisodeReleaseNotificationsRepository
-import com.nuvio.app.features.p2p.P2pSettingsRepository
-import com.nuvio.app.features.player.PlayerSettingsRepository
-import com.nuvio.app.features.plugins.PluginRepository
-import com.nuvio.app.features.search.SearchHistoryRepository
-import com.nuvio.app.features.search.SearchRepository
-import com.nuvio.app.features.settings.ThemeSettingsRepository
-import com.nuvio.app.features.streams.StreamBadgeSettingsRepository
-import com.nuvio.app.features.tracking.TrackingProviderRegistry
-import com.nuvio.app.features.tracking.TrackingSettingsRepository
-import com.nuvio.app.features.tmdb.TmdbSettingsRepository
-import com.nuvio.app.features.watched.WatchedRepository
-import com.nuvio.app.features.watchprogress.ContinueWatchingPreferencesRepository
-import com.nuvio.app.features.watchprogress.WatchProgressRepository
+import com.streamvault.app.core.auth.AuthRepository
+import com.streamvault.app.core.auth.AuthState
+import com.streamvault.app.core.auth.isAnonymous
+import com.streamvault.app.core.network.SupabaseProvider
+import com.streamvault.app.core.sync.ProfileSettingsSync
+import com.streamvault.app.core.sync.putSyncOriginClientId
+import com.streamvault.app.core.tracking.ensureTrackingProvidersRegistered
+import com.streamvault.app.features.addons.AddonRepository
+import com.streamvault.app.features.collection.CollectionMobileSettingsRepository
+import com.streamvault.app.features.collection.CollectionRepository
+import com.streamvault.app.features.downloads.DownloadsRepository
+import com.streamvault.app.features.details.MetaScreenSettingsRepository
+import com.streamvault.app.features.home.HomeCatalogSettingsRepository
+import com.streamvault.app.features.home.HomeRepository
+import com.streamvault.app.core.ui.CardDepthStyleRepository
+import com.streamvault.app.core.ui.PosterCardStyleRepository
+import com.streamvault.app.features.library.LibraryRepository
+import com.streamvault.app.features.library.LibraryDisplaySettingsRepository
+import com.streamvault.app.features.mdblist.MdbListSettingsRepository
+import com.streamvault.app.features.notifications.EpisodeReleaseNotificationsRepository
+import com.streamvault.app.features.p2p.P2pSettingsRepository
+import com.streamvault.app.features.player.PlayerSettingsRepository
+import com.streamvault.app.features.plugins.PluginRepository
+import com.streamvault.app.features.search.SearchHistoryRepository
+import com.streamvault.app.features.search.SearchRepository
+import com.streamvault.app.features.settings.ThemeSettingsRepository
+import com.streamvault.app.features.streams.StreamBadgeSettingsRepository
+import com.streamvault.app.features.tracking.TrackingProviderRegistry
+import com.streamvault.app.features.tracking.TrackingSettingsRepository
+import com.streamvault.app.features.tmdb.TmdbSettingsRepository
+import com.streamvault.app.features.watched.WatchedRepository
+import com.streamvault.app.features.watchprogress.ContinueWatchingPreferencesRepository
+import com.streamvault.app.features.watchprogress.WatchProgressRepository
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.rpc
 import kotlinx.coroutines.CoroutineScope
@@ -51,7 +51,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.encodeToJsonElement
 import kotlinx.serialization.json.put
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
 
@@ -85,8 +85,33 @@ object ProfileRepository {
         persist()
     }
 
+    private fun createDefaultProfile(userId: String): NuvioProfile = NuvioProfile(
+        id = "default-1",
+        userId = userId,
+        profileIndex = 1,
+        name = "Morrow",
+        avatarColorHex = "#E50914",
+        avatarId = "netflix-classic-1",
+        avatarUrl = null,
+        usesPrimaryAddons = true,
+        usesPrimaryPlugins = true,
+    )
+
     fun loadCachedProfiles(): Boolean {
-        val stored = decodeStoredPayload() ?: return false
+        val stored = decodeStoredPayload()
+        if (stored == null || stored.profiles.isEmpty()) {
+            val defaultProfile = createDefaultProfile("guest")
+            _state.value = ProfileState(
+                profiles = listOf(defaultProfile),
+                activeProfile = defaultProfile,
+                isLoaded = true,
+                hasEverSelectedProfile = true,
+                rememberLastProfileEnabled = true,
+            )
+            activeProfileIndex = 1
+            ThemeSettingsRepository.onProfileChanged()
+            return true
+        }
         loadedCacheForUserId = stored.userId
         applyStoredPayload(stored)
         ThemeSettingsRepository.onProfileChanged()
@@ -94,23 +119,37 @@ object ProfileRepository {
     }
 
     fun ensureLoaded(userId: String) {
-        if (loadedCacheForUserId == userId && _state.value.isLoaded) return
+        if (loadedCacheForUserId == userId && _state.value.isLoaded && _state.value.profiles.isNotEmpty()) return
 
         val stored = decodeStoredPayload()
         loadedCacheForUserId = userId
-        if (stored == null) {
-            _state.value = ProfileState()
+        if (stored == null || stored.profiles.isEmpty()) {
+            val defaultProfile = createDefaultProfile(userId)
+            _state.value = ProfileState(
+                profiles = listOf(defaultProfile),
+                activeProfile = defaultProfile,
+                isLoaded = true,
+                hasEverSelectedProfile = true,
+                rememberLastProfileEnabled = true,
+            )
             activeProfileIndex = 1
-            return
-        }
-
-        if (stored.userId != userId) {
-            _state.value = ProfileState()
-            activeProfileIndex = 1
+            persist()
             return
         }
 
         applyStoredPayload(stored)
+        if (_state.value.profiles.isEmpty()) {
+            val defaultProfile = createDefaultProfile(userId)
+            _state.value = ProfileState(
+                profiles = listOf(defaultProfile),
+                activeProfile = defaultProfile,
+                isLoaded = true,
+                hasEverSelectedProfile = true,
+                rememberLastProfileEnabled = true,
+            )
+            activeProfileIndex = 1
+            persist()
+        }
     }
 
     fun clearInMemory() {
@@ -121,7 +160,19 @@ object ProfileRepository {
 
     suspend fun pullProfiles() {
         if (AuthRepository.state.value.isAnonymous) {
-            if (!_state.value.isLoaded) {
+            if (_state.value.profiles.isEmpty()) {
+                val userId = (AuthRepository.state.value as? AuthState.Authenticated)?.userId ?: "guest"
+                val defaultProfile = createDefaultProfile(userId)
+                _state.value = ProfileState(
+                    profiles = listOf(defaultProfile),
+                    activeProfile = defaultProfile,
+                    isLoaded = true,
+                    hasEverSelectedProfile = true,
+                    rememberLastProfileEnabled = true,
+                )
+                activeProfileIndex = 1
+                persist()
+            } else if (!_state.value.isLoaded) {
                 _state.value = _state.value.copy(isLoaded = true)
             }
             return
@@ -164,7 +215,7 @@ object ProfileRepository {
         LibraryDisplaySettingsRepository.onProfileChanged()
         WatchProgressRepository.onProfileChanged(profileIndex)
         AddonRepository.onProfileChanged(profileIndex)
-        if (com.nuvio.app.core.build.AppFeaturePolicy.pluginsEnabled) {
+        if (com.streamvault.app.core.build.AppFeaturePolicy.pluginsEnabled) {
             PluginRepository.onProfileChanged(profileIndex)
         }
         ThemeSettingsRepository.onProfileChanged()
@@ -177,7 +228,7 @@ object ProfileRepository {
         HomeRepository.clear()
         MetaScreenSettingsRepository.onProfileChanged()
         ContinueWatchingPreferencesRepository.onProfileChanged()
-        com.nuvio.app.features.watchprogress.ContinueWatchingEnrichmentCache.onProfileChanged()
+        com.streamvault.app.features.watchprogress.ContinueWatchingEnrichmentCache.onProfileChanged()
         EpisodeReleaseNotificationsRepository.onProfileChanged()
         TmdbSettingsRepository.onProfileChanged()
         MdbListSettingsRepository.onProfileChanged()
@@ -213,7 +264,7 @@ object ProfileRepository {
         avatarColorHex: String,
         avatarId: String? = null,
         avatarUrl: String? = null,
-        usesPrimaryAddons: Boolean = false,
+        usesPrimaryAddons: Boolean = true,
     ) {
         val existing = _state.value.profiles
         val nextIndex = ((1..MAX_PROFILES).toSet() - existing.map { it.profileIndex }.toSet()).minOrNull() ?: return

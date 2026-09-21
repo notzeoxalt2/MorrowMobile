@@ -1,4 +1,4 @@
-package com.nuvio.app.features.home.components
+﻿package com.streamvault.app.features.home.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,12 +22,12 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.SkeletonBlock
-import com.nuvio.app.core.ui.SkeletonPosterRow
-import com.nuvio.app.core.ui.landscapePosterHeightForWidth
-import com.nuvio.app.core.ui.landscapePosterWidth
-import com.nuvio.app.core.ui.rememberPosterCardStyleUiState
-import com.nuvio.app.core.ui.skeleton
+import com.streamvault.app.core.ui.SkeletonBlock
+import com.streamvault.app.core.ui.SkeletonPosterRow
+import com.streamvault.app.core.ui.landscapePosterHeightForWidth
+import com.streamvault.app.core.ui.landscapePosterWidth
+import com.streamvault.app.core.ui.rememberPosterCardStyleUiState
+import com.streamvault.app.core.ui.skeleton
 
 @Composable
 fun HomeSkeletonHero(

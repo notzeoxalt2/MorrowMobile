@@ -1,26 +1,26 @@
-package com.nuvio.app.features.search
+﻿package com.streamvault.app.features.search
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.i18n.localizedMediaTypeLabel
-import com.nuvio.app.features.addons.AddonCatalog
-import com.nuvio.app.features.addons.AddonExtraProperty
-import com.nuvio.app.features.addons.ManagedAddon
-import com.nuvio.app.features.addons.enabledAddons
-import com.nuvio.app.features.addons.firstEnabledManifestError
-import com.nuvio.app.features.addons.hasPendingEnabledManifests
-import com.nuvio.app.features.catalog.CATALOG_PAGE_SIZE
-import com.nuvio.app.features.catalog.CatalogPage
-import com.nuvio.app.features.catalog.CatalogTarget
-import com.nuvio.app.features.catalog.buildCatalogUrl
-import com.nuvio.app.features.catalog.fetchCatalogPage
-import com.nuvio.app.features.catalog.mergeCatalogItems
-import com.nuvio.app.features.catalog.nextCatalogPaginationState
-import com.nuvio.app.features.catalog.supportsPagination
-import com.nuvio.app.features.home.HomeCatalogSettingsRepository
-import com.nuvio.app.features.home.HomeCatalogSection
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.filterReleasedItems
-import com.nuvio.app.features.watchprogress.CurrentDateProvider
+import com.streamvault.app.core.i18n.localizedMediaTypeLabel
+import com.streamvault.app.features.addons.AddonCatalog
+import com.streamvault.app.features.addons.AddonExtraProperty
+import com.streamvault.app.features.addons.ManagedAddon
+import com.streamvault.app.features.addons.enabledAddons
+import com.streamvault.app.features.addons.firstEnabledManifestError
+import com.streamvault.app.features.addons.hasPendingEnabledManifests
+import com.streamvault.app.features.catalog.CATALOG_PAGE_SIZE
+import com.streamvault.app.features.catalog.CatalogPage
+import com.streamvault.app.features.catalog.CatalogTarget
+import com.streamvault.app.features.catalog.buildCatalogUrl
+import com.streamvault.app.features.catalog.fetchCatalogPage
+import com.streamvault.app.features.catalog.mergeCatalogItems
+import com.streamvault.app.features.catalog.nextCatalogPaginationState
+import com.streamvault.app.features.catalog.supportsPagination
+import com.streamvault.app.features.home.HomeCatalogSettingsRepository
+import com.streamvault.app.features.home.HomeCatalogSection
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.filterReleasedItems
+import com.streamvault.app.features.watchprogress.CurrentDateProvider
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,7 +32,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
 internal fun <T> canReuseRequestState(

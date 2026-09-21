@@ -1,3 +1,3 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 expect fun platformExitApp()

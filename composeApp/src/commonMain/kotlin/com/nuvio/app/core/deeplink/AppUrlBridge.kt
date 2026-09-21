@@ -1,8 +1,8 @@
-package com.nuvio.app.core.deeplink
+﻿package com.streamvault.app.core.deeplink
 
-import com.nuvio.app.core.tracking.ensureTrackingProvidersRegistered
-import com.nuvio.app.features.player.infusePlaybackCallbacks
-import com.nuvio.app.features.tracking.TrackingProviderRegistry
+import com.streamvault.app.core.tracking.ensureTrackingProvidersRegistered
+import com.streamvault.app.features.player.infusePlaybackCallbacks
+import com.streamvault.app.features.tracking.TrackingProviderRegistry
 import io.ktor.http.Url
 import io.ktor.http.encodeURLParameter
 import kotlinx.coroutines.flow.MutableStateFlow

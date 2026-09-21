@@ -1,4 +1,4 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
 import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalSharedTransitionApi
@@ -7,21 +7,21 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import com.nuvio.app.features.details.MetaDetailsScreen
-import com.nuvio.app.features.details.PersonDetailScreen
-import com.nuvio.app.features.details.TmdbEntityBrowseScreen
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.tmdb.TmdbEntityKind
-import com.nuvio.app.features.tmdb.TmdbService
-import com.nuvio.app.navigation.DetailRoute
-import com.nuvio.app.navigation.EntityBrowseRoute
-import com.nuvio.app.navigation.NuvioNavigator
-import com.nuvio.app.navigation.PersonDetailRoute
+import com.streamvault.app.features.details.MetaDetailsScreen
+import com.streamvault.app.features.details.PersonDetailScreen
+import com.streamvault.app.features.details.TmdbEntityBrowseScreen
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.tmdb.TmdbEntityKind
+import com.streamvault.app.features.tmdb.TmdbService
+import com.streamvault.app.navigation.DetailRoute
+import com.streamvault.app.navigation.EntityBrowseRoute
+import com.streamvault.app.navigation.NuvioNavigator
+import com.streamvault.app.navigation.PersonDetailRoute
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.person_role_creator
-import nuvio.composeapp.generated.resources.person_role_director
-import nuvio.composeapp.generated.resources.person_role_writer
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.person_role_creator
+import streamvault.composeapp.generated.resources.person_role_director
+import streamvault.composeapp.generated.resources.person_role_writer
 import org.jetbrains.compose.resources.stringResource
 
 internal typealias ContentPlayAction = (

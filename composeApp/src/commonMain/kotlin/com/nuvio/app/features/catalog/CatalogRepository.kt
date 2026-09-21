@@ -1,13 +1,13 @@
-package com.nuvio.app.features.catalog
+﻿package com.streamvault.app.features.catalog
 
-import com.nuvio.app.features.collection.CollectionRepository
-import com.nuvio.app.features.collection.TmdbCollectionSourceResolver
-import com.nuvio.app.features.collection.catalogRouteKey
-import com.nuvio.app.features.library.LibraryRepository
-import com.nuvio.app.features.home.HomeCatalogSettingsRepository
-import com.nuvio.app.features.home.filterReleasedItems
-import com.nuvio.app.features.trakt.TraktPublicListSourceResolver
-import com.nuvio.app.features.watchprogress.CurrentDateProvider
+import com.streamvault.app.features.collection.CollectionRepository
+import com.streamvault.app.features.collection.TmdbCollectionSourceResolver
+import com.streamvault.app.features.collection.catalogRouteKey
+import com.streamvault.app.features.library.LibraryRepository
+import com.streamvault.app.features.home.HomeCatalogSettingsRepository
+import com.streamvault.app.features.home.filterReleasedItems
+import com.streamvault.app.features.trakt.TraktPublicListSourceResolver
+import com.streamvault.app.features.watchprogress.CurrentDateProvider
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import nuvio.composeapp.generated.resources.*
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.getString
 
 object CatalogRepository {

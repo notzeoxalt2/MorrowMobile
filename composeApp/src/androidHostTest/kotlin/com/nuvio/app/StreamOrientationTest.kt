@@ -1,16 +1,16 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
 import android.app.Activity
 import android.app.Application
 import android.content.pm.ActivityInfo
 import androidx.compose.ui.test.junit4.createComposeRule
-import com.nuvio.app.core.ui.NuvioTheme
-import com.nuvio.app.features.player.PlayerSettingsRepository
-import com.nuvio.app.features.player.PlayerSettingsStorage
-import com.nuvio.app.features.streams.StreamLaunch
-import com.nuvio.app.features.streams.StreamLaunchStore
-import com.nuvio.app.features.streams.StreamsRepository
-import com.nuvio.app.navigation.StreamRoute
+import com.streamvault.app.core.ui.NuvioTheme
+import com.streamvault.app.features.player.PlayerSettingsRepository
+import com.streamvault.app.features.player.PlayerSettingsStorage
+import com.streamvault.app.features.streams.StreamLaunch
+import com.streamvault.app.features.streams.StreamLaunchStore
+import com.streamvault.app.features.streams.StreamsRepository
+import com.streamvault.app.navigation.StreamRoute
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner

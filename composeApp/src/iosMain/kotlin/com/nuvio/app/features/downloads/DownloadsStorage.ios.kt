@@ -1,6 +1,6 @@
-package com.nuvio.app.features.downloads
+﻿package com.streamvault.app.features.downloads
 
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 import platform.Foundation.NSUserDefaults
 
 internal actual object DownloadsStorage {

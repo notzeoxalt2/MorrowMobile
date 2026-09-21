@@ -1,14 +1,14 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
-import com.nuvio.app.features.simkl.SimklBrandAsset
-import com.nuvio.app.features.simkl.simklBrandPainter
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.introdb_favicon
-import nuvio.composeapp.generated.resources.mdblist_logo
-import nuvio.composeapp.generated.resources.rating_tmdb
-import nuvio.composeapp.generated.resources.trakt_tv_favicon
+import com.streamvault.app.features.simkl.SimklBrandAsset
+import com.streamvault.app.features.simkl.simklBrandPainter
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.introdb_favicon
+import streamvault.composeapp.generated.resources.mdblist_logo
+import streamvault.composeapp.generated.resources.rating_tmdb
+import streamvault.composeapp.generated.resources.trakt_tv_favicon
 import org.jetbrains.compose.resources.painterResource
 
 @Composable

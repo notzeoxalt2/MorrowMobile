@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import android.content.ComponentName
 import android.content.Context
@@ -8,7 +8,7 @@ import android.os.Build
 internal actual object AppIconPlatform {
     actual val requiresCloseConfirmation: Boolean = true
 
-    private const val launcherPackage = "com.nuvio.app.launcher"
+    private const val launcherPackage = "com.streamvault.app.launcher"
     private val launcherComponents = AppIconOption.entries.map { option ->
         option.platformName to "$launcherPackage.${option.platformName ?: "AppIconDefault"}"
     }
@@ -36,7 +36,7 @@ internal actual object AppIconPlatform {
         return context.resources
             .getIdentifier(resourceName, "mipmap", context.packageName)
             .takeIf { it != 0 }
-            ?: com.nuvio.app.R.mipmap.ic_launcher
+            ?: com.streamvault.app.R.mipmap.ic_launcher
     }
 
     fun currentLauncherComponent(context: Context): ComponentName {

@@ -1,11 +1,11 @@
-package com.nuvio.app.features.debrid
+﻿package com.streamvault.app.features.debrid
 
-import com.nuvio.app.features.debrid.DebridStreamPresentation.isManagedDebridStream
-import com.nuvio.app.features.streams.StreamClientResolve
-import com.nuvio.app.features.streams.StreamClientResolveParsed
-import com.nuvio.app.features.streams.StreamDebridCacheState
-import com.nuvio.app.features.streams.StreamBadge
-import com.nuvio.app.features.streams.StreamItem
+import com.streamvault.app.features.debrid.DebridStreamPresentation.isManagedDebridStream
+import com.streamvault.app.features.streams.StreamClientResolve
+import com.streamvault.app.features.streams.StreamClientResolveParsed
+import com.streamvault.app.features.streams.StreamDebridCacheState
+import com.streamvault.app.features.streams.StreamBadge
+import com.streamvault.app.features.streams.StreamItem
 
 class DebridStreamFormatter(
     private val engine: DebridStreamTemplateEngine = DebridStreamTemplateEngine(),

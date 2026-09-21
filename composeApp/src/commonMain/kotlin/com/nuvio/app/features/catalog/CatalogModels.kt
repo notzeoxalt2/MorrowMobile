@@ -1,6 +1,6 @@
-package com.nuvio.app.features.catalog
+﻿package com.streamvault.app.features.catalog
 
-import com.nuvio.app.features.home.MetaPreview
+import com.streamvault.app.features.home.MetaPreview
 
 data class CatalogUiState(
     val items: List<MetaPreview> = emptyList(),

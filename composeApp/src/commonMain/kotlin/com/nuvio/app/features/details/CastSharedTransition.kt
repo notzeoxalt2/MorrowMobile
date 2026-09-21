@@ -1,4 +1,4 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
 internal fun castAvatarSharedTransitionKey(
     personId: Int,

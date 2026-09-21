@@ -1,16 +1,16 @@
-package com.nuvio.app.features.downloads
+﻿package com.streamvault.app.features.downloads
 
 import android.content.pm.ProviderInfo
 import android.os.Bundle
 import androidx.core.content.FileProvider
-import com.nuvio.app.R
-import com.nuvio.app.features.player.ExternalPlayerPlaybackRequest
-import com.nuvio.app.features.player.PlayerSubtitleCueParser
-import com.nuvio.app.features.player.SubtitleFileCache
-import com.nuvio.app.features.player.prepareExternalPlayerLaunch
-import com.nuvio.app.features.player.SubtitleAddonRequest
-import com.nuvio.app.features.player.SubtitleRepository
-import com.nuvio.app.features.streams.StreamSubtitle
+import com.streamvault.app.R
+import com.streamvault.app.features.player.ExternalPlayerPlaybackRequest
+import com.streamvault.app.features.player.PlayerSubtitleCueParser
+import com.streamvault.app.features.player.SubtitleFileCache
+import com.streamvault.app.features.player.prepareExternalPlayerLaunch
+import com.streamvault.app.features.player.SubtitleAddonRequest
+import com.streamvault.app.features.player.SubtitleRepository
+import com.streamvault.app.features.streams.StreamSubtitle
 import java.io.File
 import java.net.URI
 import java.util.Collections

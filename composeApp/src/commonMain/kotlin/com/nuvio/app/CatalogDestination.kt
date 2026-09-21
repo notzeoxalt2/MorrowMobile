@@ -1,17 +1,17 @@
-package com.nuvio.app
+﻿package com.streamvault.app
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import com.nuvio.app.features.catalog.CatalogScreen
-import com.nuvio.app.features.catalog.CatalogTarget
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.library.toLibraryItem
-import com.nuvio.app.navigation.CatalogRoute
-import com.nuvio.app.navigation.DetailRoute
-import com.nuvio.app.navigation.NuvioNavigator
+import com.streamvault.app.features.catalog.CatalogScreen
+import com.streamvault.app.features.catalog.CatalogTarget
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.library.toLibraryItem
+import com.streamvault.app.navigation.CatalogRoute
+import com.streamvault.app.navigation.DetailRoute
+import com.streamvault.app.navigation.NuvioNavigator
 
 internal data class CatalogLaunch(
     val title: String,

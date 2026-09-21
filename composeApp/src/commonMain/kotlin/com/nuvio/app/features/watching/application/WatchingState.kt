@@ -1,18 +1,18 @@
-package com.nuvio.app.features.watching.application
+﻿package com.streamvault.app.features.watching.application
 
-import com.nuvio.app.features.details.MetaVideo
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.watched.WatchedItem
-import com.nuvio.app.features.watched.normalizeWatchedMarkedAtEpochMs
-import com.nuvio.app.features.watched.watchedItemKeys
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
-import com.nuvio.app.features.watchprogress.continueWatchingEntries
-import com.nuvio.app.features.watchprogress.shouldUseAsCompletedSeedForContinueWatching
-import com.nuvio.app.features.watching.domain.WatchingCompletedEpisode
-import com.nuvio.app.features.watching.domain.WatchingContentRef
-import com.nuvio.app.features.watching.domain.WatchingProgressRecord
-import com.nuvio.app.features.watching.domain.WatchingWatchedRecord
-import com.nuvio.app.features.watching.domain.latestCompletedSeriesEpisode
+import com.streamvault.app.features.details.MetaVideo
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.watched.WatchedItem
+import com.streamvault.app.features.watched.normalizeWatchedMarkedAtEpochMs
+import com.streamvault.app.features.watched.watchedItemKeys
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watchprogress.continueWatchingEntries
+import com.streamvault.app.features.watchprogress.shouldUseAsCompletedSeedForContinueWatching
+import com.streamvault.app.features.watching.domain.WatchingCompletedEpisode
+import com.streamvault.app.features.watching.domain.WatchingContentRef
+import com.streamvault.app.features.watching.domain.WatchingProgressRecord
+import com.streamvault.app.features.watching.domain.WatchingWatchedRecord
+import com.streamvault.app.features.watching.domain.latestCompletedSeriesEpisode
 
 object WatchingState {
     fun isPosterWatched(
@@ -45,7 +45,7 @@ object WatchingState {
         val videoId = episode.id
         val episodeNumber = episode.episode
         if (episodeNumber != null) {
-            return com.nuvio.app.features.simkl.SimklAnimeWatchedFallback.isWatched(videoId, episodeNumber)
+            return com.streamvault.app.features.simkl.SimklAnimeWatchedFallback.isWatched(videoId, episodeNumber)
         }
         return false
     }

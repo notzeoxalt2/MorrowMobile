@@ -1,4 +1,4 @@
-package com.nuvio.app.features.search
+﻿package com.streamvault.app.features.search
 
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.rememberScrollState
-import com.nuvio.app.core.ui.NuvioLoadingIndicator
+import com.streamvault.app.core.ui.NuvioLoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,15 +18,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.nuvio.app.core.network.NetworkCondition
-import com.nuvio.app.core.ui.NuvioDropdownChip
-import com.nuvio.app.core.ui.NuvioDropdownOption
-import com.nuvio.app.core.ui.NuvioNetworkOfflineCard
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.components.PosterGridRow
-import com.nuvio.app.features.home.components.PosterGridSkeletonRow
-import com.nuvio.app.features.home.components.HomeEmptyStateCard
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.network.NetworkCondition
+import com.streamvault.app.core.ui.NuvioDropdownChip
+import com.streamvault.app.core.ui.NuvioDropdownOption
+import com.streamvault.app.core.ui.NuvioNetworkOfflineCard
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.components.PosterGridRow
+import com.streamvault.app.features.home.components.PosterGridSkeletonRow
+import com.streamvault.app.features.home.components.HomeEmptyStateCard
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 internal fun LazyListScope.discoverContent(

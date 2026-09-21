@@ -1,7 +1,7 @@
-package com.nuvio.app.features.trailer
+﻿package com.streamvault.app.features.trailer
 
 import android.net.Uri
-import com.nuvio.app.core.network.IPv4FirstDns
+import com.streamvault.app.core.network.IPv4FirstDns
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -1,7 +1,7 @@
-package com.nuvio.app.features.membership
+package com.streamvault.app.features.membership
 
-import com.nuvio.app.core.ui.AppTheme
-import com.nuvio.app.core.ui.CustomThemeColors
+import com.streamvault.app.core.ui.AppTheme
+import com.streamvault.app.core.ui.CustomThemeColors
 
 private val supporterThemes = linkedMapOf(
     AppTheme.GOLD to CosmeticEntitlement.GOLD_THEME,
@@ -28,13 +28,9 @@ fun resolveAppTheme(
     entitlements: CosmeticEntitlements,
 ): AppTheme {
     if (selectedTheme == null) {
-        return supporterThemes
-            .filterValues(entitlements::includes)
-            .keys
-            .firstOrNull()
-            ?: AppTheme.WHITE
+        return AppTheme.CRIMSON
     }
-    return selectedTheme.takeIf { it in availableAppThemes(entitlements) } ?: AppTheme.WHITE
+    return selectedTheme.takeIf { it in availableAppThemes(entitlements) } ?: AppTheme.CRIMSON
 }
 
 fun resolveCustomThemeColors(colors: CustomThemeColors, memberTier: MemberTier?): CustomThemeColors =

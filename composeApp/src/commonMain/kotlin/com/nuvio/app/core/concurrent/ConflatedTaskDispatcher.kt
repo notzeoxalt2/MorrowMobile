@@ -1,4 +1,4 @@
-package com.nuvio.app.core.concurrent
+﻿package com.streamvault.app.core.concurrent
 
 import kotlinx.atomicfu.locks.SynchronizedObject
 import kotlinx.atomicfu.locks.synchronized

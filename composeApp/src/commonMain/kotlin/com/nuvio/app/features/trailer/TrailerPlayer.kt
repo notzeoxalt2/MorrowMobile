@@ -1,4 +1,4 @@
-package com.nuvio.app.features.trailer
+﻿package com.streamvault.app.features.trailer
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -21,15 +21,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.NuvioLoadingIndicator
-import com.nuvio.app.features.player.EnterImmersivePlayerMode
-import com.nuvio.app.features.player.PlatformPlayerSurface
-import com.nuvio.app.features.player.PlayerEngineController
-import com.nuvio.app.features.player.PlayerPlaybackSnapshot
-import com.nuvio.app.features.player.PlayerResizeMode
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_retry
-import nuvio.composeapp.generated.resources.trailer_unable_to_play
+import com.streamvault.app.core.ui.NuvioLoadingIndicator
+import com.streamvault.app.features.player.EnterImmersivePlayerMode
+import com.streamvault.app.features.player.PlatformPlayerSurface
+import com.streamvault.app.features.player.PlayerEngineController
+import com.streamvault.app.features.player.PlayerPlaybackSnapshot
+import com.streamvault.app.features.player.PlayerResizeMode
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_retry
+import streamvault.composeapp.generated.resources.trailer_unable_to_play
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

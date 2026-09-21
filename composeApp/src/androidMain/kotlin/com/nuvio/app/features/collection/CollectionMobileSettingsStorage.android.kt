@@ -1,8 +1,8 @@
-package com.nuvio.app.features.collection
+﻿package com.streamvault.app.features.collection
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 
 actual object CollectionMobileSettingsStorage {
     private const val preferencesName = "nuvio_collection_mobile_settings"

@@ -1,8 +1,8 @@
-package com.nuvio.app.features.addons
+﻿package com.streamvault.app.features.addons
 
 import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.generic_addon
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.generic_addon
 import org.jetbrains.compose.resources.getString
 
 data class AddonManifest(

@@ -1,6 +1,6 @@
-package com.nuvio.app.features.debrid
+﻿package com.streamvault.app.features.debrid
 
-import com.nuvio.app.features.streams.StreamClientResolve
+import com.streamvault.app.features.streams.StreamClientResolve
 
 internal class TorboxFileSelector {
     fun selectFile(

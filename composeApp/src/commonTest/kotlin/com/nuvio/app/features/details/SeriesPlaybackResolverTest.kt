@@ -1,8 +1,8 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
-import com.nuvio.app.features.watched.WatchedItem
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
-import com.nuvio.app.features.watching.domain.WatchingContentRef
+import com.streamvault.app.features.watched.WatchedItem
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.features.watching.domain.WatchingContentRef
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull

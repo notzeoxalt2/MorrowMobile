@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import android.widget.FrameLayout
 import androidx.compose.runtime.AbstractApplier

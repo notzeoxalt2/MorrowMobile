@@ -1,17 +1,17 @@
-package com.nuvio.app.features.details
+﻿package com.streamvault.app.features.details
 
 import android.app.Application
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import com.nuvio.app.core.ui.NuvioTheme
-import com.nuvio.app.features.details.components.DetailMetaInfo
-import com.nuvio.app.features.details.components.DetailSeriesContent
-import com.nuvio.app.features.details.components.DetailSeriesListEpisode
-import com.nuvio.app.features.mdblist.MdbListMetadataService.PROVIDER_TMDB
-import com.nuvio.app.features.watched.watchedItemKeys
-import com.nuvio.app.features.watchprogress.WatchProgressEntry
+import com.streamvault.app.core.ui.NuvioTheme
+import com.streamvault.app.features.details.components.DetailMetaInfo
+import com.streamvault.app.features.details.components.DetailSeriesContent
+import com.streamvault.app.features.details.components.DetailSeriesListEpisode
+import com.streamvault.app.features.mdblist.MdbListMetadataService.PROVIDER_TMDB
+import com.streamvault.app.features.watched.watchedItemKeys
+import com.streamvault.app.features.watchprogress.WatchProgressEntry
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner

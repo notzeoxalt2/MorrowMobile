@@ -1,7 +1,7 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
-import com.nuvio.app.features.tracking.TrackingMediaKind
-import com.nuvio.app.features.tracking.TrackingMediaReference
+import com.streamvault.app.features.tracking.TrackingMediaKind
+import com.streamvault.app.features.tracking.TrackingMediaReference
 
 internal fun SimklSyncSnapshot.applyMutationReceipt(
     receipt: SimklMutationReceipt,

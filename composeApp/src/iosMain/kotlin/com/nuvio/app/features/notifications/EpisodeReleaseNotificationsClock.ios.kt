@@ -1,4 +1,4 @@
-package com.nuvio.app.features.notifications
+﻿package com.streamvault.app.features.notifications
 
 import platform.Foundation.NSDate
 import platform.Foundation.NSDateFormatter

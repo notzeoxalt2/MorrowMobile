@@ -1,9 +1,9 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.compose.runtime.Composable
-import com.nuvio.app.features.cloud.CloudLibraryContentType
-import com.nuvio.app.features.watchprogress.ContinueWatchingItem
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.features.cloud.CloudLibraryContentType
+import com.streamvault.app.features.watchprogress.ContinueWatchingItem
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

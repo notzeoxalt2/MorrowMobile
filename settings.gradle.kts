@@ -1,4 +1,4 @@
-rootProject.name = "Nuvio"
+rootProject.name = "StreamVault"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -30,3 +30,4 @@ dependencyResolutionManagement {
 
 include(":composeApp")
 include(":androidApp")
+include(":aniyomi-ext-engine")

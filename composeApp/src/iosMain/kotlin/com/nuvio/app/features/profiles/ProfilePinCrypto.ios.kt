@@ -1,7 +1,7 @@
-package com.nuvio.app.features.profiles
+﻿package com.streamvault.app.features.profiles
 
-import com.nuvio.app.features.plugins.cryptointerop.CC_SHA256
-import com.nuvio.app.features.plugins.cryptointerop.CC_SHA256_DIGEST_LENGTH
+import com.streamvault.app.features.plugins.cryptointerop.CC_SHA256
+import com.streamvault.app.features.plugins.cryptointerop.CC_SHA256_DIGEST_LENGTH
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.refTo
 

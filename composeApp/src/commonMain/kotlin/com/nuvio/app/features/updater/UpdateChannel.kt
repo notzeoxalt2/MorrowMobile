@@ -1,4 +1,4 @@
-package com.nuvio.app.features.updater
+﻿package com.streamvault.app.features.updater
 
 enum class UpdateChannel(val storedValue: String) {
     STABLE("stable"),

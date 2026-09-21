@@ -1,7 +1,7 @@
-package com.nuvio.app.core.network
+﻿package com.streamvault.app.core.network
 
 import androidx.compose.runtime.Composable
-import com.nuvio.app.features.addons.httpRequestRaw
+import com.streamvault.app.features.addons.httpRequestRaw
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -12,13 +12,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeoutOrNull
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.details_check_connection
-import nuvio.composeapp.generated.resources.details_servers_unreachable
-import nuvio.composeapp.generated.resources.network_cannot_reach_servers
-import nuvio.composeapp.generated.resources.network_connection_issue
-import nuvio.composeapp.generated.resources.network_no_internet_connection
-import nuvio.composeapp.generated.resources.network_please_check_connection
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.details_check_connection
+import streamvault.composeapp.generated.resources.details_servers_unreachable
+import streamvault.composeapp.generated.resources.network_cannot_reach_servers
+import streamvault.composeapp.generated.resources.network_connection_issue
+import streamvault.composeapp.generated.resources.network_no_internet_connection
+import streamvault.composeapp.generated.resources.network_please_check_connection
 import org.jetbrains.compose.resources.stringResource
 
 enum class NetworkCondition {

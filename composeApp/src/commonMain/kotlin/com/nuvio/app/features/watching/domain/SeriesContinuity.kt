@@ -1,8 +1,8 @@
-package com.nuvio.app.features.watching.domain
+﻿package com.streamvault.app.features.watching.domain
 
-import com.nuvio.app.core.i18n.localizedPlayLabel
-import com.nuvio.app.core.i18n.localizedResumeLabel
-import com.nuvio.app.core.i18n.localizedUpNextLabel
+import com.streamvault.app.core.i18n.localizedPlayLabel
+import com.streamvault.app.core.i18n.localizedResumeLabel
+import com.streamvault.app.core.i18n.localizedUpNextLabel
 
 const val DefaultContinueWatchingLimit = 20
 

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.downloads
+﻿package com.streamvault.app.features.downloads
 
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.CPointer
@@ -11,13 +11,13 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.download_failed
-import nuvio.composeapp.generated.resources.downloads_error_finalize_file_failed
-import nuvio.composeapp.generated.resources.downloads_error_open_partial_file_failed
-import nuvio.composeapp.generated.resources.downloads_error_partial_file_not_open
-import nuvio.composeapp.generated.resources.downloads_error_write_partial_file_failed
-import nuvio.composeapp.generated.resources.network_request_failed_http
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.download_failed
+import streamvault.composeapp.generated.resources.downloads_error_finalize_file_failed
+import streamvault.composeapp.generated.resources.downloads_error_open_partial_file_failed
+import streamvault.composeapp.generated.resources.downloads_error_partial_file_not_open
+import streamvault.composeapp.generated.resources.downloads_error_write_partial_file_failed
+import streamvault.composeapp.generated.resources.network_request_failed_http
 import org.jetbrains.compose.resources.getString
 import platform.Foundation.NSError
 import platform.Foundation.NSDate

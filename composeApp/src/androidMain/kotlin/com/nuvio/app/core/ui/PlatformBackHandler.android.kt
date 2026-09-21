@@ -1,4 +1,4 @@
-package com.nuvio.app.core.ui
+﻿package com.streamvault.app.core.ui
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable

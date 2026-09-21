@@ -1,27 +1,27 @@
-package com.nuvio.app.features.library
+﻿package com.streamvault.app.features.library
 
 import co.touchlab.kermit.Logger
-import com.nuvio.app.core.auth.AuthRepository
-import com.nuvio.app.core.auth.AuthState
-import com.nuvio.app.core.tracking.ensureTrackingProvidersRegistered
-import com.nuvio.app.features.library.sync.LibrarySyncAdapter
-import com.nuvio.app.features.library.sync.SupabaseLibrarySyncAdapter
-import com.nuvio.app.features.library.sync.consumeCursorPages
-import com.nuvio.app.features.library.sync.libraryDeltaPageSize
-import com.nuvio.app.features.library.sync.librarySnapshotPageSize
-import com.nuvio.app.features.profiles.ProfileRepository
-import com.nuvio.app.features.tracking.TrackingLibraryProvider
-import com.nuvio.app.features.tracking.TrackingLibraryTab
-import com.nuvio.app.features.tracking.TrackingLibraryTabKind
-import com.nuvio.app.features.tracking.TrackingMembershipApplyResult
-import com.nuvio.app.features.tracking.TrackingMembershipResolution
-import com.nuvio.app.features.tracking.TrackingProviderId
-import com.nuvio.app.features.tracking.TrackingProviderRegistry
-import com.nuvio.app.features.tracking.TrackingRefreshIntent
-import com.nuvio.app.features.tracking.TrackingSettingsRepository
-import com.nuvio.app.features.tracking.supportsContentType
-import com.nuvio.app.features.tracking.effectiveLibrarySourceMode as resolveEffectiveLibrarySourceMode
-import com.nuvio.app.features.tracking.providerId
+import com.streamvault.app.core.auth.AuthRepository
+import com.streamvault.app.core.auth.AuthState
+import com.streamvault.app.core.tracking.ensureTrackingProvidersRegistered
+import com.streamvault.app.features.library.sync.LibrarySyncAdapter
+import com.streamvault.app.features.library.sync.SupabaseLibrarySyncAdapter
+import com.streamvault.app.features.library.sync.consumeCursorPages
+import com.streamvault.app.features.library.sync.libraryDeltaPageSize
+import com.streamvault.app.features.library.sync.librarySnapshotPageSize
+import com.streamvault.app.features.profiles.ProfileRepository
+import com.streamvault.app.features.tracking.TrackingLibraryProvider
+import com.streamvault.app.features.tracking.TrackingLibraryTab
+import com.streamvault.app.features.tracking.TrackingLibraryTabKind
+import com.streamvault.app.features.tracking.TrackingMembershipApplyResult
+import com.streamvault.app.features.tracking.TrackingMembershipResolution
+import com.streamvault.app.features.tracking.TrackingProviderId
+import com.streamvault.app.features.tracking.TrackingProviderRegistry
+import com.streamvault.app.features.tracking.TrackingRefreshIntent
+import com.streamvault.app.features.tracking.TrackingSettingsRepository
+import com.streamvault.app.features.tracking.supportsContentType
+import com.streamvault.app.features.tracking.effectiveLibrarySourceMode as resolveEffectiveLibrarySourceMode
+import com.streamvault.app.features.tracking.providerId
 import kotlinx.atomicfu.locks.SynchronizedObject
 import kotlinx.atomicfu.locks.synchronized
 import kotlinx.coroutines.CancellationException
@@ -40,9 +40,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.library_local_tab_title
-import nuvio.composeapp.generated.resources.library_other
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.library_local_tab_title
+import streamvault.composeapp.generated.resources.library_other
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getString
 

@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,10 +27,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.core.ui.nuvio
-import com.nuvio.app.features.updater.UpdateChannel
-import com.nuvio.app.features.updater.UpdatePreferences
-import nuvio.composeapp.generated.resources.*
+import com.streamvault.app.core.ui.nuvio
+import com.streamvault.app.features.updater.UpdateChannel
+import com.streamvault.app.features.updater.UpdatePreferences
+import streamvault.composeapp.generated.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)

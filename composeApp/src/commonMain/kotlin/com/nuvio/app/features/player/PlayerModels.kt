@@ -1,16 +1,16 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.runtime.Composable
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.player_ios_hardware_decoder_off
-import nuvio.composeapp.generated.resources.player_ios_preset_compatibility_desc
-import nuvio.composeapp.generated.resources.player_ios_preset_compatibility_label
-import nuvio.composeapp.generated.resources.player_ios_preset_custom_desc
-import nuvio.composeapp.generated.resources.player_ios_preset_custom_label
-import nuvio.composeapp.generated.resources.player_ios_preset_native_edr_desc
-import nuvio.composeapp.generated.resources.player_ios_preset_native_edr_label
-import nuvio.composeapp.generated.resources.player_ios_preset_sdr_tone_mapped_desc
-import nuvio.composeapp.generated.resources.player_ios_preset_sdr_tone_mapped_label
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.player_ios_hardware_decoder_off
+import streamvault.composeapp.generated.resources.player_ios_preset_compatibility_desc
+import streamvault.composeapp.generated.resources.player_ios_preset_compatibility_label
+import streamvault.composeapp.generated.resources.player_ios_preset_custom_desc
+import streamvault.composeapp.generated.resources.player_ios_preset_custom_label
+import streamvault.composeapp.generated.resources.player_ios_preset_native_edr_desc
+import streamvault.composeapp.generated.resources.player_ios_preset_native_edr_label
+import streamvault.composeapp.generated.resources.player_ios_preset_sdr_tone_mapped_desc
+import streamvault.composeapp.generated.resources.player_ios_preset_sdr_tone_mapped_label
 import org.jetbrains.compose.resources.stringResource
 
 data class PlayerLaunch(
@@ -20,7 +20,7 @@ data class PlayerLaunch(
     val sourceAudioUrl: String? = null,
     val sourceHeaders: Map<String, String> = emptyMap(),
     val sourceResponseHeaders: Map<String, String> = emptyMap(),
-    val externalSubtitles: List<com.nuvio.app.features.streams.StreamSubtitle> = emptyList(),
+    val externalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle> = emptyList(),
     val streamType: String? = null,
     val logo: String? = null,
     val poster: String? = null,

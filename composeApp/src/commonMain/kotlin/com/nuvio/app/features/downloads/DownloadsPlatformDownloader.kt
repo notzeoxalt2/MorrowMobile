@@ -1,4 +1,4 @@
-package com.nuvio.app.features.downloads
+﻿package com.streamvault.app.features.downloads
 
 internal data class DownloadPlatformRequest(
     val item: DownloadItem,

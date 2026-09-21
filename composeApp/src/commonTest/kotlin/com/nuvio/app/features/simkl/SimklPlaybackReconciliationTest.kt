@@ -1,4 +1,4 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put

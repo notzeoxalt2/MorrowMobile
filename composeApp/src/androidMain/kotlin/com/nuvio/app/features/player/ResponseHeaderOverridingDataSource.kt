@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.net.Uri
 import androidx.media3.datasource.DataSource

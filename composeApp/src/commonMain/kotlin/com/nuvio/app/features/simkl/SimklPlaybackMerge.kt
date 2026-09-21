@@ -1,4 +1,4 @@
-package com.nuvio.app.features.simkl
+﻿package com.streamvault.app.features.simkl
 
 /**
  * A fetched playback list with the rows the app recorded itself kept when they are newer.

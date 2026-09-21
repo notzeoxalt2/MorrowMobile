@@ -1,4 +1,4 @@
-package com.nuvio.app.features.trailer
+﻿package com.streamvault.app.features.trailer
 
 data class TrailerPlaybackSource(
     val videoUrl: String,

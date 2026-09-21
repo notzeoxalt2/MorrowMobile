@@ -1,4 +1,4 @@
-package com.nuvio.app.features.home.components
+﻿package com.streamvault.app.features.home.components
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp

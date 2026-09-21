@@ -1,9 +1,9 @@
-package com.nuvio.app.features.trakt
+﻿package com.streamvault.app.features.trakt
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import com.nuvio.app.R
+import com.streamvault.app.R
 
 @Composable
 actual fun traktBrandPainter(asset: TraktBrandAsset): Painter =

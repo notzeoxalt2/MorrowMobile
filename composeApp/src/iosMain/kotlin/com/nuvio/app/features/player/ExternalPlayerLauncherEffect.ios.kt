@@ -1,13 +1,13 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
-import com.nuvio.app.core.ui.NuvioToastController
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.external_player_failed
+import com.streamvault.app.core.ui.NuvioToastController
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.external_player_failed
 import org.jetbrains.compose.resources.getString
 import platform.Foundation.NSURL
 import platform.UIKit.UIApplication

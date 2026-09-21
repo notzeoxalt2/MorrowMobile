@@ -1,11 +1,11 @@
-package com.nuvio.app.features.catalog
+﻿package com.streamvault.app.features.catalog
 
-import com.nuvio.app.features.addons.AddonCatalog
-import com.nuvio.app.features.addons.buildAddonResourceUrl
-import com.nuvio.app.features.addons.fetchAddonResponseText
-import com.nuvio.app.features.home.HomeCatalogParser
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.home.stableKey
+import com.streamvault.app.features.addons.AddonCatalog
+import com.streamvault.app.features.addons.buildAddonResourceUrl
+import com.streamvault.app.features.addons.fetchAddonResponseText
+import com.streamvault.app.features.home.HomeCatalogParser
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.home.stableKey
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

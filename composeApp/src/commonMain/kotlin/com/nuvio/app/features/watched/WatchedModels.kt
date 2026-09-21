@@ -1,10 +1,10 @@
-package com.nuvio.app.features.watched
+﻿package com.streamvault.app.features.watched
 
-import com.nuvio.app.core.time.parseZonedIsoDateTimeToEpochMs
-import com.nuvio.app.features.home.MetaPreview
-import com.nuvio.app.features.tracking.TrackingAttributedItem
-import com.nuvio.app.features.watching.domain.WatchingContentRef
-import com.nuvio.app.features.watching.domain.watchedKey
+import com.streamvault.app.core.time.parseZonedIsoDateTimeToEpochMs
+import com.streamvault.app.features.home.MetaPreview
+import com.streamvault.app.features.tracking.TrackingAttributedItem
+import com.streamvault.app.features.watching.domain.WatchingContentRef
+import com.streamvault.app.features.watching.domain.watchedKey
 import kotlinx.serialization.Serializable
 
 @Serializable

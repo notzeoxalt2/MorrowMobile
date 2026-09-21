@@ -1,4 +1,4 @@
-package com.nuvio.app.features.watching.domain
+﻿package com.streamvault.app.features.watching.domain
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

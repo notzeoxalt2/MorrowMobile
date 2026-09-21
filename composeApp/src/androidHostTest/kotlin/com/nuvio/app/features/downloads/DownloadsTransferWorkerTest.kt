@@ -1,4 +1,4 @@
-package com.nuvio.app.features.downloads
+﻿package com.streamvault.app.features.downloads
 
 import android.content.pm.ServiceInfo
 import android.os.Build
@@ -7,7 +7,7 @@ import androidx.work.ListenableWorker
 import androidx.work.impl.utils.futures.SettableFuture
 import androidx.work.testing.TestListenableWorkerBuilder
 import androidx.work.workDataOf
-import com.nuvio.app.core.build.AppFeaturePolicy
+import com.streamvault.app.core.build.AppFeaturePolicy
 import java.io.File
 import java.util.UUID
 import kotlinx.coroutines.runBlocking

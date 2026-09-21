@@ -1,8 +1,8 @@
-package com.nuvio.app.features.home
+﻿package com.streamvault.app.features.home
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.nuvio.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.storage.ProfileScopedKey
 
 actual object HomeCatalogSettingsStorage {
     private const val preferencesName = "nuvio_home_catalog_settings"

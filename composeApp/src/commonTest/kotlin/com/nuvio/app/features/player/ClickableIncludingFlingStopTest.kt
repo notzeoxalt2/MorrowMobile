@@ -1,4 +1,4 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import kotlin.test.Test
 import kotlin.test.assertFalse

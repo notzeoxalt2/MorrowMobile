@@ -1,9 +1,9 @@
-package com.nuvio.app.features.player
+﻿package com.streamvault.app.features.player
 
 import android.app.Application
 import android.content.Context
-import com.nuvio.app.core.storage.ProfileScopedKey
-import com.nuvio.app.core.sync.decodeSyncBoolean
+import com.streamvault.app.core.storage.ProfileScopedKey
+import com.streamvault.app.core.sync.decodeSyncBoolean
 import kotlinx.serialization.json.buildJsonObject
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner

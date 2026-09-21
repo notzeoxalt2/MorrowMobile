@@ -1,4 +1,4 @@
-package com.nuvio.app.features.library
+﻿package com.streamvault.app.features.library
 
 internal expect object LibraryStorage {
     fun loadPayload(profileId: Int): String?

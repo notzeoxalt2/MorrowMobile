@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -19,9 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.settings_hide_secret
-import nuvio.composeapp.generated.resources.settings_show_secret
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.settings_hide_secret
+import streamvault.composeapp.generated.resources.settings_show_secret
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

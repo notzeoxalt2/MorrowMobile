@@ -1,4 +1,4 @@
-package com.nuvio.app.features.settings
+﻿package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,16 +22,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.nuvio.app.features.simkl.SIMKL_AUTOMATIC_REFRESH_INTERVAL_MINUTES
-import nuvio.composeapp.generated.resources.Res
-import nuvio.composeapp.generated.resources.action_close
-import nuvio.composeapp.generated.resources.settings_simkl_sync_info_activity
-import nuvio.composeapp.generated.resources.settings_simkl_sync_info_description
-import nuvio.composeapp.generated.resources.settings_simkl_sync_info_docs
-import nuvio.composeapp.generated.resources.settings_simkl_sync_info_library_statuses
-import nuvio.composeapp.generated.resources.settings_simkl_sync_info_manual
-import nuvio.composeapp.generated.resources.settings_simkl_sync_info_title
-import nuvio.composeapp.generated.resources.settings_trakt_failed_open_browser
+import com.streamvault.app.features.simkl.SIMKL_AUTOMATIC_REFRESH_INTERVAL_MINUTES
+import streamvault.composeapp.generated.resources.Res
+import streamvault.composeapp.generated.resources.action_close
+import streamvault.composeapp.generated.resources.settings_simkl_sync_info_activity
+import streamvault.composeapp.generated.resources.settings_simkl_sync_info_description
+import streamvault.composeapp.generated.resources.settings_simkl_sync_info_docs
+import streamvault.composeapp.generated.resources.settings_simkl_sync_info_library_statuses
+import streamvault.composeapp.generated.resources.settings_simkl_sync_info_manual
+import streamvault.composeapp.generated.resources.settings_simkl_sync_info_title
+import streamvault.composeapp.generated.resources.settings_trakt_failed_open_browser
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

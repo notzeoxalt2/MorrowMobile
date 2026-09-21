@@ -1,4 +1,4 @@
-package com.nuvio.app.navigation
+﻿package com.streamvault.app.navigation
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -25,10 +25,10 @@ import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.ui.NavDisplay
-import com.nuvio.app.core.ui.LocalPosterClickAnchor
-import com.nuvio.app.core.ui.PosterLiftSource
-import com.nuvio.app.core.ui.PosterOpenMotion
-import com.nuvio.app.core.ui.posterCardClickable
+import com.streamvault.app.core.ui.LocalPosterClickAnchor
+import com.streamvault.app.core.ui.PosterLiftSource
+import com.streamvault.app.core.ui.PosterOpenMotion
+import com.streamvault.app.core.ui.posterCardClickable
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
