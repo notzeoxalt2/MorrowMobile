@@ -105,8 +105,8 @@ object ProfileRepository {
                 profiles = listOf(defaultProfile),
                 activeProfile = defaultProfile,
                 isLoaded = true,
-                hasEverSelectedProfile = true,
-                rememberLastProfileEnabled = true,
+                hasEverSelectedProfile = false,
+                rememberLastProfileEnabled = false,
             )
             activeProfileIndex = 1
             ThemeSettingsRepository.onProfileChanged()
@@ -129,8 +129,8 @@ object ProfileRepository {
                 profiles = listOf(defaultProfile),
                 activeProfile = defaultProfile,
                 isLoaded = true,
-                hasEverSelectedProfile = true,
-                rememberLastProfileEnabled = true,
+                hasEverSelectedProfile = false,
+                rememberLastProfileEnabled = false,
             )
             activeProfileIndex = 1
             persist()
@@ -144,8 +144,8 @@ object ProfileRepository {
                 profiles = listOf(defaultProfile),
                 activeProfile = defaultProfile,
                 isLoaded = true,
-                hasEverSelectedProfile = true,
-                rememberLastProfileEnabled = true,
+                hasEverSelectedProfile = false,
+                rememberLastProfileEnabled = false,
             )
             activeProfileIndex = 1
             persist()

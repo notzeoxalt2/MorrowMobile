@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.settings
+package com.streamvault.app.features.settings
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -65,8 +65,6 @@ import streamvault.composeapp.generated.resources.updates_debug_test_title
 import streamvault.composeapp.generated.resources.about_supporters_contributors_subtitle
 import streamvault.composeapp.generated.resources.about_licenses_attributions_subtitle
 import org.jetbrains.compose.resources.stringResource
-
-private const val PRIVACY_POLICY_URL = "https://nuvio.tv/privacy-policy"
 
 internal fun LazyListScope.settingsRootContent(
     isTablet: Boolean,
@@ -202,14 +200,6 @@ internal fun LazyListScope.settingsRootContent(
                         )
                         SettingsGroupDivider(isTablet = isTablet)
                     }
-                    SettingsNavigationRow(
-                        title = stringResource(Res.string.compose_settings_page_privacy_policy),
-                        description = stringResource(Res.string.compose_settings_root_privacy_policy_description),
-                        icon = Icons.Rounded.Policy,
-                        isTablet = isTablet,
-                        onClick = { uriHandler.openUri(PRIVACY_POLICY_URL) },
-                    )
-                    SettingsGroupDivider(isTablet = isTablet)
                     SettingsNavigationRow(
                         title = stringResource(Res.string.compose_settings_page_licenses_attributions),
                         description = stringResource(Res.string.about_licenses_attributions_subtitle),
