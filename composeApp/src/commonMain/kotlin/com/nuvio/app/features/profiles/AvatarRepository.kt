@@ -85,12 +85,24 @@ object AvatarRepository {
         if (standardLoaded && standardCatalog.isNotEmpty()) {
             return
         }
+        if (com.streamvault.app.core.network.SupabaseConfig.URL.isBlank()) {
+            standardLoaded = true
+            return
+        }
         fetchStandardCatalog()
     }
 
     suspend fun refreshAvatars(force: Boolean = false) {
         hydrateFromCacheIfNeeded()
         ensureMemberAccessObserver()
+        if (com.streamvault.app.core.network.SupabaseConfig.URL.isBlank()) {
+            standardLoaded = true
+            if (standardCatalog.isEmpty()) {
+                standardCatalog = NetflixAvatars.DEFAULT_CATALOG
+                publishCatalog()
+            }
+            return
+        }
         if (force || isRefreshDue(lastStandardRefresh)) {
             fetchStandardCatalog()
         }

@@ -19,7 +19,7 @@ object DefaultAddons {
         "https://v3-cinemeta.strem.io/manifest.json",
 
         // AIOMetadata - multi-source anime, series & movie catalog/metadata (MAL, TMDB, TVDB, TVMaze)
-        "https://aiometadata.elfhosted.com/stremio/d1fa9f04-e1cf-43ae-9d7a-c309528c21e2/manifest.json",
+        "https://aiometadata.elfhosted.com/stremio/68638a9b-71bd-4b0a-aa34-c9e6c7667906/manifest.json",
 
         // OpenSubtitles v3 - subtitle source
         "https://opensubtitles-v3.strem.io/manifest.json",

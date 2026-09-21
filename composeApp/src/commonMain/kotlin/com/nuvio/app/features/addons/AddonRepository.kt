@@ -80,10 +80,12 @@ object AddonRepository {
         }
 
         // Migrate legacy anime-kitsu to AIOMetadata and ensure AIOMetadata is installed
-        val aioMetadataUrl = "https://aiometadata.elfhosted.com/stremio/d1fa9f04-e1cf-43ae-9d7a-c309528c21e2/manifest.json"
+        val aioMetadataUrl = "https://aiometadata.elfhosted.com/stremio/68638a9b-71bd-4b0a-aa34-c9e6c7667906/manifest.json"
         var needsSave = false
-        if (storedUrls.any { it.contains("anime-kitsu.strem.fun") }) {
-            storedUrls = storedUrls.map { if (it.contains("anime-kitsu.strem.fun")) aioMetadataUrl else it }
+        if (storedUrls.any { it.contains("anime-kitsu.strem.fun") || (it.contains("aiometadata.elfhosted.com") && it != aioMetadataUrl) }) {
+            storedUrls = storedUrls.map {
+                if (it.contains("anime-kitsu.strem.fun") || it.contains("aiometadata.elfhosted.com")) aioMetadataUrl else it
+            }
             needsSave = true
         }
         if (storedUrls.none { it.contains("aiometadata.elfhosted.com") }) {
@@ -167,8 +169,10 @@ object AddonRepository {
             } else {
                 rowsByUrl.keys.toList()
             }
-            val aioMetadataUrl = "https://aiometadata.elfhosted.com/stremio/d1fa9f04-e1cf-43ae-9d7a-c309528c21e2/manifest.json"
-            val migratedUrls = rawUrls.map { if (it.contains("anime-kitsu.strem.fun")) aioMetadataUrl else it }
+            val aioMetadataUrl = "https://aiometadata.elfhosted.com/stremio/68638a9b-71bd-4b0a-aa34-c9e6c7667906/manifest.json"
+            val migratedUrls = rawUrls.map {
+                if (it.contains("anime-kitsu.strem.fun") || (it.contains("aiometadata.elfhosted.com") && it != aioMetadataUrl)) aioMetadataUrl else it
+            }
             val urls = if (migratedUrls.none { it.contains("aiometadata.elfhosted.com") }) {
                 dedupeManifestUrls(migratedUrls + aioMetadataUrl)
             } else {

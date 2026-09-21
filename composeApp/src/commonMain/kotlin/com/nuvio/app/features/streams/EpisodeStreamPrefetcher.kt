@@ -11,6 +11,7 @@ import com.streamvault.app.features.details.MetaVideo
 import com.streamvault.app.features.plugins.PluginRepository
 import com.streamvault.app.features.plugins.pluginContentId
 import com.streamvault.app.features.providers.offline.OfflineAnimeProviders
+import com.streamvault.app.features.tmdb.TmdbService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -249,38 +250,47 @@ object EpisodeStreamPrefetcher {
         episode: Int,
         parentMetaId: String?,
     ) {
-        val meta = MetaDetailsRepository.getActiveMeta(parentMetaId ?: videoId)
-        val cleanTitle = meta?.name ?: videoId
+        val resolvedParentId = parentMetaId?.takeIf { it.isNotBlank() }
+            ?: videoId.substringBefore(':').takeIf { it.isNotBlank() }
+            ?: videoId
+        val meta = MetaDetailsRepository.getActiveMeta(resolvedParentId)
+            ?: MetaDetailsRepository.getActiveMeta(videoId)
+        val cleanTitle = meta?.name ?: videoId.substringBefore(':')
         val mediaLookupId = meta?.imdbId ?: when {
             videoId.startsWith("tt") -> videoId.substringBefore(":")
-            parentMetaId?.startsWith("tt") == true -> parentMetaId.substringBefore(":")
+            resolvedParentId.startsWith("tt") -> resolvedParentId
             else -> null
         }
         val metaYear = meta?.releaseInfo?.take(4)
 
         val collectedGroups = mutableListOf<AddonStreamGroup>()
 
+        val isAnime = type.equals("anime", ignoreCase = true) ||
+            videoId.startsWith("kitsu:") || videoId.startsWith("mal:") || videoId.startsWith("anilist:") ||
+            resolvedParentId.startsWith("kitsu:") || resolvedParentId.startsWith("mal:") || resolvedParentId.startsWith("anilist:")
+
         // 1. Offline Anime Providers (Ultra fast, pure HTTP/HLS)
-        val offlineJob = scope.launch {
-            runCatching {
-                OfflineAnimeProviders.fetchAllStreams(
-                    title = cleanTitle,
-                    mediaLookupId = mediaLookupId,
-                    type = type,
-                    year = metaYear,
-                    season = season,
-                    episode = episode,
-                    onGroupLoaded = { group ->
-                        val nonTorrent = group.streams.filterNot { it.isTorrentStream || !it.infoHash.isNullOrBlank() }
-                        if (nonTorrent.isNotEmpty()) {
-                            synchronized(collectedGroups) {
-                                collectedGroups.add(group.copy(streams = nonTorrent, isLoading = false))
+        val offlineJob = if (isAnime) {
+            scope.launch {
+                runCatching {
+                    OfflineAnimeProviders.fetchAllStreams(
+                        title = cleanTitle,
+                        mediaLookupId = mediaLookupId,
+                        type = type,
+                        year = metaYear,
+                        season = season,
+                        episode = episode,
+                        onGroupLoaded = { group ->
+                            if (group.streams.isNotEmpty()) {
+                                synchronized(collectedGroups) {
+                                    collectedGroups.add(group.copy(isLoading = false))
+                                }
                             }
                         }
-                    }
-                )
+                    )
+                }
             }
-        }
+        } else null
 
         // 2. Stremio Addons
         val installedAddons = AddonRepository.uiState.value.addons.enabledAddons()
@@ -311,14 +321,13 @@ object EpisodeStreamPrefetcher {
                             addonId = addon.addonId,
                             addonLogo = addon.manifest.logoUrl,
                         )
-                        val nonTorrent = parsed.filterNot { it.isTorrentStream || !it.infoHash.isNullOrBlank() }
-                        if (nonTorrent.isNotEmpty()) {
+                        if (parsed.isNotEmpty()) {
                             synchronized(collectedGroups) {
                                 collectedGroups.add(
                                     AddonStreamGroup(
                                         addonName = addon.addonName,
                                         addonId = addon.addonId,
-                                        streams = nonTorrent,
+                                        streams = parsed,
                                         isLoading = false,
                                     )
                                 )
@@ -344,16 +353,16 @@ object EpisodeStreamPrefetcher {
                         runCatching {
                             semaphore.withPermit {
                                 withTimeoutOrNull(15_000L) {
+                                    val targetContentId = pluginContentId(videoId, season, episode)
                                     PluginRepository.executeScraper(
                                         scraper = scraper,
-                                        tmdbId = pluginContentId(videoId, season, episode),
+                                        tmdbId = targetContentId,
                                         mediaType = type,
                                         season = season,
                                         episode = episode,
                                     ).getOrNull()?.let { results ->
-                                        val nonTorrent = results.filterNot { it.infoHash != null }
-                                        if (nonTorrent.isNotEmpty()) {
-                                            val items = nonTorrent.map {
+                                        if (results.isNotEmpty()) {
+                                            val items = results.map {
                                                 it.toStreamItem(
                                                     scraper = scraper,
                                                     addonName = pGroup.addonName,
@@ -380,7 +389,7 @@ object EpisodeStreamPrefetcher {
             }
         } else emptyList()
 
-        offlineJob.join()
+        offlineJob?.join()
         addonJobs.forEach { it.join() }
         pluginJobs.forEach { it.join() }
 

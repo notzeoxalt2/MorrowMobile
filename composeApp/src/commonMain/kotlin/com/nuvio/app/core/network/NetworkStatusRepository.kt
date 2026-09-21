@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.core.network
+package com.streamvault.app.core.network
 
 import androidx.compose.runtime.Composable
 import com.streamvault.app.features.addons.httpRequestRaw
@@ -136,10 +136,15 @@ object NetworkStatusRepository {
             return NetworkCondition.NoInternet
         }
 
+        val serverConfig = ServerConfigurationRepository.active.value
+        if (serverConfig.backendUrl.isBlank() || serverConfig.publishableKey.isBlank()) {
+            return NetworkCondition.Online
+        }
+
         val supabaseReachable = SupabaseEndpointConfig.restEndpointUrls().any { url ->
             probeReachable(
                 url = url,
-                headers = mapOf("apikey" to ServerConfigurationRepository.active.value.publishableKey),
+                headers = mapOf("apikey" to serverConfig.publishableKey),
             )
         }
         if (!supabaseReachable) {

@@ -14,6 +14,7 @@ import com.streamvault.app.features.details.MetaDetailsRepository
 import com.streamvault.app.features.plugins.PluginRepository
 import com.streamvault.app.features.plugins.PluginsUiState
 import com.streamvault.app.features.plugins.pluginContentId
+import com.streamvault.app.features.tmdb.TmdbService
 import com.streamvault.app.features.streams.AddonStreamGroup
 import com.streamvault.app.features.streams.InstalledStreamAddonTarget
 import com.streamvault.app.features.streams.StreamAutoPlaySelector
@@ -457,26 +458,35 @@ object PlayerStreamsRepository {
                 }
             }
 
-            launch {
-                val meta = MetaDetailsRepository.getActiveMeta(videoId)
-                val cleanTitle = meta?.name ?: videoId
-                val mediaLookupId = meta?.imdbId ?: when {
-                    videoId.startsWith("tt") -> videoId.substringBefore(":")
-                    else -> null
+            val resolvedParentId = videoId.substringBefore(':').takeIf { it.isNotBlank() } ?: videoId
+            val meta = MetaDetailsRepository.getActiveMeta(resolvedParentId)
+                ?: MetaDetailsRepository.getActiveMeta(videoId)
+            val cleanTitle = meta?.name ?: videoId.substringBefore(':')
+            val mediaLookupId = meta?.imdbId ?: when {
+                videoId.startsWith("tt") -> videoId.substringBefore(":")
+                resolvedParentId.startsWith("tt") -> resolvedParentId
+                else -> null
+            }
+            val metaYear = meta?.releaseInfo?.take(4)
+
+            val isAnime = type.equals("anime", ignoreCase = true) ||
+                videoId.startsWith("kitsu:") || videoId.startsWith("mal:") || videoId.startsWith("anilist:") ||
+                resolvedParentId.startsWith("kitsu:") || resolvedParentId.startsWith("mal:") || resolvedParentId.startsWith("anilist:")
+
+            if (isAnime) {
+                launch {
+                    OfflineAnimeProviders.fetchAllStreams(
+                        title = cleanTitle,
+                        mediaLookupId = mediaLookupId,
+                        type = type,
+                        year = metaYear,
+                        season = season,
+                        episode = episode,
+                        onGroupLoaded = { group ->
+                            publishStreamGroup(presentStreamGroup(group))
+                        }
+                    )
                 }
-                val metaYear = meta?.releaseInfo?.take(4)
-                OfflineAnimeProviders.fetchAllStreams(
-                    title = cleanTitle,
-                    mediaLookupId = mediaLookupId,
-                    type = type,
-                    year = metaYear,
-                    season = season,
-                    episode = episode,
-                    onGroupLoaded = { group ->
-                        val nonTorrentStreams = group.streams.filterNot { it.isTorrentStream || !it.infoHash.isNullOrBlank() }
-                        publishStreamGroup(presentStreamGroup(group.copy(streams = nonTorrentStreams)))
-                    }
-                )
             }
 
             val pluginSemaphore = Semaphore(permits = 20)
@@ -486,22 +496,23 @@ object PlayerStreamsRepository {
                     launch {
                         val completion = pluginSemaphore.withPermit {
                             withTimeoutOrNull(25_000L) {
+                                val targetContentId = pluginContentId(
+                                    videoId = videoId,
+                                    season = season,
+                                    episode = episode,
+                                )
                                 PluginRepository.executeScraper(
                                     scraper = scraper,
-                                    tmdbId = pluginContentId(
-                                        videoId = videoId,
-                                        season = season,
-                                        episode = episode,
-                                    ),
+                                    tmdbId = targetContentId,
                                     mediaType = type,
                                     season = season,
                                     episode = episode,
                                 ).fold(
                                     onSuccess = { results ->
-                                        val nonTorrentResults = results.filterNot { it.infoHash != null }
+                                        log.d { "fetched $panelName request=$requestKey plugin=${scraper.name} streams=${results.size}" }
                                         StreamLoadCompletion.PluginScraper(
                                             addonId = providerGroup.addonId,
-                                            streams = nonTorrentResults.map { result ->
+                                            streams = results.map { result ->
                                                 result.toStreamItem(
                                                     scraper = scraper,
                                                     addonName = providerGroup.addonName,

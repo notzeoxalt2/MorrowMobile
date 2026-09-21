@@ -15,6 +15,7 @@ import com.streamvault.app.features.player.PlayerSettingsRepository
 import com.streamvault.app.features.plugins.PluginRepository
 import com.streamvault.app.features.plugins.pluginContentId
 import com.streamvault.app.features.plugins.PluginsUiState
+import com.streamvault.app.features.tmdb.TmdbService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -228,56 +229,70 @@ object StreamsRepository {
             groupByRepository = pluginUiState.groupStreamsByRepository,
         )
 
-        val meta = MetaDetailsRepository.getActiveMeta(parentMetaId ?: videoId)
-        val cleanTitle = title?.takeIf { it.isNotBlank() } ?: meta?.name ?: videoId
+        val resolvedParentId = parentMetaId?.takeIf { it.isNotBlank() }
+            ?: videoId.substringBefore(':').takeIf { it.isNotBlank() }
+            ?: videoId
+        val meta = MetaDetailsRepository.getActiveMeta(resolvedParentId)
+            ?: MetaDetailsRepository.getActiveMeta(videoId)
+        val cleanTitle = title?.takeIf { it.isNotBlank() }
+            ?: meta?.name
+            ?: videoId.substringBefore(':')
         val metaTitle = cleanTitle
         val mediaLookupId = meta?.imdbId ?: when {
             videoId.startsWith("tt") -> videoId.substringBefore(":")
             videoId.startsWith("kitsu:") || videoId.startsWith("mal:") -> videoId
-            parentMetaId?.startsWith("tt") == true -> parentMetaId.substringBefore(":")
-            parentMetaId?.startsWith("kitsu:") == true || parentMetaId?.startsWith("mal:") == true -> parentMetaId
+            resolvedParentId.startsWith("tt") -> resolvedParentId
+            resolvedParentId.startsWith("kitsu:") || resolvedParentId.startsWith("mal:") -> resolvedParentId
             else -> null
         }
         val metaYear = meta?.releaseInfo?.take(4)
 
-        val offlineAnimeGroups = listOf(
-            AddonStreamGroup(
-                addonName = "HiAnime",
-                addonId = "offline:hianime",
-                streams = emptyList(),
-                isLoading = true,
-            ),
-            AddonStreamGroup(
-                addonName = "AnimeLok",
-                addonId = "offline:animelok",
-                streams = emptyList(),
-                isLoading = true,
-            ),
-            AddonStreamGroup(
-                addonName = "Senshi",
-                addonId = "offline:senshi",
-                streams = emptyList(),
-                isLoading = true,
-            ),
-            AddonStreamGroup(
-                addonName = "AniDB",
-                addonId = "offline:anidb",
-                streams = emptyList(),
-                isLoading = true,
-            ),
-            AddonStreamGroup(
-                addonName = "Miruro",
-                addonId = "offline:miruro",
-                streams = emptyList(),
-                isLoading = true,
-            ),
-            AddonStreamGroup(
-                addonName = "AnimeSalt",
-                addonId = "offline:animesalt",
-                streams = emptyList(),
-                isLoading = true,
-            ),
-        )
+        val isAnime = type.equals("anime", ignoreCase = true) ||
+            videoId.startsWith("kitsu:") || videoId.startsWith("mal:") || videoId.startsWith("anilist:") ||
+            resolvedParentId.startsWith("kitsu:") || resolvedParentId.startsWith("mal:") || resolvedParentId.startsWith("anilist:")
+
+        val offlineAnimeGroups = if (isAnime) {
+            listOf(
+                AddonStreamGroup(
+                    addonName = "HiAnime",
+                    addonId = "offline:hianime",
+                    streams = emptyList(),
+                    isLoading = true,
+                ),
+                AddonStreamGroup(
+                    addonName = "AnimeLok",
+                    addonId = "offline:animelok",
+                    streams = emptyList(),
+                    isLoading = true,
+                ),
+                AddonStreamGroup(
+                    addonName = "Senshi",
+                    addonId = "offline:senshi",
+                    streams = emptyList(),
+                    isLoading = true,
+                ),
+                AddonStreamGroup(
+                    addonName = "AniDB",
+                    addonId = "offline:anidb",
+                    streams = emptyList(),
+                    isLoading = true,
+                ),
+                AddonStreamGroup(
+                    addonName = "Miruro",
+                    addonId = "offline:miruro",
+                    streams = emptyList(),
+                    isLoading = true,
+                ),
+                AddonStreamGroup(
+                    addonName = "AnimeSalt",
+                    addonId = "offline:animesalt",
+                    streams = emptyList(),
+                    isLoading = true,
+                ),
+            )
+        } else {
+            emptyList()
+        }
 
         val streamAddons = installedAddons
             .mapNotNull { addon ->
@@ -511,29 +526,30 @@ object StreamsRepository {
                 null
             }
 
-            launch {
-                OfflineAnimeProviders.fetchAllStreams(
-                    title = metaTitle,
-                    mediaLookupId = mediaLookupId,
-                    type = type,
-                    year = metaYear,
-                    season = season,
-                    episode = episode,
-                    onGroupLoaded = { group ->
-                        val nonTorrentStreams = group.streams.filterNot { it.isTorrentStream || !it.infoHash.isNullOrBlank() }
-                        publishAddonGroup(presentStreamGroup(group.copy(streams = nonTorrentStreams)))
-                    }
-                )
-                _uiState.update { current ->
-                    current.copy(
-                        groups = current.groups.map { g ->
-                            if (g.addonId.startsWith("offline:") && g.isLoading) {
-                                g.copy(isLoading = false)
-                            } else g
+            if (isAnime) {
+                launch {
+                    OfflineAnimeProviders.fetchAllStreams(
+                        title = metaTitle,
+                        mediaLookupId = mediaLookupId,
+                        type = type,
+                        year = metaYear,
+                        season = season,
+                        episode = episode,
+                        onGroupLoaded = { group ->
+                            publishAddonGroup(presentStreamGroup(group))
                         }
                     )
+                    _uiState.update { current ->
+                        current.copy(
+                            groups = current.groups.map { g ->
+                                if (g.addonId.startsWith("offline:") && g.isLoading) {
+                                    g.copy(isLoading = false)
+                                } else g
+                            }
+                        )
+                    }
+                    updateAutoPlayAfterStreamsChanged()
                 }
-                updateAutoPlayAfterStreamsChanged()
             }
 
             streamAddons.forEach { addon ->
@@ -557,11 +573,10 @@ object StreamsRepository {
                             addonId = addon.addonId,
                             addonLogo = addon.manifest.logoUrl,
                         )
-                        val nonTorrentStreams = parsed.filterNot { it.isTorrentStream || !it.infoHash.isNullOrBlank() }
                         AddonStreamGroup(
                             addonName = displayName,
                             addonId = addon.addonId,
-                            streams = nonTorrentStreams,
+                            streams = parsed,
                             isLoading = false,
                         )
                     } catch (t: Throwable) {
@@ -587,22 +602,22 @@ object StreamsRepository {
                         val completion = try {
                             pluginSemaphore.withPermit {
                                 withTimeoutOrNull(25_000L) {
+                                    val targetContentId = pluginContentId(
+                                        videoId = videoId,
+                                        season = season,
+                                        episode = episode,
+                                    )
                                     PluginRepository.executeScraper(
                                         scraper = scraper,
-                                        tmdbId = pluginContentId(
-                                            videoId = videoId,
-                                            season = season,
-                                            episode = episode,
-                                        ),
+                                        tmdbId = targetContentId,
                                         mediaType = type,
                                         season = season,
                                         episode = episode,
                                     ).fold(
                                         onSuccess = { results ->
-                                            val nonTorrentResults = results.filterNot { it.infoHash != null }
                                             StreamLoadCompletion.PluginScraper(
                                                 addonId = providerGroup.addonId,
-                                                streams = nonTorrentResults.map { result ->
+                                                streams = results.map { result ->
                                                     result.toStreamItem(
                                                         scraper = scraper,
                                                         addonName = providerGroup.addonName,
