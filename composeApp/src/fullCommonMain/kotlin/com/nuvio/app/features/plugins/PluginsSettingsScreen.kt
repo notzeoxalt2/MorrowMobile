@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.plugins
+package com.streamvault.app.features.plugins
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -259,6 +259,17 @@ fun PluginsSettingsPageContent(
                     text = stringResource(Res.string.plugins_empty_repos_subtitle),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Spacer(modifier = Modifier.height(14.dp))
+                NuvioPrimaryButton(
+                    text = "Install Morrow Anime Repositories",
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = {
+                        coroutineScope.launch {
+                            PluginRepository.addRepository("https://raw.githubusercontent.com/notzeoxalt2/morrowx1anime/main/manifest.json")
+                            PluginRepository.addRepository("https://raw.githubusercontent.com/notzeoxalt2/morrowx2anime/main/manifest.json")
+                        }
+                    },
                 )
             }
         } else {
