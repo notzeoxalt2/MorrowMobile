@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.streams
+package com.streamvault.app.features.streams
 
 import com.streamvault.app.core.build.AppFeaturePolicy
 
@@ -29,7 +29,12 @@ object StreamAutoPlaySelector {
         val orderedAddons = addonEntries.sortedBy { group ->
             addonRankByName.getValue(group.addonName)
         }
-        return directDebridEntries + orderedAddons + pluginEntries
+        // Bubble loaded plugin groups to top — groups with streams before still-loading ones
+        val orderedPlugins = pluginEntries.sortedWith(
+            compareByDescending<AddonStreamGroup> { it.streams.isNotEmpty() }
+                .thenBy { pluginEntries.indexOf(it) }
+        )
+        return directDebridEntries + orderedAddons + orderedPlugins
     }
 
     fun selectAutoPlayStream(
