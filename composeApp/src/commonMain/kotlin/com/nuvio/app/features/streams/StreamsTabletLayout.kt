@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.streams
+package com.streamvault.app.features.streams
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -68,6 +68,7 @@ internal fun TabletStreamsLayout(
     resumeProgressFraction: Float?,
     onStreamSelected: (stream: StreamItem, resumePositionMs: Long?, resumeProgressFraction: Float?) -> Unit,
     onStreamLongPress: (StreamItem) -> Unit,
+    onDownloadStream: ((StreamItem) -> Unit)? = null,
     onRefresh: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -212,6 +213,7 @@ internal fun TabletStreamsLayout(
                             appendInstantServiceToDefaultName = appendInstantServiceToDefaultName,
                             onStreamSelected = onStreamSelected,
                             onStreamLongPress = onStreamLongPress,
+                            onDownloadStream = onDownloadStream,
                             resumePositionMs = resumePositionMs,
                             resumeProgressFraction = resumeProgressFraction,
                             modifier = Modifier.weight(1f),

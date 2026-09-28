@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.player
+package com.streamvault.app.features.player
 
 import android.app.Activity
 import android.content.Context
@@ -180,27 +180,59 @@ private class AndroidPlayerGestureController(
         return target
     }
 
+    private var boostFraction: Float = 0f
+    private var loudnessEnhancer: android.media.audiofx.LoudnessEnhancer? = null
+
     override fun currentVolume(): PlayerAudioLevel {
         val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC).coerceAtLeast(1)
         val currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC).coerceIn(0, maxVolume)
-        val fraction = currentVolume.toFloat() / maxVolume.toFloat()
+        val fraction = if (boostFraction > 0f) {
+            1f + boostFraction
+        } else {
+            currentVolume.toFloat() / maxVolume.toFloat()
+        }
         return PlayerAudioLevel(
             fraction = fraction,
-            isMuted = currentVolume == 0,
+            isMuted = currentVolume == 0 && boostFraction <= 0f,
         )
     }
 
     override fun setVolume(level: Float): PlayerAudioLevel {
+        val clampedLevel = level.coerceIn(0f, 2f)
         val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC).coerceAtLeast(1)
-        val targetVolume = (level.coerceIn(0f, 1f) * maxVolume.toFloat())
-            .roundToInt()
-            .coerceIn(0, maxVolume)
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, targetVolume, 0)
-        val fraction = targetVolume.toFloat() / maxVolume.toFloat()
-        return PlayerAudioLevel(
-            fraction = fraction,
-            isMuted = targetVolume == 0,
-        )
+        if (clampedLevel <= 1f) {
+            boostFraction = 0f
+            applyBoostGain(0f)
+            val targetVolume = (clampedLevel * maxVolume.toFloat())
+                .roundToInt()
+                .coerceIn(0, maxVolume)
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, targetVolume, 0)
+            val fraction = targetVolume.toFloat() / maxVolume.toFloat()
+            return PlayerAudioLevel(
+                fraction = fraction,
+                isMuted = targetVolume == 0,
+            )
+        } else {
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, maxVolume, 0)
+            boostFraction = clampedLevel - 1f
+            applyBoostGain(boostFraction)
+            return PlayerAudioLevel(
+                fraction = clampedLevel,
+                isMuted = false,
+            )
+        }
+    }
+
+    private fun applyBoostGain(ratio: Float) {
+        try {
+            if (loudnessEnhancer == null) {
+                loudnessEnhancer = android.media.audiofx.LoudnessEnhancer(0)
+            }
+            val gainMb = (ratio * 2000f).roundToInt()
+            loudnessEnhancer?.setTargetGain(gainMb)
+            loudnessEnhancer?.enabled = ratio > 0.01f
+        } catch (_: Throwable) {
+        }
     }
 
     fun restoreBrightness() {

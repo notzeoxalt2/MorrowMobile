@@ -509,7 +509,7 @@ object PlayerStreamsRepository {
                                     episode = episode,
                                 ).fold(
                                     onSuccess = { results ->
-                                        log.d { "fetched $panelName request=$requestKey plugin=${scraper.name} streams=${results.size}" }
+                                        log.d { "fetched request=$requestKey plugin=${scraper.name} streams=${results.size}" }
                                         StreamLoadCompletion.PluginScraper(
                                             addonId = providerGroup.addonId,
                                             streams = results.map { result ->
