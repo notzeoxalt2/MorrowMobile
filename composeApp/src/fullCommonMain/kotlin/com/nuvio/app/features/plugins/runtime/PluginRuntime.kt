@@ -38,8 +38,8 @@ import streamvault.composeapp.generated.resources.Res
 import streamvault.composeapp.generated.resources.generic_unknown
 import org.jetbrains.compose.resources.getString
 
-internal const val MAX_CONCURRENT_PLUGINS = 20
-internal const val PLUGIN_TIMEOUT_MS = 30_000L
+internal const val MAX_CONCURRENT_PLUGINS = 30
+internal const val PLUGIN_TIMEOUT_MS = 15_000L
 
 internal object PluginRuntime {
     private val log = Logger.withTag("PluginRuntime")
