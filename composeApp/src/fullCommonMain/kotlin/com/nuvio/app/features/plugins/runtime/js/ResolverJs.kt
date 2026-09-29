@@ -1,4 +1,4 @@
-package com.nuvio.app.features.plugins.runtime.js
+package com.streamvault.app.features.plugins.runtime.js
 
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
