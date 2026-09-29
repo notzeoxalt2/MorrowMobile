@@ -38,22 +38,45 @@ internal object AppUpdaterRepository {
     }
 
     suspend fun getLatestChannelUpdate(channel: UpdateChannel): Result<AppUpdate> = runCatching {
-        val response = httpRequestRaw(
-            method = "GET",
-            url = "https://api.github.com/repos/notzeoxalt2/MorrowMobile/${releasePath(channel)}",
-            headers = mapOf(
-                "Accept" to "application/vnd.github+json",
-                "User-Agent" to "MorrowMobile",
-            ),
-            body = "",
-        )
-        currentCoroutineContext().ensureActive()
-        if (response.status == 404) throw NoChannelReleaseException()
-        if (response.status !in 200..299) {
-            error(getString(Res.string.updates_github_api_error, response.status))
+        val repos = listOf("notzeoxalt2/MorrowMobile", "notzeoxalt2/Morrow")
+        var lastResponse: com.streamvault.app.features.addons.RawHttpResponse? = null
+
+        for (repo in repos) {
+            val primaryUrl = "https://api.github.com/repos/$repo/${releasePath(channel)}"
+            var response = httpRequestRaw(
+                method = "GET",
+                url = primaryUrl,
+                headers = mapOf(
+                    "Accept" to "application/vnd.github+json",
+                    "User-Agent" to "MorrowMobile",
+                ),
+                body = "",
+            )
+            currentCoroutineContext().ensureActive()
+            if (response.status == 404 && primaryUrl.contains("releases/latest")) {
+                val fallbackUrl = "https://api.github.com/repos/$repo/releases?per_page=20"
+                response = httpRequestRaw(
+                    method = "GET",
+                    url = fallbackUrl,
+                    headers = mapOf(
+                        "Accept" to "application/vnd.github+json",
+                        "User-Agent" to "MorrowMobile",
+                    ),
+                    body = "",
+                )
+                currentCoroutineContext().ensureActive()
+            }
+            if (response.status in 200..299) {
+                val update = selectUpdate(response.body, channel, AppUpdaterPlatform.getSupportedAbis())
+                if (update != null) {
+                    return@runCatching update
+                }
+            }
+            lastResponse = response
         }
-        selectUpdate(response.body, channel, AppUpdaterPlatform.getSupportedAbis())
-            ?: throw NoChannelReleaseException()
+
+        if (lastResponse == null || lastResponse.status == 404) throw NoChannelReleaseException()
+        error(getString(Res.string.updates_github_api_error, lastResponse.status))
     }
 
     internal fun releasePath(channel: UpdateChannel): String = when (channel) {
@@ -66,9 +89,14 @@ internal object AppUpdaterRepository {
         channel: UpdateChannel,
         supportedAbis: List<String>,
     ): AppUpdate? {
-        val releases = when (channel) {
-            UpdateChannel.STABLE -> listOf(json.decodeFromString<GitHubReleaseDto>(responseBody))
-            UpdateChannel.BETA -> json.decodeFromString<List<GitHubReleaseDto>>(responseBody)
+        val releases = try {
+            json.decodeFromString<List<GitHubReleaseDto>>(responseBody)
+        } catch (_: Exception) {
+            try {
+                listOf(json.decodeFromString<GitHubReleaseDto>(responseBody))
+            } catch (_: Exception) {
+                emptyList()
+            }
         }
         return ReleaseSelector.eligibleReleases(releases, channel).firstNotNullOfOrNull { release ->
             val asset = chooseBestApkAsset(release.assets, supportedAbis) ?: return@firstNotNullOfOrNull null

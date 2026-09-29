@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.player
+package com.streamvault.app.features.player
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -29,6 +29,7 @@ interface PlayerEngineController {
         useCustomSubtitles: Boolean = false,
     ) {}
     fun setSubtitleDelayMs(delayMs: Int) {}
+    fun setVideoQuality(quality: VideoQuality) {}
     fun configureIosVideoOutput(settings: PlayerSettingsUiState) {}
     fun updateNowPlayingMetadata(info: PlayerNowPlayingInfo) {}
     fun clearNowPlayingInfo() {}

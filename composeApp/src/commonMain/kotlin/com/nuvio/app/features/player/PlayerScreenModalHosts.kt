@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.player
+package com.streamvault.app.features.player
 
 import androidx.compose.runtime.Composable
 import com.streamvault.app.features.details.MetaDetailsUiState
@@ -48,6 +48,10 @@ internal fun PlayerScreenModalHosts(
     playerSettings: PlayerSettingsUiState,
     onVideoSettingsChanged: () -> Unit,
     onVideoSettingsModalDismissed: () -> Unit,
+    showVideoQualityModal: Boolean = false,
+    videoQuality: VideoQuality = VideoQuality.Max,
+    onQualitySelected: (VideoQuality) -> Unit = {},
+    onVideoQualityModalDismissed: () -> Unit = {},
     showSourcesPanel: Boolean,
     sourceStreamsState: StreamsUiState,
     contentTitle: String,
@@ -152,6 +156,13 @@ internal fun PlayerScreenModalHosts(
         settings = playerSettings,
         onSettingsChanged = onVideoSettingsChanged,
         onDismiss = onVideoSettingsModalDismissed,
+    )
+
+    VideoQualityModal(
+        visible = showVideoQualityModal,
+        currentQuality = videoQuality,
+        onQualitySelected = onQualitySelected,
+        onDismiss = onVideoQualityModalDismissed,
     )
 
     PlayerSourcesPanel(

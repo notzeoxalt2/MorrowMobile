@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.updater
+package com.streamvault.app.features.updater
 
 internal object ReleaseSelector {
     private val prereleaseNamePattern = Regex(
@@ -9,21 +9,31 @@ internal object ReleaseSelector {
     fun eligibleReleases(
         releases: List<GitHubReleaseDto>,
         channel: UpdateChannel
-    ): List<GitHubReleaseDto> = releases
-        .asSequence()
-        .filterNot(GitHubReleaseDto::draft)
-        .mapNotNull { release ->
-            val version = releaseVersion(release) ?: return@mapNotNull null
-            ReleaseCandidate(
-                release = release,
-                version = version,
-                prerelease = isPrerelease(release, version)
-            )
+    ): List<GitHubReleaseDto> {
+        val candidates = releases
+            .asSequence()
+            .filterNot(GitHubReleaseDto::draft)
+            .mapNotNull { release ->
+                val version = releaseVersion(release) ?: return@mapNotNull null
+                ReleaseCandidate(
+                    release = release,
+                    version = version,
+                    prerelease = isPrerelease(release, version)
+                )
+            }
+            .toList()
+
+        val matching = if (channel == UpdateChannel.BETA) {
+            candidates
+        } else {
+            val nonPre = candidates.filterNot { it.prerelease }
+            nonPre.ifEmpty { candidates }
         }
-        .filter { candidate -> channel == UpdateChannel.BETA || !candidate.prerelease }
-        .sortedByDescending(ReleaseCandidate::version)
-        .map(ReleaseCandidate::release)
-        .toList()
+
+        return matching
+            .sortedByDescending(ReleaseCandidate::version)
+            .map(ReleaseCandidate::release)
+    }
 
     private fun releaseVersion(release: GitHubReleaseDto): SemanticVersion? =
         VersionUtils.parse(release.tagName) ?: VersionUtils.parse(release.name)

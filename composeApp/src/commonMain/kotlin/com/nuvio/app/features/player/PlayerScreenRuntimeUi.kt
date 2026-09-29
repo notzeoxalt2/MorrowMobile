@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.player
+package com.streamvault.app.features.player
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
@@ -293,13 +293,13 @@ private fun PlayerScreenRuntime.RenderPlayerControls(displayedPositionMs: Long, 
                 refreshTracks()
                 showAudioModal = true
             },
-            onVideoSettingsClick = if (isIos) {
-                {
+            onVideoSettingsClick = {
+                if (isIos) {
                     showVideoSettingsModal = true
-                    controlsVisible = true
+                } else {
+                    showVideoQualityModal = true
                 }
-            } else {
-                null
+                controlsVisible = true
             },
             onSourcesClick = if (activeVideoId != null) { { openSourcesPanel() } } else null,
             onEpisodesClick = if (isSeries) { { openEpisodesPanel() } } else null,
@@ -522,6 +522,10 @@ private fun PlayerScreenRuntime.RenderPlayerModals(displayedPositionMs: Long) {
             playerController?.configureIosVideoOutput(PlayerSettingsRepository.uiState.value)
         },
         onVideoSettingsModalDismissed = { showVideoSettingsModal = false },
+        showVideoQualityModal = showVideoQualityModal,
+        videoQuality = videoQuality,
+        onQualitySelected = { selectVideoQuality(it) },
+        onVideoQualityModalDismissed = { showVideoQualityModal = false },
         showSourcesPanel = showSourcesPanel,
         sourceStreamsState = sourceStreamsState,
         contentTitle = title,

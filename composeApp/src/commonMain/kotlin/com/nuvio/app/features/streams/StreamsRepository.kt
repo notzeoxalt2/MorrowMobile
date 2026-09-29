@@ -11,11 +11,15 @@ import com.streamvault.app.features.debrid.DebridSettingsRepository
 import com.streamvault.app.features.debrid.DebridStreamPresentation
 import com.streamvault.app.features.debrid.LocalDebridAvailabilityService
 import com.streamvault.app.features.details.MetaDetailsRepository
+import com.streamvault.app.features.p2p.P2pSettingsRepository
 import com.streamvault.app.features.player.PlayerSettingsRepository
 import com.streamvault.app.features.plugins.PluginRepository
+import com.streamvault.app.features.plugins.normalizePluginType
 import com.streamvault.app.features.plugins.pluginContentId
 import com.streamvault.app.features.plugins.PluginsUiState
+import com.streamvault.app.features.providers.offline.OfflineAnimeProviders
 import com.streamvault.app.features.tmdb.TmdbService
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -26,14 +30,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import streamvault.composeapp.generated.resources.*
-import org.jetbrains.compose.resources.getString
-import com.streamvault.app.features.providers.offline.OfflineAnimeProviders
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
 import kotlinx.coroutines.withTimeoutOrNull
+import streamvault.composeapp.generated.resources.*
+import org.jetbrains.compose.resources.getString
 
 object StreamsRepository {
     private val log = Logger.withTag("StreamsRepo")
@@ -53,7 +55,15 @@ object StreamsRepository {
     ): String =
         "$type::$videoId::$season::$episode::$manualSelection"
 
-    fun load(type: String, videoId: String, parentMetaId: String? = null, title: String? = null, season: Int? = null, episode: Int? = null, manualSelection: Boolean = false) {
+    fun load(
+        type: String,
+        videoId: String,
+        parentMetaId: String? = null,
+        title: String? = null,
+        season: Int? = null,
+        episode: Int? = null,
+        manualSelection: Boolean = false,
+    ) {
         PluginRepository.setLocalPluginSearchPaused(false)
         load(
             type = type,
@@ -67,7 +77,15 @@ object StreamsRepository {
         )
     }
 
-    fun reload(type: String, videoId: String, parentMetaId: String? = null, title: String? = null, season: Int? = null, episode: Int? = null, manualSelection: Boolean = false) {
+    fun reload(
+        type: String,
+        videoId: String,
+        parentMetaId: String? = null,
+        title: String? = null,
+        season: Int? = null,
+        episode: Int? = null,
+        manualSelection: Boolean = false,
+    ) {
         PluginRepository.setLocalPluginSearchPaused(false)
         load(
             type = type,
@@ -81,7 +99,16 @@ object StreamsRepository {
         )
     }
 
-    private fun load(type: String, videoId: String, parentMetaId: String?, title: String?, season: Int?, episode: Int?, manualSelection: Boolean, forceRefresh: Boolean) {
+    private fun load(
+        type: String,
+        videoId: String,
+        parentMetaId: String?,
+        title: String?,
+        season: Int?,
+        episode: Int?,
+        manualSelection: Boolean,
+        forceRefresh: Boolean,
+    ) {
         val pluginUiState = if (AppFeaturePolicy.pluginsEnabled) {
             PluginRepository.initialize()
             PluginRepository.uiState.value
@@ -218,17 +245,6 @@ object StreamsRepository {
             return
         }
 
-        val installedAddons = AddonRepository.uiState.value.addons.enabledAddons()
-        val pluginScrapers = if (AppFeaturePolicy.pluginsEnabled) {
-            PluginRepository.getEnabledScrapersForType(type)
-        } else {
-            emptyList()
-        }
-        val pluginProviderGroups = pluginScrapers.toPluginProviderGroups(
-            repositories = pluginUiState.repositories,
-            groupByRepository = pluginUiState.groupStreamsByRepository,
-        )
-
         val resolvedParentId = parentMetaId?.takeIf { it.isNotBlank() }
             ?: videoId.substringBefore(':').takeIf { it.isNotBlank() }
             ?: videoId
@@ -250,7 +266,33 @@ object StreamsRepository {
         val isAnime = type.equals("anime", ignoreCase = true) ||
             videoId.startsWith("kitsu:") || videoId.startsWith("mal:") || videoId.startsWith("anilist:") ||
             resolvedParentId.startsWith("kitsu:") || resolvedParentId.startsWith("mal:") || resolvedParentId.startsWith("anilist:") ||
-            meta?.genres?.any { it.contains("anime", ignoreCase = true) || it.contains("animation", ignoreCase = true) } == true
+            meta?.genres?.any { it.equals("Anime", ignoreCase = true) || it.contains("anime", ignoreCase = true) } == true ||
+            (meta?.genres?.any { it.contains("animation", ignoreCase = true) } == true &&
+                (meta.country?.contains("JP", ignoreCase = true) == true ||
+                 meta.country?.contains("Japan", ignoreCase = true) == true ||
+                 meta.language?.equals("ja", ignoreCase = true) == true ||
+                 meta.language?.contains("Japanese", ignoreCase = true) == true))
+
+        val installedAddons = AddonRepository.uiState.value.addons.enabledAddons()
+        val effectiveType = if (isAnime) "anime" else type
+        val pluginScrapers = if (AppFeaturePolicy.pluginsEnabled) {
+            PluginRepository.getEnabledScrapersForType(effectiveType).filter { scraper ->
+                val isAnimeScraper = scraper.supportedTypes.any { normalizePluginType(it) == "anime" } ||
+                    scraper.repositoryUrl.contains("anime", ignoreCase = true) ||
+                    scraper.id.contains("anime", ignoreCase = true) ||
+                    scraper.name.contains("anime", ignoreCase = true) ||
+                    listOf("anikage", "animesalt", "hianime", "animepahe", "anidb", "anikototv", "aniwaves", "anitaku", "miruro", "reanime", "animeheaven", "kurage", "animedekho", "anime-nexus", "lunarx", "saltanime", "marin", "zoro", "yugen", "kickassanime", "allanime", "otaku").any {
+                        scraper.id.contains(it, ignoreCase = true) || scraper.name.contains(it, ignoreCase = true)
+                    }
+                if (isAnime) true else !isAnimeScraper
+            }
+        } else {
+            emptyList()
+        }
+        val pluginProviderGroups = pluginScrapers.toPluginProviderGroups(
+            repositories = pluginUiState.repositories,
+            groupByRepository = pluginUiState.groupStreamsByRepository,
+        )
 
         val offlineAnimeGroups = if (isAnime) {
             listOf(
@@ -477,14 +519,8 @@ object StreamsRepository {
             val timeoutJob = if (isDirectAutoPlayFlow) {
                 val timeoutSeconds = playerSettings.streamAutoPlayTimeoutSeconds
                 val isUnlimitedTimeout = timeoutSeconds == Int.MAX_VALUE
-                // Timeout semantics:
-                // - 0 (instant): timeoutElapsed immediately, full select on each response
-                // - 1-30 (bounded): wait the configured delay, then full select
-                // - unlimited (Int.MAX_VALUE): timeoutElapsed immediately, full select on each response,
-                //   with 60s hard fallback to stream picker
                 if (timeoutSeconds <= 0 || isUnlimitedTimeout) {
                     timeoutElapsed = true
-                    // For unlimited: launch a hard 60s fallback to dismiss overlay
                     if (isUnlimitedTimeout) {
                         launch {
                             delay(60_000L)
@@ -496,7 +532,6 @@ object StreamsRepository {
                         null
                     }
                 } else {
-                    // Bounded timeout (1-30s)
                     launch {
                         delay(timeoutSeconds * 1_000L)
                         timeoutElapsed = true
@@ -599,7 +634,7 @@ object StreamsRepository {
                                     PluginRepository.executeScraper(
                                         scraper = scraper,
                                         tmdbId = targetContentId,
-                                        mediaType = type,
+                                        mediaType = if (isAnime) "anime" else type,
                                         season = season,
                                         episode = episode,
                                     ).fold(

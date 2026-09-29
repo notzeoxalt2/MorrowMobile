@@ -121,7 +121,27 @@ object OfflineAnimeProviders {
             )
         }
 
-        listOf(j1, j2, j3).joinAll()
+        // 4. KissKH (Starts immediately)
+        val j4 = launch {
+            val streams = runCatching {
+                withTimeoutOrNull(6_000L) {
+                    KissKhScraper.getStreams(cleanTitle, epNum)
+                } ?: emptyList()
+            }.getOrElse { e ->
+                log.w(e) { "KissKH error" }
+                emptyList()
+            }
+            onGroupLoaded(
+                AddonStreamGroup(
+                    addonName = "KissKH",
+                    addonId = "offline:kisskh",
+                    streams = streams,
+                    isLoading = false,
+                )
+            )
+        }
+
+        listOf(j1, j2, j3, j4).joinAll()
     }
 
     // ==========================================
@@ -136,6 +156,9 @@ object OfflineAnimeProviders {
         )
 
         suspend fun getStreams(title: String, episodeNumber: Int): List<StreamItem> {
+            val fastStreams = AnidapScraper.getStreams(title, episodeNumber, "HiAnime", "offline:hianime")
+            if (fastStreams.isNotEmpty()) return fastStreams
+
             val encodedTitle = title.encodeURLParameter()
             for (host in CONSUMET_HOSTS) {
                 try {
@@ -514,9 +537,6 @@ object OfflineAnimeProviders {
     }
 
     // ==========================================
-    // 6. AnimeSalt Scraper
-    // ==========================================
-    // ==========================================
     // 6. AnimeSalt Scraper (Real Multi-Lang Player)
     // ==========================================
     private object AnimeSaltScraper {
@@ -586,19 +606,43 @@ object OfflineAnimeProviders {
                         val cleanJson = if (start != -1 && end != -1) decodedJson.substring(start, end + 1) else decodedJson
                         val items = json.parseToJsonElement(cleanJson).jsonArray
 
+                        val multiPlyrUrl = "https://animesalt.cx/multi-lang-plyr.php?data=${plyrMatch.groupValues[1]}"
+                        streams.add(
+                            StreamItem(
+                                name = "Multi-Audio Player",
+                                title = "$clean - Ep $episodeNumber · Multi-Audio Player [All Languages]",
+                                description = "AnimeSalt Official Multi-Language Player with Audio Switcher",
+                                url = multiPlyrUrl,
+                                addonName = "AnimeSalt",
+                                addonId = "offline:animesalt",
+                                streamType = "embed",
+                                behaviorHints = StreamBehaviorHints(
+                                    proxyHeaders = StreamProxyHeaders(
+                                        request = mapOf(
+                                            "Referer" to "$BASE/",
+                                            "User-Agent" to "Mozilla/5.0"
+                                        )
+                                    )
+                                )
+                            )
+                        )
+
                         for (itemElem in items) {
                             val item = itemElem.jsonObject
                             val lang = item["language"]?.jsonPrimitive?.content ?: "English"
                             val link = item["link"]?.jsonPrimitive?.content ?: continue
-                            val isDub = !lang.equals("japanese", ignoreCase = true)
-                            val tag = if (isDub) "[$lang Dub]" else "[$lang Sub]"
-                            val langDisplay = if (isDub) "🗣️ $lang Dub" else "🇯🇵 Japanese Sub"
+                            val isJapanese = lang.equals("japanese", ignoreCase = true)
+                            val isEnglish = lang.equals("english", ignoreCase = true)
+                            if (!isJapanese && !isEnglish) continue
+
+                            val tag = if (isJapanese) "[SUB]" else "[DUB]"
+                            val langDisplay = if (isJapanese) "🇯🇵 Japanese Sub" else "🗣️ English Dub"
 
                             streams.add(
                                 StreamItem(
-                                    name = "Multi-Lang $tag",
-                                    title = "$clean - Ep $episodeNumber · Multi-Lang $tag | $langDisplay",
-                                    description = "AnimeSalt Multi-Language Player • $lang",
+                                    name = "$lang $tag",
+                                    title = "$clean - Ep $episodeNumber · $lang $tag | $langDisplay",
+                                    description = "AnimeSalt • $langDisplay",
                                     url = link,
                                     addonName = "AnimeSalt",
                                     addonId = "offline:animesalt",
@@ -622,7 +666,203 @@ object OfflineAnimeProviders {
     }
 
     // ==========================================
-    // 7. Anikage Scraper (Real Servers & HLS)
+    // 7. KissKH Scraper
+    // ==========================================
+    private object KissKhScraper {
+        private const val BASE = "https://kisskh.co"
+        private const val API_PROXY = "https://adorable-salamander-ecbb21.netlify.app/api/kisskh"
+
+        suspend fun getStreams(title: String, episodeNumber: Int): List<StreamItem> {
+            val streams = mutableListOf<StreamItem>()
+            try {
+                val encoded = title.encodeURLParameter()
+                val searchUrl = "$BASE/api/DramaList/Search?q=$encoded&type=0"
+                val searchRes = httpGetTextWithHeaders(
+                    searchUrl,
+                    mapOf("User-Agent" to "Mozilla/5.0 (Windows NT 10.0; Win64; x64)", "Referer" to "$BASE/")
+                )
+                val searchJson = json.parseToJsonElement(searchRes).jsonObject
+                val data = searchJson["data"]?.jsonArray.orEmpty()
+                val drama = data.firstOrNull()?.jsonObject ?: return emptyList()
+                val dramaId = drama["id"]?.jsonPrimitive?.content ?: return emptyList()
+
+                val dramaDetailRes = httpGetTextWithHeaders(
+                    "$BASE/api/DramaList/Drama/$dramaId?isq=false",
+                    mapOf("User-Agent" to "Mozilla/5.0 (Windows NT 10.0; Win64; x64)", "Referer" to "$BASE/")
+                )
+                val dramaDetailJson = json.parseToJsonElement(dramaDetailRes).jsonObject
+                val episodes = dramaDetailJson["episodes"]?.jsonArray.orEmpty()
+                val epMatch = episodes.firstOrNull {
+                    val num = it.jsonObject["number"]?.jsonPrimitive?.content?.toIntOrNull()
+                    num == episodeNumber
+                }?.jsonObject ?: episodes.getOrNull(episodeNumber - 1)?.jsonObject ?: return emptyList()
+
+                val epId = epMatch["id"]?.jsonPrimitive?.content ?: return emptyList()
+
+                val streamRes = runCatching {
+                    httpGetTextWithHeaders(
+                        "$API_PROXY/video?id=$epId",
+                        mapOf("User-Agent" to "Mozilla/5.0", "Referer" to "$BASE/")
+                    )
+                }.getOrNull() ?: httpGetTextWithHeaders(
+                    "$BASE/api/DramaList/Episode/$epId.png?err=false&ts=&time=",
+                    mapOf("User-Agent" to "Mozilla/5.0", "Referer" to "$BASE/")
+                )
+
+                val streamJson = json.parseToJsonElement(streamRes).jsonObject
+                val videoUrl = streamJson["source"]?.jsonObject?.get("Video")?.jsonPrimitive?.content
+                    ?: streamJson["Video"]?.jsonPrimitive?.content
+                if (!videoUrl.isNullOrBlank() && !videoUrl.contains("torrent")) {
+                    val subs = streamJson["subtitles"]?.jsonArray.orEmpty().mapNotNull { subElem ->
+                        val subObj = subElem.jsonObject
+                        val subSrc = subObj["src"]?.jsonPrimitive?.content ?: return@mapNotNull null
+                        val subLang = subObj["land"]?.jsonPrimitive?.content ?: subObj["label"]?.jsonPrimitive?.content ?: "English"
+                        StreamSubtitle(
+                            url = subSrc,
+                            language = subLang,
+                            name = subLang,
+                        )
+                    }
+                    streams.add(
+                        StreamItem(
+                            name = "KissKH · Direct",
+                            title = "$title - Episode $episodeNumber",
+                            description = "KissKH Direct Stream • 1080p/720p",
+                            url = videoUrl,
+                            addonName = "KissKH",
+                            addonId = "offline:kisskh",
+                            streamType = if (videoUrl.contains(".m3u8")) "m3u8" else "mp4",
+                            externalSubtitles = subs,
+                            behaviorHints = StreamBehaviorHints(
+                                proxyHeaders = StreamProxyHeaders(
+                                    request = mapOf(
+                                        "Referer" to "$BASE/",
+                                        "Origin" to BASE,
+                                    )
+                                )
+                            ),
+                        )
+                    )
+                }
+            } catch (_: Throwable) {}
+            return streams
+        }
+    }
+
+    // ==========================================
+    // 8. AnimePahe Scraper
+    // ==========================================
+    private object AnimePaheScraper {
+        private val DOMAINS = listOf("https://animepahe.ru", "https://animepahe.pw", "https://animepahe.org")
+
+        suspend fun getStreams(title: String, episodeNumber: Int): List<StreamItem> {
+            val streams = mutableListOf<StreamItem>()
+            for (domain in DOMAINS) {
+                try {
+                    val encoded = title.encodeURLParameter()
+                    val searchUrl = "$domain/api?m=search&q=$encoded"
+                    val searchRes = httpGetTextWithHeaders(
+                        searchUrl,
+                        mapOf("User-Agent" to "Mozilla/5.0 (Windows NT 10.0; Win64; x64)", "Referer" to "$domain/")
+                    )
+                    val searchJson = json.parseToJsonElement(searchRes).jsonObject
+                    val data = searchJson["data"]?.jsonArray.orEmpty()
+                    val anime = data.firstOrNull()?.jsonObject ?: continue
+                    val animeSession = anime["session"]?.jsonPrimitive?.content ?: continue
+
+                    val releaseUrl = "$domain/api?m=release&id=$animeSession&sort=episode_asc&page=1"
+                    val releaseRes = httpGetTextWithHeaders(
+                        releaseUrl,
+                        mapOf("User-Agent" to "Mozilla/5.0", "Referer" to "$domain/")
+                    )
+                    val releaseJson = json.parseToJsonElement(releaseRes).jsonObject
+                    val epData = releaseJson["data"]?.jsonArray.orEmpty()
+                    val epItem = epData.firstOrNull {
+                        val num = it.jsonObject["episode"]?.jsonPrimitive?.content?.toIntOrNull()
+                        num == episodeNumber
+                    }?.jsonObject ?: continue
+
+                    val epSession = epItem["session"]?.jsonPrimitive?.content ?: continue
+                    val playPageUrl = "$domain/play/$animeSession/$epSession"
+                    val playPage = httpGetTextWithHeaders(
+                        playPageUrl,
+                        mapOf("User-Agent" to "Mozilla/5.0", "Referer" to domain)
+                    )
+
+                    val kwikMatches = Regex("""data-src=["'](https?://[^"']*kwik[^"']*)["']""").findAll(playPage)
+                    kwikMatches.forEachIndexed { idx, match ->
+                        val kwikUrl = match.groupValues[1]
+                        streams.add(
+                            StreamItem(
+                                name = "AnimePahe · Server ${idx + 1}",
+                                title = "$title - Episode $episodeNumber",
+                                description = "AnimePahe Direct Stream",
+                                url = kwikUrl,
+                                addonName = "AnimePahe",
+                                addonId = "offline:animepahe",
+                                streamType = "m3u8",
+                                behaviorHints = StreamBehaviorHints(
+                                    proxyHeaders = StreamProxyHeaders(
+                                        request = mapOf(
+                                            "Referer" to domain,
+                                            "Origin" to domain,
+                                        )
+                                    )
+                                ),
+                            )
+                        )
+                    }
+                    if (streams.isNotEmpty()) break
+                } catch (_: Throwable) {}
+            }
+            return streams
+        }
+    }
+
+    // ==========================================
+    // 9. AnimeDekho Scraper
+    // ==========================================
+    private object AnimeDekhoScraper {
+        private const val BASE = "https://animedekho.app"
+
+        suspend fun getStreams(title: String, episodeNumber: Int): List<StreamItem> {
+            val streams = mutableListOf<StreamItem>()
+            try {
+                val clean = title.lowercase().replace(" ", "-")
+                val searchUrl = "$BASE/episode/$clean-episode-$episodeNumber"
+                val response = httpGetTextWithHeaders(
+                    searchUrl,
+                    mapOf("User-Agent" to "Mozilla/5.0 (Windows NT 10.0; Win64; x64)", "Referer" to "$BASE/")
+                )
+                val m3u8Matches = Regex("""["'](https?://[^"']+\.(?:m3u8|mp4)[^"']*)["']""").findAll(response)
+                m3u8Matches.forEachIndexed { idx, match ->
+                    val url = match.groupValues[1]
+                    if (!url.contains("google") && !url.contains("analytics")) {
+                        streams.add(
+                            StreamItem(
+                                name = "AnimeDekho · Stream ${idx + 1}",
+                                title = "$title - Episode $episodeNumber",
+                                description = "AnimeDekho Hindi/Dub/Sub",
+                                url = url,
+                                addonName = "AnimeDekho",
+                                addonId = "offline:animedekho",
+                                streamType = if (url.contains(".m3u8")) "m3u8" else "mp4",
+                                behaviorHints = StreamBehaviorHints(
+                                    proxyHeaders = StreamProxyHeaders(
+                                        request = mapOf("Referer" to "$BASE/", "Origin" to BASE)
+                                    )
+                                ),
+                            )
+                        )
+                    }
+                }
+            } catch (_: Throwable) {}
+            return streams
+        }
+    }
+
+    // ==========================================
+    // 10. Anikage Scraper (Real Servers & HLS)
     // ==========================================
     private object AnikageScraper {
         private const val BASE = "https://anikage.cc"
@@ -653,7 +893,7 @@ object OfflineAnimeProviders {
                 val serversJson = json.parseToJsonElement(serversResp).jsonObject
                 val serverList = serversJson["servers"]?.jsonArray.orEmpty()
 
-                val priorityServers = listOf("koto", "megg", "kiwi", "wave", "zen", "suge", "dib")
+                val priorityServers = listOf("koto", "megg")
                 for (sId in priorityServers) {
                     val sInfo = serverList.firstOrNull { it.jsonObject["id"]?.jsonPrimitive?.content == sId }?.jsonObject
                     val subTypes = sInfo?.get("subTypes")?.jsonArray?.mapNotNull { it.jsonPrimitive.content } ?: listOf("sub", "dub")
@@ -729,8 +969,8 @@ object OfflineAnimeProviders {
     private object AnidapScraper {
         private const val RESOLVER = "https://anidap.lol"
         private const val STREAM_API = "https://chad.anidap.lol/rest/api"
-        private val WORKING_SUB_SERVERS = listOf("zuna", "sora")
-        private val WORKING_DUB_SERVERS = listOf("sora", "zuna")
+        private val WORKING_SUB_SERVERS = listOf("yuki", "zuna", "sora")
+        private val WORKING_DUB_SERVERS = listOf("yuki", "sora", "zuna")
 
         suspend fun getStreams(
             title: String,
@@ -805,6 +1045,7 @@ object OfflineAnimeProviders {
                         )
                         val srcJson = json.parseToJsonElement(srcResp).jsonObject
                         val sources = srcJson["sources"]?.jsonArray.orEmpty()
+                        val streamHeaders = extractProxyHeaders(srcJson)
                         val tracks = srcJson["tracks"]?.jsonArray.orEmpty().mapNotNull { t ->
                             val tObj = t.jsonObject
                             val url = tObj["url"]?.jsonPrimitive?.content ?: return@mapNotNull null
@@ -824,6 +1065,11 @@ object OfflineAnimeProviders {
                                 addonName = addonName,
                                 addonId = addonId,
                                 streamType = if (url.contains(".m3u8")) "m3u8" else "mp4",
+                                behaviorHints = StreamBehaviorHints(
+                                    proxyHeaders = StreamProxyHeaders(
+                                        request = streamHeaders
+                                    )
+                                ),
                                 externalSubtitles = tracks,
                             ))
                         }
@@ -839,6 +1085,7 @@ object OfflineAnimeProviders {
                         )
                         val srcJson = json.parseToJsonElement(srcResp).jsonObject
                         val sources = srcJson["sources"]?.jsonArray.orEmpty()
+                        val streamHeaders = extractProxyHeaders(srcJson)
                         for (src in sources) {
                             val srcObj = src.jsonObject
                             val url = srcObj["url"]?.jsonPrimitive?.content ?: continue
@@ -853,12 +1100,38 @@ object OfflineAnimeProviders {
                                 addonName = addonName,
                                 addonId = addonId,
                                 streamType = if (url.contains(".m3u8")) "m3u8" else "mp4",
+                                behaviorHints = StreamBehaviorHints(
+                                    proxyHeaders = StreamProxyHeaders(
+                                        request = streamHeaders
+                                    )
+                                ),
                             ))
                         }
                     } catch (_: Throwable) {}
                 }
             } catch (_: Throwable) {}
             return streams
+        }
+
+        private fun extractProxyHeaders(srcJson: JsonObject): Map<String, String> {
+            val streamHeaders = mutableMapOf<String, String>()
+            val apiHeaders = srcJson["headers"]?.jsonObject
+            if (apiHeaders != null) {
+                for ((k, v) in apiHeaders) {
+                    val value = runCatching { v.jsonPrimitive.content }.getOrNull() ?: v.toString().trim('"')
+                    if (value.isNotBlank()) streamHeaders[k] = value
+                }
+            }
+            if (!streamHeaders.containsKey("Referer")) {
+                streamHeaders["Referer"] = "https://megaplay.buzz/"
+            }
+            if (!streamHeaders.containsKey("Origin")) {
+                streamHeaders["Origin"] = "https://megaplay.buzz"
+            }
+            if (!streamHeaders.containsKey("User-Agent")) {
+                streamHeaders["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+            }
+            return streamHeaders
         }
     }
 }

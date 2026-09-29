@@ -9,9 +9,9 @@ import com.streamvault.app.features.addons.fetchAddonResponseText
 import com.streamvault.app.features.details.MetaDetailsRepository
 import com.streamvault.app.features.details.MetaVideo
 import com.streamvault.app.features.plugins.PluginRepository
+import com.streamvault.app.features.plugins.normalizePluginType
 import com.streamvault.app.features.plugins.pluginContentId
 import com.streamvault.app.features.providers.offline.OfflineAnimeProviders
-import com.streamvault.app.features.tmdb.TmdbService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -267,9 +267,14 @@ object EpisodeStreamPrefetcher {
 
         val isAnime = type.equals("anime", ignoreCase = true) ||
             videoId.startsWith("kitsu:") || videoId.startsWith("mal:") || videoId.startsWith("anilist:") ||
-            resolvedParentId.startsWith("kitsu:") || resolvedParentId.startsWith("mal:") || resolvedParentId.startsWith("anilist:")
+            resolvedParentId.startsWith("kitsu:") || resolvedParentId.startsWith("mal:") || resolvedParentId.startsWith("anilist:") ||
+            meta?.genres?.any { it.equals("Anime", ignoreCase = true) || it.contains("anime", ignoreCase = true) } == true ||
+            (meta?.genres?.any { it.contains("animation", ignoreCase = true) } == true &&
+                (meta.country?.contains("JP", ignoreCase = true) == true ||
+                 meta.country?.contains("Japan", ignoreCase = true) == true ||
+                 meta.language?.equals("ja", ignoreCase = true) == true ||
+                 meta.language?.contains("Japanese", ignoreCase = true) == true))
 
-        // 1. Offline Anime Providers (Ultra fast, pure HTTP/HLS)
         val offlineJob = if (isAnime) {
             scope.launch {
                 runCatching {
@@ -340,7 +345,17 @@ object EpisodeStreamPrefetcher {
 
         // 3. Community Plugins
         val pluginJobs = if (AppFeaturePolicy.pluginsEnabled) {
-            val pluginScrapers = PluginRepository.getEnabledScrapersForType(type)
+            val effectiveType = if (isAnime) "anime" else type
+            val pluginScrapers = PluginRepository.getEnabledScrapersForType(effectiveType).filter { scraper ->
+                val isAnimeScraper = scraper.supportedTypes.any { normalizePluginType(it) == "anime" } ||
+                    scraper.repositoryUrl.contains("anime", ignoreCase = true) ||
+                    scraper.id.contains("anime", ignoreCase = true) ||
+                    scraper.name.contains("anime", ignoreCase = true) ||
+                    listOf("anikage", "animesalt", "hianime", "animepahe", "anidb", "anikototv", "aniwaves", "anitaku", "miruro", "reanime", "animeheaven", "kurage", "animedekho", "anime-nexus", "lunarx", "saltanime", "marin", "zoro", "yugen", "kickassanime", "allanime", "otaku").any {
+                        scraper.id.contains(it, ignoreCase = true) || scraper.name.contains(it, ignoreCase = true)
+                    }
+                if (isAnime) true else !isAnimeScraper
+            }
             val pluginUiState = PluginRepository.uiState.value
             val providerGroups = pluginScrapers.toPluginProviderGroups(
                 repositories = pluginUiState.repositories,
@@ -353,11 +368,10 @@ object EpisodeStreamPrefetcher {
                         runCatching {
                             semaphore.withPermit {
                                 withTimeoutOrNull(15_000L) {
-                                    val targetContentId = pluginContentId(videoId, season, episode)
                                     PluginRepository.executeScraper(
                                         scraper = scraper,
-                                        tmdbId = targetContentId,
-                                        mediaType = type,
+                                        tmdbId = pluginContentId(videoId, season, episode),
+                                        mediaType = if (isAnime) "anime" else type,
                                         season = season,
                                         episode = episode,
                                     ).getOrNull()?.let { results ->
