@@ -1,4 +1,4 @@
-﻿package com.streamvault.app
+package com.streamvault.app
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -25,6 +25,7 @@ import com.streamvault.app.features.debrid.toastMessage
 import com.streamvault.app.features.details.MetaDetailsRepository
 import com.streamvault.app.features.p2p.P2pConsentDialog
 import com.streamvault.app.features.p2p.P2pSettingsRepository
+import com.streamvault.app.features.player.LocalStreamProxy
 import com.streamvault.app.features.player.PlayerLaunch
 import com.streamvault.app.features.player.PlayerLaunchStore
 import com.streamvault.app.features.player.PlayerSettingsRepository
@@ -457,11 +458,17 @@ internal fun StreamDestination(
                 contentLanguage = resolveLaunchContentLanguage(),
             )
         }
+        val sanitizedRequestHeaders = sanitizePlaybackHeaders(stream.behaviorHints.proxyHeaders?.request)
+        val playbackSourceUrl = if (!sanitizedRequestHeaders.isNullOrEmpty()) {
+            LocalStreamProxy.wrapUrl(sourceUrl, sanitizedRequestHeaders)
+        } else {
+            sourceUrl
+        }
         val playerLaunch = PlayerLaunch(
             profileId = launch.profileId,
             title = launch.title,
-            sourceUrl = sourceUrl,
-            sourceHeaders = sanitizePlaybackHeaders(stream.behaviorHints.proxyHeaders?.request),
+            sourceUrl = playbackSourceUrl,
+            sourceHeaders = sanitizedRequestHeaders,
             sourceResponseHeaders = sanitizePlaybackResponseHeaders(stream.behaviorHints.proxyHeaders?.response),
             externalSubtitles = stream.externalSubtitles,
             streamType = stream.streamType,
@@ -605,11 +612,17 @@ internal fun StreamDestination(
                 contentLanguage = resolveLaunchContentLanguage(),
             )
         }
+        val sanitizedRequestHeaders = sanitizePlaybackHeaders(stream.behaviorHints.proxyHeaders?.request)
+        val playbackSourceUrl = if (!sanitizedRequestHeaders.isNullOrEmpty()) {
+            LocalStreamProxy.wrapUrl(sourceUrl, sanitizedRequestHeaders)
+        } else {
+            sourceUrl
+        }
         val playerLaunch = PlayerLaunch(
             profileId = launch.profileId,
             title = launch.title,
-            sourceUrl = sourceUrl,
-            sourceHeaders = sanitizePlaybackHeaders(stream.behaviorHints.proxyHeaders?.request),
+            sourceUrl = playbackSourceUrl,
+            sourceHeaders = sanitizedRequestHeaders,
             sourceResponseHeaders = sanitizePlaybackResponseHeaders(stream.behaviorHints.proxyHeaders?.response),
             externalSubtitles = stream.externalSubtitles,
             streamType = stream.streamType,
