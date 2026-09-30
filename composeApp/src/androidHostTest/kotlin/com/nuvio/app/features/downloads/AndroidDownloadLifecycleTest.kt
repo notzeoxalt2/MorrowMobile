@@ -19,7 +19,7 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 @RunWith(RobolectricTestRunner::class)
-@Config(sdk = [34, 36])
+@Config(sdk = [34, 36], shadows = [AtomicFileRenameShadow::class])
 class AndroidDownloadLifecycleTest {
     @get:Rule val temporary = TemporaryFolder()
 
@@ -49,6 +49,8 @@ class AndroidDownloadLifecycleTest {
         store.update(transfer.item.fileName, transfer.generation) {
             it.copy(validator = "\"v1\"", item = it.item.copy(downloadedBytes = 12L, totalBytes = 100L))
         }
+        assertEquals(12L, store.get(transfer.item.fileName)?.item?.downloadedBytes, "In-memory progress")
+        assertTrue(directory.listFiles().orEmpty().any { it.readText().contains("\"downloadedBytes\":12") }, "Saved progress JSON")
 
         val restored = assertNotNull(AndroidDownloadStore(directory).get(transfer.item.fileName))
 

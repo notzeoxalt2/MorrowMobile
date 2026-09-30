@@ -105,9 +105,13 @@ internal fun AppGate(
 
     LaunchedEffect(Unit) {
         if (!ownsAppRuntime) return@LaunchedEffect
+        ProfileRepository.loadCachedProfiles()
+    }
+
+    LaunchedEffect(Unit) {
+        if (!ownsAppRuntime) return@LaunchedEffect
         NetworkStatusRepository.ensureStarted()
         MemberAccessRepository.ensureStarted()
-        ProfileRepository.loadCachedProfiles()
         AvatarRepository.fetchAvatars()
     }
 

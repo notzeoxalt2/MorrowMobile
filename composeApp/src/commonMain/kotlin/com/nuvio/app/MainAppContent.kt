@@ -838,7 +838,7 @@ internal fun MainAppContent(
                 initialPositionMs = resumeEntry?.lastPositionMs?.takeIf { it > 0L } ?: 0L,
                 initialProgressFraction = resumeEntry?.progressFraction?.takeIf { it > 0f },
             )
-            if (playerSettingsUiState.externalPlayerEnabled) {
+            if (playerSettingsUiState.externalPlayerEnabled && !sourceUrl.endsWith(".morrowoffline")) {
                 coroutineScope.launch { openExternalPlayback(playerLaunch) }
                 return
             }
@@ -960,7 +960,7 @@ internal fun MainAppContent(
                         initialPositionMs = targetResumePositionMs,
                         initialProgressFraction = targetResumeProgressFraction,
                     )
-                    if (playerSettingsUiState.externalPlayerEnabled) {
+                    if (playerSettingsUiState.externalPlayerEnabled && !localSourceUrl.endsWith(".morrowoffline")) {
                         coroutineScope.launch { openExternalPlayback(playerLaunch) }
                         return
                     }

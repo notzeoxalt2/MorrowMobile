@@ -65,6 +65,8 @@ import androidx.media3.ui.PlayerView
 import androidx.media3.ui.SubtitleView
 import androidx.media3.ui.CaptionStyleCompat
 import com.streamvault.app.R
+import com.streamvault.app.features.downloads.AdaptiveDownloadStorage
+import com.streamvault.app.features.downloads.AdaptivePlayback
 import com.streamvault.app.features.streams.normalizeStreamType
 import `is`.xyz.mpv.BaseMPVView
 import `is`.xyz.mpv.MPV
@@ -115,6 +117,8 @@ actual fun PlatformPlayerSurface(
     onSnapshot: (PlayerPlaybackSnapshot) -> Unit,
     onError: (String?) -> Unit,
 ) {
+    val context = LocalContext.current
+    val offlinePlayback = remember(context, sourceUrl) { AdaptiveDownloadStorage.resolve(context, sourceUrl) }
     val playerSettings = remember {
         PlayerSettingsRepository.ensureLoaded()
         PlayerSettingsRepository.uiState.value
@@ -129,13 +133,15 @@ actual fun PlatformPlayerSurface(
         initialPositionRequestKey.orEmpty(),
     )
     var activeEngine by remember(playerSourceKey, playerSettings.androidPlaybackEngine) {
-        mutableStateOf(playerSettings.androidPlaybackEngine.initialAndroidEngine())
+        mutableStateOf(if (offlinePlayback != null) ResolvedAndroidPlaybackEngine.ExoPlayer
+            else playerSettings.androidPlaybackEngine.initialAndroidEngine())
     }
 
     when (activeEngine) {
         ResolvedAndroidPlaybackEngine.ExoPlayer -> ExoPlayerSurface(
-            sourceUrl = sourceUrl,
-            sourceAudioUrl = sourceAudioUrl,
+            sourceUrl = offlinePlayback?.sourceUrl ?: sourceUrl,
+            offlinePlayback = offlinePlayback,
+            sourceAudioUrl = sourceAudioUrl.takeIf { offlinePlayback == null },
             sourceHeaders = sourceHeaders,
             sourceResponseHeaders = sourceResponseHeaders,
             externalSubtitles = externalSubtitles,
@@ -151,7 +157,7 @@ actual fun PlatformPlayerSurface(
             onControllerReady = onControllerReady,
             onSnapshot = onSnapshot,
             onError = { message ->
-                if (message != null && playerSettings.androidPlaybackEngine == AndroidPlaybackEngine.Auto) {
+                if (message != null && offlinePlayback == null && playerSettings.androidPlaybackEngine == AndroidPlaybackEngine.Auto) {
                     Log.w(TAG, "ExoPlayer failed; falling back to libmpv: $message")
                     initialPositionRequestKey?.let { key ->
                         onInitialPositionHandled(key, false)
@@ -204,6 +210,7 @@ private fun AndroidPlaybackEngine.initialAndroidEngine(): ResolvedAndroidPlaybac
 @Composable
 private fun ExoPlayerSurface(
     sourceUrl: String,
+    offlinePlayback: AdaptivePlayback? = null,
     sourceAudioUrl: String?,
     sourceHeaders: Map<String, String>,
     sourceResponseHeaders: Map<String, String>,
@@ -277,6 +284,7 @@ private fun ExoPlayerSurface(
                 streamType = normalizedStreamType,
             ).buildUpon()
                 .setMediaId(sourceUrl)
+                .apply { if (offlinePlayback != null) setMimeType(offlinePlayback.mimeType) }
                 .apply {
                     val subtitleConfigs = startupSubtitleConfigurations(externalSubtitles)
                     if (subtitleConfigs.isNotEmpty()) {
@@ -301,7 +309,8 @@ private fun ExoPlayerSurface(
         useYoutubeChunkedPlayback,
         externalSubtitles,
     ) {
-        PlatformPlaybackDataSourceFactory.create(
+        if (offlinePlayback != null) AdaptiveDownloadStorage.playbackFactory(context, offlinePlayback)
+        else PlatformPlaybackDataSourceFactory.create(
             context = context,
             defaultRequestHeaders = sanitizedSourceHeaders,
             defaultResponseHeaders = sanitizedSourceResponseHeaders,
@@ -559,7 +568,7 @@ private fun ExoPlayerSurface(
                         error.errorCode == PlaybackException.ERROR_CODE_IO_UNSPECIFIED ||
                         error.cause?.toString()?.contains("UnrecognizedInputFormatException") == true
 
-                if (isSourceError && !probeAttempted) {
+                if (offlinePlayback == null && isSourceError && !probeAttempted) {
                     probeAttempted = true
                     coroutineScope.launch {
                         val probedMime = withContext(Dispatchers.IO) {

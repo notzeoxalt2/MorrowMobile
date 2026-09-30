@@ -15,6 +15,7 @@ import java.io.File
 import java.net.URI
 
 internal actual object DownloadsPlatformDownloader {
+    actual val supportsAdaptiveDownloads: Boolean = true
     private var appContext: Context? = null
     private var downloadScheduler: AndroidDownloadScheduler? = null
     private val observerScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
@@ -72,6 +73,7 @@ internal actual object DownloadsPlatformDownloader {
     actual fun removeFile(localFileUri: String?): Boolean {
         if (localFileUri.isNullOrBlank()) return false
         val file = localFileUri.toLocalFileOrNull() ?: return false
+        if (file.name.endsWith(".morrowoffline")) AdaptiveDownloadStorage.remove(file)
         return runCatching { file.delete() }.getOrDefault(false)
     }
 

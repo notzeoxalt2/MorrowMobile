@@ -123,7 +123,8 @@ object DownloadsRepository {
             ?.takeIf { it.isNotBlank() }
             ?: return DownloadEnqueueResult.MissingUrl
 
-        if (!sourceUrl.isSupportedDownloadUrl()) {
+        val adaptiveType = adaptiveDownloadType(sourceUrl, stream.streamType)
+        if (!sourceUrl.isSupportedDownloadUrl() || (adaptiveType != null && !DownloadsPlatformDownloader.supportsAdaptiveDownloads)) {
             return DownloadEnqueueResult.UnsupportedFormat
         }
 
@@ -154,6 +155,7 @@ object DownloadsRepository {
             fallbackTitle = stream.streamLabel,
             sourceUrl = sourceUrl,
             downloadId = downloadId,
+            adaptive = adaptiveType != null,
         )
 
         val item = DownloadItem(
@@ -175,6 +177,7 @@ object DownloadsRepository {
             providerName = stream.addonName,
             providerAddonId = stream.addonId,
             sourceUrl = sourceUrl,
+            sourceStreamType = adaptiveType,
             sourceHeaders = sanitizeRequestHeaders(stream.behaviorHints.proxyHeaders?.request),
             sourceResponseHeaders = sanitizeResponseHeaders(stream.behaviorHints.proxyHeaders?.response),
             subtitleRequests = addonSubtitleRequests(contentType, videoId),
@@ -508,6 +511,7 @@ private fun buildFileName(
     fallbackTitle: String,
     sourceUrl: String,
     downloadId: String,
+    adaptive: Boolean = false,
 ): String {
     val baseTitle = if (seasonNumber != null && episodeNumber != null) {
         buildString {
@@ -525,7 +529,7 @@ private fun buildFileName(
         title.ifBlank { fallbackTitle }
     }
 
-    val extension = sourceUrl.fileExtensionFromUrl()
+    val extension = if (adaptive) "morrowoffline" else sourceUrl.fileExtensionFromUrl()
     return buildString {
         append(baseTitle.sanitizeFileName().ifBlank { "download" }.take(92))
         append('_')
@@ -554,8 +558,16 @@ private fun String.fileExtensionFromUrl(): String {
 private fun String.isSupportedDownloadUrl(): Boolean {
     val normalized = trim().lowercase()
     if (normalized.startsWith("magnet:")) return false
-    if (normalized.endsWith(".m3u8") || normalized.contains(".m3u8?")) return false
-    if (normalized.endsWith(".mpd") || normalized.contains(".mpd?")) return false
     if (normalized.endsWith(".torrent") || normalized.contains(".torrent?")) return false
     return normalized.startsWith("http://") || normalized.startsWith("https://")
+}
+
+internal fun adaptiveDownloadType(url: String, type: String? = null): String? {
+    val normalized = url.substringBefore('?').substringBefore('#').lowercase()
+    return when {
+        type?.lowercase() in listOf("hls", "m3u8", "application/x-mpegurl", "application/vnd.apple.mpegurl") ||
+            normalized.endsWith(".m3u8") || normalized.contains("/m3u8/") -> "hls"
+        type?.lowercase() in listOf("dash", "mpd", "application/dash+xml") || normalized.endsWith(".mpd") -> "dash"
+        else -> null
+    }
 }

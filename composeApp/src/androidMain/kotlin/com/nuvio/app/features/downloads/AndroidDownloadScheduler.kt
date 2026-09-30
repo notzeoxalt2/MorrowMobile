@@ -35,7 +35,9 @@ import kotlinx.coroutines.withContext
 import okhttp3.ConnectionPool
 
 internal class AndroidDownloadScheduler(val context: Context) {
-    val store = AndroidDownloadStore(File(context.filesDir, "download-transfers"))
+    val store by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        AndroidDownloadStore(File(context.filesDir, "download-transfers"))
+    }
     val directory = File(context.filesDir, "downloads")
     private val locks = ConcurrentHashMap<String, Mutex>()
     private val cleanupScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
@@ -124,6 +126,7 @@ internal class AndroidDownloadScheduler(val context: Context) {
             lock(fileName).withLock {
                 if (store.get(fileName) == null) {
                     File(directory, "$fileName.part").delete()
+                    if (fileName.endsWith(".morrowoffline")) AdaptiveDownloadStorage.remove(File(directory, fileName))
                     DownloadSubtitleStorage(File(directory, fileName).toURI().toString()).remove()
                 }
             }
@@ -155,7 +158,17 @@ internal class AndroidDownloadScheduler(val context: Context) {
             currentCoroutineContext().ensureActive()
             if (!isActive(transfer)) return@withLock false
             var lastProgressAt = 0L
-            val partial = if (destination.isFile) destination else transferAndroidDownload(
+            val partial = if (destination.isFile) destination else if (fileName.endsWith(".morrowoffline")) {
+                AdaptiveDownloadStorage.download(context, transfer.item, directory, client) { bytes, total ->
+                    val now = SystemClock.elapsedRealtime()
+                    if (now - lastProgressAt >= 1_000L || bytes == total) {
+                        lastProgressAt = now
+                        updateActive(transfer) {
+                            it.copy(item = it.item.copy(downloadedBytes = bytes, totalBytes = total))
+                        }?.let(onProgress)
+                    }
+                }
+            } else transferAndroidDownload(
                 item = transfer.item,
                 directory = directory,
                 validator = transfer.validator,
@@ -178,7 +191,8 @@ internal class AndroidDownloadScheduler(val context: Context) {
                 if (partial != destination && !partial.renameTo(destination)) {
                     throw IOException("Could not finalize the downloaded file")
                 }
-                val bytes = destination.length()
+                val bytes = if (fileName.endsWith(".morrowoffline")) AdaptiveDownloadStorage.bytes(context, destination)
+                    else destination.length()
                 current.copy(item = current.item.copy(
                     status = DownloadStatus.Completed,
                     localFileUri = destination.toURI().toString(),

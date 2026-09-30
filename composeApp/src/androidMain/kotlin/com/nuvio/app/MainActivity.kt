@@ -12,6 +12,9 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.withFrameNanos
+import kotlinx.coroutines.withContext
 import com.streamvault.app.core.auth.AuthStorage
 import com.streamvault.app.core.network.ServerConfigurationStorage
 import com.streamvault.app.core.diagnostics.SentryInitializer
@@ -76,7 +79,7 @@ open class MainActivity : AppCompatActivity() {
     private var pipRemoteActionReceiver: PipRemoteActionReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
+        installSplashScreen().setOnExitAnimationListener { splash -> splash.remove() }
         enableEdgeToEdge(
             navigationBarStyle = SystemBarStyle.dark(
                 scrim = 0xFF020404.toInt(),
@@ -85,7 +88,6 @@ open class MainActivity : AppCompatActivity() {
         ThemeSettingsStorage.initialize(applicationContext)
         AppIconPlatform.initialize(applicationContext)
         SentrySettingsStorage.initialize(applicationContext)
-        SentryInitializer.start(application)
         super.onCreate(savedInstanceState)
         window.setBackgroundDrawableResource(R.color.streamvault_background)
         pipRemoteActionReceiver = PipRemoteActionReceiver.register(this)
@@ -148,6 +150,10 @@ open class MainActivity : AppCompatActivity() {
         }
 
         setContent {
+            LaunchedEffect(Unit) {
+                withFrameNanos { }
+                withContext(Dispatchers.IO) { SentryInitializer.start(application) }
+            }
             App()
         }
     }

@@ -12,6 +12,10 @@ Use [Morrow releases](https://github.com/notzeoxalt2/MorrowMobile/releases) for 
 
 Open **Settings → Providers → Install Morrow Providers** to install **Morrow Anime X1** and **Morrow Movies & TV**. Anime X2 is consolidated into X1. Provider availability is tested separately from application builds.
 
+## Offline episodes on Android
+
+Completed, unprotected HLS/DASH sources and direct video files can be saved through the episode Download action. Adaptive episodes play in Morrow's built-in player from a persistent offline cache. See [offline download support and verification](OFFLINE_DOWNLOADS.md) for current limits.
+
 ## Build
 
 Requires a compatible JDK and Android SDK. Configure `sdk.dir` in your local `local.properties`, then run:
