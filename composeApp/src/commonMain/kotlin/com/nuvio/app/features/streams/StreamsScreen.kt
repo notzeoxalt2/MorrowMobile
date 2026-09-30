@@ -745,6 +745,7 @@ internal fun ProviderFilterRow(
     modifier: Modifier = Modifier,
 ) {
     val addonGroups = groups.filter { it.streams.isNotEmpty() || it.isLoading }
+        .sortedBy { providerDisplayName(it.addonName).lowercase() }
 
     Row(
         modifier = modifier
@@ -767,7 +768,7 @@ internal fun ProviderFilterRow(
         )
         addonGroups.forEach { group ->
             FilterChip(
-                label = group.addonName,
+                label = providerDisplayName(group.addonName),
                 isSelected = selectedFilter == group.addonId,
                 onClick = { onFilterSelected(group.addonId) },
             )
@@ -838,6 +839,7 @@ private fun FilterChip(
                 )
             }
             if (label != null) {
+                ProviderLogo(label)
                 Text(
                     text = label,
                     style = MaterialTheme.typography.labelMedium.copy(
@@ -906,7 +908,7 @@ internal fun StreamList(
             }
 
             else -> {
-                filteredGroups.forEachIndexed { groupIndex, group ->
+                filteredGroups.sortedBy { providerDisplayName(it.addonName).lowercase() }.forEachIndexed { groupIndex, group ->
                     streamSection(
                         sectionKey = streamSectionRenderKey(groupIndex = groupIndex, group = group),
                         group = group,
@@ -975,7 +977,7 @@ private fun LazyListScope.streamSection(
     val showSourceHeaders = sortedSources.size > 1
 
     sortedSources.forEachIndexed { sourceIndex, sourceName ->
-        val sourceStreams = streamsBySource[sourceName].orEmpty()
+        val sourceStreams = streamsBySource[sourceName].orEmpty().sortedForGroupedDisplay()
         if (showSourceHeaders) {
             item(key = "source_${sectionKey}_$sourceIndex") {
                 StreamSourceHeader(sourceName = sourceName)
@@ -1070,7 +1072,7 @@ private fun StreamSectionHeader(
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Text(
-            text = addonName,
+            text = providerDisplayName(addonName),
             style = MaterialTheme.typography.bodyMedium.copy(
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
