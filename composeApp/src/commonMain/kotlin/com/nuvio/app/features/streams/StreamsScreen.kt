@@ -790,7 +790,16 @@ internal fun ProviderFilterRow(
             isSelected = selectedFilter == null,
             onClick = { onFilterSelected(null) },
         )
-        addonGroups.forEach { group ->
+        listOf("movies" to "Movies", "series" to "Series", "anime" to "Anime").forEach { (category, label) ->
+            FilterChip(
+                label = label,
+                isSelected = selectedFilter == "category:$category",
+                onClick = { onFilterSelected("category:$category") },
+            )
+        }
+        addonGroups.filter { group ->
+            selectedFilter?.startsWith("category:") != true || selectedFilter.removePrefix("category:") in group.sourceCategories
+        }.forEach { group ->
             FilterChip(
                 label = providerDisplayName(group.addonName),
                 logoUrl = group.streams.firstNotNullOfOrNull { it.addonLogo },
@@ -938,7 +947,7 @@ internal fun StreamList(
                     streamSection(
                         sectionKey = streamSectionRenderKey(groupIndex = groupIndex, group = group),
                         group = group,
-                        showHeader = uiState.selectedFilter == null,
+                            showHeader = uiState.selectedFilter == null || uiState.selectedFilter?.startsWith("category:") == true,
                         debridEnabled = debridEnabled,
                         appendInstantServiceToDefaultName = appendInstantServiceToDefaultName,
                         showFileSizeBadges = streamBadgeSettings.showFileSizeBadges,
