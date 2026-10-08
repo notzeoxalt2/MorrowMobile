@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -81,6 +82,8 @@ internal fun PlayerToolbar(
 
 @Composable
 internal fun PlayerControlActions(
+    videoQuality: VideoQuality,
+    onQualityClick: (() -> Unit)?,
     playbackSnapshot: PlayerPlaybackSnapshot,
     displayedPositionMs: Long,
     showRemainingTime: Boolean,
@@ -100,6 +103,9 @@ internal fun PlayerControlActions(
     onInteraction: () -> Unit,
 ) {
     val actions = listOfNotNull(
+        onQualityClick?.let {
+            PlayerControlAction("Quality: ${videoQuality.label}", it, icon = Icons.Rounded.Build, visibleLabel = "Quality ${videoQuality.label}")
+        },
         onNextEpisodeClick?.let {
             PlayerControlAction(
                 stringResource(Res.string.player_next_episode), it,
@@ -180,6 +186,7 @@ internal fun PlayerControlActions(
                         icon = action.icon,
                         painter = action.painter,
                         iconSize = action.iconSize,
+                        visibleLabel = action.visibleLabel,
                     )
                 }
                 if (hasOverflow) {
@@ -226,7 +233,19 @@ private fun PlayerAction(
     icon: ImageVector? = null,
     painter: Painter? = null,
     iconSize: Dp = 24.dp,
+    visibleLabel: String? = null,
 ) {
+    if (visibleLabel != null) {
+        Column(
+            modifier = Modifier.height(48.dp).widthIn(min = 76.dp).clickable(role = Role.Button, onClickLabel = description, onClick = onClick).padding(horizontal = 6.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            if (icon != null) Icon(icon, description, tint = Color.White, modifier = Modifier.size(20.dp))
+            Text(visibleLabel, color = Color.White, fontSize = 10.sp, maxLines = 1)
+        }
+        return
+    }
     IconButton(onClick = onClick, modifier = Modifier.size(48.dp)) {
         if (painter != null) {
             Icon(painter, description, tint = Color.White, modifier = Modifier.size(iconSize))
@@ -242,4 +261,5 @@ private data class PlayerControlAction(
     val icon: ImageVector? = null,
     val painter: Painter? = null,
     val iconSize: Dp = 24.dp,
+    val visibleLabel: String? = null,
 )

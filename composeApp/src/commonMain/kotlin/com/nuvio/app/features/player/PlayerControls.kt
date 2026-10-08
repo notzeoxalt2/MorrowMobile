@@ -26,6 +26,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Speed
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.SwapHoriz
 import androidx.compose.material.icons.rounded.Build
 import androidx.compose.material.icons.rounded.Flag
@@ -107,6 +108,8 @@ internal fun PlayerControlsShell(
     onSubtitleClick: () -> Unit,
     onAudioClick: () -> Unit,
     onVideoSettingsClick: (() -> Unit)? = null,
+    videoQuality: VideoQuality = VideoQuality.Max,
+    onQualityClick: (() -> Unit)? = null,
     onSourcesClick: (() -> Unit)? = null,
     onEpisodesClick: (() -> Unit)? = null,
     onOpenInExternalPlayer: (() -> Unit)? = null,
@@ -251,6 +254,8 @@ internal fun PlayerControlsShell(
                     onSubtitleClick = onSubtitleClick,
                     onAudioClick = onAudioClick,
                     onSourcesClick = onSourcesClick,
+                    videoQuality = videoQuality,
+                    onQualityClick = onQualityClick,
                     onEpisodesClick = onEpisodesClick,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
@@ -291,6 +296,8 @@ internal fun PlayerControlsShell(
                         },
                     )
                     PlayerControlActions(
+                        videoQuality = videoQuality,
+                        onQualityClick = onQualityClick,
                         playbackSnapshot = playbackSnapshot,
                         displayedPositionMs = displayedPositionMs,
                         showRemainingTime = showRemainingTime,
@@ -609,6 +616,8 @@ private fun ProgressControls(
     onSubtitleClick: () -> Unit,
     onAudioClick: () -> Unit,
     onSourcesClick: (() -> Unit)? = null,
+    videoQuality: VideoQuality = VideoQuality.Max,
+    onQualityClick: (() -> Unit)? = null,
     onEpisodesClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
@@ -664,6 +673,9 @@ private fun ProgressControls(
                         painter = audioPainter,
                         onClick = onAudioClick,
                     )
+                    if (onQualityClick != null) {
+                        PlayerActionPillButton(label = "Quality: ${videoQuality.label}", icon = Icons.Filled.Settings, onClick = onQualityClick)
+                    }
                     if (onSourcesClick != null) {
                         PlayerActionPillButton(
                             label = stringResource(Res.string.compose_player_sources),

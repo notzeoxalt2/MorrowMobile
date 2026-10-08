@@ -162,6 +162,7 @@ internal fun PlayerScreenRuntime.RenderPlayerRuntimeUi() {
                     }
                 },
                 onControllerReady = { controller ->
+                    controller?.setVideoQuality(videoQuality)
                     playerController = controller
                     playerControllerSourceUrl = activeSourceUrl
                 },
@@ -293,6 +294,8 @@ private fun PlayerScreenRuntime.RenderPlayerControls(displayedPositionMs: Long, 
                 refreshTracks()
                 showAudioModal = true
             },
+            videoQuality = videoQuality,
+            onQualityClick = { showVideoQualityModal = true; controlsVisible = true },
             onVideoSettingsClick = {
                 if (isIos) {
                     showVideoSettingsModal = true

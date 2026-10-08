@@ -5,6 +5,10 @@ import android.content.SharedPreferences
 import com.streamvault.app.core.diagnostics.SentryNetworkBreadcrumbInterceptor
 import com.streamvault.app.core.network.IPv4FirstDns
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.suspendCancellableCoroutine
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.Response
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.runBlocking
@@ -301,33 +305,30 @@ actual suspend fun httpRequestRaw(
                 .build()
         }
 
-        val call = client.newCall(request)
-        val cancelHandle = coroutineContext[Job]?.invokeOnCompletion { cause ->
-            if (cause is CancellationException) {
-                call.cancel()
-            }
-        }
-        try {
-            call.execute().use { response ->
-                val payload = readResponseBodyLimited(response.body, maxResponseBodyBytes)
+        client.newCall(request).awaitRawHttpResponse(maxResponseBodyBytes)
+    }
 
-                RawHttpResponse(
-                    status = response.code,
-                    statusText = response.message,
-                    url = response.request.url.toString(),
-                    body = payload.first,
-            bodyBase64 = payload.second,
-                    headers = response.headers.toMultimap().mapValues { (_, values) ->
-                        values.joinToString(",")
-                    }.mapKeys { (name, _) ->
-                        name.lowercase()
-                    },
-                )
+// Cancel the actual socket while headers or the response body are still pending.
+private suspend fun Call.awaitRawHttpResponse(maxResponseBodyBytes: Int): RawHttpResponse =
+    suspendCancellableCoroutine { continuation ->
+        continuation.invokeOnCancellation { cancel() }
+        enqueue(object : Callback {
+            override fun onFailure(call: Call, error: IOException) {
+                continuation.resumeWith(Result.failure(error))
             }
-        } catch (error: IOException) {
-            if (call.isCanceled()) throw CancellationException("Cancelled HTTP request", error)
-            throw error
-        } finally {
-            cancelHandle?.dispose()
-        }
+            override fun onResponse(call: Call, response: Response) {
+                val result = runCatching { response.use {
+                    val (responseText, responseBase64) = readResponseBodyLimited(response.body, maxResponseBodyBytes)
+                    RawHttpResponse(
+                        status = response.code, statusText = response.message,
+                        url = response.request.url.toString(),
+                        body = responseText,
+                        bodyBase64 = responseBase64,
+                        headers = response.headers.toMultimap().mapValues { (_, values) -> values.joinToString(",") }
+                            .mapKeys { (name, _) -> name.lowercase() },
+                    )
+                } }
+                continuation.resumeWith(result)
+            }
+        })
     }

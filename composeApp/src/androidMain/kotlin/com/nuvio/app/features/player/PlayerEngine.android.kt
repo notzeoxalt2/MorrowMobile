@@ -366,6 +366,9 @@ private fun ExoPlayerSurface(
         val trackSelector = DefaultTrackSelector(context).apply {
             var parameters = buildUponParameters()
                 .setAllowInvalidateSelectionsOnRendererCapabilitiesChange(true)
+                .clearVideoSizeConstraints()
+                .setViewportSize(Int.MAX_VALUE, Int.MAX_VALUE, false)
+                .setForceHighestSupportedBitrate(true)
             if (playerSettings.tunnelingEnabled) {
                 parameters = parameters.setTunnelingEnabled(true)
             }
@@ -929,6 +932,9 @@ private fun ExoPlayerSurface(
 
                 override fun setVideoQuality(quality: VideoQuality) {
                     val builder = exoPlayer.trackSelectionParameters.buildUpon()
+                        .clearOverridesOfType(C.TRACK_TYPE_VIDEO)
+                        .setForceLowestBitrate(false)
+                        .setViewportSize(Int.MAX_VALUE, Int.MAX_VALUE, false)
                     when (quality) {
                         VideoQuality.Auto -> {
                             builder.clearVideoSizeConstraints()
@@ -1314,6 +1320,7 @@ private class NuvioLibmpvView(
     private val mpvScope = CoroutineScope(SupervisorJob() + mpvDispatcher)
     private val released = AtomicBoolean(false)
     private var currentSourceUrl: String? = null
+    private var currentVideoQuality = VideoQuality.Max
     private var currentSourceAudioUrl: String? = null
     private var currentRequestHeaders: Map<String, String> = emptyMap()
     private var currentExternalSubtitles: List<com.streamvault.app.features.streams.StreamSubtitle> = emptyList()
@@ -1389,12 +1396,14 @@ private class NuvioLibmpvView(
         }
     }
 
-    private fun loadCurrentSourceNow(playWhenReady: Boolean) {
+    private fun loadCurrentSourceNow(playWhenReady: Boolean, startSeconds: Double = 0.0) {
         val sourceUrl = currentSourceUrl ?: return
         applyRequestHeadersNow(currentRequestHeaders)
         setPausedNow(!playWhenReady)
         mpv.setPropertyString("aid", "auto")
-        mpv.command("loadfile", sourceUrl.toMpvSource(), "replace")
+        mpv.setPropertyString("start", startSeconds.coerceAtLeast(0.0).toString())
+        val playbackUrl = LocalStreamProxy.withVideoQuality(sourceUrl, currentRequestHeaders, currentVideoQuality)
+        mpv.command("loadfile", playbackUrl.toMpvSource(), "replace")
         currentSourceAudioUrl?.takeIf { it.isNotBlank() }?.let { sourceAudioUrl ->
             mpv.command("audio-add", sourceAudioUrl.toMpvSource(), "auto")
         }
@@ -1653,6 +1662,10 @@ private class NuvioLibmpvView(
 
             override fun setVideoQuality(quality: VideoQuality) {
                 executeMpv {
+                    if (currentVideoQuality == quality) return@executeMpv
+                    currentVideoQuality = quality
+                    val position = mpv.getPropertyDouble("time-pos") ?: 0.0
+                    val paused = mpv.getPropertyBoolean("pause") ?: true
                     when (quality) {
                         VideoQuality.Auto -> {
                             mpv.setPropertyString("hls-bitrate", "auto")
@@ -1675,6 +1688,7 @@ private class NuvioLibmpvView(
                             mpv.setPropertyString("ytdl-format", "bestvideo[height<=360]+bestaudio/best[height<=360]/best")
                         }
                     }
+                    if (currentSourceUrl != null) loadCurrentSourceNow(!paused, position)
                 }
             }
         }

@@ -769,6 +769,7 @@ internal fun ProviderFilterRow(
         addonGroups.forEach { group ->
             FilterChip(
                 label = providerDisplayName(group.addonName),
+                logoUrl = group.streams.firstNotNullOfOrNull { it.addonLogo },
                 isSelected = selectedFilter == group.addonId,
                 onClick = { onFilterSelected(group.addonId) },
             )
@@ -779,6 +780,7 @@ internal fun ProviderFilterRow(
 @Composable
 private fun FilterChip(
     label: String? = null,
+    logoUrl: String? = null,
     icon: ImageVector? = null,
     contentDescription: String? = null,
     isSelected: Boolean,
@@ -839,7 +841,7 @@ private fun FilterChip(
                 )
             }
             if (label != null) {
-                ProviderLogo(label)
+                ProviderLogo(label, logoUrl = logoUrl)
                 Text(
                     text = label,
                     style = MaterialTheme.typography.labelMedium.copy(
@@ -908,9 +910,15 @@ internal fun StreamList(
             }
 
             else -> {
-                filteredGroups.sortedBy { providerDisplayName(it.addonName).lowercase() }.forEachIndexed { groupIndex, group ->
+                filteredGroups.audioSections().forEach { audioSection ->
+                    if (audioSection.groups.any { it.streams.isNotEmpty() }) {
+                        item(key = "stream_audio_${audioSection.audioGroup.name}") {
+                            StreamSourceHeader(sourceName = audioSection.audioGroup.label)
+                        }
+                    }
+                    audioSection.groups.forEachIndexed { groupIndex, group ->
                     streamSection(
-                        sectionKey = streamSectionRenderKey(groupIndex = groupIndex, group = group),
+                        sectionKey = "${audioSection.audioGroup.name}:" + streamSectionRenderKey(groupIndex = groupIndex, group = group),
                         group = group,
                         showHeader = uiState.selectedFilter == null,
                         debridEnabled = debridEnabled,
@@ -926,6 +934,7 @@ internal fun StreamList(
                         resumePositionMs = resumePositionMs,
                         resumeProgressFraction = resumeProgressFraction,
                     )
+                    }
                 }
                 if (anyLoading) {
                     item {
