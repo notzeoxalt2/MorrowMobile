@@ -27,7 +27,7 @@ internal object ReleaseSelector {
             candidates
         } else {
             val nonPre = candidates.filterNot { it.prerelease }
-            nonPre.ifEmpty { candidates }
+            nonPre
         }
 
         return matching

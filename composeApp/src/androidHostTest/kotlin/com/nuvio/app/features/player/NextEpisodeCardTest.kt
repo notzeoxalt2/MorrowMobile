@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.player
+package com.streamvault.app.features.player
 
 import android.app.Application
 import androidx.compose.foundation.layout.Box
@@ -164,17 +164,10 @@ class NextEpisodeCardTest {
                         sideGestureSystemEdgeExclusionPx = 0f,
                         playerControlsLockedState = unlocked,
                         touchGesturesEnabledState = rememberUpdatedState(true),
-                        isHoldToSpeedGestureActiveState = unlocked,
-                        currentPositionMsState = rememberUpdatedState(30_000L),
-                        currentDurationMsState = rememberUpdatedState(120_000L),
-                        deactivateHoldToSpeedState = noop,
-                        showHorizontalSeekPreviewState = rememberUpdatedState { _: Long, _: Long -> seeks++ },
-                        showBrightnessFeedbackState = rememberUpdatedState { _: Float -> },
+                        isHoldToSpeedGestureActiveState = unlocked,                        deactivateHoldToSpeedState = noop,                        showBrightnessFeedbackState = rememberUpdatedState { _: Float -> },
                         showVolumeFeedbackState = rememberUpdatedState { _: PlayerAudioLevel -> },
                         clearLiveGestureFeedbackState = noop,
-                        revealLockedOverlayState = noop,
-                        commitHorizontalSeekState = rememberUpdatedState { _: Long -> seeks++ },
-                    ),
+                        revealLockedOverlayState = noop,                    ),
                     contentAlignment = Alignment.Center,
                 ) {
                     NextEpisodeCard(

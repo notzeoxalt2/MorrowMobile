@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.updater
+package com.streamvault.app.features.updater
 
 import android.app.Application
 import android.content.Context
@@ -23,34 +23,34 @@ class UpdatePreferencesTest {
 
     @Test
     fun betaDefaultSurvivesPromotionToStable() {
-        assertEquals(UpdateChannel.BETA, UpdatePreferences("1.1.0-beta.1").channel.value)
+        assertEquals(UpdateChannel.BETA, UpdatePreferences("1.1.0-beta.1", debugBuild = false).channel.value)
         assertEquals("beta", AppUpdaterPlatform.getUpdateChannel())
-        assertEquals(UpdateChannel.BETA, UpdatePreferences("1.1.0").channel.value)
+        assertEquals(UpdateChannel.BETA, UpdatePreferences("1.1.0", debugBuild = false).channel.value)
     }
 
     @Test
     fun stableChoiceSurvivesInstallingABetaBuild() {
-        val preferences = UpdatePreferences("1.1.0-beta.1")
+        val preferences = UpdatePreferences("1.1.0-beta.1", debugBuild = false)
         preferences.setChannel(UpdateChannel.STABLE)
 
-        assertEquals(UpdateChannel.STABLE, UpdatePreferences("1.1.0-beta.2").channel.value)
+        assertEquals(UpdateChannel.STABLE, UpdatePreferences("1.1.0-beta.2", debugBuild = false).channel.value)
     }
 
     @Test
     fun changingChannelClearsIgnoredRelease() {
-        val preferences = UpdatePreferences("1.1.0")
+        val preferences = UpdatePreferences("1.1.0", debugBuild = false)
         AppUpdaterPlatform.setIgnoredTag("1.2.0")
         preferences.setChannel(UpdateChannel.BETA)
 
         assertNull(AppUpdaterPlatform.getIgnoredTag())
         assertEquals(UpdateChannel.BETA, preferences.channel.value)
-        assertEquals(UpdateChannel.BETA, UpdatePreferences("1.1.0").channel.value)
+        assertEquals(UpdateChannel.BETA, UpdatePreferences("1.1.0", debugBuild = false).channel.value)
     }
 
     @Test
     fun initializationAndReselectingChannelPreserveIgnoredRelease() {
         AppUpdaterPlatform.setIgnoredTag("1.2.0")
-        val preferences = UpdatePreferences("1.1.0")
+        val preferences = UpdatePreferences("1.1.0", debugBuild = false)
         preferences.setChannel(UpdateChannel.STABLE)
 
         assertEquals("1.2.0", AppUpdaterPlatform.getIgnoredTag())
@@ -60,7 +60,7 @@ class UpdatePreferencesTest {
     fun invalidSavedChannelIsReplacedByBuildDefault() {
         AppUpdaterPlatform.setUpdateChannel("unknown")
 
-        assertEquals(UpdateChannel.BETA, UpdatePreferences("1.1.0-beta.1").channel.value)
+        assertEquals(UpdateChannel.BETA, UpdatePreferences("1.1.0-beta.1", debugBuild = false).channel.value)
         assertEquals("beta", AppUpdaterPlatform.getUpdateChannel())
     }
 }

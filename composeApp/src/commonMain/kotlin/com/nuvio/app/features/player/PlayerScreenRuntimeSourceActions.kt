@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.player
+package com.streamvault.app.features.player
 
 import com.streamvault.app.core.ui.NuvioToastController
 import com.streamvault.app.features.debrid.DirectDebridPlayableResult
@@ -394,6 +394,9 @@ internal fun PlayerScreenRuntime.playNextEpisode() {
         contentType = contentType,
         settings = playerSettingsUiState,
         currentStreamBingeGroup = currentStreamBingeGroup,
+        currentProviderId = activeProviderAddonId,
+        currentProviderName = activeProviderName,
+        currentStreamLabel = activeStreamTitle,
         onDownloadedEpisodeSelected = { item, episode -> switchToDownloadedEpisode(item, episode) },
         onEpisodeStreamSelected = { stream, episode -> switchToEpisodeStream(stream, episode) },
         onManualSelectionRequired = { nextVideo ->

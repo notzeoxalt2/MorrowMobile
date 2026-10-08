@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.updater
+package com.streamvault.app.features.updater
 
 import android.app.Application
 import android.content.Context
@@ -35,7 +35,7 @@ class AppUpdaterControllerTest {
         context.getSharedPreferences("nuvio_updater", Context.MODE_PRIVATE).edit().clear().commit()
         context.applicationInfo.flags = context.applicationInfo.flags or ApplicationInfo.FLAG_DEBUGGABLE
         AndroidAppUpdaterPlatform.initialize(context)
-        preferences = UpdatePreferences("1.1.0")
+        preferences = UpdatePreferences("1.1.0", debugBuild = false)
         scope = CoroutineScope(SupervisorJob() + Dispatchers.Unconfined)
     }
 
@@ -76,7 +76,9 @@ class AppUpdaterControllerTest {
 
         preferences.setChannel(UpdateChannel.BETA)
 
-        assertEquals(AppUpdaterUiState(updateChannel = UpdateChannel.BETA), controller.uiState.value)
+        assertEquals(UpdateChannel.BETA, controller.uiState.value.updateChannel)
+        assertFalse(controller.uiState.value.isDownloading)
+        assertFalse(controller.uiState.value.isChecking)
     }
 
     @Test
@@ -116,14 +118,16 @@ class AppUpdaterControllerTest {
 
     @Test
     fun channelChangeCancelsDebugDownloadAndClearsItsState() {
-        val controller = controller { error("Debug channel changes should not check for updates") }
+        val controller = controller { Result.failure(NoChannelReleaseException()) }
         controller.showDebugTestUpdate()
         controller.downloadUpdate()
         assertTrue(controller.uiState.value.isDownloading)
 
         preferences.setChannel(UpdateChannel.BETA)
 
-        assertEquals(AppUpdaterUiState(updateChannel = UpdateChannel.BETA), controller.uiState.value)
+        assertEquals(UpdateChannel.BETA, controller.uiState.value.updateChannel)
+        assertFalse(controller.uiState.value.isDownloading)
+        assertFalse(controller.uiState.value.isChecking)
     }
 
     private fun controller(fetch: suspend (UpdateChannel) -> Result<AppUpdate>) =

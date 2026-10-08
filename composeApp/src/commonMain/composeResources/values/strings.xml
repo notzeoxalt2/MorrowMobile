@@ -2333,4 +2333,7 @@
     <string name="compose_player_show_remaining_time">Show remaining time</string>
     <string name="compose_player_brightness">Brightness</string>
     <string name="compose_player_volume">Volume</string>
+    <string name="streams_download_confirm_title">Download this episode?</string>
+    <string name="streams_download_yes">Yes, download</string>
+    <string name="streams_download_no">No</string>
 </resources>

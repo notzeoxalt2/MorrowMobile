@@ -1,10 +1,20 @@
-﻿package com.streamvault.app.features.updater
+package com.streamvault.app.features.updater
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
 class AppUpdaterRepositoryTest {
+    @Test fun debugAndProductionAssetsCannotCrossUpdate() {
+        val response = """[{"tag_name":"v99.0.0","assets":[
+            {"name":"Morrow-full-debug.apk","browser_download_url":"https://example.com/debug.apk"},
+            {"name":"Morrow-release.apk","browser_download_url":"https://example.com/release.apk"}
+        ]}]"""
+        assertEquals("Morrow-full-debug.apk", AppUpdaterRepository.selectUpdate(response, UpdateChannel.BETA, emptyList(), debugBuild = true)?.assetName)
+        assertEquals("Morrow-release.apk", AppUpdaterRepository.selectUpdate(response, UpdateChannel.BETA, emptyList(), debugBuild = false)?.assetName)
+        val debugOnly = """{"tag_name":"v99.0.0","assets":[{"name":"Morrow-full-debug.apk","browser_download_url":"https://example.com/debug.apk"}]}"""
+        assertNull(AppUpdaterRepository.selectUpdate(debugOnly, UpdateChannel.BETA, emptyList(), debugBuild = false))
+    }
     @Test
     fun channelsUseTheSameReleaseEndpointsAsTv() {
         assertEquals("releases/latest", AppUpdaterRepository.releasePath(UpdateChannel.STABLE))

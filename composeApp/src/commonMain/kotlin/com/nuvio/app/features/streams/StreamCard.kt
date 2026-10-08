@@ -174,13 +174,13 @@ internal fun StreamCard(
             Spacer(modifier = Modifier.width(6.dp))
             IconButton(
                 onClick = onDownloadClick,
-                modifier = Modifier.size(36.dp),
+                modifier = Modifier.size(48.dp),
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Download,
                     contentDescription = "Download",
                     tint = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(22.dp),
+                    modifier = Modifier.size(20.dp),
                 )
             }
         }

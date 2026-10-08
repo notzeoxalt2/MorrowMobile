@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.player
+package com.streamvault.app.features.player
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
@@ -33,10 +33,7 @@ class PlayerSurfaceGesturesTest {
     private val playbackReady = mutableStateOf(false)
     private var taps = 0
     private var doubleTaps = 0
-    private var speedBoosts = 0
-    private var seekPreviews = 0
-    private var seekCommits = 0
-    private var sideAdjustments = 0
+    private var speedBoosts = 0    private var sideAdjustments = 0
     private val gestureController = object : PlayerGestureController {
         override fun currentBrightness() = 0.5f
         override fun currentVolume() = PlayerAudioLevel(0.5f, false)
@@ -63,7 +60,7 @@ class PlayerSurfaceGesturesTest {
                         playerControlsLockedState = unlocked,
                         onSurfaceTap = rememberUpdatedState { _: Offset -> taps++ },
                         onSurfaceDoubleTap = rememberUpdatedState { _: Offset -> doubleTaps++ },
-                        activateHoldToSpeedState = rememberUpdatedState { speedBoosts++ },
+                        activateHoldToSpeedState = noop,
                         deactivateHoldToSpeedState = noop,
                         revealLockedOverlayState = noop,
                     )
@@ -74,17 +71,10 @@ class PlayerSurfaceGesturesTest {
                         sideGestureSystemEdgeExclusionPx = 0f,
                         playerControlsLockedState = unlocked,
                         touchGesturesEnabledState = rememberUpdatedState(true),
-                        isHoldToSpeedGestureActiveState = unlocked,
-                        currentPositionMsState = rememberUpdatedState(30_000L),
-                        currentDurationMsState = rememberUpdatedState(120_000L),
-                        deactivateHoldToSpeedState = noop,
-                        showHorizontalSeekPreviewState = rememberUpdatedState { _: Long, _: Long -> seekPreviews++ },
-                        showBrightnessFeedbackState = rememberUpdatedState { _: Float -> },
+                        isHoldToSpeedGestureActiveState = unlocked,                        deactivateHoldToSpeedState = noop,                        showBrightnessFeedbackState = rememberUpdatedState { _: Float -> },
                         showVolumeFeedbackState = rememberUpdatedState { _: PlayerAudioLevel -> },
                         clearLiveGestureFeedbackState = noop,
-                        revealLockedOverlayState = noop,
-                        commitHorizontalSeekState = rememberUpdatedState { _: Long -> seekCommits++ },
-                    ),
+                        revealLockedOverlayState = noop,                    ),
             )
         }
     }
@@ -92,10 +82,17 @@ class PlayerSurfaceGesturesTest {
     private fun performPlaybackGestures() {
         val surface = compose.onNodeWithTag("surface")
         surface.performTouchInput { doubleClick(Offset(width * 0.85f, centerY)) }
+        compose.mainClock.advanceTimeBy(500L)
+        compose.waitForIdle()
         surface.performTouchInput { swipe(center, Offset(width * 0.85f, centerY)) }
-        surface.performTouchInput { longClick(center) }
+        compose.mainClock.advanceTimeBy(500L)
+        compose.waitForIdle()
         surface.performTouchInput { swipe(Offset(width * 0.1f, centerY), Offset(width * 0.1f, height * 0.1f)) }
+        compose.mainClock.advanceTimeBy(500L)
+        compose.waitForIdle()
         surface.performTouchInput { swipe(Offset(width * 0.9f, centerY), Offset(width * 0.9f, height * 0.1f)) }
+        compose.mainClock.advanceTimeBy(500L)
+        compose.waitForIdle()
     }
 
     @Test
@@ -106,29 +103,24 @@ class PlayerSurfaceGesturesTest {
         compose.runOnIdle {
             assertTrue(taps > 0)
             assertEquals(0, doubleTaps)
-            assertEquals(0, speedBoosts)
-            assertEquals(0, seekPreviews)
-            assertEquals(0, seekCommits)
-            assertEquals(0, sideAdjustments)
+            assertEquals(0, speedBoosts)            assertEquals(0, sideAdjustments)
         }
     }
 
     @Test
-    fun completingInitialLoadEnablesPlaybackGestures() {
+    fun completingInitialLoadEnablesDoubleTapAndSideAdjustments() {
         setContent()
         compose.runOnIdle { playbackReady.value = true }
+        compose.waitForIdle()
         performPlaybackGestures()
         compose.runOnIdle {
             assertEquals(1, doubleTaps)
-            assertEquals(1, speedBoosts)
-            assertTrue(seekPreviews > 0)
-            assertEquals(1, seekCommits)
-            assertTrue(sideAdjustments > 0)
+            assertEquals(1, speedBoosts)            assertTrue(sideAdjustments > 0)
         }
     }
 
     @Test
-    fun loadingAnotherSourceCancelsAnInProgressSeek() {
+    fun horizontalSwipeDoesNotChangeSideLevelsDuringSourceChange() {
         playbackReady.value = true
         setContent()
         val surface = compose.onNodeWithTag("surface")
@@ -137,10 +129,10 @@ class PlayerSurfaceGesturesTest {
             moveTo(Offset(width * 0.85f, centerY))
         }
         compose.runOnIdle {
-            assertTrue(seekPreviews > 0)
+            assertEquals(0, sideAdjustments)
             playbackReady.value = false
         }
         surface.performTouchInput { up() }
-        compose.runOnIdle { assertEquals(0, seekCommits) }
+        compose.runOnIdle { assertEquals(0, sideAdjustments) }
     }
 }

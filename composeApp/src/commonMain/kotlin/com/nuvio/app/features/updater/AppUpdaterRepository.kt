@@ -67,7 +67,7 @@ internal object AppUpdaterRepository {
                 currentCoroutineContext().ensureActive()
             }
             if (response.status in 200..299) {
-                val update = selectUpdate(response.body, channel, AppUpdaterPlatform.getSupportedAbis())
+                val update = selectUpdate(response.body, channel, AppUpdaterPlatform.getSupportedAbis(), AppUpdaterPlatform.isDebugBuild)
                 if (update != null) {
                     return@runCatching update
                 }
@@ -88,6 +88,7 @@ internal object AppUpdaterRepository {
         responseBody: String,
         channel: UpdateChannel,
         supportedAbis: List<String>,
+        debugBuild: Boolean = false,
     ): AppUpdate? {
         val releases = try {
             json.decodeFromString<List<GitHubReleaseDto>>(responseBody)
@@ -99,7 +100,10 @@ internal object AppUpdaterRepository {
             }
         }
         return ReleaseSelector.eligibleReleases(releases, channel).firstNotNullOfOrNull { release ->
-            val asset = chooseBestApkAsset(release.assets, supportedAbis) ?: return@firstNotNullOfOrNull null
+            val compatibleAssets = release.assets.filter { asset ->
+                asset.name.contains("debug", ignoreCase = true) == debugBuild
+            }
+            val asset = chooseBestApkAsset(compatibleAssets, supportedAbis) ?: return@firstNotNullOfOrNull null
             val tag = release.tagName?.takeIf { VersionUtils.parse(it) != null }
                 ?: release.name.orEmpty()
             AppUpdate(

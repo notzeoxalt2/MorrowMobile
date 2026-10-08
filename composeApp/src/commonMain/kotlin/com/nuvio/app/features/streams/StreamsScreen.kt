@@ -40,6 +40,8 @@ import androidx.compose.material.icons.rounded.Download
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.SearchOff
 import com.streamvault.app.core.ui.NuvioLoadingIndicator
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -87,6 +89,7 @@ import com.streamvault.app.features.debrid.DebridSettingsRepository
 import com.streamvault.app.features.debrid.DirectDebridPlayableResult
 import com.streamvault.app.features.debrid.DirectDebridPlaybackResolver
 import com.streamvault.app.features.debrid.toastMessage
+import com.streamvault.app.features.plugins.PluginRepository
 import com.streamvault.app.features.player.PlayerSettingsRepository
 import com.streamvault.app.features.watchprogress.WatchProgressRepository
 import com.streamvault.app.features.watchprogress.WatchProgressEntry
@@ -187,7 +190,9 @@ fun StreamsScreen(
     val effectiveResumePositionMs = resumeState.positionMs
     val effectiveResumeProgressFraction = resumeState.progressFraction
 
-    LaunchedEffect(type, videoId, seasonNumber, episodeNumber, manualSelection, title) {
+    val providerState by PluginRepository.uiState.collectAsStateWithLifecycle()
+    val providerRevision = providerState.scrapers.map { Triple(it.id, it.version, it.enabled) }
+    LaunchedEffect(type, videoId, seasonNumber, episodeNumber, manualSelection, title, providerRevision) {
         StreamsRepository.load(
             type = type,
             videoId = videoId,
@@ -242,7 +247,8 @@ fun StreamsScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background),
     ) {
-        val handleDownloadStream: (StreamItem) -> Unit = { stream ->
+        var pendingDownload by remember(videoId) { mutableStateOf<StreamItem?>(null) }
+        val enqueueDownloadStream: (StreamItem) -> Unit = { stream ->
             if (DirectDebridPlaybackResolver.shouldResolveToPlayableStream(stream)) {
                 downloadScope.launch {
                     val resolved = DirectDebridPlaybackResolver.resolveToPlayableStream(
@@ -297,6 +303,24 @@ fun StreamsScreen(
             }
         }
 
+        val handleDownloadStream: (StreamItem) -> Unit = { pendingDownload = it }
+        pendingDownload?.let { selected ->
+            AlertDialog(
+                onDismissRequest = { pendingDownload = null },
+                title = { Text(stringResource(Res.string.streams_download_confirm_title)) },
+                text = { Text(title + (episodeNumber?.let { " · E$it" } ?: "")) },
+                confirmButton = {
+                    TextButton(onClick = { pendingDownload = null; enqueueDownloadStream(selected) }) {
+                        Text(stringResource(Res.string.streams_download_yes))
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { pendingDownload = null }) {
+                        Text(stringResource(Res.string.streams_download_no))
+                    }
+                },
+            )
+        }
         val isTabletLayout = maxWidth >= 768.dp
 
         if (isTabletLayout) {
@@ -744,7 +768,7 @@ internal fun ProviderFilterRow(
     onRefresh: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val addonGroups = groups.filter { it.streams.isNotEmpty() || it.isLoading }
+    val addonGroups = groups.providerSections().filter { it.streams.isNotEmpty() || it.isLoading }
         .sortedBy { providerDisplayName(it.addonName).lowercase() }
 
     Row(
@@ -910,15 +934,9 @@ internal fun StreamList(
             }
 
             else -> {
-                filteredGroups.audioSections().forEach { audioSection ->
-                    if (audioSection.groups.any { it.streams.isNotEmpty() }) {
-                        item(key = "stream_audio_${audioSection.audioGroup.name}") {
-                            StreamSourceHeader(sourceName = audioSection.audioGroup.label)
-                        }
-                    }
-                    audioSection.groups.forEachIndexed { groupIndex, group ->
+                filteredGroups.providerSections().forEachIndexed { groupIndex, group ->
                     streamSection(
-                        sectionKey = "${audioSection.audioGroup.name}:" + streamSectionRenderKey(groupIndex = groupIndex, group = group),
+                        sectionKey = streamSectionRenderKey(groupIndex = groupIndex, group = group),
                         group = group,
                         showHeader = uiState.selectedFilter == null,
                         debridEnabled = debridEnabled,
@@ -934,7 +952,6 @@ internal fun StreamList(
                         resumePositionMs = resumePositionMs,
                         resumeProgressFraction = resumeProgressFraction,
                     )
-                    }
                 }
                 if (anyLoading) {
                     item {

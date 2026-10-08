@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.player
+package com.streamvault.app.features.player
 
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
@@ -9,7 +9,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.IntSize
 import kotlin.math.abs
-import kotlin.math.roundToLong
 
 internal fun Modifier.playerSurfaceTapGestures(
     layoutSize: IntSize,
@@ -51,15 +50,11 @@ internal fun Modifier.playerSurfaceDragGestures(
     playerControlsLockedState: State<Boolean>,
     touchGesturesEnabledState: State<Boolean>,
     isHoldToSpeedGestureActiveState: State<Boolean>,
-    currentPositionMsState: State<Long>,
-    currentDurationMsState: State<Long>,
     deactivateHoldToSpeedState: State<() -> Unit>,
-    showHorizontalSeekPreviewState: State<(Long, Long) -> Unit>,
     showBrightnessFeedbackState: State<(Float) -> Unit>,
     showVolumeFeedbackState: State<(PlayerAudioLevel) -> Unit>,
     clearLiveGestureFeedbackState: State<() -> Unit>,
     revealLockedOverlayState: State<() -> Unit>,
-    commitHorizontalSeekState: State<(Long) -> Unit>,
 ): Modifier =
     pointerInput(gestureController, layoutSize, sideGestureSystemEdgeExclusionPx, playbackGesturesEnabled) {
         if (!playbackGesturesEnabled) return@pointerInput
@@ -85,6 +80,8 @@ internal fun Modifier.playerSurfaceDragGestures(
             val isInSideGestureSystemEdge =
                 down.position.y <= sideGestureEdgeExclusionPx ||
                     down.position.y >= height - sideGestureEdgeExclusionPx
+            // Leave status/navigation bar gestures to Android, including diagonal swipes.
+            if (isInSideGestureSystemEdge) return@awaitEachGesture
             val region = when {
                 isInSideGestureSystemEdge -> null
                 down.position.x < width * PlayerLeftGestureBoundary -> PlayerSideGesture.Brightness
@@ -107,8 +104,6 @@ internal fun Modifier.playerSurfaceDragGestures(
             var totalDy = 0f
             var gestureMode: PlayerGestureMode? = null
             var verticalGestureActivationDy = 0f
-            val horizontalSeekBaselineMs = currentPositionMsState.value
-            var horizontalSeekPreviewMs = horizontalSeekBaselineMs
 
             while (true) {
                 val event = awaitPointerEvent()
@@ -125,21 +120,12 @@ internal fun Modifier.playerSurfaceDragGestures(
                         viewConfiguration.touchSlop * PlayerVerticalGestureTouchSlopMultiplier,
                         height * PlayerVerticalGestureMinHeightFraction,
                     )
-                    val horizontalDominant =
-                        !holdToSpeedActive &&
-                            abs(totalDx) > viewConfiguration.touchSlop &&
-                            abs(totalDx) > abs(totalDy)
                     val verticalDominant =
                         !holdToSpeedActive &&
                             abs(totalDy) > verticalGestureActivationSlop &&
                             abs(totalDy) > abs(totalDx) * PlayerVerticalGestureDominanceRatio
 
                     gestureMode = when {
-                        horizontalDominant -> {
-                            deactivateHoldToSpeedState.value()
-                            PlayerGestureMode.HorizontalSeek
-                        }
-
                         verticalDominant && region == PlayerSideGesture.Brightness && initialBrightness != null -> {
                             verticalGestureActivationDy = totalDy
                             PlayerGestureMode.Brightness
@@ -159,27 +145,7 @@ internal fun Modifier.playerSurfaceDragGestures(
                 }
 
                 when (gestureMode) {
-                    PlayerGestureMode.HorizontalSeek -> {
-                        val sensitivitySeconds = when {
-                            currentDurationMsState.value >= 3_600_000L -> 120f
-                            currentDurationMsState.value >= 1_800_000L -> 90f
-                            else -> 60f
-                        }
-                        val previewOffsetMs =
-                            ((totalDx / width) * sensitivitySeconds * 1000f).roundToLong()
-                        val unclampedPreviewMs = horizontalSeekBaselineMs + previewOffsetMs
-                        horizontalSeekPreviewMs = currentDurationMsState.value
-                            .takeIf { it > 0L }
-                            ?.let { durationMs ->
-                                unclampedPreviewMs.coerceIn(0L, durationMs)
-                            }
-                            ?: unclampedPreviewMs.coerceAtLeast(0L)
-                        showHorizontalSeekPreviewState.value(
-                            horizontalSeekPreviewMs,
-                            horizontalSeekBaselineMs,
-                        )
-                    }
-
+                    PlayerGestureMode.HorizontalSeek -> Unit // Timeline/buttons handle seeking.
                     PlayerGestureMode.Brightness -> {
                         val activeTotalDy = totalDy - verticalGestureActivationDy
                         val gestureDeltaFraction =
@@ -191,7 +157,7 @@ internal fun Modifier.playerSurfaceDragGestures(
                     PlayerGestureMode.Volume -> {
                         val activeTotalDy = totalDy - verticalGestureActivationDy
                         val gestureDeltaFraction =
-                            (-activeTotalDy / height) * PlayerVerticalGestureSensitivity
+                            (-activeTotalDy / height) *  2.5f
                         controller?.setVolume((initialVolume?.fraction ?: 0f) + gestureDeltaFraction)
                             ?.let(showVolumeFeedbackState.value)
                     }
@@ -199,9 +165,6 @@ internal fun Modifier.playerSurfaceDragGestures(
                 change.consume()
             }
 
-            if (gestureMode == PlayerGestureMode.HorizontalSeek && !isHoldToSpeedGestureActiveState.value) {
-                commitHorizontalSeekState.value(horizontalSeekPreviewMs)
-                clearLiveGestureFeedbackState.value()
-            }
+            clearLiveGestureFeedbackState.value()
         }
     }

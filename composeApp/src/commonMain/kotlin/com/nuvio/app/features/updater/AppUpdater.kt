@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.updater
+package com.streamvault.app.features.updater
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -65,7 +65,7 @@ class AppUpdaterController internal constructor(
                     downloadJob?.cancel()
                     _uiState.value.downloadedApkPath?.let(AppUpdaterPlatform::deleteDownloadedApk)
                     _uiState.value = AppUpdaterUiState(updateChannel = channel)
-                    if (!AppUpdaterPlatform.isDebugBuild) {
+                    if (AppUpdaterPlatform.isSupported) {
                         checkForUpdates(force = true, showNoUpdateFeedback = false)
                     }
                 }
@@ -75,7 +75,7 @@ class AppUpdaterController internal constructor(
 
     fun ensureAutoCheckStarted() {
         if (autoCheckStarted || !AppFeaturePolicy.inAppUpdaterEnabled ||
-            !AppUpdaterPlatform.isSupported || AppUpdaterPlatform.isDebugBuild
+            !AppUpdaterPlatform.isSupported
         ) {
             return
         }

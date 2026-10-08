@@ -198,7 +198,7 @@ private class AndroidPlayerGestureController(
     }
 
     override fun setVolume(level: Float): PlayerAudioLevel {
-        val clampedLevel = level.coerceIn(0f, 2f)
+        val clampedLevel = level.coerceIn(0f, 3f)
         val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC).coerceAtLeast(1)
         if (clampedLevel <= 1f) {
             boostFraction = 0f
@@ -214,30 +214,34 @@ private class AndroidPlayerGestureController(
             )
         } else {
             audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, maxVolume, 0)
-            boostFraction = clampedLevel - 1f
-            applyBoostGain(boostFraction)
+            boostFraction = if (applyBoostGain(clampedLevel - 1f)) clampedLevel - 1f else 0f
             return PlayerAudioLevel(
-                fraction = clampedLevel,
+                fraction = 1f + boostFraction,
                 isMuted = false,
             )
         }
     }
 
-    private fun applyBoostGain(ratio: Float) {
+    private fun applyBoostGain(ratio: Float): Boolean {
         try {
             if (loudnessEnhancer == null) {
                 loudnessEnhancer = android.media.audiofx.LoudnessEnhancer(0)
             }
-            val gainMb = (ratio * 2000f).roundToInt()
+            val gainMb = (2000.0 * kotlin.math.log10(1.0 + ratio)).roundToInt()
             loudnessEnhancer?.setTargetGain(gainMb)
             loudnessEnhancer?.enabled = ratio > 0.01f
+            return true
         } catch (_: Throwable) {
+            return false
         }
     }
 
     fun restoreBrightness() {
         if (brightnessRestored) return
         brightnessRestored = true
+        loudnessEnhancer?.release()
+        loudnessEnhancer = null
+        boostFraction = 0f
 
         val attributes = activity.window.attributes
         attributes.screenBrightness = when {

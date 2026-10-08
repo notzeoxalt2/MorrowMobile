@@ -1,4 +1,4 @@
-﻿package com.streamvault.app.features.player
+package com.streamvault.app.features.player
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -18,6 +18,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.rounded.OpenInNew
+import androidx.compose.material.icons.rounded.MoreVert
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material.icons.rounded.Build
 import androidx.compose.material.icons.rounded.Flag
 import androidx.compose.material.icons.rounded.Lock
@@ -109,7 +112,7 @@ internal fun PlayerControlActions(
         onNextEpisodeClick?.let {
             PlayerControlAction(
                 stringResource(Res.string.player_next_episode), it,
-                icon = Icons.Rounded.SkipNext, iconSize = 40.dp,
+                icon = Icons.Rounded.SkipNext, iconSize = 24.dp,
             )
         },
         PlayerControlAction(
@@ -159,13 +162,9 @@ internal fun PlayerControlActions(
             )
         },
     )
-    val hasOverflow = actions.size > 5
-    var expanded by remember(hasOverflow) { mutableStateOf(false) }
-    val scrollState = rememberScrollState()
-    val startOffset = if (onNextEpisodeClick != null) (-13).dp else (-12).dp
-    LaunchedEffect(expanded, scrollState.maxValue) {
-        if (expanded) scrollState.animateScrollTo(scrollState.maxValue) else scrollState.scrollTo(0)
-    }
+    val visibleActions = actions.filter { it.onClick == onNextEpisodeClick || it.onClick == onSubtitleClick || it.onClick == onAudioClick || it.onClick == onSourcesClick }
+    val menuActions = actions.filterNot { it in visibleActions }
+    var menuOpen by remember { mutableStateOf(false) }
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         Row(
             modifier = Modifier.fillMaxWidth().padding(horizontal = PlayerTimelineContentInset),
@@ -173,10 +172,10 @@ internal fun PlayerControlActions(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Row(
-                modifier = Modifier.weight(1f).offset(x = startOffset).horizontalScroll(scrollState),
+                modifier = Modifier.weight(1f),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                actions.take(if (expanded) actions.size else 5).forEach { action ->
+                visibleActions.forEach { action ->
                     PlayerAction(
                         description = action.description,
                         onClick = {
@@ -189,17 +188,22 @@ internal fun PlayerControlActions(
                         visibleLabel = action.visibleLabel,
                     )
                 }
-                if (hasOverflow) {
-                    PlayerAction(
-                        description = stringResource(
-                            if (expanded) Res.string.compose_player_fewer_actions else Res.string.compose_player_more_actions,
-                        ),
-                        onClick = {
-                            expanded = !expanded
-                            onInteraction()
-                        },
-                        icon = if (expanded) Icons.AutoMirrored.Rounded.KeyboardArrowLeft else Icons.AutoMirrored.Rounded.KeyboardArrowRight,
-                    )
+                if (menuActions.isNotEmpty()) {
+                    Box {
+                        PlayerAction(
+                            description = stringResource(Res.string.compose_player_more_actions),
+                            onClick = { menuOpen = true; onInteraction() },
+                            icon = Icons.Rounded.MoreVert,
+                        )
+                        DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
+                            menuActions.forEach { action ->
+                                DropdownMenuItem(
+                                    text = { Text(action.description) },
+                                    onClick = { menuOpen = false; onInteraction(); action.onClick() },
+                                )
+                            }
+                        }
+                    }
                 }
             }
             Box(
@@ -217,7 +221,7 @@ internal fun PlayerControlActions(
             ) {
                 Text(
                     text = formatPlaybackRuntime(displayedPositionMs, playbackSnapshot.durationMs, showRemainingTime),
-                    style = MaterialTheme.nuvioTypeScale.bodyMd.copy(fontSize = (metrics.timeSize.value + 2).sp),
+                    style = MaterialTheme.nuvioTypeScale.bodyMd.copy(fontSize = metrics.timeSize),
                     color = Color.White.copy(alpha = 0.9f),
                     maxLines = 1,
                 )
