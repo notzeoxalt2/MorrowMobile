@@ -385,6 +385,7 @@ internal fun PlayerScreenRuntime.switchToDownloadedEpisode(downloadItem: Downloa
 internal fun PlayerScreenRuntime.playNextEpisode() {
     if (nextEpisodeAutoPlaySearching || nextEpisodeAutoPlayCountdown != null) return
 
+    audioTracks.firstOrNull { it.index == selectedAudioIndex || it.isSelected }?.let(::persistAudioPreference)
     scope.launchPlayerNextEpisodeAutoPlay(
         previousJob = nextEpisodeAutoPlayJob,
         nextEpisodeInfo = nextEpisodeInfo,

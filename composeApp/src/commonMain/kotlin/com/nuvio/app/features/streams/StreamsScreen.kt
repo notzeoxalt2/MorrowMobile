@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -48,6 +49,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.key
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -800,12 +802,14 @@ internal fun ProviderFilterRow(
         addonGroups.filter { group ->
             selectedFilter?.startsWith("category:") != true || selectedFilter.removePrefix("category:") in group.sourceCategories
         }.forEach { group ->
-            FilterChip(
-                label = providerDisplayName(group.addonName),
-                logoUrl = group.streams.firstNotNullOfOrNull { it.addonLogo },
-                isSelected = selectedFilter == group.addonId,
-                onClick = { onFilterSelected(group.addonId) },
-            )
+            key(group.addonId) {
+                FilterChip(
+                    label = providerDisplayName(group.addonName),
+                    logoUrl = group.streams.firstNotNullOfOrNull { it.addonLogo },
+                    isSelected = selectedFilter == group.addonId,
+                    onClick = { onFilterSelected(group.addonId) },
+                )
+            }
         }
     }
 }
@@ -921,7 +925,10 @@ internal fun StreamList(
     }.collectAsStateWithLifecycle()
 
     CompositionLocalProvider(LocalStreamSizeLabelFormat provides formatStreamSize) {
+    val listState = rememberLazyListState()
+    LaunchedEffect(uiState.selectedFilter) { listState.scrollToItem(0) }
     LazyColumn(
+        state = listState,
         modifier = modifier.fillMaxWidth(),
         contentPadding = PaddingValues(
             horizontal = 12.dp,
