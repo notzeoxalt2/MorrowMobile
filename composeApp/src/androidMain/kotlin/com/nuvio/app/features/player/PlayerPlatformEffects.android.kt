@@ -180,20 +180,13 @@ private class AndroidPlayerGestureController(
         return target
     }
 
-    private var boostFraction: Float = 0f
-    private var loudnessEnhancer: android.media.audiofx.LoudnessEnhancer? = null
-
     override fun currentVolume(): PlayerAudioLevel {
         val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC).coerceAtLeast(1)
         val currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC).coerceIn(0, maxVolume)
-        val fraction = if (boostFraction > 0f) {
-            1f + boostFraction
-        } else {
-            currentVolume.toFloat() / maxVolume.toFloat()
-        }
+        val fraction = currentVolume.toFloat() / maxVolume.toFloat() * AndroidPlayerAudioBoost.multiplier()
         return PlayerAudioLevel(
             fraction = fraction,
-            isMuted = currentVolume == 0 && boostFraction <= 0f,
+            isMuted = currentVolume == 0,
         )
     }
 
@@ -201,8 +194,7 @@ private class AndroidPlayerGestureController(
         val clampedLevel = level.coerceIn(0f, 3f)
         val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC).coerceAtLeast(1)
         if (clampedLevel <= 1f) {
-            boostFraction = 0f
-            applyBoostGain(0f)
+            AndroidPlayerAudioBoost.setMultiplier(1f)
             val targetVolume = (clampedLevel * maxVolume.toFloat())
                 .roundToInt()
                 .coerceIn(0, maxVolume)
@@ -214,34 +206,17 @@ private class AndroidPlayerGestureController(
             )
         } else {
             audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, maxVolume, 0)
-            boostFraction = if (applyBoostGain(clampedLevel - 1f)) clampedLevel - 1f else 0f
+            val actualMultiplier = AndroidPlayerAudioBoost.setMultiplier(clampedLevel)
             return PlayerAudioLevel(
-                fraction = 1f + boostFraction,
+                fraction = actualMultiplier,
                 isMuted = false,
             )
-        }
-    }
-
-    private fun applyBoostGain(ratio: Float): Boolean {
-        try {
-            if (loudnessEnhancer == null) {
-                loudnessEnhancer = android.media.audiofx.LoudnessEnhancer(0)
-            }
-            val gainMb = (2000.0 * kotlin.math.log10(1.0 + ratio)).roundToInt()
-            loudnessEnhancer?.setTargetGain(gainMb)
-            loudnessEnhancer?.enabled = ratio > 0.01f
-            return true
-        } catch (_: Throwable) {
-            return false
         }
     }
 
     fun restoreBrightness() {
         if (brightnessRestored) return
         brightnessRestored = true
-        loudnessEnhancer?.release()
-        loudnessEnhancer = null
-        boostFraction = 0f
 
         val attributes = activity.window.attributes
         attributes.screenBrightness = when {

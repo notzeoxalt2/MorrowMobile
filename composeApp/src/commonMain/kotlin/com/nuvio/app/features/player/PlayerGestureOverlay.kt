@@ -8,6 +8,8 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -39,6 +41,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.streamvault.app.core.ui.accentBrush
 import com.streamvault.app.core.ui.nuvioTypeScale
 import com.streamvault.app.core.ui.themePalette
@@ -104,26 +107,39 @@ private fun PlayerGestureFeedback(
                     val level = feedback.level?.coerceIn(0f, 1f) ?: 0f
                     val trackHeight = minOf(maxHeight / 4, 104.dp)
                     val animatedLevel by animateFloatAsState(level, tween(80), label = "playerGestureLevel")
-                    Box(
+                    val percentage = feedback.messageArgs.firstOrNull()?.toString() ?: "0%"
+                    Column(
                         modifier = Modifier
                             .align(if (isBrightness) Alignment.CenterStart else Alignment.CenterEnd)
                             .padding(horizontal = horizontalSafePadding + 8.dp)
                             .semantics {
-                                contentDescription = description
+                                contentDescription = if (isBrightness) description else "$description $percentage"
                                 progressBarRangeInfo = ProgressBarRangeInfo(level, 0f..1f)
-                            }
-                            .width(6.dp)
-                            .height(trackHeight)
-                            .clip(RoundedCornerShape(3.dp))
-                            .background(Color.White.copy(alpha = 0.3f)),
+                            },
+                        horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
+                        if (!isBrightness) {
+                            Text(
+                                text = percentage,
+                                color = if (feedback.isDanger) Color(0xFFFFD28A) else Color.White,
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                modifier = Modifier.width(42.dp),
+                                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                            )
+                            Spacer(Modifier.height(6.dp))
+                        }
                         Box(
-                            Modifier
-                                .align(Alignment.BottomCenter)
-                                .fillMaxWidth()
-                                .fillMaxHeight(animatedLevel)
-                                .background(MaterialTheme.themePalette.accentBrush()),
-                        )
+                            Modifier.width(4.dp).height(trackHeight)
+                                .clip(RoundedCornerShape(2.dp))
+                                .background(Color.White.copy(alpha = 0.3f)),
+                        ) {
+                            Box(
+                                Modifier.align(Alignment.BottomCenter).fillMaxWidth()
+                                    .fillMaxHeight(animatedLevel)
+                                    .background(MaterialTheme.themePalette.accentBrush()),
+                            )
+                        }
                     }
                 }
                 GestureFeedbackIcon.Speed -> {

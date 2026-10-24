@@ -59,7 +59,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
@@ -80,8 +79,6 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 internal fun PlayerControlsShell(
     title: String,
-    streamTitle: String,
-    providerName: String,
     seasonNumber: Int?,
     episodeNumber: Int?,
     episodeTitle: String?,
@@ -168,8 +165,6 @@ internal fun PlayerControlsShell(
             if (useLegacyLayout) {
                 PlayerHeader(
                     title = title,
-                    streamTitle = streamTitle,
-                    providerName = providerName,
                     seasonNumber = seasonNumber,
                     episodeNumber = episodeNumber,
                     episodeTitle = episodeTitle,
@@ -197,11 +192,16 @@ internal fun PlayerControlsShell(
             } else {
                 if (showPlaybackControls) {
                     PlayerToolbar(
+                        title = title,
+                        seasonNumber = seasonNumber,
+                        episodeNumber = episodeNumber,
+                        episodeTitle = episodeTitle,
+                        metrics = metrics,
                         isLocked = isLocked,
                         onLockToggle = onLockToggle,
                         onBack = onBack,
                         modifier = Modifier
-                            .align(Alignment.TopEnd)
+                        .align(Alignment.TopCenter)
                             .windowInsetsPadding(WindowInsets.safeContent.only(WindowInsetsSides.Top))
                             .padding(horizontal = metrics.horizontalPadding, vertical = metrics.verticalPadding / 4),
                     )
@@ -280,31 +280,41 @@ internal fun PlayerControlsShell(
                             episodeNumber = episodeNumber,
                             episodeTitle = episodeTitle,
                             releaseInfo = releaseInfo,
-                            streamTitle = streamTitle,
-                            providerName = providerName,
-                            isPlaying = playbackSnapshot.isPlaying,
                             metrics = metrics,
                         )
                     }
-                    PlayerTimeline(
-                        snapshot = playbackSnapshot,
-                        displayedPositionMs = displayedPositionMs,
-                        onScrubChange = onScrubChange,
-                        onScrubFinished = {
-                            onInteraction()
-                            onScrubFinished(it)
-                        },
-                    )
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        PlayerTimeline(
+                            snapshot = playbackSnapshot,
+                            displayedPositionMs = displayedPositionMs,
+                            onScrubChange = onScrubChange,
+                            onScrubFinished = {
+                                onInteraction()
+                                onScrubFinished(it)
+                            },
+                            modifier = Modifier.weight(1f),
+                        )
+                        Text(
+                            text = formatPlaybackRuntime(displayedPositionMs, playbackSnapshot.durationMs, showRemainingTime),
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(6.dp))
+                                .clickable {
+                                    onRuntimeClick()
+                                    onInteraction()
+                                }
+                                .padding(start = 14.dp, end = 2.dp, top = 8.dp, bottom = 8.dp),
+                            style = MaterialTheme.nuvioTypeScale.bodyMd.copy(fontSize = metrics.timeSize),
+                            color = Color.White.copy(alpha = 0.92f),
+                            maxLines = 1,
+                            softWrap = false,
+                        )
+                    }
                     PlayerControlActions(
                         videoQuality = videoQuality,
                         onQualityClick = onQualityClick,
                         playbackSnapshot = playbackSnapshot,
-                        displayedPositionMs = displayedPositionMs,
-                        showRemainingTime = showRemainingTime,
-                        onRuntimeClick = onRuntimeClick,
                         metrics = metrics,
                         resizeMode = resizeMode,
-                        onSubtitleClick = onSubtitleClick,
                         onAudioClick = onAudioClick,
                         onSourcesClick = onSourcesClick,
                         onEpisodesClick = onEpisodesClick,
@@ -325,8 +335,6 @@ internal fun PlayerControlsShell(
 @Composable
 private fun PlayerHeader(
     title: String,
-    streamTitle: String,
-    providerName: String,
     seasonNumber: Int?,
     episodeNumber: Int?,
     episodeTitle: String?,
@@ -386,32 +394,6 @@ private fun PlayerHeader(
                                 lineHeight = metrics.episodeInfoSize * 1.3f,
                             ),
                             color = Color.White.copy(alpha = 0.9f),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                    }
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Text(
-                            text = streamTitle,
-                            style = typeScale.labelSm.copy(
-                                fontSize = metrics.metadataSize,
-                                lineHeight = metrics.metadataSize * 1.25f,
-                            ),
-                            color = Color.White.copy(alpha = 0.7f),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                        Text(
-                            text = providerName,
-                            style = typeScale.labelSm.copy(
-                                fontSize = metrics.metadataSize,
-                                lineHeight = metrics.metadataSize * 1.25f,
-                                fontStyle = FontStyle.Italic,
-                            ),
-                            color = Color.White.copy(alpha = 0.7f),
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
                         )
@@ -489,9 +471,10 @@ internal fun PlayerHeaderIconButton(
     buttonSize: androidx.compose.ui.unit.Dp,
     iconSize: androidx.compose.ui.unit.Dp,
     onClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .size(buttonSize)
             .clip(CircleShape)
             .background(Color.Black.copy(alpha = 0.35f))
@@ -560,7 +543,7 @@ private fun SideControlButton(
             imageVector = icon,
             contentDescription = contentDescription,
             tint = Color.White,
-            modifier = Modifier.size(metrics.playIconSize),
+            modifier = Modifier.size(metrics.sideIconSize),
         )
     }
 }

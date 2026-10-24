@@ -4,7 +4,13 @@
         <item name="android:windowBackground">@color/streamvault_background</item>
     </style>
 
-    <style name="Theme.StreamVault.Splash" parent="@style/Theme.StreamVault" />
+    <!-- AndroidX SplashScreen's compatibility implementation reads these theme
+         attributes on pre-31 devices as well as on Android 12+. -->
+    <style name="Theme.StreamVault.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/streamvault_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.StreamVault</item>
+    </style>
     <style name="Theme.StreamVault.Splash.ArcticBlue" parent="@style/Theme.StreamVault.Splash" />
     <style name="Theme.StreamVault.Splash.Emerald" parent="@style/Theme.StreamVault.Splash" />
     <style name="Theme.StreamVault.Splash.RoseGold" parent="@style/Theme.StreamVault.Splash" />

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 internal object PluginStorage {
+    private var previewAssets: android.content.res.AssetManager? = null
     private const val preferencesName = "nuvio_plugins"
     private const val pluginsStateKey = "plugins_state"
     private const val scraperCodeDirectoryName = "nuvio_plugin_scrapers"
@@ -12,12 +13,17 @@ internal object PluginStorage {
     private var scraperCodeStore: PluginScraperCodeFileStore? = null
 
     fun initialize(context: Context) {
+        previewAssets = context.assets.takeIf { context.packageName.endsWith(".debug") }
         preferences = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
         scraperCodeStore = PluginScraperCodeFileStore(context.filesDir.resolve(scraperCodeDirectoryName))
     }
 
     fun loadState(profileId: Int): String? =
         preferences?.getString("${pluginsStateKey}_$profileId", null)
+
+    fun previewText(path: String): String? = runCatching {
+        previewAssets?.open("morrow-provider-preview/$path")?.bufferedReader()?.use { it.readText() }
+    }.getOrNull()
 
     fun saveState(profileId: Int, payload: String) {
         preferences
@@ -53,3 +59,6 @@ internal object PluginStorage {
 internal fun currentPluginPlatform(): String = "android"
 
 internal fun currentEpochMillis(): Long = System.currentTimeMillis()
+
+internal fun bundledPluginPreviewText(url: String): String? =
+    bundledAnimePreviewPath(url)?.let(PluginStorage::previewText)

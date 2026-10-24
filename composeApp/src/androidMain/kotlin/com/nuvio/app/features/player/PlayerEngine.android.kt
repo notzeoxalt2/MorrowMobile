@@ -552,6 +552,10 @@ private fun ExoPlayerSurface(
         }
 
         val listener = object : Player.Listener {
+            override fun onAudioSessionIdChanged(audioSessionId: Int) {
+                AndroidPlayerAudioBoost.attachExo(exoPlayer, audioSessionId)
+            }
+
             override fun onPlayerError(error: PlaybackException) {
                 syncPlayerViewKeepScreenOn()
                 Log.e(
@@ -678,7 +682,9 @@ private fun ExoPlayerSurface(
 
         }
         exoPlayer.addListener(listener)
+        AndroidPlayerAudioBoost.attachExo(exoPlayer, exoPlayer.audioSessionId)
         onDispose {
+            AndroidPlayerAudioBoost.detach(exoPlayer)
             PlayerPictureInPictureManager.registerPausePlaybackCallback(null)
             PlayerPictureInPictureManager.registerTogglePlaybackCallback(null)
             exoPlayer.removeListener(listener)
@@ -1195,6 +1201,7 @@ private fun LibmpvPlayerSurface(
 
     DisposableEffect(playerViewRef) {
         val view = playerViewRef ?: return@DisposableEffect onDispose {}
+        AndroidPlayerAudioBoost.attachMpv(view, view::setAudioBoost)
         PlayerPictureInPictureManager.registerPausePlaybackCallback {
             view.setPaused(true)
         }
@@ -1212,6 +1219,7 @@ private fun LibmpvPlayerSurface(
             }
         }
         onDispose {
+            AndroidPlayerAudioBoost.detach(view)
             PlayerPictureInPictureManager.registerPausePlaybackCallback(null)
             PlayerPictureInPictureManager.registerTogglePlaybackCallback(null)
             view.keepScreenOn = false
@@ -1345,13 +1353,16 @@ private class NuvioLibmpvView(
         mpv.setOptionString("demuxer-max-back-bytes", "${libmpvCacheBytes()}").logIfMpvError("demuxer-max-back-bytes")
         mpv.setOptionString("vd-lavc-film-grain", "cpu")
         mpv.setOptionString("hls-bitrate", "max")
+        mpv.setOptionString("volume-max", "300")
         mpv.setOptionString("ytdl-format", "bestvideo+bestaudio/best")
         mpv.setPropertyBoolean("keep-open", true)
         mpv.setPropertyBoolean("input-default-bindings", true)
         mpv.setPropertyBoolean("audio-fallback-to-null", true)
     }
 
-    override fun postInitOptions() = Unit
+    override fun postInitOptions() {
+        AndroidPlayerAudioBoost.refresh(this)
+    }
 
     override fun observeProperties() {
         val props = mapOf(
@@ -1711,6 +1722,10 @@ private class NuvioLibmpvView(
 
     private fun setPausedNow(paused: Boolean) {
         runCatching { mpv.setPropertyBoolean("pause", paused) }
+    }
+
+    fun setAudioBoost(multiplier: Float) {
+        executeMpv { mpv.setPropertyDouble("volume", multiplier.coerceIn(1f, 3f) * 100.0) }
     }
 
     private fun executeMpv(block: () -> Unit) {

@@ -1,6 +1,6 @@
 package com.streamvault.app.features.player
 
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import com.streamvault.app.features.details.MetaDetailsUiState
 import com.streamvault.app.features.details.MetaVideo
 import com.streamvault.app.features.downloads.DownloadsRepository
@@ -118,16 +118,21 @@ internal fun PlayerScreenModalHosts(
         )
     }
 
-    AudioTrackModal(
-        visible = showAudioModal,
-        audioTracks = audioTracks,
-        selectedIndex = selectedAudioIndex,
-        onTrackSelected = onAudioTrackSelected,
-        onDismiss = onAudioModalDismissed,
+    var trackSettingsOpen by remember(showSubtitleModal, showAudioModal) { mutableStateOf(false) }
+    CombinedTracksModal(
+        visible = (showSubtitleModal || showAudioModal) && !trackSettingsOpen,
+        audioTracks = audioTracks, selectedAudioIndex = selectedAudioIndex,
+        subtitleTracks = subtitleTracks, selectedSubtitleIndex = selectedSubtitleIndex,
+        addonSubtitles = addonSubtitles, selectedAddonSubtitleId = selectedAddonSubtitleId,
+        loading = isLoadingAddonSubtitles,
+        onAudioSelected = onAudioTrackSelected, onSubtitleSelected = onBuiltInSubtitleTrackSelected,
+        onAddonSelected = onAddonSubtitleSelected, onFetch = onFetchAddonSubtitles,
+        onSettings = { trackSettingsOpen = true },
+        onDismiss = { onAudioModalDismissed(); onSubtitleModalDismissed() },
     )
 
     SubtitleModal(
-        visible = showSubtitleModal,
+        visible = (showSubtitleModal || showAudioModal) && trackSettingsOpen,
         subtitleTracks = subtitleTracks,
         selectedSubtitleIndex = selectedSubtitleIndex,
         addonSubtitles = addonSubtitles,
@@ -148,7 +153,7 @@ internal fun PlayerScreenModalHosts(
         onAutoSyncCapture = onAutoSyncCapture,
         onAutoSyncCueSelected = onAutoSyncCueSelected,
         onAutoSyncReload = onAutoSyncReload,
-        onDismiss = onSubtitleModalDismissed,
+        onDismiss = { trackSettingsOpen = false },
     )
 
     IosVideoSettingsModal(

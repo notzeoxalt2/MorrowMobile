@@ -63,7 +63,8 @@ fun SkipIntroButton(
         lastType = interval?.type
         lastSkipsToPostCredits = skipsToPostCredits
     }
-    val shouldShow = canSkip && (!dismissed || controlsVisible)
+    // A dismissed interval stays gone for this segment even when the player controls reappear.
+    val shouldShow = canSkip && !dismissed
 
     var autoHidden by remember { mutableStateOf(false) }
     var manuallyDismissed by remember { mutableStateOf(false) }

@@ -69,7 +69,7 @@ class ProfileSelectionRoutingTest {
     }
 
     @Test
-    fun `active profile only requests a toast with its name`() {
+    fun `active profile is routed to the active profile action`() {
         for (pinEnabled in listOf(false, true)) {
             val profile = NuvioProfile(profileIndex = 2, name = "Alex", pinEnabled = pinEnabled)
             val requests = mutableListOf<String>()
@@ -79,12 +79,12 @@ class ProfileSelectionRoutingTest {
                 isEditMode = false,
                 activeProfileIndex = profile.profileIndex,
                 onEditProfile = { requests += "edit" },
-                onActiveProfileSelected = { requests += "toast:${it.name}" },
+                onActiveProfileSelected = { requests += "enter:${it.name}" },
                 onPinRequired = { requests += "pin" },
                 onProfileSelected = { requests += "select" },
             )
 
-            assertEquals(listOf("toast:Alex"), requests)
+            assertEquals(listOf("enter:Alex"), requests)
         }
     }
 

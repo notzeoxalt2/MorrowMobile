@@ -5,6 +5,7 @@ import com.streamvault.app.features.addons.httpGetText
 import com.streamvault.app.features.details.MetaCompany
 import com.streamvault.app.features.details.MetaDetails
 import com.streamvault.app.features.details.MetaPerson
+import com.streamvault.app.features.details.mergeCastPhotos
 import com.streamvault.app.features.details.MetaTrailer
 import com.streamvault.app.features.details.MetaVideo
 import com.streamvault.app.features.details.MoreLikeThisSource
@@ -676,6 +677,25 @@ object TmdbMetadataService {
             "tv", "series", "show" -> "tv"
             else -> "tv"
         }
+    }
+
+    private val castPhotoCache = mutableMapOf<String, List<MetaPerson>>()
+
+    suspend fun enrichCastPhotos(meta: MetaDetails, fallbackItemId: String): MetaDetails {
+        if (meta.cast.none { it.photo.isNullOrBlank() }) return meta
+        val type = normalizeMetaType(meta.type)
+        val id = TmdbService.ensureTmdbId(meta.id, type, fallbackImdbId = meta.imdbId)
+            ?: TmdbService.ensureTmdbId(fallbackItemId, type, fallbackImdbId = meta.imdbId)
+            ?: return meta
+        val key = "$type:$id"
+        val people = castPhotoCache[key] ?: run {
+            val credits = fetch<TmdbCreditsResponse>(endpoint = "$type/$id/credits") ?: return meta
+            credits.cast.map { member -> MetaPerson(
+                name = member.name.orEmpty(), photo = buildImageUrl(member.profilePath, "w185"),
+                tmdbId = member.id,
+            ) }.also { castPhotoCache[key] = it }
+        }
+        return meta.copy(cast = mergeCastPhotos(meta.cast, people))
     }
 
     suspend fun enrichMeta(

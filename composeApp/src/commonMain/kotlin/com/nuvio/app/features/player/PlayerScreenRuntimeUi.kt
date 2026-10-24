@@ -248,8 +248,6 @@ private fun PlayerScreenRuntime.RenderPlayerControls(displayedPositionMs: Long, 
     ) {
         PlayerControlsShell(
             title = title,
-            streamTitle = activeStreamTitle,
-            providerName = activeProviderName,
             seasonNumber = activeSeasonNumber,
             episodeNumber = activeEpisodeNumber,
             episodeTitle = activeEpisodeTitle,

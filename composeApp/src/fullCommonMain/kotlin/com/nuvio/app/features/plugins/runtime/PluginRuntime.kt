@@ -69,7 +69,12 @@ internal object PluginRuntime {
 
             return scraperSemaphore.withPermit {
                 withContext(pluginDispatcher) {
-                    withTimeout(PLUGIN_TIMEOUT_MS) {
+                    val providerId = scraperId.substringAfterLast(':')
+                    val extendedServerLookup = listOf("aniflix", "meguanimes", "anikage").any {
+                        providerId == it || providerId.startsWith("$it-")
+                    }
+                    val timeoutMs = if (extendedServerLookup) 45_000L else PLUGIN_TIMEOUT_MS
+                    withTimeout(timeoutMs) {
                         executePluginInternal(
                             code = code,
                             tmdbId = tmdbId,

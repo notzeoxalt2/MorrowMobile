@@ -4,9 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -18,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.rounded.OpenInNew
+import androidx.compose.material.icons.automirrored.outlined.Chat
 import androidx.compose.material.icons.rounded.MoreVert
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -58,27 +57,57 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 internal fun PlayerToolbar(
+    title: String,
+    seasonNumber: Int?,
+    episodeNumber: Int?,
+    episodeTitle: String?,
+    metrics: PlayerLayoutMetrics,
     isLocked: Boolean,
     onLockToggle: () -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-        Spacer(Modifier.weight(1f))
-        PlayerAction(
-            description = stringResource(
-                if (isLocked) Res.string.compose_player_unlock_controls else Res.string.compose_player_lock_controls,
-            ),
-            icon = if (isLocked) Icons.Rounded.LockOpen else Icons.Rounded.Lock,
-            onClick = onLockToggle,
-        )
+    val heading = if (seasonNumber != null && episodeNumber != null) {
+        val code = stringResource(Res.string.compose_player_episode_code, seasonNumber, episodeNumber)
+        val name = episodeTitle?.takeIf(String::isNotBlank)
+        if (name == null) code else "$code \"$name\""
+    } else {
+        title
+    }
+    Box(modifier = modifier.fillMaxWidth().height(56.dp)) {
         NuvioBackButton(
             onClick = onBack,
             containerColor = Color.Transparent,
             contentColor = Color.White,
-            buttonSize = 48.dp,
-            iconSize = 24.dp,
+            buttonSize = maxOf(metrics.headerIconSize + 24.dp, 56.dp),
+            iconSize = maxOf(metrics.headerIconSize + 4.dp, 28.dp),
             contentDescription = stringResource(Res.string.compose_player_close),
+            modifier = Modifier.align(Alignment.CenterStart),
+        )
+        Text(
+            text = heading,
+            modifier = Modifier
+                .align(Alignment.Center)
+                .fillMaxWidth()
+                .padding(horizontal = metrics.headerIconSize * 4),
+            color = Color.White,
+            style = MaterialTheme.nuvioTypeScale.titleMd.copy(
+                fontSize = if (metrics.headerIconSize >= 22.dp) 24.sp else 20.sp,
+                fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
+            ),
+            maxLines = 1,
+            overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
+            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+        )
+        PlayerHeaderIconButton(
+            icon = if (isLocked) Icons.Rounded.LockOpen else Icons.Rounded.Lock,
+            contentDescription = stringResource(
+                if (isLocked) Res.string.compose_player_unlock_controls else Res.string.compose_player_lock_controls,
+            ),
+            buttonSize = maxOf(metrics.headerIconSize + 24.dp, 56.dp),
+            iconSize = maxOf(metrics.headerIconSize + 4.dp, 28.dp),
+            onClick = onLockToggle,
+            modifier = Modifier.align(Alignment.CenterEnd),
         )
     }
 }
@@ -88,12 +117,8 @@ internal fun PlayerControlActions(
     videoQuality: VideoQuality,
     onQualityClick: (() -> Unit)?,
     playbackSnapshot: PlayerPlaybackSnapshot,
-    displayedPositionMs: Long,
-    showRemainingTime: Boolean,
-    onRuntimeClick: () -> Unit,
     metrics: PlayerLayoutMetrics,
     resizeMode: PlayerResizeMode,
-    onSubtitleClick: () -> Unit,
     onAudioClick: () -> Unit,
     onSourcesClick: (() -> Unit)?,
     onEpisodesClick: (() -> Unit)?,
@@ -112,16 +137,14 @@ internal fun PlayerControlActions(
         onNextEpisodeClick?.let {
             PlayerControlAction(
                 stringResource(Res.string.player_next_episode), it,
-                icon = Icons.Rounded.SkipNext, iconSize = 24.dp,
+                icon = Icons.Rounded.SkipNext, iconSize = 28.dp,
+                visibleLabel = stringResource(Res.string.player_next_episode),
             )
         },
         PlayerControlAction(
-            stringResource(Res.string.compose_player_subtitles), onSubtitleClick,
-            painter = appIconPainter(AppIconResource.PlayerSubtitles),
-        ),
-        PlayerControlAction(
-            stringResource(Res.string.compose_player_audio), onAudioClick,
-            painter = appIconPainter(AppIconResource.PlayerAudioFilled),
+            stringResource(Res.string.compose_player_audio_subtitles), onAudioClick,
+            icon = Icons.AutoMirrored.Outlined.Chat,
+            visibleLabel = stringResource(Res.string.compose_player_audio_subtitles),
         ),
         onSourcesClick?.let {
             PlayerControlAction(
@@ -133,11 +156,13 @@ internal fun PlayerControlActions(
             PlayerControlAction(
                 stringResource(Res.string.compose_player_episodes), it,
                 painter = appIconPainter(AppIconResource.PlayerEpisodes),
+                visibleLabel = stringResource(Res.string.compose_player_episodes),
             )
         },
         PlayerControlAction(
             "${stringResource(Res.string.compose_player_speed)} ${formatPlaybackSpeedLabel(playbackSnapshot.playbackSpeed)}",
             onSpeedClick, icon = Icons.Rounded.Speed,
+            visibleLabel = "${stringResource(Res.string.compose_player_speed)} (${formatPlaybackSpeedLabel(playbackSnapshot.playbackSpeed)})",
         ),
         PlayerControlAction(
             stringResource(resizeMode.labelRes), onResizeModeClick,
@@ -162,13 +187,18 @@ internal fun PlayerControlActions(
             )
         },
     )
-    val visibleActions = actions.filter { it.onClick == onNextEpisodeClick || it.onClick == onSubtitleClick || it.onClick == onAudioClick || it.onClick == onSourcesClick }
-    val menuActions = actions.filterNot { it in visibleActions }
+    val visibleActions = listOfNotNull(
+        actions.firstOrNull { it.onClick == onSpeedClick },
+        onEpisodesClick?.let { callback -> actions.firstOrNull { it.onClick == callback } },
+        actions.firstOrNull { it.onClick == onAudioClick },
+        onNextEpisodeClick?.let { callback -> actions.firstOrNull { it.onClick == callback } },
+    )
+    val menuActions = actions.filterNot { it in visibleActions || it.onClick == onAudioClick }
     var menuOpen by remember { mutableStateOf(false) }
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         Row(
             modifier = Modifier.fillMaxWidth().padding(horizontal = PlayerTimelineContentInset),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Row(
@@ -176,17 +206,20 @@ internal fun PlayerControlActions(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 visibleActions.forEach { action ->
-                    PlayerAction(
-                        description = action.description,
-                        onClick = {
-                            onInteraction()
-                            action.onClick()
-                        },
-                        icon = action.icon,
-                        painter = action.painter,
-                        iconSize = action.iconSize,
-                        visibleLabel = action.visibleLabel,
-                    )
+                    Box {
+                        PlayerAction(
+                            description = action.description,
+                            onClick = {
+                                onInteraction()
+                                action.onClick()
+                            },
+                            icon = action.icon,
+                            painter = action.painter,
+                            iconSize = action.iconSize,
+                            visibleLabel = action.visibleLabel.takeIf { metrics.centerGap >= 72.dp },
+                        )
+
+                    }
                 }
                 if (menuActions.isNotEmpty()) {
                     Box {
@@ -206,26 +239,6 @@ internal fun PlayerControlActions(
                     }
                 }
             }
-            Box(
-                modifier = Modifier.height(48.dp).widthIn(min = 48.dp).clickable(
-                    role = Role.Button,
-                    onClickLabel = stringResource(
-                        if (showRemainingTime) Res.string.compose_player_show_elapsed_time else Res.string.compose_player_show_remaining_time,
-                    ),
-                    onClick = {
-                        onRuntimeClick()
-                        onInteraction()
-                    },
-                ),
-                contentAlignment = Alignment.CenterEnd,
-            ) {
-                Text(
-                    text = formatPlaybackRuntime(displayedPositionMs, playbackSnapshot.durationMs, showRemainingTime),
-                    style = MaterialTheme.nuvioTypeScale.bodyMd.copy(fontSize = metrics.timeSize),
-                    color = Color.White.copy(alpha = 0.9f),
-                    maxLines = 1,
-                )
-            }
         }
     }
 }
@@ -240,21 +253,29 @@ private fun PlayerAction(
     visibleLabel: String? = null,
 ) {
     if (visibleLabel != null) {
-        Column(
-            modifier = Modifier.height(48.dp).widthIn(min = 76.dp).clickable(role = Role.Button, onClickLabel = description, onClick = onClick).padding(horizontal = 6.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
+        Row(
+            modifier = Modifier.height(64.dp).widthIn(min = 156.dp).clickable(role = Role.Button, onClickLabel = description, onClick = onClick).padding(horizontal = 12.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-            if (icon != null) Icon(icon, description, tint = Color.White, modifier = Modifier.size(20.dp))
-            Text(visibleLabel, color = Color.White, fontSize = 10.sp, maxLines = 1)
+            if (icon != null) Icon(icon, description, tint = Color.White, modifier = Modifier.size(28.dp))
+            if (painter != null) Icon(painter, description, tint = Color.White, modifier = Modifier.size(28.dp))
+            Text(
+                visibleLabel,
+                color = Color.White,
+                fontSize = 16.sp,
+                maxLines = 1,
+                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
+                softWrap = false,
+            )
         }
         return
     }
-    IconButton(onClick = onClick, modifier = Modifier.size(48.dp)) {
+    IconButton(onClick = onClick, modifier = Modifier.size(56.dp)) {
         if (painter != null) {
-            Icon(painter, description, tint = Color.White, modifier = Modifier.size(iconSize))
+            Icon(painter, description, tint = Color.White, modifier = Modifier.size(maxOf(iconSize, 28.dp)))
         } else if (icon != null) {
-            Icon(icon, description, tint = Color.White, modifier = Modifier.size(iconSize))
+            Icon(icon, description, tint = Color.White, modifier = Modifier.size(maxOf(iconSize, 28.dp)))
         }
     }
 }

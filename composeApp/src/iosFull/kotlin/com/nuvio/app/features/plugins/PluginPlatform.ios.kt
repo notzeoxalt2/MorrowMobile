@@ -143,3 +143,5 @@ internal fun currentPluginPlatform(): String = "ios"
 
 internal fun currentEpochMillis(): Long =
     (platform.Foundation.NSDate().timeIntervalSince1970 * 1000.0).toLong()
+
+internal fun bundledPluginPreviewText(url: String): String? = null

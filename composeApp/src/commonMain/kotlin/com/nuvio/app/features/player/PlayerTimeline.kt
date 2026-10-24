@@ -51,9 +51,6 @@ internal fun PlayerTimelineDetails(
     episodeNumber: Int?,
     episodeTitle: String?,
     releaseInfo: String?,
-    streamTitle: String,
-    providerName: String,
-    isPlaying: Boolean,
     metrics: PlayerLayoutMetrics,
 ) {
     val typeScale = MaterialTheme.nuvioTypeScale
@@ -82,16 +79,6 @@ internal fun PlayerTimelineDetails(
         if (!releaseInfo.isNullOrBlank()) {
             Text(
                 text = releaseInfo,
-                style = typeScale.labelSm.copy(fontSize = metrics.metadataSize),
-                color = Color.White.copy(alpha = 0.68f),
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-        }
-        val source = streamTitle.ifBlank { providerName }.replace("\n", " · ")
-        if (!isPlaying && source.isNotBlank()) {
-            Text(
-                text = stringResource(Res.string.compose_player_via, source),
                 style = typeScale.labelSm.copy(fontSize = metrics.metadataSize),
                 color = Color.White.copy(alpha = 0.68f),
                 maxLines = 1,
